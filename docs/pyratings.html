@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; pyratings 0.5.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyratings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview - pyratings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clean-ratings">Clean ratings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-pure-ratings">get_pure_ratings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#consolidate-ratings">Consolidate ratings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-best-ratings">get_best_ratings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-second-best-ratings">get_second_best_ratings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-worst-ratings">get_worst_ratings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#translate-ratings-to-scores-warf-and-vice-versa">Translate ratings to scores/WARF and vice versa</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-scores-from-ratings">get_scores_from_ratings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-scores-from-warf">get_scores_from_warf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-ratings-from-scores">get_ratings_from_scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-ratings-from-warf">get_ratings_from_warf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-warf-from-scores">get_warf_from_scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-warf-from-ratings">get_warf_from_ratings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregate-functions">Aggregate functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-weighted-average">get_weighted_average</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#warf-functions">WARF functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-warf-buffer">get_warf_buffer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyratings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyratings.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<section id="clean-ratings">
+<h2>Clean ratings<a class="headerlink" href="#clean-ratings" title="Permalink to this headline"></a></h2>
+<section id="get-pure-ratings">
+<h3>get_pure_ratings<a class="headerlink" href="#get-pure-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_pure_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_pure_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_pure_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Removes rating watches/outlooks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ratings</strong><span class="classifier">str, pd.Series, or pd.DataFrame</span></dt><dd><p>Rating may contain watch, such as <cite>AA- *+</cite>, <cite>BBB+ (CwNegative)</cite>.
+Outlook/watch should be seperated by a blank from the actual rating.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[str, pd.Series, pd.DataFrame]</dt><dd><p>String, Series, or DataFrame with regular ratings stripped off of watches.
+The name of the resulting Series or the columns of the returning DataFrame will
+be suffixed with <cite>_clean</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Cleaning a single rating:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_pure_ratings</span><span class="p">(</span><span class="s2">&quot;AA- *+&quot;</span><span class="p">)</span>
+<span class="go">&#39;AA-&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_pure_ratings</span><span class="p">(</span><span class="s2">&quot;Au&quot;</span><span class="p">)</span>
+<span class="go">&#39;A&#39;</span>
+</pre></div>
+</div>
+<p>Cleaning a <cite>pd.Series</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rating_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">data</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>       <span class="s2">&quot;BB+ *-&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;BBB *+&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;AA- (Developing)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;CCC+ (CwPositive)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;BB+u&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="p">],</span>
+<span class="gp">... </span>   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rtg_SP&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_pure_ratings</span><span class="p">(</span><span class="n">rating_series</span><span class="p">)</span>
+<span class="go">0     BB+</span>
+<span class="go">1     BBB</span>
+<span class="go">2     NaN</span>
+<span class="go">3     AA-</span>
+<span class="go">4     NaN</span>
+<span class="go">5    CCC+</span>
+<span class="go">6     BB+</span>
+<span class="go">Name: rtg_SP_clean, dtype: object</span>
+</pre></div>
+</div>
+<p>Cleaning a <cite>pd.DataFrame</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>       <span class="s2">&quot;rtg_SP&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>           <span class="s2">&quot;BB+ *-&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;BBB *+&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;AA- (Developing)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;CCC+ (CwPositive)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;BB+u&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="p">],</span>
+<span class="gp">... </span>       <span class="s2">&quot;rtg_Fitch&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>           <span class="s2">&quot;BB+ *-&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;BBB *+&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;AA- (Developing)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;CCC+ (CwPositive)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;BB+u&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="p">],</span>
+<span class="gp">... </span>   <span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_pure_ratings</span><span class="p">(</span><span class="n">rtg_df</span><span class="p">)</span>
+<span class="go">  rtg_SP_clean rtg_Fitch_clean</span>
+<span class="go">0          BB+             BB+</span>
+<span class="go">1          BBB             BBB</span>
+<span class="go">2          NaN            &lt;NA&gt;</span>
+<span class="go">3          AA-             AA-</span>
+<span class="go">4          NaN             NaN</span>
+<span class="go">5         CCC+            CCC+</span>
+<span class="go">6          BB+             BB+</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="consolidate-ratings">
+<h2>Consolidate ratings<a class="headerlink" href="#consolidate-ratings" title="Permalink to this headline"></a></h2>
+<section id="get-best-ratings">
+<h3>get_best_ratings<a class="headerlink" href="#get-best-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_best_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_best_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'S&amp;P'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'long-term'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="headerlink" href="#pyratings.get_best_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the best rating on a security level basis across different rating
+agencies.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ratings</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)</p>
+</dd>
+<dt><strong>rating_provider_input</strong><span class="classifier">List of str, default None</span></dt><dd><p>Indicates rating providers within dataframe. Should contain any valid rating
+provider out of {“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the dataframe columns.</p>
+</dd>
+<dt><strong>rating_provider_output</strong><span class="classifier">str, default “S&amp;P”</span></dt><dd><p>Indicates which rating scale will be used for output results.
+Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+</dd>
+<dt><strong>tenor</strong><span class="classifier">str, default “long-term”</span></dt><dd><p>Indicates wheter long- or short-term ratings will be used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd.Series</dt><dd><p>Series of best ratings on a security level basis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_second_best_ratings" title="pyratings.get_second_best_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_second_best_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_worst_ratings" title="pyratings.get_worst_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_worst_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">{</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_S&amp;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA+&#39;</span><span class="p">,</span> <span class="s1">&#39;BB-&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Moody&#39;s&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aa1&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa3&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa2&#39;</span><span class="p">,</span> <span class="s1">&#39;Ba3&#39;</span><span class="p">,</span> <span class="s1">&#39;Ca&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">}</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_best_ratings</span><span class="p">(</span><span class="n">ratings_df</span><span class="p">,</span> <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">])</span>
+<span class="go">0    AAA</span>
+<span class="go">1    AA-</span>
+<span class="go">2    AA+</span>
+<span class="go">3    BB-</span>
+<span class="go">4    CC</span>
+<span class="go">Name: best_rtg, dtype: object</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-second-best-ratings">
+<h3>get_second_best_ratings<a class="headerlink" href="#get-second-best-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_second_best_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_second_best_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'S&amp;P'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'long-term'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="headerlink" href="#pyratings.get_second_best_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the second-best rating on a security level basis across different rating
+agencies.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ratings</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)</p>
+</dd>
+<dt><strong>rating_provider_input</strong><span class="classifier">List of str, default None</span></dt><dd><p>Indicates rating providers within dataframe. Should contain any valid rating
+provider out of {“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the dataframe columns.</p>
+</dd>
+<dt><strong>rating_provider_output</strong><span class="classifier">str, default “S&amp;P”</span></dt><dd><p>Indicates which rating scale will be used for output results.
+Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+</dd>
+<dt><strong>tenor</strong><span class="classifier">str, default “long-term”</span></dt><dd><p>Indicates wheter long- or short-term ratings will be used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd.Series</dt><dd><p>Series of second-best ratings on a security level basis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_best_ratings" title="pyratings.get_best_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_best_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_worst_ratings" title="pyratings.get_worst_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_worst_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">{</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_S&amp;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA+&#39;</span><span class="p">,</span> <span class="s1">&#39;BB-&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Moody&#39;s&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aa1&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa3&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa2&#39;</span><span class="p">,</span> <span class="s1">&#39;Ba3&#39;</span><span class="p">,</span> <span class="s1">&#39;Ca&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">}</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_second_best_ratings</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ratings_df</span><span class="p">,</span> <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">0    AA+</span>
+<span class="go">1    AA-</span>
+<span class="go">2     AA</span>
+<span class="go">3    BB-</span>
+<span class="go">4      C</span>
+<span class="go">Name: second_best_rtg, dtype: object</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-worst-ratings">
+<h3>get_worst_ratings<a class="headerlink" href="#get-worst-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_worst_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_worst_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'S&amp;P'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'long-term'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="headerlink" href="#pyratings.get_worst_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the worst rating on a security level basis across different rating
+agencies.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ratings</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)</p>
+</dd>
+<dt><strong>rating_provider_input</strong><span class="classifier">List of str, default None</span></dt><dd><p>Indicates rating providers within dataframe. Should contain any valid rating
+provider out of {“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the dataframe columns.</p>
+</dd>
+<dt><strong>rating_provider_output</strong><span class="classifier">str, default “S&amp;P”</span></dt><dd><p>Indicates which rating scale will be used for output results.
+Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+</dd>
+<dt><strong>tenor</strong><span class="classifier">str, default “long-term”</span></dt><dd><p>Indicates wheter long- or short-term ratings will be used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd.Series</dt><dd><p>Series of worst ratings on a security level basis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_best_ratings" title="pyratings.get_best_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_best_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_second_best_ratings" title="pyratings.get_second_best_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_second_best_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">{</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_S&amp;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA+&#39;</span><span class="p">,</span> <span class="s1">&#39;BB-&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Moody&#39;s&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aa1&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa3&#39;</span><span class="p">,</span> <span class="s1">&#39;Aa2&#39;</span><span class="p">,</span> <span class="s1">&#39;Ba3&#39;</span><span class="p">,</span> <span class="s1">&#39;Ca&#39;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;rating_Fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;AA-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">}</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_worst_ratings</span><span class="p">(</span><span class="n">ratings_df</span><span class="p">,</span> <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">])</span>
+<span class="go">0    AA-</span>
+<span class="go">1    AA-</span>
+<span class="go">2    AA-</span>
+<span class="go">3     B+</span>
+<span class="go">4      C</span>
+<span class="go">Name: worst_rtg, dtype: object</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="translate-ratings-to-scores-warf-and-vice-versa">
+<h2>Translate ratings to scores/WARF and vice versa<a class="headerlink" href="#translate-ratings-to-scores-warf-and-vice-versa" title="Permalink to this headline"></a></h2>
+<section id="get-scores-from-ratings">
+<h3>get_scores_from_ratings<a class="headerlink" href="#get-scores-from-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_scores_from_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_scores_from_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'long-term'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_scores_from_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Converts regular ratings into numerical rating scores.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ratings</strong><span class="classifier">str, pd.Series, or pd.DataFrame</span></dt><dd><p>Ratings to be translated into rating scores.</p>
+</dd>
+<dt><strong>rating_provider: str or list of str</strong></dt><dd><p>Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the series name or dataframe
+columns.</p>
+</dd>
+<dt><strong>tenor: str, default “long-term”</strong></dt><dd><p>Should contain any valid tenor out of {“long-term”, “short-term”}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[int, pd.Series, pd.DataFrame]</dt><dd><p>Rating scores</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If providing a single rating and <cite>rating_provider</cite> is None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_warf" title="pyratings.get_scores_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_scores" title="pyratings.get_ratings_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_warf" title="pyratings.get_ratings_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_scores" title="pyratings.get_warf_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_ratings" title="pyratings.get_warf_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For long-term ratings, the following translation table will be used:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>ICE</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>Bloomberg</p></th>
+<th class="head"><p>Score</p></th>
+<th class="head"><p>WARF</p></th>
+<th class="head"><p>MinWARF*</p></th>
+<th class="head"><p>MaxWARF*</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aaa</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa1</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AAH</p></td>
+<td><p>AA+</p></td>
+<td><p>2</p></td>
+<td><p>10</p></td>
+<td><p>5</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Aa2</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>3</p></td>
+<td><p>20</p></td>
+<td><p>15</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa3</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AAL</p></td>
+<td><p>AA-</p></td>
+<td><p>4</p></td>
+<td><p>40</p></td>
+<td><p>30</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-even"><td><p>A1</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>AH</p></td>
+<td><p>A+</p></td>
+<td><p>5</p></td>
+<td><p>70</p></td>
+<td><p>55</p></td>
+<td><p>95</p></td>
+</tr>
+<tr class="row-odd"><td><p>A2</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>6</p></td>
+<td><p>120</p></td>
+<td><p>95</p></td>
+<td><p>150</p></td>
+</tr>
+<tr class="row-even"><td><p>A3</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>AL</p></td>
+<td><p>A-</p></td>
+<td><p>7</p></td>
+<td><p>180</p></td>
+<td><p>150</p></td>
+<td><p>220</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa1</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBBH</p></td>
+<td><p>BBB+</p></td>
+<td><p>8</p></td>
+<td><p>260</p></td>
+<td><p>220</p></td>
+<td><p>310</p></td>
+</tr>
+<tr class="row-even"><td><p>Baa2</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>9</p></td>
+<td><p>360</p></td>
+<td><p>310</p></td>
+<td><p>485</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa3</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBBL</p></td>
+<td><p>BBB-</p></td>
+<td><p>10</p></td>
+<td><p>610</p></td>
+<td><p>485</p></td>
+<td><p>775</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba1</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BBH</p></td>
+<td><p>BB+</p></td>
+<td><p>11</p></td>
+<td><p>940</p></td>
+<td><p>775</p></td>
+<td><p>1145</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ba2</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>12</p></td>
+<td><p>1350</p></td>
+<td><p>1145</p></td>
+<td><p>1558</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba3</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BBL</p></td>
+<td><p>BB-</p></td>
+<td><p>13</p></td>
+<td><p>1766</p></td>
+<td><p>1558</p></td>
+<td><p>1993</p></td>
+</tr>
+<tr class="row-odd"><td><p>B1</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>BH</p></td>
+<td><p>B+</p></td>
+<td><p>14</p></td>
+<td><p>2220</p></td>
+<td><p>1993</p></td>
+<td><p>2470</p></td>
+</tr>
+<tr class="row-even"><td><p>B2</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>15</p></td>
+<td><p>2720</p></td>
+<td><p>2470</p></td>
+<td><p>3105</p></td>
+</tr>
+<tr class="row-odd"><td><p>B3</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>BL</p></td>
+<td><p>B-</p></td>
+<td><p>16</p></td>
+<td><p>3490</p></td>
+<td><p>3105</p></td>
+<td><p>4130</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa1</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCCH</p></td>
+<td><p>CCC+</p></td>
+<td><p>17</p></td>
+<td><p>4770</p></td>
+<td><p>4130</p></td>
+<td><p>5635</p></td>
+</tr>
+<tr class="row-odd"><td><p>Caa2</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>18</p></td>
+<td><p>6500</p></td>
+<td><p>5635</p></td>
+<td><p>7285</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa3</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCCL</p></td>
+<td><p>CCC-</p></td>
+<td><p>19</p></td>
+<td><p>8070</p></td>
+<td><p>7285</p></td>
+<td><p>9034</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ca</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>20</p></td>
+<td><p>9998</p></td>
+<td><p>9034</p></td>
+<td><p>9998.5</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>21</p></td>
+<td><p>9999</p></td>
+<td><p>9998.5</p></td>
+<td><p>9999.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>DDD</p></td>
+<td><p>22</p></td>
+<td><p>10000</p></td>
+<td><p>9999.5</p></td>
+<td><p>10000</p></td>
+</tr>
+</tbody>
+</table>
+<p><cite>MinWARF</cite> is inclusive, while <cite>MaxWARF</cite> is exclusive.</p>
+<p>For short-term ratings, the following translation table will be used:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P-1</p></td>
+<td><p>A-1+</p></td>
+<td><p>F1+</p></td>
+<td><p>R-1 (high)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-1 (mid)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-1 (low)</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>A-1</p></td>
+<td><p>F1</p></td>
+<td><p>R-2 (high)</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-2 (mid)</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>P-2</p></td>
+<td><p>A-2</p></td>
+<td><p>F2</p></td>
+<td><p>R-2 (low)</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-3 (high)</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>P-3</p></td>
+<td><p>A-3</p></td>
+<td><p>F3</p></td>
+<td><p>R-3 (mid)</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-3 (low)</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>NP</p></td>
+<td><p>B</p></td>
+<td><p>—</p></td>
+<td><p>R-4</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-5</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>C</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>D</p></td>
+<td><p>—</p></td>
+<td><p>D</p></td>
+<td><p>22</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Converting a single rating:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_ratings</span><span class="p">(</span><span class="s2">&quot;BBB-&quot;</span><span class="p">,</span> <span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;long-term&quot;</span><span class="p">)</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> of ratings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Baa1&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;NR&quot;</span><span class="p">,</span> <span class="s2">&quot;WD&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;SD&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_ratings</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ratings</span><span class="o">=</span><span class="n">ratings_series</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span> <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;long-term&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">0     8.0</span>
+<span class="go">1    21.0</span>
+<span class="go">2     NaN</span>
+<span class="go">3     NaN</span>
+<span class="go">4    22.0</span>
+<span class="go">5    14.0</span>
+<span class="go">6    22.0</span>
+<span class="go">Name: rtg_score_Moody, dtype: float64</span>
+</pre></div>
+</div>
+<p>Providing a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> without specifying a <cite>rating_provider</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Baa1&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;NR&quot;</span><span class="p">,</span> <span class="s2">&quot;WD&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;SD&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Moody&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_ratings</span><span class="p">(</span><span class="n">ratings</span><span class="o">=</span><span class="n">ratings_series</span><span class="p">)</span>
+<span class="go">0     8.0</span>
+<span class="go">1    21.0</span>
+<span class="go">2     NaN</span>
+<span class="go">3     NaN</span>
+<span class="go">4    22.0</span>
+<span class="go">5    14.0</span>
+<span class="go">6    22.0</span>
+<span class="go">Name: rtg_score_Moody, dtype: float64</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with ratings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;BB+&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;BBB-&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;AA-&quot;</span><span class="p">,</span> <span class="s2">&quot;Aa1&quot;</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;NR&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_ratings</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ratings</span><span class="o">=</span><span class="n">ratings_df</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rating_provider</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;long-term&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">   rtg_score_SP  rtg_score_Moody  rtg_score_DBRS</span>
+<span class="go">0            11             16.0             NaN</span>
+<span class="go">1             4              2.0             1.0</span>
+<span class="go">2            22              NaN            22.0</span>
+</pre></div>
+</div>
+<p>When providing a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> without explicitly providing the
+<cite>rating_provider</cite>, they will be inferred from the dataframe’s columns.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;BB+&quot;</span><span class="p">,</span> <span class="s2">&quot;AA-&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_Bloomberg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B-&quot;</span><span class="p">,</span> <span class="s2">&quot;AA+&quot;</span><span class="p">,</span> <span class="s2">&quot;NR&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;DBRS Ratings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;BBB-&quot;</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_ratings</span><span class="p">(</span><span class="n">ratings</span><span class="o">=</span><span class="n">ratings_df</span><span class="p">)</span>
+<span class="go">   rtg_score_Fitch  rtg_score_Bloomberg  rtg_score_DBRS</span>
+<span class="go">0               11                 16.0             NaN</span>
+<span class="go">1                4                  2.0             1.0</span>
+<span class="go">2               22                  NaN            22.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-scores-from-warf">
+<h3>get_scores_from_warf<a class="headerlink" href="#get-scores-from-warf" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_scores_from_warf">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_scores_from_warf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_scores_from_warf" title="Permalink to this definition"></a></dt>
+<dd><p>Converts WARFs into numerical rating scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>warf</strong><span class="classifier">int, float, pd.Series, or pd.DataFrame</span></dt><dd><p>Weighted average rating factor (WARF).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[int, float, pd.Series, pd.DataFrame]</dt><dd><p>Numerical rating score.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_scores" title="pyratings.get_ratings_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_warf" title="pyratings.get_ratings_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_scores" title="pyratings.get_warf_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_ratings" title="pyratings.get_warf_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Compare notes in <a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_scores_from_ratings()</span></code></a> for translation tables.</p>
+<p class="rubric">Examples</p>
+<p>Converting a single WARF:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_warf</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_warf</span><span class="p">(</span><span class="mf">1992.9999</span><span class="p">)</span>
+<span class="go">13</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> of WARFs:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warf_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">260</span><span class="p">,</span> <span class="mf">9999.49</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mf">2469.99</span><span class="p">,</span> <span class="mi">2470</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_warf</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="n">warf_series</span><span class="p">)</span>
+<span class="go">0     8.0</span>
+<span class="go">1    21.0</span>
+<span class="go">2     NaN</span>
+<span class="go">3    22.0</span>
+<span class="go">4    14.0</span>
+<span class="go">5    15.0</span>
+<span class="go">Name: rtg_score, dtype: float64</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> of WARFs:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;provider1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10000</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;provider2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;provider3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">610</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">9999.49</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_scores_from_warf</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="n">warf_df</span><span class="p">)</span>
+<span class="go">   rtg_score_provider1  rtg_score_provider2  rtg_score_provider3</span>
+<span class="go">0                   11                 15.0                   10</span>
+<span class="go">1                    4                  2.0                    1</span>
+<span class="go">2                   22                  NaN                   21</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-ratings-from-scores">
+<h3>get_ratings_from_scores<a class="headerlink" href="#get-ratings-from-scores" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_ratings_from_scores">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_ratings_from_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rating_scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'long-term'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_ratings_from_scores" title="Permalink to this definition"></a></dt>
+<dd><p>Converts numerical rating scores into regular ratings.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>rating_scores: int, float, pd.Series, or pd.DataFrame</strong></dt><dd><p>Numerical rating scores</p>
+</dd>
+<dt><strong>rating_provider: str or list of str</strong></dt><dd><p>Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the series name or dataframe
+columns.</p>
+</dd>
+<dt><strong>tenor: str, default “long-term”,</strong></dt><dd><p>Should contain any valid tenor out of {“long-term”, “short-term”}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[str, pd.Series, pd.DataFrame]</dt><dd><p>Regular ratings according to <cite>rating_provider</cite>’s rating scale.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If providing a single rating score and <cite>rating_provider</cite> is None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_scores_from_warf" title="pyratings.get_scores_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_warf" title="pyratings.get_ratings_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_scores" title="pyratings.get_warf_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_ratings" title="pyratings.get_warf_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Compare notes in <a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_scores_from_ratings()</span></code></a> for translation tables.</p>
+<p class="rubric">Examples</p>
+<p>Converting a single rating score:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span><span class="n">rating_scores</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Fitch&quot;</span><span class="p">)</span>
+<span class="go">&#39;BBB&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rating_scores</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;short-term&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">&#39;A-1&#39;</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> with scores:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_series</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;long-term&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">0     A1</span>
+<span class="go">1     A3</span>
+<span class="go">2    Aaa</span>
+<span class="go">3    NaN</span>
+<span class="go">4      D</span>
+<span class="go">5    NaN</span>
+<span class="go">Name: rtg_Moody, dtype: object</span>
+</pre></div>
+</div>
+<p>Providing a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> without specifying a <cite>rating_provider</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Moody&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span><span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_series</span><span class="p">)</span>
+<span class="go">0     A1</span>
+<span class="go">1     A3</span>
+<span class="go">2    Aaa</span>
+<span class="go">3    NaN</span>
+<span class="go">4      D</span>
+<span class="go">5    NaN</span>
+<span class="go">Name: rtg_Moody, dtype: object</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with scores:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">]]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_df</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rating_provider</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Fitch&quot;</span><span class="p">,</span> <span class="s2">&quot;Bloomberg&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;long-term&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">  rtg_Fitch rtg_Bloomberg rtg_DBRS</span>
+<span class="go">0       BB+            B-      NaN</span>
+<span class="go">1       AA-           AA+      AAA</span>
+<span class="go">2         D           NaN        D</span>
+</pre></div>
+</div>
+<p>When providing a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> without explicitly providing the
+<cite>rating_provider</cite>, they will be inferred by the dataframe’s columns.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">22</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_Bloomberg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;DBRS Ratings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">22</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_scores</span><span class="p">(</span><span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_df</span><span class="p">)</span>
+<span class="go">  rtg_Fitch rtg_Bloomberg rtg_DBRS</span>
+<span class="go">0       BB+            B-      NaN</span>
+<span class="go">1       AA-           AA+      AAA</span>
+<span class="go">2         D           NaN        D</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-ratings-from-warf">
+<h3>get_ratings_from_warf<a class="headerlink" href="#get-ratings-from-warf" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_ratings_from_warf">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_ratings_from_warf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_ratings_from_warf" title="Permalink to this definition"></a></dt>
+<dd><p>Converts WARFs into regular ratings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>warf</strong><span class="classifier">int, float, pd.Series, or pd.DataFrame</span></dt><dd><p>Numerical WARF.</p>
+</dd>
+<dt><strong>rating_provider: str or list of str</strong></dt><dd><p>Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[str, pd.Series, pd.DataFrame]</dt><dd><p>Regular rating according to <cite>rating_provider</cite>’s rating scale.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_scores_from_warf" title="pyratings.get_scores_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_scores" title="pyratings.get_ratings_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_scores" title="pyratings.get_warf_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_ratings" title="pyratings.get_warf_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Internally, <cite>warf</cite> will be converted into a rating score.</p>
+<p>Compare notes in <a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_scores_from_ratings()</span></code></a> for translation tables.</p>
+<p class="rubric">Examples</p>
+<p>Converting a single WARF:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_warf</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="mi">610</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;DBRS&quot;</span><span class="p">)</span>
+<span class="go">&#39;BBBL&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_warf</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="mf">1234.5678</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;ICE&quot;</span><span class="p">)</span>
+<span class="go">&#39;BB&#39;</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> with WARFs:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warf_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mf">218.999</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_warf</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">warf</span><span class="o">=</span><span class="n">warf_series</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">0     A1</span>
+<span class="go">1     A3</span>
+<span class="go">2    Aaa</span>
+<span class="go">3    NaN</span>
+<span class="go">4      D</span>
+<span class="go">5    NaN</span>
+<span class="go">Name: rtg_Moody, dtype: object</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with WARFs:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="mi">940</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mf">13.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10000</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="mi">9999</span><span class="p">]]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_ratings_from_warf</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">warf</span><span class="o">=</span><span class="n">warf_df</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rating_provider</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Fitch&quot;</span><span class="p">,</span> <span class="s2">&quot;Bloomberg&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">  rtg_Fitch rtg_Bloomberg rtg_DBRS</span>
+<span class="go">0       BB+            B-      NaN</span>
+<span class="go">1       AA-           AA+      AAA</span>
+<span class="go">2         D           NaN        C</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-warf-from-scores">
+<h3>get_warf_from_scores<a class="headerlink" href="#get-warf-from-scores" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_warf_from_scores">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_warf_from_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rating_scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_warf_from_scores" title="Permalink to this definition"></a></dt>
+<dd><p>Converts numerical rating scores to numerical WARFs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rating_scores</strong><span class="classifier">int, float, pd.Series, or pd.DataFrame</span></dt><dd><p>Numerical rating scores.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[int, pd.Series, pd.DataFrame</dt><dd><p>Numerical WARFs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_scores_from_warf" title="pyratings.get_scores_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_scores" title="pyratings.get_ratings_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_warf" title="pyratings.get_ratings_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_ratings" title="pyratings.get_warf_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_ratings</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Compare notes in <a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_scores_from_ratings()</span></code></a> for translation tables.</p>
+<p class="rubric">Examples</p>
+<p>Converting a single rating score:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_scores</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">610</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> with rating scores:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_scores</span><span class="p">(</span><span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_series</span><span class="p">)</span>
+<span class="go">0       70.0</span>
+<span class="go">1      180.0</span>
+<span class="go">2        1.0</span>
+<span class="go">3        NaN</span>
+<span class="go">4    10000.0</span>
+<span class="go">5        NaN</span>
+<span class="go">Name: warf, dtype: float64</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with rating scores:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rating_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;provider1&quot;</span><span class="p">,</span> <span class="s2">&quot;provider2&quot;</span><span class="p">,</span> <span class="s2">&quot;provider3&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_scores</span><span class="p">(</span><span class="n">rating_scores</span><span class="o">=</span><span class="n">rating_scores_df</span><span class="p">)</span>
+<span class="go">   warf_provider1  warf_provider2  warf_provider3</span>
+<span class="go">0             940          3490.0             NaN</span>
+<span class="go">1              40            10.0             1.0</span>
+<span class="go">2           10000             NaN         10000.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="get-warf-from-ratings">
+<h3>get_warf_from_ratings<a class="headerlink" href="#get-warf-from-ratings" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_warf_from_ratings">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_warf_from_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_warf_from_ratings" title="Permalink to this definition"></a></dt>
+<dd><p>Converts regular ratings to numerical WARFs.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ratings</strong><span class="classifier">str, pd.Series, or pd.DataFrame</span></dt><dd><p>Regular ratings to be translated into WARFs.</p>
+</dd>
+<dt><strong>rating_provider: str or List[str], optional, default None</strong></dt><dd><p>Should contain any valid rating provider out of
+{“Fitch”, “Moody’s”, “S&amp;P”, “Bloomberg”, “DBRS”, “ICE”}.</p>
+<p>If None, <cite>rating_provider</cite> will be inferred from the series name or dataframe
+columns.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[int, pd.Series, pd.DataFrame]</dt><dd><p>Numerical WARF.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_ratings</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_scores_from_warf" title="pyratings.get_scores_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scores_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_scores" title="pyratings.get_ratings_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_scores</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_ratings_from_warf" title="pyratings.get_ratings_from_warf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ratings_from_warf</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#pyratings.get_warf_from_scores" title="pyratings.get_warf_from_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_warf_from_scores</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Internally, <cite>ratings</cite> will be converted into rating scores.</p>
+<p>Compare notes in <a class="reference internal" href="#pyratings.get_scores_from_ratings" title="pyratings.get_scores_from_ratings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_scores_from_ratings()</span></code></a> for translation tables.</p>
+<p class="rubric">Examples</p>
+<p>Converting a single rating:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_ratings</span><span class="p">(</span><span class="n">ratings</span><span class="o">=</span><span class="s2">&quot;BB-&quot;</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Fitch&quot;</span><span class="p">)</span>
+<span class="go">1766</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> with ratings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;Aaa&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_ratings</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ratings</span><span class="o">=</span><span class="n">ratings_series</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&#39;s&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">0       70.0</span>
+<span class="go">1      180.0</span>
+<span class="go">2        1.0</span>
+<span class="go">3        NaN</span>
+<span class="go">4    10000.0</span>
+<span class="go">5        NaN</span>
+<span class="go">Name: warf, dtype: float64</span>
+</pre></div>
+</div>
+<p>Providing a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> without specifying a <cite>rating_provider</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;Aaa&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Moody&#39;s&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_ratings</span><span class="p">(</span><span class="n">ratings</span><span class="o">=</span><span class="n">ratings_series</span><span class="p">)</span>
+<span class="go">0       70.0</span>
+<span class="go">1      180.0</span>
+<span class="go">2        1.0</span>
+<span class="go">3        NaN</span>
+<span class="go">4    10000.0</span>
+<span class="go">5        NaN</span>
+<span class="go">Name: warf, dtype: float64</span>
+</pre></div>
+</div>
+<p>Converting a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with ratings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;BB+&quot;</span><span class="p">,</span> <span class="s2">&quot;B-&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;AA-&quot;</span><span class="p">,</span> <span class="s2">&quot;AA+&quot;</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_ratings</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ratings</span><span class="o">=</span> <span class="n">ratings_df</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Fitch&quot;</span><span class="p">,</span> <span class="s2">&quot;Bloomberg&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">   warf_Fitch  warf_Bloomberg  warf_DBRS</span>
+<span class="go">0         940          3490.0        NaN</span>
+<span class="go">1          40            10.0        1.0</span>
+<span class="go">2       10000             NaN     9999.0</span>
+</pre></div>
+</div>
+<p>When providing a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> without explicitly providing the
+<cite>rating_provider</cite>, they will be inferred by the dataframe’s columns.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_fitch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;BB+&quot;</span><span class="p">,</span> <span class="s2">&quot;AA-&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;rtg_Bloomberg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B-&quot;</span><span class="p">,</span> <span class="s2">&quot;AA+&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;DBRS Ratings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_from_ratings</span><span class="p">(</span><span class="n">ratings</span><span class="o">=</span><span class="n">ratings_df</span><span class="p">)</span>
+<span class="go">   warf_Fitch  warf_Bloomberg  warf_DBRS</span>
+<span class="go">0         940          3490.0        NaN</span>
+<span class="go">1          40            10.0        1.0</span>
+<span class="go">2       10000             NaN     9999.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="aggregate-functions">
+<h2>Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Permalink to this headline"></a></h2>
+<section id="get-weighted-average">
+<h3>get_weighted_average<a class="headerlink" href="#get-weighted-average" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_weighted_average">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_weighted_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.series.Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyratings.get_weighted_average" title="Permalink to this definition"></a></dt>
+<dd><p>Computes weighted average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong></dt><dd><p>Contains numerical values.</p>
+</dd>
+<dt><strong>weights</strong></dt><dd><p>Contains weights (between 0 and 1) with respect to data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>Weighted average data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Computing the weighted average is simply the sumproduct of <cite>data</cite> and <cite>weights</cite>.
+<code class="docutils literal notranslate"><span class="pre">nan</span></code> in <cite>data</cite> will be excluded from calculating the weighted average. All
+corresponding weights will be ignored. As a matter of fact, the remaining
+weights will be upscaled so that the weights of all <code class="docutils literal notranslate"><span class="pre">non-nan</span></code> rows in <cite>data</cite> will
+sum up to 1 (100%).</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtg_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wgt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_weighted_average</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">rtg_scores</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">wgt</span><span class="p">)</span>
+<span class="go">6.4</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">735</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wgt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_weighted_average</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">warf</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">wgt</span><span class="p">)</span>
+<span class="go">417.29</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="warf-functions">
+<h2>WARF functions<a class="headerlink" href="#warf-functions" title="Permalink to this headline"></a></h2>
+<section id="get-warf-buffer">
+<h3>get_warf_buffer<a class="headerlink" href="#get-warf-buffer" title="Permalink to this headline"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyratings.get_warf_buffer">
+<span class="sig-prename descclassname"><span class="pre">pyratings.</span></span><span class="sig-name descname"><span class="pre">get_warf_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyratings.get_warf_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>Computes WARF buffer.</p>
+<p>The WARF buffer is the distance from current WARF to the next maxWARF level. It
+determines the room until a further rating downgrade.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>warf</strong></dt><dd><p>Numerical WARF.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Union[float, int]</dt><dd><p>WARF buffer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_buffer</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="mi">480</span><span class="p">)</span>
+<span class="go">5.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_warf_buffer</span><span class="p">(</span><span class="n">warf</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, HSBC Global Asset Management (Deutschland) GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

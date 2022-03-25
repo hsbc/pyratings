@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; pyratings 0.5.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="pyratings.html" />
+    <link rel="prev" title="Overview - pyratings" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyratings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview - pyratings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Preliminary-tasks">Preliminary tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Computing-the-average-rating-of-a-portfolio">Computing the average rating of a portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Computing-portfolio-WARF">Computing portfolio WARF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyratings.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyratings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Getting-started">
+<h1>Getting started<a class="headerlink" href="#Getting-started" title="Permalink to this headline"></a></h1>
+<p><em>pyratings</em> is made for converting columns that contain ratings from different rating agencies.</p>
+<p>The following code demonstrates how to compute an average rating on a portfolio basis as well as the weighted average rating factor (WARF).</p>
+<section id="Preliminary-tasks">
+<h2>Preliminary tasks<a class="headerlink" href="#Preliminary-tasks" title="Permalink to this headline"></a></h2>
+<p>As a first step and as a basis for both tasks, we are going to import a portfolio into a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. We’ll call it <code class="docutils literal notranslate"><span class="pre">port_df</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">pyratings</span> <span class="k">as</span> <span class="nn">rtg</span>
+
+<span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;portfolio.xlsx&quot;</span><span class="p">)</span>
+<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="line-block">
+<div class="line">By looking at the very first rows of <code class="docutils literal notranslate"><span class="pre">port_df</span></code>, we can see that some ratings do have a <em>watch</em> attached. This is marked by the <code class="docutils literal notranslate"><span class="pre">*-</span></code> suffix, which follows the actual rating after a blank.</div>
+<div class="line">Other ratings are unsolicited. In this case, the rating is followed by the letter <code class="docutils literal notranslate"><span class="pre">u</span></code>.</div>
+<div class="line">In order to translate ratings into scores, we first need to clean up the ratings, that is, we need to strip off <em>watches</em> etc. We are going to use the <a class="reference internal" href="pyratings.html#pyratings.get_pure_ratings"><span class="std std-ref">get_pure_ratings()</span></a> function. This function works on strings, so we need to make sure to pass the relevant columns.</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ratings_clean_df</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_pure_ratings</span><span class="p">(</span>
+    <span class="n">port_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;BB Comp&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">]]</span>
+<span class="p">)</span>
+<span class="n">ratings_clean_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>As you can see, the suffix “_clean”, has automatically been added to the column headings. Let’s add these <em>clean</em> ratings to <code class="docutils literal notranslate"><span class="pre">port_df</span></code> by simple concatenation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">port_df</span><span class="p">,</span> <span class="n">ratings_clean_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="line-block">
+<div class="line">Now, in order to compute an average rating or WARF, respectively, we need to consolidate the ratings on a row basis, i.e. we need to assign one and only one concrete rating to an individual security.</div>
+<div class="line">There are several solutions to this problem. Oftentimes, you may want to compute the <strong>worst</strong> rating among all rating agencies. It is also fairly common to calculate the <strong>second best</strong> rating.</div>
+<div class="line"><em>pyratings</em> offers a number of functions in order to accomplish this task, such as</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pyratings.html#pyratings.get_best_ratings"><span class="std std-ref">get_best_ratings()</span></a></p></li>
+<li><p><a class="reference internal" href="pyratings.html#pyratings.get_second_best_ratings"><span class="std std-ref">get_second_best_ratings()</span></a></p></li>
+<li><p><a class="reference internal" href="pyratings.html#pyratings.get_worst_ratings"><span class="std std-ref">get_worst_ratings()</span></a></p></li>
+</ul>
+<p>Let’s compute the <strong>worst ratings</strong> and directly concatenate the newly computed column to our existing <code class="docutils literal notranslate"><span class="pre">port_df</span></code> in one batch. <em>pyratings</em> automatically names the new column “worst_rtg”.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">port_df</span><span class="p">,</span>
+        <span class="n">rtg</span><span class="o">.</span><span class="n">get_worst_ratings</span><span class="p">(</span>
+            <span class="n">port_df</span><span class="p">[[</span><span class="s2">&quot;BB Comp_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;SP_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch_clean&quot;</span><span class="p">]],</span>
+            <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bloomberg&quot;</span><span class="p">,</span> <span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">],</span>
+            <span class="n">rating_provider_output</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+      <th>worst_rtg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AA+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Computing-the-average-rating-of-a-portfolio">
+<h2>Computing the average rating of a portfolio<a class="headerlink" href="#Computing-the-average-rating-of-a-portfolio" title="Permalink to this headline"></a></h2>
+<p>The column <em>worst_rtg</em> will be used in order to translate the ratings into scores according to the following table.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 24%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>Bloomberg</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>ICE</p></th>
+<th class="head"><p>Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aaa</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa1</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AAH</p></td>
+<td><p>AA+</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Aa2</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa3</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AAL</p></td>
+<td><p>AA-</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>A1</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>AH</p></td>
+<td><p>A+</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>A2</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>A3</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>AL</p></td>
+<td><p>A-</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa1</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBBH</p></td>
+<td><p>BBB+</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>Baa2</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa3</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBBL</p></td>
+<td><p>BBB-</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba1</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BBH</p></td>
+<td><p>BB+</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ba2</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba3</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BBL</p></td>
+<td><p>BB-</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>B1</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>BH</p></td>
+<td><p>B+</p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-even"><td><p>B2</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>B3</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>BL</p></td>
+<td><p>B-</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa1</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCCH</p></td>
+<td><p>CCC+</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-odd"><td><p>Caa2</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa3</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCCL</p></td>
+<td><p>CCC-</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ca</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>DDD</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-even"><td><p>SD</p></td>
+<td><p>SD</p></td>
+<td><p>SD</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>22</p></td>
+</tr>
+</tbody>
+</table>
+<p>The function <a class="reference internal" href="pyratings.html#pyratings.get_scores_from_ratings"><span class="std std-ref">get_scores_from_ratings()</span></a> will solve this issue. The function needs a rating provider (here: “S&amp;P”) in order to select an appropriate translation dictionary.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">port_df</span><span class="p">,</span>
+        <span class="n">rtg</span><span class="o">.</span><span class="n">get_scores_from_ratings</span><span class="p">(</span>
+            <span class="n">ratings</span><span class="o">=</span><span class="n">port_df</span><span class="p">[</span><span class="s2">&quot;worst_rtg&quot;</span><span class="p">],</span>
+            <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">port_scores_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+      <th>worst_rtg</th>
+      <th>rtg_score_SP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>ISIN00000083</td>
+      <td>2.321185</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>BBB+</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>ISIN00000084</td>
+      <td>1.389043</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>BBB+</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>ISIN00000085</td>
+      <td>2.296711</td>
+      <td>BBB+</td>
+      <td>NR</td>
+      <td>Baa1</td>
+      <td>A-</td>
+      <td>BBB+</td>
+      <td>NR</td>
+      <td>Baa1</td>
+      <td>A-</td>
+      <td>BBB+</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>ISIN00000086</td>
+      <td>1.015105</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>Aaa</td>
+      <td>NaN</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>Aaa</td>
+      <td>NaN</td>
+      <td>AAA</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>ISIN00000087</td>
+      <td>0.964399</td>
+      <td>AA</td>
+      <td>NaN</td>
+      <td>Aa2</td>
+      <td>AA</td>
+      <td>AA</td>
+      <td>NaN</td>
+      <td>Aa2</td>
+      <td>AA</td>
+      <td>AA</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>87 rows × 12 columns</p>
+</div></div>
+</div>
+<p>Finally, we need to compute a weighted average rating score, which we subsequently convert back into a human-readable rating. For the former, we use the <a class="reference internal" href="pyratings.html#pyratings.get_weighted_average"><span class="std std-ref">get_weighted_average()</span></a> function and for the latter the <a class="reference internal" href="pyratings.html#pyratings.get_ratings_from_scores"><span class="std std-ref">get_ratings_from_scores()</span></a> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_rtg_score</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_weighted_average</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">port_scores_df</span><span class="p">[</span><span class="s2">&quot;rtg_score_SP&quot;</span><span class="p">],</span>
+    <span class="n">weights</span><span class="o">=</span><span class="n">port_scores_df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average rating score: </span><span class="si">{</span><span class="n">avg_rtg_score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Average rating score: 4.387791453932187
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_rtg</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+    <span class="n">rating_scores</span><span class="o">=</span><span class="n">avg_rtg_score</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average portfolio rating: </span><span class="si">{</span><span class="n">avg_rtg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Average portfolio rating: AA-
+</pre></div></div>
+</div>
+</section>
+<section id="Computing-portfolio-WARF">
+<h2>Computing portfolio WARF<a class="headerlink" href="#Computing-portfolio-WARF" title="Permalink to this headline"></a></h2>
+<p>To compute the portfolio’s WARF, we are again going to use <strong>worst ratings</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+      <th>worst_rtg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AA+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>The column <em>worst_rtg</em> will be used in order to translate the ratings into WARF according to the following table.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 15%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>ICE</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>Bloomberg</p></th>
+<th class="head"><p>Score</p></th>
+<th class="head"><p>WARF</p></th>
+<th class="head"><p>MinWARF*</p></th>
+<th class="head"><p>MaxWARF*</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aaa</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa1</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AAH</p></td>
+<td><p>AA+</p></td>
+<td><p>2</p></td>
+<td><p>10</p></td>
+<td><p>5</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Aa2</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>3</p></td>
+<td><p>20</p></td>
+<td><p>15</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa3</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AAL</p></td>
+<td><p>AA-</p></td>
+<td><p>4</p></td>
+<td><p>40</p></td>
+<td><p>30</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-even"><td><p>A1</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>AH</p></td>
+<td><p>A+</p></td>
+<td><p>5</p></td>
+<td><p>70</p></td>
+<td><p>55</p></td>
+<td><p>95</p></td>
+</tr>
+<tr class="row-odd"><td><p>A2</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>6</p></td>
+<td><p>120</p></td>
+<td><p>95</p></td>
+<td><p>150</p></td>
+</tr>
+<tr class="row-even"><td><p>A3</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>AL</p></td>
+<td><p>A-</p></td>
+<td><p>7</p></td>
+<td><p>180</p></td>
+<td><p>150</p></td>
+<td><p>220</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa1</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBBH</p></td>
+<td><p>BBB+</p></td>
+<td><p>8</p></td>
+<td><p>260</p></td>
+<td><p>220</p></td>
+<td><p>310</p></td>
+</tr>
+<tr class="row-even"><td><p>Baa2</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>9</p></td>
+<td><p>360</p></td>
+<td><p>310</p></td>
+<td><p>485</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa3</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBBL</p></td>
+<td><p>BBB-</p></td>
+<td><p>10</p></td>
+<td><p>610</p></td>
+<td><p>485</p></td>
+<td><p>775</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba1</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BBH</p></td>
+<td><p>BB+</p></td>
+<td><p>11</p></td>
+<td><p>940</p></td>
+<td><p>775</p></td>
+<td><p>1145</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ba2</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>12</p></td>
+<td><p>1350</p></td>
+<td><p>1145</p></td>
+<td><p>1558</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba3</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BBL</p></td>
+<td><p>BB-</p></td>
+<td><p>13</p></td>
+<td><p>1766</p></td>
+<td><p>1558</p></td>
+<td><p>1993</p></td>
+</tr>
+<tr class="row-odd"><td><p>B1</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>BH</p></td>
+<td><p>B+</p></td>
+<td><p>14</p></td>
+<td><p>2220</p></td>
+<td><p>1993</p></td>
+<td><p>2470</p></td>
+</tr>
+<tr class="row-even"><td><p>B2</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>15</p></td>
+<td><p>2720</p></td>
+<td><p>2470</p></td>
+<td><p>3105</p></td>
+</tr>
+<tr class="row-odd"><td><p>B3</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>BL</p></td>
+<td><p>B-</p></td>
+<td><p>16</p></td>
+<td><p>3490</p></td>
+<td><p>3105</p></td>
+<td><p>4130</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa1</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCCH</p></td>
+<td><p>CCC+</p></td>
+<td><p>17</p></td>
+<td><p>4770</p></td>
+<td><p>4130</p></td>
+<td><p>5635</p></td>
+</tr>
+<tr class="row-odd"><td><p>Caa2</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>18</p></td>
+<td><p>6500</p></td>
+<td><p>5635</p></td>
+<td><p>7285</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa3</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCCL</p></td>
+<td><p>CCC-</p></td>
+<td><p>19</p></td>
+<td><p>8070</p></td>
+<td><p>7285</p></td>
+<td><p>9034</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ca</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>20</p></td>
+<td><p>9998</p></td>
+<td><p>9034</p></td>
+<td><p>9998.5</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>21</p></td>
+<td><p>9999</p></td>
+<td><p>9998.5</p></td>
+<td><p>9999.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>DDD</p></td>
+<td><p>22</p></td>
+<td><p>10000</p></td>
+<td><p>9999.5</p></td>
+<td><p>10000</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">MinWARF</span></code> is inclusive, while <code class="docutils literal notranslate"><span class="pre">MaxWARF</span></code> is exclusive.</p>
+<p>The function <a class="reference internal" href="pyratings.html#pyratings.get_warf_from_ratings"><span class="std std-ref">get_warf_from_ratings()</span></a> will solve this issue.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_warf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">port_df</span><span class="p">,</span>
+        <span class="n">rtg</span><span class="o">.</span><span class="n">get_warf_from_ratings</span><span class="p">(</span>
+            <span class="n">ratings</span><span class="o">=</span><span class="n">port_df</span><span class="p">[</span><span class="s2">&quot;worst_rtg&quot;</span><span class="p">],</span>
+            <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">port_warf_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIN</th>
+      <th>weight</th>
+      <th>BB Comp</th>
+      <th>SP</th>
+      <th>Moody</th>
+      <th>Fitch</th>
+      <th>BB Comp_clean</th>
+      <th>SP_clean</th>
+      <th>Moody_clean</th>
+      <th>Fitch_clean</th>
+      <th>worst_rtg</th>
+      <th>warf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ISIN00000001</td>
+      <td>0.518515</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa *-</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>NR</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ISIN00000002</td>
+      <td>0.950810</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>Aaa</td>
+      <td>AAA</td>
+      <td>AA+</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ISIN00000003</td>
+      <td>0.497176</td>
+      <td>AA+ *-</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA+</td>
+      <td>AA+</td>
+      <td>Aa2</td>
+      <td>NaN</td>
+      <td>AA</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIN00000004</td>
+      <td>0.648453</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ISIN00000005</td>
+      <td>0.674328</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-u</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>AA-</td>
+      <td>AA-</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>ISIN00000083</td>
+      <td>2.321185</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>BBB+</td>
+      <td>260.0</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>ISIN00000084</td>
+      <td>1.389043</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>NaN</td>
+      <td>Baa1</td>
+      <td>NaN</td>
+      <td>BBB+</td>
+      <td>260.0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>ISIN00000085</td>
+      <td>2.296711</td>
+      <td>BBB+</td>
+      <td>NR</td>
+      <td>Baa1</td>
+      <td>A-</td>
+      <td>BBB+</td>
+      <td>NR</td>
+      <td>Baa1</td>
+      <td>A-</td>
+      <td>BBB+</td>
+      <td>260.0</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>ISIN00000086</td>
+      <td>1.015105</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>Aaa</td>
+      <td>NaN</td>
+      <td>AAA</td>
+      <td>AAA</td>
+      <td>Aaa</td>
+      <td>NaN</td>
+      <td>AAA</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>ISIN00000087</td>
+      <td>0.964399</td>
+      <td>AA</td>
+      <td>NaN</td>
+      <td>Aa2</td>
+      <td>AA</td>
+      <td>AA</td>
+      <td>NaN</td>
+      <td>Aa2</td>
+      <td>AA</td>
+      <td>AA</td>
+      <td>20.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>87 rows × 12 columns</p>
+</div></div>
+</div>
+<p>Finally, we need to compute the WARF on a portfolio basis, which we subsequently convert back into a human-readable rating. For the former, we use the <a class="reference internal" href="pyratings.html#pyratings.get_weighted_average"><span class="std std-ref">get_weighted_average()</span></a> function and the <a class="reference internal" href="pyratings.html#pyratings.get_ratings_from_warf"><span class="std std-ref">get_ratings_from_warf()</span></a> function for the latter.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_warf</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_weighted_average</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">port_warf_df</span><span class="p">[</span><span class="s2">&quot;warf&quot;</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">port_warf_df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARF: </span><span class="si">{</span><span class="n">avg_warf</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARF: 165.57723587360007
+</pre></div></div>
+</div>
+<p>Let us translate <code class="docutils literal notranslate"><span class="pre">avg_warf</span></code> into a Moody’s rating.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_warf_equivalent_rating</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_warf</span><span class="p">(</span>
+    <span class="n">warf</span><span class="o">=</span><span class="n">avg_warf</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Portfolio equivalent WARF rating: </span><span class="si">{</span><span class="n">avg_warf_equivalent_rating</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Portfolio equivalent WARF rating: A3
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview - pyratings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyratings.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, HSBC Global Asset Management (Deutschland) GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

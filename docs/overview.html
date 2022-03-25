@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview - pyratings &mdash; pyratings 0.5.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting started" href="getting_started.html" />
+    <link rel="prev" title="Welcome to pyratings" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyratings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview - pyratings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyratings.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyratings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Overview - pyratings</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="overview-pyratings">
+<h1>Overview - pyratings<a class="headerlink" href="#overview-pyratings" title="Permalink to this headline"></a></h1>
+<section id="capabilities">
+<h2>Capabilities<a class="headerlink" href="#capabilities" title="Permalink to this headline"></a></h2>
+<p>This library consists of functions, which will be helpful in order to work with credit ratings in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.
+<cite>pyratings</cite> offers the following capabilities:</p>
+<ul class="simple">
+<li><p>Preparing regular ratings for further processing, i.e. stripping off of rating watches.</p></li>
+<li><p>Transform long- and short-term ratings into rating scores and vice versa.</p></li>
+<li><p>Compute best/second best/worst ratings on a security level basis within a
+portfolio context.</p></li>
+<li><p>Compute average ratings/rating scores on a portfolio level.</p></li>
+<li><p>Compute WARF on a portfolio level.</p></li>
+<li><p>Compute WARF buffer, i.e. distance from current WARF to next maxWARF.</p></li>
+</ul>
+<p>Transformations from ratings to scores/WARF and vice versa will take place according to the following translation table:</p>
+<p>Long-term ratings</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>ICE</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>Bloomberg</p></th>
+<th class="head"><p>Score</p></th>
+<th class="head"><p>WARF</p></th>
+<th class="head"><p>MinWARF*</p></th>
+<th class="head"><p>MaxWARF*</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aaa</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>AAA</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa1</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AA+</p></td>
+<td><p>AAH</p></td>
+<td><p>AA+</p></td>
+<td><p>2</p></td>
+<td><p>10</p></td>
+<td><p>5</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Aa2</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>AA</p></td>
+<td><p>3</p></td>
+<td><p>20</p></td>
+<td><p>15</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aa3</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AA-</p></td>
+<td><p>AAL</p></td>
+<td><p>AA-</p></td>
+<td><p>4</p></td>
+<td><p>40</p></td>
+<td><p>30</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-even"><td><p>A1</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>A+</p></td>
+<td><p>AH</p></td>
+<td><p>A+</p></td>
+<td><p>5</p></td>
+<td><p>70</p></td>
+<td><p>55</p></td>
+<td><p>95</p></td>
+</tr>
+<tr class="row-odd"><td><p>A2</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>6</p></td>
+<td><p>120</p></td>
+<td><p>95</p></td>
+<td><p>150</p></td>
+</tr>
+<tr class="row-even"><td><p>A3</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>A-</p></td>
+<td><p>AL</p></td>
+<td><p>A-</p></td>
+<td><p>7</p></td>
+<td><p>180</p></td>
+<td><p>150</p></td>
+<td><p>220</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa1</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBB+</p></td>
+<td><p>BBBH</p></td>
+<td><p>BBB+</p></td>
+<td><p>8</p></td>
+<td><p>260</p></td>
+<td><p>220</p></td>
+<td><p>310</p></td>
+</tr>
+<tr class="row-even"><td><p>Baa2</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>BBB</p></td>
+<td><p>9</p></td>
+<td><p>360</p></td>
+<td><p>310</p></td>
+<td><p>485</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baa3</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBB-</p></td>
+<td><p>BBBL</p></td>
+<td><p>BBB-</p></td>
+<td><p>10</p></td>
+<td><p>610</p></td>
+<td><p>485</p></td>
+<td><p>775</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba1</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BB+</p></td>
+<td><p>BBH</p></td>
+<td><p>BB+</p></td>
+<td><p>11</p></td>
+<td><p>940</p></td>
+<td><p>775</p></td>
+<td><p>1145</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ba2</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>BB</p></td>
+<td><p>12</p></td>
+<td><p>1350</p></td>
+<td><p>1145</p></td>
+<td><p>1558</p></td>
+</tr>
+<tr class="row-even"><td><p>Ba3</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BB-</p></td>
+<td><p>BBL</p></td>
+<td><p>BB-</p></td>
+<td><p>13</p></td>
+<td><p>1766</p></td>
+<td><p>1558</p></td>
+<td><p>1993</p></td>
+</tr>
+<tr class="row-odd"><td><p>B1</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>B+</p></td>
+<td><p>BH</p></td>
+<td><p>B+</p></td>
+<td><p>14</p></td>
+<td><p>2220</p></td>
+<td><p>1993</p></td>
+<td><p>2470</p></td>
+</tr>
+<tr class="row-even"><td><p>B2</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>15</p></td>
+<td><p>2720</p></td>
+<td><p>2470</p></td>
+<td><p>3105</p></td>
+</tr>
+<tr class="row-odd"><td><p>B3</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>B-</p></td>
+<td><p>BL</p></td>
+<td><p>B-</p></td>
+<td><p>16</p></td>
+<td><p>3490</p></td>
+<td><p>3105</p></td>
+<td><p>4130</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa1</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCC+</p></td>
+<td><p>CCCH</p></td>
+<td><p>CCC+</p></td>
+<td><p>17</p></td>
+<td><p>4770</p></td>
+<td><p>4130</p></td>
+<td><p>5635</p></td>
+</tr>
+<tr class="row-odd"><td><p>Caa2</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>CCC</p></td>
+<td><p>18</p></td>
+<td><p>6500</p></td>
+<td><p>5635</p></td>
+<td><p>7285</p></td>
+</tr>
+<tr class="row-even"><td><p>Caa3</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCC-</p></td>
+<td><p>CCCL</p></td>
+<td><p>CCC-</p></td>
+<td><p>19</p></td>
+<td><p>8070</p></td>
+<td><p>7285</p></td>
+<td><p>9034</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ca</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>CC</p></td>
+<td><p>20</p></td>
+<td><p>9998</p></td>
+<td><p>9034</p></td>
+<td><p>9998.5</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>C</p></td>
+<td><p>21</p></td>
+<td><p>9999</p></td>
+<td><p>9998.5</p></td>
+<td><p>9999.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>D</p></td>
+<td><p>DDD</p></td>
+<td><p>22</p></td>
+<td><p>10000</p></td>
+<td><p>9999.5</p></td>
+<td><p>10000</p></td>
+</tr>
+</tbody>
+</table>
+<p><cite>MinWARF</cite> is inclusive, while <cite>MaxWARF</cite> is exclusive.</p>
+<p>Short-term ratings</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Moody’s</p></th>
+<th class="head"><p>S&amp;P</p></th>
+<th class="head"><p>Fitch</p></th>
+<th class="head"><p>DBRS</p></th>
+<th class="head"><p>Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P-1</p></td>
+<td><p>A-1+</p></td>
+<td><p>F1+</p></td>
+<td><p>R-1 (high)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-1 (mid)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-1 (low)</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>A-1</p></td>
+<td><p>F1</p></td>
+<td><p>R-2 (high)</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-2 (mid)</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>P-2</p></td>
+<td><p>A-2</p></td>
+<td><p>F2</p></td>
+<td><p>R-2 (low)</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-3 (high)</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>P-3</p></td>
+<td><p>A-3</p></td>
+<td><p>F3</p></td>
+<td><p>R-3 (mid)</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-3 (low)</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>NP</p></td>
+<td><p>B</p></td>
+<td><p>—</p></td>
+<td><p>R-4</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>R-5</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>—</p></td>
+<td><p>C</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-even"><td><p>—</p></td>
+<td><p>D</p></td>
+<td><p>—</p></td>
+<td><p>D</p></td>
+<td><p>22</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to pyratings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, HSBC Global Asset Management (Deutschland) GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

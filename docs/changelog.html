@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog &mdash; pyratings 0.5.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API Reference" href="pyratings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyratings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview - pyratings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyratings.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-5-2-2022-01-24">[v0.5.2] - 2022-01-24</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-5-1-2022-01-06">[v0.5.1] - 2022-01-06</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-5-0-2022-01-03">[v0.5.0] - 2022-01-03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-4-2-2021-11-19">[v0.4.2] - 2021-11-19</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-4-1-2021-11-16">[v0.4.1] - 2021-11-16</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-4-0-2021-03-26">[v0.4.0] - 2021-03-26</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v-0-3-0-2021-02-22">[v.0.3.0] - 2021-02-22</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v-0-2-0-2020-12-18">[v.0.2.0] - 2020-12-18</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-0-2020-12-09">[v0.1.0] - 2020-12-09</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Added</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyratings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Changelog</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline"></a></h1>
+<p>The format is based on <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<section id="v0-5-2-2022-01-24">
+<h2>[v0.5.2] - 2022-01-24<a class="headerlink" href="#v0-5-2-2022-01-24" title="Permalink to this headline"></a></h2>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Moved sphinx configuration to <code class="docutils literal notranslate"><span class="pre">docsrc</span></code> folder.</p></li>
+<li><p>Documentation data for GitHub pages can be found under <code class="docutils literal notranslate"><span class="pre">docs</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-5-1-2022-01-06">
+<h2>[v0.5.1] - 2022-01-06<a class="headerlink" href="#v0-5-1-2022-01-06" title="Permalink to this headline"></a></h2>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Removed links to internal network drives in <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>.</p></li>
+<li><p>Removed links to GitHub issues in this <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> as they link to internal GitHub repo.</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-5-0-2022-01-03">
+<h2>[v0.5.0] - 2022-01-03<a class="headerlink" href="#v0-5-0-2022-01-03" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">This release introduces a number of <strong>BREAKING CHANGES!</strong></div>
+<div class="line">Supported versions:</div>
+</div>
+<ul class="simple">
+<li><p>Python 3.9</p></li>
+<li><p>Python 3.10</p></li>
+</ul>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Permalink to this headline"></a></h3>
+<p>Some new functions have been introduced (<cite>Issue #61</cite>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_scores_from_ratings</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_scores_from_warf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_ratings_from_scores</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_ratings_from_warf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_warf_from_scores</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_warf_from_ratings</span></code></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Changed<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Internal resource handling now utilizes <code class="docutils literal notranslate"><span class="pre">importlib.resources</span></code>, which makes Python &gt;=3.9 <strong>mandatory</strong>.</p></li>
+<li><p>Some function signatures have been changed, which will probably <strong>break existing code</strong>!</p>
+<blockquote>
+<div><ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pyratings.get_pure_ratings</span></code></dt><dd><div class="line-block">
+<div class="line"><strong>Old</strong>: <code class="docutils literal notranslate"><span class="pre">get_pure_ratings(ratings:</span> <span class="pre">Union[pd.Series,</span> <span class="pre">List[pd.Series],</span> <span class="pre">pd.DataFrame])</span> <span class="pre">-&gt;</span> <span class="pre">Union[pd.Series,</span> <span class="pre">List[pd.Series],</span> <span class="pre">pd.DataFrame]</span></code></div>
+<div class="line"><strong>New</strong>: <code class="docutils literal notranslate"><span class="pre">get_pure_ratings(ratings:</span> <span class="pre">Union[str,</span> <span class="pre">pd.Series,</span> <span class="pre">pd.DataFrame])</span> <span class="pre">-&gt;</span> <span class="pre">Union[str,</span> <span class="pre">pd.Series,</span> <span class="pre">pd.DataFrame]</span></code></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pyratings.get_best_ratings</span></code></dt><dd><div class="line-block">
+<div class="line"><strong>Old</strong>: <code class="docutils literal notranslate"><span class="pre">get_best_ratings(ratings:</span> <span class="pre">Dict[str,</span> <span class="pre">pd.Series],</span> <span class="pre">tenor:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+<div class="line"><strong>New</strong>: <code class="docutils literal notranslate"><span class="pre">get_best_ratings(ratings:</span> <span class="pre">pd.DataFrame,</span> <span class="pre">rating_provider_input:</span> <span class="pre">List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">rating_provider_output:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;S&amp;P&quot;,</span> <span class="pre">tenor:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pyratings.get_second_best_ratings</span></code></dt><dd><div class="line-block">
+<div class="line"><strong>Old</strong>: <code class="docutils literal notranslate"><span class="pre">get_second_best_ratings(ratings:</span> <span class="pre">Dict[str,</span> <span class="pre">pd.Series],</span> <span class="pre">tenor:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+<div class="line"><strong>New</strong>: <code class="docutils literal notranslate"><span class="pre">get_second_best_ratings(ratings:</span> <span class="pre">pd.DataFrame,</span> <span class="pre">rating_provider_input:</span> <span class="pre">List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">rating_provider_output:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;S&amp;P&quot;,</span> <span class="pre">tenor:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pyratings.get_worst_ratings</span></code></dt><dd><div class="line-block">
+<div class="line"><strong>Old</strong>: <code class="docutils literal notranslate"><span class="pre">get_worst_ratings(ratings:</span> <span class="pre">Dict[str,</span> <span class="pre">pd.Series],</span> <span class="pre">tenor:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+<div class="line"><strong>New</strong>: <code class="docutils literal notranslate"><span class="pre">get_worst_ratings(ratings:</span> <span class="pre">pd.DataFrame,</span> <span class="pre">rating_provider_input:</span> <span class="pre">List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">rating_provider_output:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;S&amp;P&quot;,</span> <span class="pre">tenor:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;long-term&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">pd.Series</span></code></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Permalink to this headline"></a></h3>
+<p>Some functions have been removed/replaced:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_rating()</span></code> -&gt; Use <code class="docutils literal notranslate"><span class="pre">pyratings.get_ratings_from_scores</span></code> or <code class="docutils literal notranslate"><span class="pre">pyratings.get_ratings_from_warf</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_ratings_from_scores()</span></code> -&gt; Use <code class="docutils literal notranslate"><span class="pre">pyratings.get_ratings_from_scores</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_scores_from_ratings()</span></code> -&gt; Use <code class="docutils literal notranslate"><span class="pre">pyratings.get_scores_from_ratings</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_score_from_warf()</span></code> -&gt; Use <code class="docutils literal notranslate"><span class="pre">pyratings.get_scores_from_warf</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_warf_from_ratings()</span></code> -&gt; Use <code class="docutils literal notranslate"><span class="pre">pyratings.get_warf_from_ratings</span></code> instead.</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-2-2021-11-19">
+<h2>[v0.4.2] - 2021-11-19<a class="headerlink" href="#v0-4-2-2021-11-19" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3>Changed<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Deleted unused code (<cite>Issue #49</cite>).</p></li>
+<li><p>Added unit test in order to arrive at 100% code coverage</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-1-2021-11-16">
+<h2>[v0.4.1] - 2021-11-16<a class="headerlink" href="#v0-4-1-2021-11-16" title="Permalink to this headline"></a></h2>
+<section id="id3">
+<h3>Changed<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Function signature of <code class="docutils literal notranslate"><span class="pre">pyratings.get_pure_ratings</span></code> (<cite>Issue #43</cite>).</p></li>
+<li><p>Updated source code location in <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> (<cite>Issue #46</cite>).</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-0-2021-03-26">
+<h2>[v0.4.0] - 2021-03-26<a class="headerlink" href="#v0-4-0-2021-03-26" title="Permalink to this headline"></a></h2>
+<section id="id4">
+<h3>Added<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Computation of <cite>best</cite>, <cite>worst</cite>, and <cite>second_best</cite> ratings on a security basis (<cite>Issue #14</cite>).</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_best_ratings</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_second_best_ratings</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_worst_ratings</span></code></p></li>
+</ul>
+</li>
+<li><p>Computation of WARF buffer, i.e. distance from current WARF to next maxWARF (<cite>Issue #19</cite>).</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_warf_buffer</span></code></p></li>
+</ul>
+</li>
+<li><p>Improved docstrings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doctest</span></code> integration into <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p></li>
+<li><p>Documentation (online and PDF)</p>
+<ul>
+<li><p>Overview</p></li>
+<li><p>Getting started</p></li>
+<li><p>API Reference</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>Changed<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line">Some functions such as <code class="docutils literal notranslate"><span class="pre">to_scores_from_ratings</span></code> and <code class="docutils literal notranslate"><span class="pre">get_pure_ratings</span></code> got their signatures changed (<cite>Issue #16</cite>).</div>
+<div class="line">They now accept a <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">pd.Series]</span></code>, where the dictionary keys represent the rating provider and the dictionary values represent the respective ratings. This will allow to transform multiple columns of a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> in one step.</div>
+</div>
+</li>
+<li><p>“S&amp;P” and “Moody’s” are no valid rating provider anymore. The new acronyms are “SP” and “Moody”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyratings.get_pure_ratings</span></code> output column names now have the suffix “_clean”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_ratings_from_scores</span></code> became an internal function</p></li>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_rating</span></code> is now the go-to function when it comes to translating a single rating score or numerical WARF into a rating.</div>
+<div class="line">It replaces <code class="docutils literal notranslate"><span class="pre">to_ratings_from_avg_warf</span></code> and <code class="docutils literal notranslate"><span class="pre">get_avg_rating</span></code>.</div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_avg_rating_score</span></code> and <code class="docutils literal notranslate"><span class="pre">get_avg_warf</span></code> shared the exact same code. These functions have been merged into <code class="docutils literal notranslate"><span class="pre">get_weighted_average</span></code> (<cite>Issue #40</cite>).</p></li>
+<li><p>Internal code optimizations</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Removed<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_avg_rating</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_avg_rating_score</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_avg_warf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_ratings_from_avg_warf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_ratings_from_warf</span></code></p></li>
+</ul>
+</section>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline"></a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_weighted_average</span></code> (previously <code class="docutils literal notranslate"><span class="pre">get_avg_rating_score</span></code> and <code class="docutils literal notranslate"><span class="pre">get_avg_warf</span></code>) now handle missing rating scores/WARF differently. Previously, they have been ignored. However, this led to a too positive average rating/WARF.</div>
+<div class="line">Now, only securities with a rating score/WARF available will contribute to the average computation. To put it differently, the average score/WARF is solely based on rated securities (<cite>Issue #38</cite>).</div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="v-0-3-0-2021-02-22">
+<h2>[v.0.3.0] - 2021-02-22<a class="headerlink" href="#v-0-3-0-2021-02-22" title="Permalink to this headline"></a></h2>
+<section id="id7">
+<h3>Added<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Computation of average ratings (<cite>Issue #8</cite>).</p></li>
+<li><p>Computation of average WARF (<cite>Issue #9</cite>).</p></li>
+<li><p>Translation from traditional ratings to WARF and vice versa (<cite>Issue #10</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tox</span></code> unit tests</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Changed<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Adjusted WARF and MaxWARF values for ratings Ca and C to allow for differentiation of translated values between ratings Ca/C/D.</p></li>
+<li><p>Folder layout now adheres to <code class="docutils literal notranslate"><span class="pre">src</span></code> layout.</p></li>
+<li><p>Package resource management now using <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code> from Python’s standard library.</p></li>
+</ul>
+</section>
+</section>
+<section id="v-0-2-0-2020-12-18">
+<h2>[v.0.2.0] - 2020-12-18<a class="headerlink" href="#v-0-2-0-2020-12-18" title="Permalink to this headline"></a></h2>
+<section id="id9">
+<h3>Added<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Short-term ratings (<cite>Issue #1</cite>).</p></li>
+<li><p>More rating agencies to database: DBRS, Bloomberg composite, ICE (<cite>Issue #5</cite>).</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Changed<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Rating scales are now maintained within a SQLite database. Previously, rating scales had been hard coded in a traditional Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>Fixed<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Cleansing of unsolicited ratings (<cite>Issue #3</cite>).</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-1-0-2020-12-09">
+<h2>[v0.1.0] - 2020-12-09<a class="headerlink" href="#v0-1-0-2020-12-09" title="Permalink to this headline"></a></h2>
+<section id="id12">
+<h3>Added<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Function to clean ratings (delete watches).</p></li>
+<li><p>Function to translate S&amp;P/Fitch/Moody’s credit ratings into rating scores.</p></li>
+<li><p>Function to translate rating scores into S&amp;P/Fitch/Moody’s credit ratings.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyratings.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, HSBC Global Asset Management (Deutschland) GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
