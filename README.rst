@@ -1,19 +1,27 @@
-********************
-Overview - pyratings
-********************
+***********************************************************************
+pyratings - Working with credit ratings, professionally and efficiently
+***********************************************************************
+
+Documentation
+=============
+| The full documentation can be found at https://hsbc.github.io/pyratings/.
+| A "Getting started" section shows the relevant functions provided by `pyratings` in
+  order to compute an average credit rating for a portfolio with multiple securities.
+
 
 Capabilities
 =============
 
-This library consists of functions, which will be helpful in order to work with credit ratings in a ``pandas.DataFrame``.
-`pyratings` offers the following capabilities:
+| This library consists of functions, which will be helpful in order to work with credit
+  ratings in a ``pandas.DataFrame``.
+| `pyratings` offers the following capabilities:
 
 * Preparing regular ratings for further processing, i.e. stripping off of rating watches.
 * Transform long- and short-term ratings into rating scores and vice versa.
 * Compute best/second best/worst ratings on a security level basis within a
   portfolio context.
 * Compute average ratings/rating scores on a portfolio level.
-* Compute WARF on a portfolio level.
+* Compute Weighted Average Rating Factor (WARF) on a portfolio level.
 * Compute WARF buffer, i.e. distance from current WARF to next maxWARF.
 
 Transformations from ratings to scores/WARF and vice versa will take place according to the following translation table:
@@ -101,3 +109,12 @@ Short-term ratings
 +---------+------+-------+------------+-------+
 |   ---   |   D  |  ---  |      D     |    22 |
 +---------+------+-------+------------+-------+
+
+Dependencies
+============
+| This library supports Python >= 3.9.
+| Under the hood `pyratings` only depends on the basic python libraries that are used
+  for matrix and dataframe manipulation:
+
+* numpy
+* pandas
