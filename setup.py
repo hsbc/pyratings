@@ -10,7 +10,7 @@ finally:
 
 setup(
     name="pyratings",
-    version="0.5.2",
+    version="0.5.3",
     author="Andreas Vester",
     author_email="andreas.vester@hsbc.de",
     description=(

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview - pyratings &mdash; pyratings 0.5.2 documentation</title>
+  <title>pyratings - Working with credit ratings, professionally and efficiently &mdash; pyratings 0.5.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,8 +39,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview - pyratings</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyratings - Working with credit ratings, professionally and efficiently</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
@@ -62,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Overview - pyratings</li>
+      <li>pyratings - Working with credit ratings, professionally and efficiently</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,19 +98,30 @@
     text-align: unset;
 }
 </style>
-<section id="overview-pyratings">
-<h1>Overview - pyratings<a class="headerlink" href="#overview-pyratings" title="Permalink to this headline"></a></h1>
+<section id="pyratings-working-with-credit-ratings-professionally-and-efficiently">
+<h1>pyratings - Working with credit ratings, professionally and efficiently<a class="headerlink" href="#pyratings-working-with-credit-ratings-professionally-and-efficiently" title="Permalink to this headline"></a></h1>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">The full documentation can be found at <a class="reference external" href="https://hsbc.github.io/pyratings/">https://hsbc.github.io/pyratings/</a>.</div>
+<div class="line">A “Getting started” section shows the relevant functions provided by <cite>pyratings</cite> in
+order to compute an average credit rating for a portfolio with multiple securities.</div>
+</div>
+</section>
 <section id="capabilities">
 <h2>Capabilities<a class="headerlink" href="#capabilities" title="Permalink to this headline"></a></h2>
-<p>This library consists of functions, which will be helpful in order to work with credit ratings in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.
-<cite>pyratings</cite> offers the following capabilities:</p>
+<div class="line-block">
+<div class="line">This library consists of functions, which will be helpful in order to work with credit
+ratings in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</div>
+<div class="line"><cite>pyratings</cite> offers the following capabilities:</div>
+</div>
 <ul class="simple">
 <li><p>Preparing regular ratings for further processing, i.e. stripping off of rating watches.</p></li>
 <li><p>Transform long- and short-term ratings into rating scores and vice versa.</p></li>
 <li><p>Compute best/second best/worst ratings on a security level basis within a
 portfolio context.</p></li>
 <li><p>Compute average ratings/rating scores on a portfolio level.</p></li>
-<li><p>Compute WARF on a portfolio level.</p></li>
+<li><p>Compute Weighted Average Rating Factor (WARF) on a portfolio level.</p></li>
 <li><p>Compute WARF buffer, i.e. distance from current WARF to next maxWARF.</p></li>
 </ul>
 <p>Transformations from ratings to scores/WARF and vice versa will take place according to the following translation table:</p>
@@ -483,6 +496,18 @@ portfolio context.</p></li>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">This library supports Python &gt;= 3.9.</div>
+<div class="line">Under the hood <cite>pyratings</cite> only depends on the basic python libraries that are used
+for matrix and dataframe manipulation:</div>
+</div>
+<ul class="simple">
+<li><p>numpy</p></li>
+<li><p>pandas</p></li>
+</ul>
 </section>
 </section>
 

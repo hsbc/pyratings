@@ -4,6 +4,14 @@ Changelog
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_, and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+[v0.5.3] - 2022-04-05
+=====================
+
+Added
+--------
+* Complete documentation now available on public GitHub Pages at https://hsbc.github.io/pyratings/.
+
+
 [v0.5.2] - 2022-01-24
 =====================
 
