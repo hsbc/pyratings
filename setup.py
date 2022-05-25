@@ -19,7 +19,7 @@ setup(
     ),
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    license="Apache License Version 2.0",
+    license="Apache-2.0",
     packages=find_packages("src"),
     package_dir={"": "src"},
     package_data={"pyratings": ["resources/*.*"]},
