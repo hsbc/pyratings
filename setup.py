@@ -23,6 +23,7 @@ setup(
     packages=find_packages("src"),
     package_dir={"": "src"},
     package_data={"pyratings": ["resources/*.*"]},
+    url="https://github.com/hsbc/pyratings",
     project_urls={
         "Documentation": "https://hsbc.github.io/pyratings",
         "Source": "https://github.com/hsbc/pyratings",
