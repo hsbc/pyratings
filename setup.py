@@ -23,6 +23,11 @@ setup(
     packages=find_packages("src"),
     package_dir={"": "src"},
     package_data={"pyratings": ["resources/*.*"]},
+    project_urls={
+        "Documentation": "https://hsbc.github.io/pyratings",
+        "Source": "https://github.com/hsbc/pyratings",
+        "Tracker": "https://github.com/hsbc/pyratings/issues"
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "License :: OSI Approved :: Apache Software License",
