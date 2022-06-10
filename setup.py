@@ -19,10 +19,16 @@ setup(
     ),
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    license="Apache License Version 2.0",
+    license="Apache-2.0",
     packages=find_packages("src"),
     package_dir={"": "src"},
     package_data={"pyratings": ["resources/*.*"]},
+    url="https://github.com/hsbc/pyratings",
+    project_urls={
+        "Documentation": "https://hsbc.github.io/pyratings",
+        "Source": "https://github.com/hsbc/pyratings",
+        "Tracker": "https://github.com/hsbc/pyratings/issues"
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "License :: OSI Approved :: Apache Software License",
