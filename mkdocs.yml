@@ -1,0 +1,50 @@
+site_name: pyratings
+repo_url: https://github.com/hsbc/pyratings
+site_description: pyratings - Working with credit ratings, professionally and efficiently
+site_author: HSBC
+
+theme:
+  name: material
+  palette:
+      - scheme: default
+        toggle:
+          icon: material/toggle-switch-off-outline
+          name: Switch to dark mode
+      - scheme: slate
+        toggle:
+          icon: material/toggle-switch
+          name: Switch to light mode
+
+nav:
+  - Overview: index.md
+  - Getting started: getting_started.ipynb
+  - API Reference: api_reference.md
+  - Changelog: changelog.md
+
+watch:
+  - src/pyratings
+  - README.md
+  - CHANGELOG.md
+
+markdown_extensions:
+  - pymdownx.snippets:
+      check_paths: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          options:
+            heading_level: 3
+            show_root_heading: false
+            show_root_toc_entry: false
+            show_source: false
+            docstring_style: numpy
+            docstring_section_style: table  # {table, list, spacy}
+            separate_signature: true
+  - mkdocs-jupyter:
+      execute: true
+      allow_errors: false
