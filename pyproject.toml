@@ -1,0 +1,73 @@
+[project]
+name = "pyratings"
+version = "0.5.3"
+description = "Collection of functions in order to translate ratings from various rating agencies into equivalent rating scores and vice versa."
+readme = "README.rst"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [{name = "HSBC", email = "opensource@hsbc.com"}]
+keywords = ["ratings", "credit ratings", "rating scores"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.23.0",
+    "pandas>=1.4.3",
+]
+[project.optional-dependencies]
+dev = [
+    "black>=22.6.0",
+    "pytest>=7.1.2",
+    "pytest-cov>=3.0.0",
+    "tox>=3.25.1"
+]
+doc = [
+    "jupyter>=1.0.0",
+    "nbsphinx>=0.8.9",
+    "numpydoc>=1.4.0",
+    "openpyxl>=3.0.10",
+    "pandoc>=2.2",
+    "sphinx>=5.0.2",
+    "sphinx-rtd-theme>=1.0.0",
+]
+[project.urls]
+Homepage = "https://github.com/hsbc/pyratings"
+Repository = "https://github.com/hsbc/pyratings"
+BugTracker = "https://github.com/hsbc/pyratings/issues"
+Documentation = "https://hsbc.github.io/pyratings/"
+Changelog = "https://github.com/hsbc/pyratings/blob/main/CHANGELOG.rst"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--doctest-modules"
+doctest_optionflags = "NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL NUMBER"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py39
+
+[pytest]
+minversion = '6.0'
+addopts = '--doctest-modules'
+doctest_optionflags = NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL NUMBER
+
+[testenv]
+extras = dev
+commands = pytest {posargs}
+"""
