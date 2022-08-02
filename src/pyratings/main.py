@@ -1,18 +1,17 @@
-"""
-Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+# Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#        http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-"""
 import importlib.resources as pkg_resources
 import sqlite3
 from typing import Dict, Hashable, List, Optional, Union
@@ -34,7 +33,7 @@ def get_pure_ratings(
 
     Parameters
     ----------
-    ratings : str, pd.Series, or pd.DataFrame
+    ratings
         Rating may contain watch, such as `AA- *+`, `BBB+ (CwNegative)`.
         Outlook/watch should be seperated by a blank from the actual rating.
 
@@ -151,18 +150,18 @@ def get_best_ratings(
 
     Parameters
     ----------
-    ratings : pd.DataFrame
+    ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
-    rating_provider_input : List of str, default None
+    rating_provider_input
         Indicates rating providers within dataframe. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the dataframe columns.
-    rating_provider_output : str, default "S&P"
+    rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
-    tenor : str, default "long-term"
+    tenor
         Indicates wheter long- or short-term ratings will be used.
 
     Returns
@@ -226,18 +225,18 @@ def get_second_best_ratings(
 
     Parameters
     ----------
-    ratings : pd.DataFrame
+    ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
-    rating_provider_input : List of str, default None
+    rating_provider_input
         Indicates rating providers within dataframe. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the dataframe columns.
-    rating_provider_output : str, default "S&P"
+    rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
-    tenor : str, default "long-term"
+    tenor
         Indicates wheter long- or short-term ratings will be used.
 
     Returns
@@ -309,18 +308,18 @@ def get_worst_ratings(
 
     Parameters
     ----------
-    ratings : pd.DataFrame
+    ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
-    rating_provider_input : List of str, default None
+    rating_provider_input
         Indicates rating providers within dataframe. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the dataframe columns.
-    rating_provider_output : str, default "S&P"
+    rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
-    tenor : str, default "long-term"
+    tenor
         Indicates wheter long- or short-term ratings will be used.
 
     Returns
@@ -383,15 +382,15 @@ def get_scores_from_ratings(
 
     Parameters
     ----------
-    ratings : str, pd.Series, or pd.DataFrame
+    ratings
         Ratings to be translated into rating scores.
-    rating_provider: str or list of str
+    rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the series name or dataframe
         columns.
-    tenor: str, default "long-term"
+    tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
 
     Returns
@@ -416,6 +415,7 @@ def get_scores_from_ratings(
     -----
     For long-term ratings, the following translation table will be used:
 
+    # noqa
     +---------+------+-------+------+------+-----------+-------+-------+----------+----------+
     | Moody’s |  S&P | Fitch |  ICE | DBRS | Bloomberg | Score |  WARF | MinWARF* | MaxWARF* |
     +=========+======+=======+======+======+===========+=======+=======+==========+==========+
@@ -623,7 +623,7 @@ def get_scores_from_warf(
 
     Parameters
     ----------
-    warf : int, float, pd.Series, or pd.DataFrame
+    warf
         Weighted average rating factor (WARF).
 
     Returns
@@ -734,15 +734,15 @@ def get_ratings_from_scores(
 
     Parameters
     ----------
-    rating_scores: int, float, pd.Series, or pd.DataFrame
+    rating_scores
         Numerical rating scores
-    rating_provider: str or list of str
+    rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the series name or dataframe
         columns.
-    tenor: str, default "long-term",
+    tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
 
     Returns
@@ -917,9 +917,9 @@ def get_ratings_from_warf(
 
     Parameters
     ----------
-    warf : int, float, pd.Series, or pd.DataFrame
+    warf
         Numerical WARF.
-    rating_provider: str or list of str
+    rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
@@ -1015,7 +1015,7 @@ def get_warf_from_scores(
 
     Parameters
     ----------
-    rating_scores : int, float, pd.Series, or pd.DataFrame
+    rating_scores
         Numerical rating scores.
 
     Returns
@@ -1086,9 +1086,9 @@ def get_warf_from_ratings(
 
     Parameters
     ----------
-    ratings : str, pd.Series, or pd.DataFrame
+    ratings
         Regular ratings to be translated into WARFs.
-    rating_provider: str or List[str], optional, default None
+    rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
@@ -1328,7 +1328,7 @@ def _extract_rating_provider(
 
     Parameters
     ----------
-    rating_provider : str or List[str]
+    rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
