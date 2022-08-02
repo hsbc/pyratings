@@ -1,6 +1,6 @@
 [project]
 name = "pyratings"
-version = "0.5.3"
+version = "0.5.4"
 description = "Collection of functions in order to translate ratings from various rating agencies into equivalent rating scores and vice versa."
 readme = "README.rst"
 requires-python = ">=3.9"
@@ -12,7 +12,6 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Topic :: Office/Business :: Financial",
