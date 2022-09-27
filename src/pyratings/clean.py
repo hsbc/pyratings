@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains functions to clean ratings."""
+
 from typing import Union
 
 import pandas as pd
@@ -20,7 +22,7 @@ import pandas as pd
 def get_pure_ratings(
     ratings: Union[str, pd.Series, pd.DataFrame]
 ) -> Union[str, pd.Series, pd.DataFrame]:
-    """Removes rating watches/outlooks.
+    """Remove rating watches/outlooks.
 
     Parameters
     ----------

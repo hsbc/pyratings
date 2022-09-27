@@ -1,18 +1,21 @@
-"""
-Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+# Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#        https://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+"""Module contains unit tests for functions to get ratings from scores/warf."""
 
-       http://www.apache.org/licenses/LICENSE-2.0
+from typing import Union
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-"""
 import numpy as np
 import pandas as pd
 import pytest
@@ -35,8 +38,10 @@ from tests import conftest
         ).to_records(index=False)
     ),
 )
-def test_get_rating_from_single_score_longterm(rating_provider, score, rating):
-    """Tests if function can handle single string objects."""
+def test_get_rating_from_single_score_longterm(
+    rating_provider: str, score: int, rating: str
+) -> None:
+    """It returns a human-readable long-term rating."""
     act = rtg.get_ratings_from_scores(
         rating_scores=score, rating_provider=rating_provider, tenor="long-term"
     )
@@ -44,7 +49,8 @@ def test_get_rating_from_single_score_longterm(rating_provider, score, rating):
     assert act == rating
 
 
-def test_get_rating_from_single_score_float_longterm():
+def test_get_rating_from_single_score_float_longterm() -> None:
+    """It returns a human-readable long-term rating."""
     assert (
         rtg.get_ratings_from_scores(
             rating_scores=5.499, rating_provider="Fitch", tenor="long-term"
@@ -71,8 +77,10 @@ def test_get_rating_from_single_score_float_longterm():
         ).to_records(index=False)
     ),
 )
-def test_get_rating_from_single_score_shortterm(rating_provider, score, rating):
-    """Tests if function can handle single string objects."""
+def test_get_rating_from_single_score_shortterm(
+    rating_provider: str, score: int, rating: str
+) -> None:
+    """It returns a human-readable short-term rating."""
     act = rtg.get_ratings_from_scores(
         rating_scores=score, rating_provider=rating_provider, tenor="short-term"
     )
@@ -80,7 +88,8 @@ def test_get_rating_from_single_score_shortterm(rating_provider, score, rating):
     assert act == rating
 
 
-def test_get_rating_from_single_score_float_shortterm():
+def test_get_rating_from_single_score_float_shortterm() -> None:
+    """It returns a human-readable short-term rating."""
     assert (
         rtg.get_ratings_from_scores(
             rating_scores=5.499, rating_provider="DBRS", tenor="short-term"
@@ -96,8 +105,8 @@ def test_get_rating_from_single_score_float_shortterm():
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_single_score_invalid_rating_provider(tenor):
-    """Tests if correct error message will be raised."""
+def test_get_ratings_from_single_score_invalid_rating_provider(tenor: str) -> None:
+    """It returns an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_ratings_from_scores(
             rating_scores=10, rating_provider="foo", tenor=tenor
@@ -106,8 +115,8 @@ def test_get_ratings_from_single_score_invalid_rating_provider(tenor):
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_with_invalid_single_score(tenor):
-    """Tests if function returns NaN for invalid inputs."""
+def test_get_ratings_with_invalid_single_score(tenor: str) -> None:
+    """It returns NaN."""
     act = rtg.get_ratings_from_scores(
         rating_scores=-5, rating_provider="Fitch", tenor=tenor
     )
@@ -115,8 +124,8 @@ def test_get_ratings_with_invalid_single_score(tenor):
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_with_single_score_and_no_rating_provider(tenor):
-    """Tests if correct error message will be raised."""
+def test_get_ratings_with_single_score_and_no_rating_provider(tenor: str) -> None:
+    """It raises an error message."""
     with pytest.raises(ValueError) as err:
         rtg.get_ratings_from_scores(rating_scores=-5, tenor=tenor)
 
@@ -134,14 +143,16 @@ def test_get_ratings_with_single_score_and_no_rating_provider(tenor):
         (10000, "Fitch", "D"),
     ],
 )
-def test_get_ratings_from_single_warf(warf, rating_provider, rating):
-    """Tests if function can correctly handle individual warf (float)."""
+def test_get_ratings_from_single_warf(
+    warf: Union[int, float], rating_provider: str, rating: str
+) -> None:
+    """It returns a human-readable rating."""
     act = rtg.get_ratings_from_warf(warf=warf, rating_provider=rating_provider)
     assert act == rating
 
 
-def test_get_ratings_from_single_warf_with_no_rating_provider():
-    """Tests if correct error message will be raised."""
+def test_get_ratings_from_single_warf_with_no_rating_provider() -> None:
+    """It raises an error message."""
     with pytest.raises(ValueError) as err:
         rtg.get_ratings_from_warf(warf=100, rating_provider=None)
 
@@ -149,8 +160,8 @@ def test_get_ratings_from_single_warf_with_no_rating_provider():
 
 
 @pytest.mark.parametrize("warf", [np.nan, -5, 20000])
-def test_get_ratings_from_invalid_single_warf(warf):
-    """Tests if function returns NaN for invalid inputs."""
+def test_get_ratings_from_invalid_single_warf(warf: Union[int, float]) -> None:
+    """It returns NaN."""
     assert pd.isna(rtg.get_ratings_from_warf(warf=warf, rating_provider="DBRS"))
 
 
@@ -160,9 +171,9 @@ def test_get_ratings_from_invalid_single_warf(warf):
     conftest.params_provider_scores_ratings_lt,
 )
 def test_get_ratings_from_scores_series_longterm(
-    rating_provider, scores_series, ratings_series
-):
-    """Tests if function can correctly handle pd.Series objects."""
+    rating_provider: str, scores_series: pd.Series, ratings_series: pd.Series
+) -> None:
+    """It returns a series with human-readable long-term ratings."""
     act = rtg.get_ratings_from_scores(
         rating_scores=scores_series, rating_provider=rating_provider
     )
@@ -175,9 +186,9 @@ def test_get_ratings_from_scores_series_longterm(
     conftest.params_provider_scores_ratings_lt,
 )
 def test_get_ratings_from_scores_series_longterm_float(
-    rating_provider, scores_series, ratings_series
-):
-    """Tests if function can correctly handle pd.Series objects."""
+    rating_provider: str, scores_series: pd.Series, ratings_series: pd.Series
+) -> None:
+    """It returns a series with human-readable long-term ratings."""
     act = rtg.get_ratings_from_scores(
         rating_scores=scores_series.add(0.23), rating_provider=rating_provider
     )
@@ -190,9 +201,9 @@ def test_get_ratings_from_scores_series_longterm_float(
     conftest.params_provider_scores_ratings_st,
 )
 def test_get_ratings_from_scores_series_shortterm(
-    rating_provider, scores_series, ratings_series
-):
-    """Tests if function can correctly handle pd.Series objects."""
+    rating_provider: str, scores_series: pd.Series, ratings_series: pd.Series
+) -> None:
+    """It returns a series with human-readable short-term ratings."""
     act = rtg.get_ratings_from_scores(
         rating_scores=scores_series, rating_provider=rating_provider, tenor="short-term"
     )
@@ -201,8 +212,8 @@ def test_get_ratings_from_scores_series_shortterm(
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_scores_series_invalid_rating_provider(tenor):
-    """Tests if correct error message will be raised."""
+def test_get_ratings_from_scores_series_invalid_rating_provider(tenor: str) -> None:
+    """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_ratings_from_scores(
             rating_scores=pd.Series(data=[1, 3, 22], name="rtg_score"),
@@ -214,8 +225,8 @@ def test_get_ratings_from_scores_series_invalid_rating_provider(tenor):
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_scores_series_with_no_rating_provider(tenor):
-    """Tests if correct error message will be raised."""
+def test_get_ratings_from_scores_series_with_no_rating_provider(tenor: str) -> None:
+    """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_ratings_from_scores(
             rating_scores=pd.Series(data=[1, 3, 22], name="foo"),
@@ -226,8 +237,8 @@ def test_get_ratings_from_scores_series_with_no_rating_provider(tenor):
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_invalid_scores_series(tenor):
-    """Tests if function can correctly handle pd.Series objects."""
+def test_get_ratings_from_invalid_scores_series(tenor: str) -> None:
+    """It returns a series with NaNs."""
     scores_series = pd.Series(data=[np.nan, "foo", -10], name="rtg_score")
     ratings_series = pd.Series(data=[np.nan, np.nan, np.nan], name="rating")
 
@@ -242,15 +253,17 @@ def test_get_ratings_from_invalid_scores_series(tenor):
     ["rating_provider", "warf_series", "ratings_series"],
     conftest.params_provider_warf_ratings,
 )
-def test_get_ratings_from_warf_series(rating_provider, warf_series, ratings_series):
-    """Tests if function can correctly handle pd.Series objects."""
+def test_get_ratings_from_warf_series(
+    rating_provider: str, warf_series: pd.Series, ratings_series: pd.Series
+) -> None:
+    """It returns a series with human-readable long-term ratings."""
     act = rtg.get_ratings_from_warf(warf=warf_series, rating_provider=rating_provider)
     ratings_series.name = f"rtg_{rating_provider}"
     assert_series_equal(act, ratings_series)
 
 
-def test_get_ratings_from_invalid_warf_series():
-    """Tests if function can correctly handle pd.Series objects."""
+def test_get_ratings_from_invalid_warf_series() -> None:
+    """It returns a series with NaNs."""
     warf_series = pd.Series(data=[np.nan, "foo", -10], name="rtg_score")
     ratings_series = pd.Series(data=[np.nan, np.nan, np.nan], name="rating")
 
@@ -301,8 +314,8 @@ exp_st.columns = [
 ]
 
 
-def test_get_ratings_from_scores_dataframe_with_explicit_rating_provider_longterm():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_scores_df_with_explicit_rating_provider_longterm() -> None:
+    """It returns a dataframe with human-readable long-term ratings and NaNs."""
     act = rtg.get_ratings_from_scores(
         rating_scores=conftest.scores_df_wide_with_err_row,
         rating_provider=[
@@ -319,8 +332,8 @@ def test_get_ratings_from_scores_dataframe_with_explicit_rating_provider_longter
     assert_frame_equal(act, exp_lt)
 
 
-def test_get_ratings_from_scores_dataframe_with_explicit_rating_provider_shortterm():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_scores_df_with_explicit_rating_provider_shortterm() -> None:
+    """It returns a dataframe with human-readable short-term ratings and NaNs."""
     act = rtg.get_ratings_from_scores(
         rating_scores=conftest.scores_df_wide_st_with_err_row,
         rating_provider=[
@@ -335,8 +348,8 @@ def test_get_ratings_from_scores_dataframe_with_explicit_rating_provider_shortte
     assert_frame_equal(act, exp_st)
 
 
-def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_longterm():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_scores_df_by_inferring_rating_provider_longterm() -> None:
+    """It returns a dataframe with human-readable long-term ratings and NaNs."""
     act = rtg.get_ratings_from_scores(
         rating_scores=conftest.scores_df_wide_with_err_row
     )
@@ -344,8 +357,8 @@ def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_longterm
     assert_frame_equal(act, exp_lt)
 
 
-def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_shortterm():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_scores_df_by_inferring_rating_provider_shortterm() -> None:
+    """It returns a dataframe with human-readable short-term ratings and NaNs."""
     act = rtg.get_ratings_from_scores(
         rating_scores=conftest.scores_df_wide_st_with_err_row, tenor="short-term"
     )
@@ -353,8 +366,8 @@ def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_shortter
     assert_frame_equal(act, exp_st)
 
 
-def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_lt_float():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_scores_df_by_inferring_rating_provider_lt_float() -> None:
+    """It returns a dataframe with human-readable long-ter ratings and NaNs."""
     scores_df_wide_float = conftest.scores_df_wide + 0.23
     scores_df_wide_float = pd.concat(
         [
@@ -373,8 +386,8 @@ def test_get_ratings_from_scores_dataframe_by_inferring_rating_provider_lt_float
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_scores_dataframe_invalid_rating_provider(tenor):
-    """Tests if correct error message will be raised."""
+def test_get_ratings_from_scores_df_invalid_rating_provider(tenor: str) -> None:
+    """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_ratings_from_scores(
             rating_scores=conftest.scores_df_wide, rating_provider="foo", tenor=tenor
@@ -383,8 +396,8 @@ def test_get_ratings_from_scores_dataframe_invalid_rating_provider(tenor):
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_get_ratings_from_invalid_rating_scores_dataframe(tenor):
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_invalid_rating_scores_df(tenor: str) -> None:
+    """It returns a dataframe with NaNs."""
     act = rtg.get_ratings_from_scores(
         rating_scores=conftest.input_invalid_df, tenor=tenor
     )
@@ -394,15 +407,15 @@ def test_get_ratings_from_invalid_rating_scores_dataframe(tenor):
     assert_frame_equal(act, expectations, check_dtype=False)
 
 
-def test_get_ratings_from_warf_dataframe():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_warf_df() -> None:
+    """It returns a dataframe with human-readable long-term ratings and NaNs."""
     act = rtg.get_ratings_from_warf(warf=conftest.warf_df_wide_with_err_row)
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp_lt)
 
 
-def test_get_ratings_from_invalid_warf_dataframe():
-    """Tests if function can correctly handle pd.DataFrame objects."""
+def test_get_ratings_from_invalid_warf_df() -> None:
+    """It returns a dataframe with NaNs."""
     act = rtg.get_ratings_from_warf(warf=conftest.input_invalid_df)
     expectations = conftest.exp_invalid_df
     expectations.columns = ["rtg_Fitch", "rtg_DBRS"]

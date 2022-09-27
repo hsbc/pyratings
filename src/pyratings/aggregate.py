@@ -12,12 +12,13 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains aggregation functions."""
+
 import pandas as pd
 
 
 def get_weighted_average(data: pd.Series, weights: pd.Series) -> float:
-    """
-    Computes weighted average.
+    """Compute weighted average.
 
     Parameters
     ----------
