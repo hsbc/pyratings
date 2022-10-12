@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains functions to consolidate ratings from different rating agencies."""
+
 from typing import List
 
 import pandas as pd
@@ -27,8 +29,7 @@ def get_best_ratings(
     rating_provider_output: str = "S&P",
     tenor: str = "long-term",
 ) -> pd.Series:
-    """Computes the best rating on a security level basis across different rating
-    agencies.
+    """Compute the best rating on a security level basis across rating agencies.
 
     Parameters
     ----------
@@ -49,7 +50,7 @@ def get_best_ratings(
     Returns
     -------
     pd.Series
-        Series of best ratings on a security level basis.
+        Series of the best ratings on a security level basis.
 
     See Also
     --------
@@ -85,7 +86,7 @@ def get_best_ratings(
         ratings, rating_provider=rating_provider_input, tenor=tenor
     )
 
-    # determine lowest ratings score (indicates best rating) and convert to ratings
+    # determine the lowest ratings score (indicates best rating) and convert to ratings
     best_ratings_series = get_ratings_from_scores(
         rating_scores=rating_scores_df.min(axis=1),
         rating_provider=rating_provider_output,
@@ -102,8 +103,7 @@ def get_second_best_ratings(
     rating_provider_output: str = "S&P",
     tenor: str = "long-term",
 ) -> pd.Series:
-    """Computes the second-best rating on a security level basis across different rating
-    agencies.
+    """Compute the second-best rating on a security level basis across rating agencies.
 
     Parameters
     ----------
@@ -168,7 +168,7 @@ def get_second_best_ratings(
     # get column with rank of 2, if available, otherwise get column with rank 1
     scores_ranked_ser = rating_scores_df[scores_ranked_df <= 2].max(axis=1)
 
-    # determine lowest ratings score (indicates best rating) and convert to ratings
+    # determine the lowest ratings score (indicates best rating) and convert to ratings
     second_best_ratings_series = get_ratings_from_scores(
         rating_scores=scores_ranked_ser,
         rating_provider=rating_provider_output,
@@ -185,8 +185,7 @@ def get_worst_ratings(
     rating_provider_output: str = "S&P",
     tenor: str = "long-term",
 ) -> pd.Series:
-    """Computes the worst rating on a security level basis across different rating
-    agencies.
+    """Compute the worst rating on a security level basis across rating agencies.
 
     Parameters
     ----------
@@ -207,7 +206,7 @@ def get_worst_ratings(
     Returns
     -------
     pd.Series
-        Series of worst ratings on a security level basis.
+        Series of the worst ratings on a security level basis.
 
     See Also
     --------
@@ -243,7 +242,8 @@ def get_worst_ratings(
         ratings, rating_provider=rating_provider_input, tenor=tenor
     )
 
-    # determine highest ratings score (indicates worst rating) and convert to ratings
+    # determine the highest ratings score (indicates worst rating) and convert to
+    # ratings
     worst_ratings_series = get_ratings_from_scores(
         rating_scores=rating_scores_df.max(axis=1),
         rating_provider=rating_provider_output,

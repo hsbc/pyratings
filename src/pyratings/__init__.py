@@ -31,6 +31,9 @@ from pyratings.warf import get_warf_buffer
 
 # define public functions
 __all__ = [
+    "_assert_rating_provider",
+    "_extract_rating_provider",
+    "_get_translation_dict",
     "get_best_ratings",
     "get_pure_ratings",
     "get_ratings_from_scores",

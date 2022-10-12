@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains functions to translate ratings / WARF into rating scores."""
+
 import sqlite3
 from typing import List, Optional, Union
 
@@ -31,7 +33,7 @@ def get_scores_from_ratings(
     rating_provider: Optional[Union[str, List[str]]] = None,
     tenor: str = "long-term",
 ) -> Union[int, pd.Series, pd.DataFrame]:
-    """Converts regular ratings into numerical rating scores.
+    """Convert regular ratings into numerical rating scores.
 
     Parameters
     ----------
@@ -272,7 +274,7 @@ def get_scores_from_ratings(
 def get_scores_from_warf(
     warf: Union[int, float, pd.Series, pd.DataFrame]
 ) -> Union[int, float, pd.Series, pd.DataFrame]:
-    """Converts WARFs into numerical rating scores.
+    """Convert WARFs into numerical rating scores.
 
     Parameters
     ----------
@@ -337,7 +339,9 @@ def get_scores_from_warf(
 
     """
 
-    def _get_scores_from_warf_db(wrf) -> Union[int, float]:
+    def _get_scores_from_warf_db(
+        wrf: Union[int, float, pd.Series, pd.DataFrame]
+    ) -> Union[int, float]:
         if not isinstance(wrf, (int, float, np.number) or np.isnan(wrf)) or not (
             1 <= wrf <= 10_000
         ):

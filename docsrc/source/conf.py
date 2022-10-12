@@ -1,8 +1,10 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""Configuration file for the Sphinx documentation builder.
+
+This file only contains a selection of the most common options. For a full
+list see the documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+"""
 
 # -- Path setup --------------------------------------------------------------
 
@@ -21,7 +23,9 @@ sys.path.insert(0, os.path.abspath("../../src/pyratings"))
 # -- Project information -----------------------------------------------------
 
 project = "pyratings"
-copyright = f"{date.today().year}, HSBC Global Asset Management (Deutschland) GmbH"
+copyright = (  # noqa
+    f"{date.today().year}, HSBC Global Asset Management (Deutschland) GmbH"
+)
 author = "HSBC Global Asset Management (Deutschland) GmbH"
 
 # The full version, including alpha/beta/rc tags

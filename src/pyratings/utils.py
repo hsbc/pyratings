@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains some utility functions."""
+
 import importlib.resources as pkg_resources
 import sqlite3
 from typing import Dict, Hashable, List, Union
@@ -22,28 +24,30 @@ RATINGS_DB = pkg_resources.files(resources).joinpath("Ratings.db")
 VALUE_ERROR_PROVIDER_MANDATORY = "'rating_provider' must not be None."
 
 
-def _assert_rating_provider(rating_provider, tenor: str) -> None:
-    """Asserts that valid rating provider has been submitted."""
+def _assert_rating_provider(rating_provider: Union[str, List[str]], tenor: str) -> None:
+    """Assert that valid rating provider has been submitted."""
     if isinstance(rating_provider, str):
         rating_provider = [rating_provider]
     if tenor == "long-term":
         rtg_agencies = ("Moody", "SP", "Fitch", "Bloomberg", "DBRS", "ICE")
-        assert set(rating_provider).issubset(rtg_agencies), (
-            "rating_provider must be in "
-            "['Moody', 'SP', 'Fitch', 'Bloomberg', 'DBRS', 'ICE']."
-        )
+        if not set(rating_provider).issubset(rtg_agencies):
+            raise ValueError(
+                "rating_provider must be in "
+                "['Moody', 'SP', 'Fitch', 'Bloomberg', 'DBRS', 'ICE']."
+            )
     elif tenor == "short-term":
         rtg_agencies = ("Moody", "SP", "Fitch", "DBRS")
-        assert set(rating_provider).issubset(
-            rtg_agencies
-        ), "rating_provider must be in ['Moody', 'SP', 'Fitch', 'DBRS']."
+        if not set(rating_provider).issubset(rtg_agencies):
+            raise AssertionError(
+                "rating_provider must be in ['Moody', 'SP', 'Fitch', 'DBRS']."
+            )
 
 
 def _extract_rating_provider(
     rating_provider: Union[str, List[str], Hashable],
     tenor: str,
 ) -> Union[str, List[str]]:
-    """Extracts valid rating providers from a given list.
+    """Extract valid rating providers from a given list.
 
     It is meant to extract rating providers from the column headings of a
     ``pd.DataFrame``. For example, let's assume some rating column headers are
@@ -116,8 +120,7 @@ def _extract_rating_provider(
 def _get_translation_dict(
     translation_table: str, rating_provider: str = None, tenor: str = "long-term"
 ) -> Dict:
-    """Loads translation dictionaries from SQLite database."""
-
+    """Load translation dictionaries from SQLite database."""
     if rating_provider == "SP":
         rating_provider = "S&P"
     if rating_provider == "Moody":
