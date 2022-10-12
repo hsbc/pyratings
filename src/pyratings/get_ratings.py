@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains functions to translate rating scores / WARF into ratings."""
+
 from typing import List, Optional, Union
 
 import numpy as np
@@ -30,7 +32,7 @@ def get_ratings_from_scores(
     rating_provider: Optional[Union[str, List[str]]] = None,
     tenor: str = "long-term",
 ) -> Union[str, pd.Series, pd.DataFrame]:
-    """Converts numerical rating scores into regular ratings.
+    """Convert numerical rating scores into regular ratings.
 
     Parameters
     ----------
@@ -169,11 +171,6 @@ def get_ratings_from_scores(
                 rating_provider=rating_provider, tenor=tenor
             )
 
-        if rating_provider in ["Bloomberg", "ICE"]:
-            assert (
-                tenor == "long-term"
-            ), f"{rating_provider} does not provide short-term ratings"
-
         rtg_dict = _get_translation_dict("scores_to_rtg", rating_provider, tenor=tenor)
 
         # round element to full integer, if element is number
@@ -213,7 +210,7 @@ def get_ratings_from_warf(
     warf: Union[int, float, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
 ) -> Union[str, pd.Series, pd.DataFrame]:
-    """Converts WARFs into regular ratings.
+    """Convert WARFs into regular ratings.
 
     Parameters
     ----------

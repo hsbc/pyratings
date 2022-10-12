@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+"""Module contains functions to translate ratings / rating scores into WARF."""
+
 from typing import List, Optional, Union
 
 import numpy as np
@@ -24,7 +26,7 @@ from pyratings.utils import _extract_rating_provider, _get_translation_dict
 def get_warf_from_scores(
     rating_scores: Union[int, float, pd.Series, pd.DataFrame],
 ) -> Union[int, pd.Series, pd.DataFrame]:
-    """Converts numerical rating scores to numerical WARFs.
+    """Convert numerical rating scores to numerical WARFs.
 
     Parameters
     ----------
@@ -95,7 +97,7 @@ def get_warf_from_ratings(
     ratings: Union[str, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
 ) -> Union[int, pd.Series, pd.DataFrame]:
-    """Converts regular ratings to numerical WARFs.
+    """Convert regular ratings to numerical WARFs.
 
     Parameters
     ----------
@@ -212,7 +214,7 @@ def get_warf_from_ratings(
             ratings=ratings, rating_provider=rating_provider, tenor="long-term"
         )
         try:  # only successful if `rating_scores` is ``pd.DataFrame``
-            rating_scores.columns = rating_scores.columns.str.lstrip("rtg_score_")
+            rating_scores.columns = rating_scores.columns.str.removeprefix("rtg_score_")
         except AttributeError:
             pass
         return get_warf_from_scores(rating_scores=rating_scores)

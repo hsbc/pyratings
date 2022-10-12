@@ -1,18 +1,19 @@
-"""
-Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+# Copyright 2022 HSBC Global Asset Management (Deutschland) GmbH
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#        https://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+"""Module contains unit tests for consolidation of ratings."""
 
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-"""
 import numpy as np
 import pandas as pd
 import pytest
@@ -22,7 +23,8 @@ from tests import conftest
 
 
 @pytest.fixture(scope="session")
-def rtg_inputs_longterm():
+def rtg_inputs_longterm() -> pd.DataFrame:
+    """Return a dataframe with long-term ratings from the main rating agencies."""
     return pd.DataFrame(
         data={
             "rtg_sp": ["AAA", "AA-", "AA+", "BB-", "C", np.nan, "BBB+", "AA"],
@@ -33,7 +35,8 @@ def rtg_inputs_longterm():
 
 
 @pytest.fixture(scope="session")
-def rtg_inputs_shortterm():
+def rtg_inputs_shortterm() -> pd.DataFrame:
+    """Return a dataframe with short-term ratings from the main rating agencies."""
     return pd.DataFrame(
         data={
             "rtg_sp": ["A-1", "A-3", "A-1+", "D", "B", np.nan, "A-2", "A-3"],
@@ -43,8 +46,10 @@ def rtg_inputs_shortterm():
     )
 
 
-def test_get_best_rating_longterm_with_explicit_rating_provider(rtg_inputs_longterm):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+def test_get_best_rating_longterm_with_explicit_rating_provider(
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the best long-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_best_ratings(
         rtg_inputs_longterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -58,8 +63,10 @@ def test_get_best_rating_longterm_with_explicit_rating_provider(rtg_inputs_longt
     pd.testing.assert_series_equal(actual, expectations)
 
 
-def test_get_best_rating_longterm_with_inferring_rating_provider(rtg_inputs_longterm):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+def test_get_best_rating_longterm_with_inferring_rating_provider(
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the best long-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_best_ratings(rtg_inputs_longterm, tenor="long-term")
 
     expectations = pd.Series(
@@ -69,8 +76,10 @@ def test_get_best_rating_longterm_with_inferring_rating_provider(rtg_inputs_long
     pd.testing.assert_series_equal(actual, expectations)
 
 
-def test_get_best_rating_shortterm_with_explicit_rating_provider(rtg_inputs_shortterm):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+def test_get_best_rating_shortterm_with_explicit_rating_provider(
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the best short-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_best_ratings(
         rtg_inputs_shortterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -84,8 +93,10 @@ def test_get_best_rating_shortterm_with_explicit_rating_provider(rtg_inputs_shor
     pd.testing.assert_series_equal(actual, expectations)
 
 
-def test_get_best_rating_shortterm_with_inferring_rating_provider(rtg_inputs_shortterm):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+def test_get_best_rating_shortterm_with_inferring_rating_provider(
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the best short-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_best_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
@@ -96,9 +107,9 @@ def test_get_best_rating_shortterm_with_inferring_rating_provider(rtg_inputs_sho
 
 
 def test_get_second_best_rating_longterm_with_explicit_rating_provider(
-    rtg_inputs_longterm,
-):
-    """Test computation of second-best ratings on a security (line-by-line) basis."""
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the second-best lt ratings on a security (line-by-line) basis."""
     actual = rtg.get_second_best_ratings(
         rtg_inputs_longterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -114,9 +125,9 @@ def test_get_second_best_rating_longterm_with_explicit_rating_provider(
 
 
 def test_get_second_best_rating_longterm_with_inferring_rating_provider(
-    rtg_inputs_longterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the second-best lt ratings on a security (line-by-line) basis."""
     actual = rtg.get_second_best_ratings(rtg_inputs_longterm, tenor="long-term")
 
     expectations = pd.Series(
@@ -128,9 +139,9 @@ def test_get_second_best_rating_longterm_with_inferring_rating_provider(
 
 
 def test_get_second_best_rating_shortterm_with_explicit_rating_provider(
-    rtg_inputs_shortterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the second-best st ratings on a security (line-by-line) basis."""
     actual = rtg.get_second_best_ratings(
         rtg_inputs_shortterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -146,9 +157,9 @@ def test_get_second_best_rating_shortterm_with_explicit_rating_provider(
 
 
 def test_get_second_best_rating_shortterm_with_inferring_rating_provider(
-    rtg_inputs_shortterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the second-best st ratings on a security (line-by-line) basis."""
     actual = rtg.get_second_best_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
@@ -160,9 +171,9 @@ def test_get_second_best_rating_shortterm_with_inferring_rating_provider(
 
 
 def test_get_worst_rating_longterm_with_explicit_rating_provider(
-    rtg_inputs_longterm,
-):
-    """Test computation of second-best ratings on a security (line-by-line) basis."""
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the worst long-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_worst_ratings(
         rtg_inputs_longterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -177,9 +188,9 @@ def test_get_worst_rating_longterm_with_explicit_rating_provider(
 
 
 def test_get_worst_rating_longterm_with_inferring_rating_provider(
-    rtg_inputs_longterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_longterm: pd.DataFrame,
+) -> None:
+    """It returns the worst long-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_worst_ratings(rtg_inputs_longterm, tenor="long-term")
 
     expectations = pd.Series(
@@ -190,9 +201,9 @@ def test_get_worst_rating_longterm_with_inferring_rating_provider(
 
 
 def test_get_worst_rating_shortterm_with_explicit_rating_provider(
-    rtg_inputs_shortterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the worst short-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_worst_ratings(
         rtg_inputs_shortterm,
         rating_provider_input=["SP", "Moody", "Fitch"],
@@ -207,9 +218,9 @@ def test_get_worst_rating_shortterm_with_explicit_rating_provider(
 
 
 def test_get_worst_rating_shortterm_with_inferring_rating_provider(
-    rtg_inputs_shortterm,
-):
-    """Test computation of best ratings on a security (line-by-line) basis."""
+    rtg_inputs_shortterm: pd.DataFrame,
+) -> None:
+    """It returns the worst short-term ratings on a security (line-by-line) basis."""
     actual = rtg.get_worst_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
@@ -219,8 +230,8 @@ def test_get_worst_rating_shortterm_with_inferring_rating_provider(
     pd.testing.assert_series_equal(actual, expectations)
 
 
-def test_get_worst_rating_longterm_invalid_provider():
-    """Test if the correct error message will be raised."""
+def test_get_worst_rating_longterm_invalid_provider() -> None:
+    """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_worst_ratings(
             pd.DataFrame(
@@ -236,8 +247,8 @@ def test_get_worst_rating_longterm_invalid_provider():
     assert str(err.value) == conftest.ERR_MSG
 
 
-def test_get_worst_rating_shortterm_invalid_provider():
-    """Test if the correct error message will be raised."""
+def test_get_worst_rating_shortterm_invalid_provider() -> None:
+    """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_worst_ratings(
             pd.DataFrame(
