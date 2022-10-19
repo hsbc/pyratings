@@ -3,8 +3,37 @@ import nox
 from nox.sessions import Session
 
 nox.options.sessions = [
+    "pre-commit",
     "tests",
 ]
+
+
+@nox.session(name="pre-commit", python="3.10")
+def precommit(session: Session) -> None:
+    """Lint using pre-commit."""
+    args = session.posargs or [
+        "run",
+        "--all-files",
+        "--hook-stage=manual",
+    ]
+    session.install(
+        "isort",
+        "black",
+        "autoflake",
+        "flake8",
+        "flake8-annotations",
+        "flake8-bandit",
+        "flake8-black",
+        "flake8-bugbear",
+        "flake8-builtins",
+        "flake8-comprehensions",
+        "flake8-docstrings",
+        "flake8-eradicate",
+        "pep8-naming",
+        "pre-commit",
+        "pre-commit-hooks",
+    )
+    session.run("pre-commit", *args)
 
 
 @nox.session(python=["3.9", "3.10"])
