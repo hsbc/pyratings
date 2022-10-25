@@ -12,7 +12,37 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-"""Module contains functions to translate ratings / rating scores into WARF."""
+"""Module contains functions to translate ratings / rating scores into WARF(s).
+
+All functions use the following table in order to translate between long-term
+ratings/numerical scores and WARF.
+
+| Moody’s |  S&P | Fitch |  ICE | DBRS | Bloomberg | Score |  WARF |
+|:-------:|:----:|:-----:|:----:|:----:|:---------:|------:|------:|
+|   Aaa   |  AAA |  AAA  |  AAA |  AAA |    AAA    |     1 |     1 |
+|   Aa1   |  AA+ |  AA+  |  AA+ |  AAH |    AA+    |     2 |    10 |
+|   Aa2   |  AA  |   AA  |  AA  |  AA  |     AA    |     3 |    20 |
+|   Aa3   |  AA- |  AA-  |  AA- |  AAL |    AA-    |     4 |    40 |
+|    A1   |  A+  |   A+  |  A+  |  AH  |     A+    |     5 |    70 |
+|    A2   |   A  |   A   |   A  |   A  |     A     |     6 |   120 |
+|    A3   |  A-  |   A-  |  A-  |  AL  |     A-    |     7 |   180 |
+|   Baa1  | BBB+ |  BBB+ | BBB+ | BBBH |    BBB+   |     8 |   260 |
+|   Baa2  |  BBB |  BBB  |  BBB |  BBB |    BBB    |     9 |   360 |
+|   Baa3  | BBB- |  BBB- | BBB- | BBBL |    BBB-   |    10 |   610 |
+|   Ba1   |  BB+ |  BB+  |  BB+ |  BBH |    BB+    |    11 |   940 |
+|   Ba2   |  BB  |   BB  |  BB  |  BB  |     BB    |    12 |  1350 |
+|   Ba3   |  BB- |  BB-  |  BB- |  BBL |    BB-    |    13 |  1766 |
+|    B1   |  B+  |   B+  |  B+  |  BH  |     B+    |    14 |  2220 |
+|    B2   |   B  |   B   |   B  |   B  |     B     |    15 |  2720 |
+|    B3   |  B-  |   B-  |  B-  |  BL  |     B-    |    16 |  3490 |
+|   Caa1  | CCC+ |  CCC+ | CCC+ | CCCH |    CCC+   |    17 |  4770 |
+|   Caa2  |  CCC |  CCC  |  CCC |  CCC |    CCC    |    18 |  6500 |
+|   Caa3  | CCC- |  CCC- | CCC- | CCCL |    CCC-   |    19 |  8070 |
+|    Ca   |  CC  |   CC  |  CC  |  CC  |     CC    |    20 |  9998 |
+|    C    |   C  |   C   |   C  |   C  |     C     |    21 |  9999 |
+|    D    |   D  |   D   |   D  |   D  |    DDD    |    22 | 10000 |
+
+"""
 
 from typing import List, Optional, Union
 
@@ -26,29 +56,17 @@ from pyratings.utils import _extract_rating_provider, _get_translation_dict
 def get_warf_from_scores(
     rating_scores: Union[int, float, pd.Series, pd.DataFrame],
 ) -> Union[int, pd.Series, pd.DataFrame]:
-    """Convert numerical rating scores to numerical WARFs.
+    """Convert numerical rating score(s) to numerical WARF(s).
 
     Parameters
     ----------
     rating_scores
-        Numerical rating scores.
+        Numerical rating score(s).
 
     Returns
     -------
     Union[int, pd.Series, pd.DataFrame
-        Numerical WARFs.
-
-    See Also
-    --------
-    get_scores_from_ratings
-    get_scores_from_warf
-    get_ratings_from_scores
-    get_ratings_from_warf
-    get_warf_from_ratings
-
-    Notes
-    -----
-    Compare notes in :py:func:`get_scores_from_ratings` for translation tables.
+        Numerical WARF(s).
 
     Examples
     --------
@@ -97,37 +115,23 @@ def get_warf_from_ratings(
     ratings: Union[str, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
 ) -> Union[int, pd.Series, pd.DataFrame]:
-    """Convert regular ratings to numerical WARFs.
+    """Convert regular rating(s) to numerical WARF(s).
 
     Parameters
     ----------
     ratings
-        Regular ratings to be translated into WARFs.
+        Regular rating(s) to be translated into WARF(s).
     rating_provider
-        Should contain any valid rating provider out of
-        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        Should contain any valid rating provider out of {"Fitch", "Moody's", "S&P",
+        "Bloomberg", "DBRS", "ICE"}.
 
         If None, `rating_provider` will be inferred from the series name or dataframe
-        columns.
+        column names.
 
     Returns
     -------
     Union[int, pd.Series, pd.DataFrame]
         Numerical WARF.
-
-    See Also
-    --------
-    get_scores_from_ratings
-    get_scores_from_warf
-    get_ratings_from_scores
-    get_ratings_from_warf
-    get_warf_from_scores
-
-    Notes
-    -----
-    Internally, `ratings` will be converted into rating scores.
-
-    Compare notes in :py:func:`get_scores_from_ratings` for translation tables.
 
     Examples
     --------

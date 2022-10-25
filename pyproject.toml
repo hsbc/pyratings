@@ -1,8 +1,8 @@
 [project]
 name = "pyratings"
 version = "0.5.4"
-description = "Collection of functions in order to translate ratings from various rating agencies into equivalent rating scores and vice versa."
-readme = "README.rst"
+description = "Working with credit ratings, professionally and efficiently"
+readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 authors = [{name = "HSBC", email = "opensource@hsbc.com"}]
@@ -42,13 +42,9 @@ dev = [
     "pep8-naming >= 0.13.2",
 ]
 docs = [
-    "jupyter >= 1.0.0",
-    "nbsphinx >= 0.8.9",
-    "numpydoc >= 1.4.0",
-    "openpyxl >= 3.0.10",
-    "pandoc >= 2.2",
-    "sphinx >= 5.0.2",
-    "sphinx-rtd-theme >= 1.0.0",
+    "mkdocstrings[python] >=0.19.0",
+    "mkdocs-jupyter >=0.22.0",
+    "mkdocs-material >=8.5.1"
 ]
 tests = [
     "coverage[toml] >= 6.4.4",
@@ -62,7 +58,7 @@ Homepage = "https://github.com/hsbc/pyratings"
 Repository = "https://github.com/hsbc/pyratings"
 BugTracker = "https://github.com/hsbc/pyratings/issues"
 Documentation = "https://hsbc.github.io/pyratings/"
-Changelog = "https://github.com/hsbc/pyratings/blob/main/CHANGELOG.rst"
+Changelog = "https://github.com/hsbc/pyratings/blob/main/CHANGELOG.md"
 
 [tool.black]
 target-version = ["py38", "py39", "py310"]

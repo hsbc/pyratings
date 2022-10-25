@@ -25,7 +25,7 @@ def get_weighted_average(data: pd.Series, weights: pd.Series) -> float:
     data
         Contains numerical values.
     weights
-        Contains weights (between 0 and 1) with respect to data.
+        Contains weights (between 0 and 1) with respect to `data`.
 
     Returns
     -------

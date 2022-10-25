@@ -36,26 +36,22 @@ def get_best_ratings(
     ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
-        Indicates rating providers within dataframe. Should contain any valid rating
+        Indicates rating providers within `ratings`. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
-        If None, `rating_provider` will be inferred from the dataframe columns.
+        If None, `rating_provider_input` will be inferred from the dataframe column
+        names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
     tenor
-        Indicates wheter long- or short-term ratings will be used.
+        Should contain any valid tenor out of {"long-term", "short-term"}
 
     Returns
     -------
     pd.Series
-        Series of the best ratings on a security level basis.
-
-    See Also
-    --------
-    get_second_best_ratings
-    get_worst_ratings
+        Best ratings on a security level basis.
 
     Examples
     --------
@@ -110,26 +106,22 @@ def get_second_best_ratings(
     ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
-        Indicates rating providers within dataframe. Should contain any valid rating
+        Indicates rating providers within `ratings`. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
-        If None, `rating_provider` will be inferred from the dataframe columns.
+        If None, `rating_provider_input` will be inferred from the dataframe column
+        names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
     tenor
-        Indicates wheter long- or short-term ratings will be used.
+        Should contain any valid tenor out of {"long-term", "short-term"}
 
     Returns
     -------
     pd.Series
-        Series of second-best ratings on a security level basis.
-
-    See Also
-    --------
-    get_best_ratings
-    get_worst_ratings
+        Second-best ratings on a security level basis.
 
     Examples
     --------
@@ -192,26 +184,22 @@ def get_worst_ratings(
     ratings
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
-        Indicates rating providers within dataframe. Should contain any valid rating
+        Indicates rating providers within `ratings`. Should contain any valid rating
         provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
 
-        If None, `rating_provider` will be inferred from the dataframe columns.
+        If None, `rating_provider_innput` will be inferred from the dataframe column
+        names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
     tenor
-        Indicates wheter long- or short-term ratings will be used.
+        Should contain any valid tenor out of {"long-term", "short-term"}
 
     Returns
     -------
     pd.Series
-        Series of the worst ratings on a security level basis.
-
-    See Also
-    --------
-    get_best_ratings
-    get_second_best_ratings
+        Worst ratings on a security level basis.
 
     Examples
     --------
