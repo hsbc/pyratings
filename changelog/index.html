@@ -1,0 +1,1215 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="pyratings - Working with credit ratings, professionally and efficiently">
+      
+      
+        <meta name="author" content="HSBC">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Changelog - pyratings</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pyratings" class="md-header__button md-logo" aria-label="pyratings" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyratings
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hsbc/pyratings" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pyratings" class="md-nav__button md-logo" aria-label="pyratings" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    pyratings
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hsbc/pyratings" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v054-2022-07-07" class="md-nav__link">
+    [v0.5.4] - 2022-07-07
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.4] - 2022-07-07">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v053-2022-04-05" class="md-nav__link">
+    [v0.5.3] - 2022-04-05
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.3] - 2022-04-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v052-2022-01-24" class="md-nav__link">
+    [v0.5.2] - 2022-01-24
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.2] - 2022-01-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v051-2022-01-06" class="md-nav__link">
+    [v0.5.1] - 2022-01-06
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.1] - 2022-01-06">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v050-2022-01-03" class="md-nav__link">
+    [v0.5.0] - 2022-01-03
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.0] - 2022-01-03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v042-2021-11-19" class="md-nav__link">
+    [v0.4.2] - 2021-11-19
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v041-2021-11-16" class="md-nav__link">
+    [v0.4.1] - 2021-11-16
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.4.1] - 2021-11-16">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v040-2021-03-26" class="md-nav__link">
+    [v0.4.0] - 2021-03-26
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.4.0] - 2021-03-26">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_1" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v030-2021-02-22" class="md-nav__link">
+    [v.0.3.0] - 2021-02-22
+  </a>
+  
+    <nav class="md-nav" aria-label="[v.0.3.0] - 2021-02-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_7" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v020-2020-12-18" class="md-nav__link">
+    [v.0.2.0] - 2020-12-18
+  </a>
+  
+    <nav class="md-nav" aria-label="[v.0.2.0] - 2020-12-18">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_8" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v010-2020-12-09" class="md-nav__link">
+    [v0.1.0] - 2020-12-09
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.1.0] - 2020-12-09">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v054-2022-07-07" class="md-nav__link">
+    [v0.5.4] - 2022-07-07
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.4] - 2022-07-07">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v053-2022-04-05" class="md-nav__link">
+    [v0.5.3] - 2022-04-05
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.3] - 2022-04-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v052-2022-01-24" class="md-nav__link">
+    [v0.5.2] - 2022-01-24
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.2] - 2022-01-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v051-2022-01-06" class="md-nav__link">
+    [v0.5.1] - 2022-01-06
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.1] - 2022-01-06">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v050-2022-01-03" class="md-nav__link">
+    [v0.5.0] - 2022-01-03
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.5.0] - 2022-01-03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v042-2021-11-19" class="md-nav__link">
+    [v0.4.2] - 2021-11-19
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v041-2021-11-16" class="md-nav__link">
+    [v0.4.1] - 2021-11-16
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.4.1] - 2021-11-16">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v040-2021-03-26" class="md-nav__link">
+    [v0.4.0] - 2021-03-26
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.4.0] - 2021-03-26">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_1" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v030-2021-02-22" class="md-nav__link">
+    [v.0.3.0] - 2021-02-22
+  </a>
+  
+    <nav class="md-nav" aria-label="[v.0.3.0] - 2021-02-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_7" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v020-2020-12-18" class="md-nav__link">
+    [v.0.2.0] - 2020-12-18
+  </a>
+  
+    <nav class="md-nav" aria-label="[v.0.2.0] - 2020-12-18">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_8" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v010-2020-12-09" class="md-nav__link">
+    [v0.1.0] - 2020-12-09
+  </a>
+  
+    <nav class="md-nav" aria-label="[v0.1.0] - 2020-12-09">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/hsbc/pyratings/edit/master/docs/changelog.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="changelog">Changelog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="unreleased">Unreleased</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Documentation has been updated and will now be created via
+  <a href="https://www.mkdocs.org/">mkdocs</a> and 
+  <a href="https://mkdocstrings.github.io/python/">mkdocstrings</a>.</li>
+<li>Some changes under the hood, such as:<ul>
+<li>Using <a href="https://nox.thea.codes/">nox</a> to test the code base against multiple 
+  Python versions.</li>
+<li>Make code base <a href="https://flake8.pycqa.org/">flake8</a> compliant.</li>
+<li>Use <a href="https://pre-commit.com/">pre-commit</a> to ensure good quality before 
+  commiting/sending PRs.</li>
+<li>Splitting the code base into multiple files in order to increase maintainability.</li>
+</ul>
+</li>
+</ul>
+<h2 id="v054-2022-07-07">[v0.5.4] - 2022-07-07</h2>
+<h3 id="changed_1">Changed</h3>
+<ul>
+<li>Moved from <code>setup.py</code> to <code>pyproject.toml</code> configuration file.</li>
+</ul>
+<h2 id="v053-2022-04-05">[v0.5.3] - 2022-04-05</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>Complete documentation now available on public GitHub Pages at 
+  https://hsbc.github.io/pyratings/.</li>
+</ul>
+<h2 id="v052-2022-01-24">[v0.5.2] - 2022-01-24</h2>
+<h3 id="changed_2">Changed</h3>
+<ul>
+<li>Moved sphinx configuration to <code>docsrc</code> folder.</li>
+<li>Documentation data for GitHub pages can be found under <code>docs</code>.</li>
+</ul>
+<h2 id="v051-2022-01-06">[v0.5.1] - 2022-01-06</h2>
+<h3 id="security">Security</h3>
+<ul>
+<li>Removed links to internal network drives in <code>tox.ini</code>.</li>
+<li>Removed links to GitHub issues in this <code>CHANGELOG.md</code> as they link to internal 
+  GitHub repo.</li>
+</ul>
+<h2 id="v050-2022-01-03">[v0.5.0] - 2022-01-03</h2>
+<p>This release introduces a number of <strong>BREAKING CHANGES!</strong><br />
+Supported versions:</p>
+<ul>
+<li>Python 3.9</li>
+<li>Python 3.10</li>
+</ul>
+<h3 id="added_1">Added</h3>
+<p>Some new functions have been introduced:</p>
+<ul>
+<li><code>pyratings.get_scores_from_ratings</code></li>
+<li><code>pyratings.get_scores_from_warf</code></li>
+<li><code>pyratings.get_ratings_from_scores</code></li>
+<li><code>pyratings.get_ratings_from_warf</code></li>
+<li><code>pyratings.get_warf_from_scores</code></li>
+<li><code>pyratings.get_warf_from_ratings</code></li>
+</ul>
+<h3 id="changed_3">Changed</h3>
+<ul>
+<li>Internal resource handling now utilizes <code>importlib.resources</code>, which makes 
+  Python &gt;=3.9 <strong>mandatory</strong>.</li>
+<li>Some function signatures have been changed, which will probably <strong>break existing 
+  code</strong>!<ul>
+<li><code>pyratings.get_pure_ratings</code><br />
+<strong>Old</strong>: <code>get_pure_ratings(ratings: Union[pd.Series, List[pd.Series], pd.DataFrame]) -&gt; Union[pd.Series, List[pd.Series], pd.DataFrame]</code><br />
+<strong>New</strong>: <code>get_pure_ratings(ratings: Union[str, pd.Series, pd.DataFrame]) -&gt; Union[str, pd.Series, pd.DataFrame]</code></li>
+<li><code>pyratings.get_best_ratings</code><br />
+<strong>Old</strong>: <code>get_best_ratings(ratings: Dict[str, pd.Series], tenor: Optional[str] = "long-term") -&gt; pd.Series</code><br />
+<strong>New</strong>: <code>get_best_ratings(ratings: pd.DataFrame, rating_provider_input: List[str] = None, rating_provider_output: str = "S&amp;P", tenor: str = "long-term") -&gt; pd.Series</code></li>
+<li><code>pyratings.get_second_best_ratings</code><br />
+<strong>Old</strong>: <code>get_second_best_ratings(ratings: Dict[str, pd.Series], tenor: Optional[str] = "long-term") -&gt; pd.Series</code><br />
+<strong>New</strong>: <code>get_second_best_ratings(ratings: pd.DataFrame, rating_provider_input: List[str] = None, rating_provider_output: str = "S&amp;P", tenor: str = "long-term") -&gt; pd.Series</code></li>
+<li><code>pyratings.get_worst_ratings</code><br />
+<strong>Old</strong>: <code>get_worst_ratings(ratings: Dict[str, pd.Series], tenor: Optional[str] = "long-term") -&gt; pd.Series</code><br />
+<strong>New</strong>: <code>get_worst_ratings(ratings: pd.DataFrame, rating_provider_input: List[str] = None, rating_provider_output: str = "S&amp;P", tenor: str = "long-term") -&gt; pd.Series</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<p>Some functions have been removed/replaced:</p>
+<ul>
+<li><code>get_rating()</code> -&gt; Use <code>pyratings.get_ratings_from_scores</code> or 
+  <code>pyratings.get_ratings_from_warf</code> instead.</li>
+<li><code>to_ratings_from_scores()</code> -&gt; Use <code>pyratings.get_ratings_from_scores</code> instead.</li>
+<li><code>to_scores_from_ratings()</code> -&gt; Use <code>pyratings.get_scores_from_ratings</code> instead.</li>
+<li><code>to_score_from_warf()</code> -&gt; Use <code>pyratings.get_scores_from_warf</code> instead.</li>
+<li><code>to_warf_from_ratings()</code> -&gt; Use <code>pyratings.get_warf_from_ratings</code> instead.</li>
+</ul>
+<h3 id="v042-2021-11-19">[v0.4.2] - 2021-11-19</h3>
+<h2 id="changed_4">Changed</h2>
+<ul>
+<li>Deleted unused code.</li>
+<li>Added unit tests in order to arrive at 100% code coverage</li>
+</ul>
+<h2 id="v041-2021-11-16">[v0.4.1] - 2021-11-16</h2>
+<h3 id="changed_5">Changed</h3>
+<ul>
+<li>Function signature of <code>pyratings.get_pure_ratings</code>.</li>
+<li>Updated source code location in <code>README.rst</code> and <code>tox.ini</code>.</li>
+</ul>
+<h2 id="v040-2021-03-26">[v0.4.0] - 2021-03-26</h2>
+<h3 id="added_2">Added</h3>
+<ul>
+<li>Computation of <code>best</code>, <code>worst</code>, and <code>second_best</code> ratings on a security basis. <ul>
+<li><code>pyratings.get_best_ratings</code></li>
+<li><code>pyratings.get_second_best_ratings</code></li>
+<li><code>pyratings.get_worst_ratings</code></li>
+</ul>
+</li>
+<li>Computation of WARF buffer, i.e. distance from current WARF to next maxWARF. <ul>
+<li><code>pyratings.get_warf_buffer</code></li>
+</ul>
+</li>
+<li>Improved docstrings.</li>
+<li><code>doctest</code> integration into <code>pytest</code>.</li>
+<li>Documentation<ul>
+<li>Overview</li>
+<li>Getting started</li>
+<li>API Reference</li>
+</ul>
+</li>
+</ul>
+<h3 id="changed_6">Changed</h3>
+<ul>
+<li>Some functions such as <code>to_scores_from_ratings</code> and <code>get_pure_ratings</code> got 
+  their signatures changed.<br />
+  They now accept a <code>Dict[str, pd.Series]</code>, where the dictionary keys represent 
+  the rating provider and the dictionary values represent the respective ratings. 
+  This will allow to transform multiple columns of a <code>pd.DataFrame</code> in one step.</li>
+<li>"S&amp;P" and "Moody's" are no valid rating provider anymore. The new acronyms are 
+  "SP" and "Moody".</li>
+<li><code>pyratings.get_pure_ratings</code> output column names now have the suffix "_clean".</li>
+<li><code>to_ratings_from_scores</code> became an internal function.</li>
+<li><code>get_rating</code> is now the go-to function when it comes to translating a single 
+  rating score or numerical WARF into a rating. It replaces 
+  <code>to_ratings_from_avg_warf</code> and <code>get_avg_rating</code>.</li>
+<li><code>get_avg_rating_score</code> and <code>get_avg_warf</code> shared the exact same code. These 
+  functions have been merged into <code>get_weighted_average</code>.</li>
+<li>Internal code optimizations.</li>
+</ul>
+<h3 id="removed_1">Removed</h3>
+<ul>
+<li><code>get_avg_rating</code></li>
+<li><code>get_avg_rating_score</code></li>
+<li><code>get_avg_warf</code></li>
+<li><code>to_ratings_from_avg_warf</code></li>
+<li><code>to_ratings_from_warf</code></li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><code>get_weighted_average</code> (previously <code>get_avg_rating_score</code> and <code>get_avg_warf</code>)
+  now handle missing rating scores/WARF differently. Previously, they have been 
+  ignored. However, this led to a too positive average rating/WARF.
+  Now, only securities with a rating score/WARF available will contribute to the 
+  average computation. To put it differently, the average score/WARF is solely based 
+  on rated securities.</li>
+</ul>
+<h2 id="v030-2021-02-22">[v.0.3.0] - 2021-02-22</h2>
+<h3 id="added_3">Added</h3>
+<ul>
+<li>Computation of average rating.</li>
+<li>Computation of average WARF.</li>
+<li>Translation from traditional ratings to WARF and vice versa.</li>
+<li><code>tox</code> unit tests.</li>
+</ul>
+<h3 id="changed_7">Changed</h3>
+<ul>
+<li>Adjusted WARF and MaxWARF values for ratings Ca and C to allow for differentiation 
+  of translated values between ratings Ca/C/D.</li>
+<li>Folder layout now adheres to <code>src</code> layout.</li>
+<li>Package resource management now using <code>pkg_resources</code> from Python's standard 
+  library.</li>
+</ul>
+<h2 id="v020-2020-12-18">[v.0.2.0] - 2020-12-18</h2>
+<h3 id="added_4">Added</h3>
+<ul>
+<li>Short-term ratings.</li>
+<li>More rating agencies: DBRS, Bloomberg composite, ICE.</li>
+</ul>
+<h3 id="changed_8">Changed</h3>
+<ul>
+<li>Rating scales are now maintained within a SQLite database. Previously, rating 
+  scales had been hard coded in a traditional Python <code>dict</code>.</li>
+</ul>
+<h3 id="fixed_1">Fixed</h3>
+<ul>
+<li>Cleansing of unsolicited ratings.</li>
+</ul>
+<h2 id="v010-2020-12-09">[v0.1.0] - 2020-12-09</h2>
+<h3 id="added_5">Added</h3>
+<ul>
+<li>Function to clean ratings (delete watches).</li>
+<li>Function to translate S&amp;P/Fitch/Moody's credit ratings into rating scores.</li>
+<li>Function to translate rating scores into S&amp;P/Fitch/Moody's credit ratings.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../api_reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              API Reference
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>
