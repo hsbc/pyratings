@@ -109,3 +109,6 @@ venv.bak/
 # PyCharm
 .idea
 cyberflows/
+
+# mkdocs build output
+site/

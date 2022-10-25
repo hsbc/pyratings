@@ -33,9 +33,8 @@ def get_pure_ratings(
     Returns
     -------
     Union[str, pd.Series, pd.DataFrame]
-        String, Series, or DataFrame with regular ratings stripped off of watches.
-        The name of the resulting Series or the columns of the returning DataFrame will
-        be suffixed with `_clean`.
+        Regular ratings stripped off of watches. The name of the resulting Series or
+        the columns of the returning DataFrame will be suffixed with `_clean`.
 
     Examples
     --------
