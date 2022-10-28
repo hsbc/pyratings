@@ -39,7 +39,7 @@ would also be very happy about:
 This project and everyone participating in it is governed by the
 [pyratings Code of Conduct](../CODE_OF_CONDUCT).
 By participating, you are expected to uphold this code. Please report unacceptable
-behavior to <opensource@hsbc.de>.
+behavior to <opensource@hsbc.com>.
 
 
 ## I Have a Question
@@ -121,7 +121,7 @@ help us fix any potential bug as fast as possible.
 
 > You must never report security related issues, vulnerabilities or bugs including 
 > sensitive information to the issue tracker, or elsewhere in public. Instead, 
-> sensitive bugs must be sent by email to <opensource@hsbc.de>.
+> sensitive bugs must be sent by email to <opensource@hsbc.com>.
 <!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
