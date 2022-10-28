@@ -19,12 +19,16 @@ nav:
   - Overview: index.md
   - Getting started: getting_started.ipynb
   - API Reference: api_reference.md
+  - Contributing: contributing.md
+  - Code of conduct: code_of_conduct.md
   - Changelog: changelog.md
 
 watch:
   - src/pyratings
   - README.md
   - CHANGELOG.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
 
 markdown_extensions:
   - pymdownx.snippets:
