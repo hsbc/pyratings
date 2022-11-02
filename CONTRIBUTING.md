@@ -37,7 +37,7 @@ would also be very happy about:
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[pyratings Code of Conduct](../CODE_OF_CONDUCT).
+[pyratings Code of Conduct](./code_of_conduct.md).
 By participating, you are expected to uphold this code. Please report unacceptable
 behavior to <opensource@hsbc.com>.
 
@@ -197,17 +197,18 @@ If you do so, reference it here in the description. -->
 
 ### Your First Code Contribution
 
+GitHub provides a good [introduction](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on how to contribute to an open source project. In a nutshell, the process involves the following steps:
+1. Fork (i.e. copy) the repository to your own GitHub account.
+2. Clone the fork to your local machine.
+3. Create a new branch to work on.
+4. Commit and push your changes to your own GitHub.
+5. Create the Pull Request.
+
 <!-- omit in toc -->
 #### How do I set up my dev environment?
 
 - _pyratings_ requires Python 3.9 at a minimum.
-- Clone this repository.
-  ```shell
-  git clone https://github.com/hsbc/pyratings.git  # using HTTPS
-  ```
-  ```shell
-  git clone git@github.com:hsbc/pyratings.git  # using SSH
-  ```
+- Clone the fork to your local machine.
 - Create a virtual environment.
   ```shell
   python -m venv .venv
@@ -317,9 +318,15 @@ nox > * tests-3.11: success
 
 ### Improving The Documentation
 
-The documentation is automatically generated from the content of the
-[docs directory](./docs) and from the docstrings of the public signatures of the
-source code.
+The documentation is completely written in _Markdown_. Utilizing the
+[mkdocs](https://www.mkdocs.org/) and [mkdocstrings](https://mkdocstrings.github.io/)
+libraries, the content will be generated automatically from the **docs** directory 
+and from the docstrings of the public signatures of the source code.
+
+There is always room for improvement. So, if you feel something isn't as clear 
+described as it should be, please don't hesitate to open an 
+[Issue](https://github.com/hsbc/pyratings/issues/new). Also, please attach the 
+**documentation** label to it in order to make the maintainers' life a bit easier.
 
 ## Style guides
 
