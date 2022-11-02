@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
     
     
       
@@ -792,7 +792,7 @@ would also be very happy about:
 </ul>
 <h2 id="code-of-conduct">Code of Conduct</h2>
 <p>This project and everyone participating in it is governed by the
-<a href="../CODE_OF_CONDUCT">pyratings Code of Conduct</a>.
+<a href="../code_of_conduct/">pyratings Code of Conduct</a>.
 By participating, you are expected to uphold this code. Please report unacceptable
 behavior to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#111;&#112;&#101;&#110;&#115;&#111;&#117;&#114;&#99;&#101;&#64;&#104;&#115;&#98;&#99;&#46;&#99;&#111;&#109;">&#111;&#112;&#101;&#110;&#115;&#111;&#117;&#114;&#99;&#101;&#64;&#104;&#115;&#98;&#99;&#46;&#99;&#111;&#109;</a>.</p>
 <h2 id="i-have-a-question">I Have a Question</h2>
@@ -942,32 +942,40 @@ be used as a guide and that defines the structure of the information to be inclu
 If you do so, reference it here in the description. -->
 
 <h3 id="your-first-code-contribution">Your First Code Contribution</h3>
+<p>GitHub provides a good <a href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">introduction</a> on how to contribute to an open source project. In a nutshell, the process involves the following steps:</p>
+<ol>
+<li>Fork (i.e. copy) the repository to your own GitHub account.</li>
+<li>Clone the fork to your local machine.</li>
+<li>Create a new branch to work on.</li>
+<li>Commit and push your changes to your own GitHub.</li>
+<li>Create the Pull Request.</li>
+</ol>
 <!-- omit in toc -->
 <h4 id="how-do-i-set-up-my-dev-environment">How do I set up my dev environment?</h4>
 <ul>
 <li><em>pyratings</em> requires Python 3.9 at a minimum.</li>
-<li>Clone this repository.
-  <code>shell
-  git clone https://github.com/hsbc/pyratings.git  # using HTTPS</code>
-  <code>shell
-  git clone git@github.com:hsbc/pyratings.git  # using SSH</code></li>
-<li>Create a virtual environment.
-  <code>shell
-  python -m venv .venv</code></li>
-<li>Activate your virtual environment.
-  <code>shell
-  source ./.venv/Scripts/activate  # bash</code>
-  <code>shell
-  ./.venv/Scripts/activate  # Windows</code></li>
+<li>Clone the fork to your local machine.</li>
+<li>Create a virtual environment.</li>
+</ul>
+<pre><code class="language-shell">python -m venv .venv
+</code></pre>
+<ul>
+<li>Activate your virtual environment.</li>
+</ul>
+<pre><code class="language-shell">source ./.venv/Scripts/activate  # bash 
+</code></pre>
+<pre><code class="language-shell">./.venv/Scripts/activate  # Windows 
+</code></pre>
+<ul>
 <li>Install <em>pyratings</em> in editable mode (including all development dependencies).<br />
 <em>pyratings</em> is using <code>pyproject.toml</code> as configuration file. In order to install 
   the package in editable mode, make sure you have <code>pip&gt;=21.3</code> installed on your 
-  machine.
-  <code>shell
-  python -m pip install --upgrade pip  # upgrading pip to latest version</code>
-    <code>shell
-  pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode</code></li>
+  machine.</li>
 </ul>
+<pre><code class="language-shell">python -m pip install --upgrade pip  # upgrading pip to latest version
+</code></pre>
+<pre><code class="language-shell">pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode
+</code></pre>
 <p>The <em>pyratings</em> package adheres to a bunch of <a href="#style-guides">Style guides</a>, that 
 will be enforced with the help of <a href="https://pre-commit.com/">Pre-commit</a>. </p>
 <h4 id="further-dev-setup-and-what-i-need-to-now-about-pre-commit">Further dev setup and what I need to now about "pre-commit"</h4>
@@ -1035,9 +1043,14 @@ nox &gt; * tests-3.10: success
 nox &gt; * tests-3.11: success
 </code></pre>
 <h3 id="improving-the-documentation">Improving The Documentation</h3>
-<p>The documentation is automatically generated from the content of the
-<a href="./docs">docs directory</a> and from the docstrings of the public signatures of the
-source code.</p>
+<p>The documentation is completely written in <em>Markdown</em>. Utilizing the
+<a href="https://www.mkdocs.org/">mkdocs</a> and <a href="https://mkdocstrings.github.io/">mkdocstrings</a>
+libraries, the content will be generated automatically from the <strong>docs</strong> directory 
+and from the docstrings of the public signatures of the source code.</p>
+<p>There is always room for improvement. So, if you feel something isn't as clear 
+described as it should be, please don't hesitate to open an 
+<a href="https://github.com/hsbc/pyratings/issues/new">Issue</a>. Also, please attach the 
+<strong>documentation</strong> label to it in order to make the maintainers' life a bit easier.</p>
 <h2 id="style-guides">Style guides</h2>
 <h3 id="code-formatting">Code formatting</h3>
 <p>This project uses the <a href="https://black.readthedocs.io/">black</a> formatter to 

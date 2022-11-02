@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
     
     
       
@@ -1478,12 +1478,12 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started">&#182;</a></h1><p><em>pyratings</em> is made for working with credit ratings in a professionally and
+<h1 id="getting-started">Getting started<a class="anchor-link" href="#getting-started">&#182;</a></h1><p><em>pyratings</em> is made for working with credit ratings in a professionally and
 efficiently manner.</p>
 <p>The following code demonstrates how to compute an average rating on a portfolio basis
 as well as the weighted average rating factor (WARF). This should give you a thorough
 introduction into the usage of <em>pyratings</em>.</p>
-<h2 id="Preliminary-tasks">Preliminary tasks<a class="anchor-link" href="#Preliminary-tasks">&#182;</a></h2><p>As a first step and as a basis for both tasks, we are going to import a portfolio
+<h2 id="preliminary-tasks">Preliminary tasks<a class="anchor-link" href="#preliminary-tasks">&#182;</a></h2><p>As a first step and as a basis for both tasks, we are going to import a portfolio
 into a <code>pd.DataFrame</code>. We'll call it <code>port_df</code>.</p>
 
 </div>
@@ -1536,7 +1536,9 @@ port_df.head()</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 
@@ -1690,7 +1692,9 @@ ratings_clean_df.head()</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
@@ -1776,7 +1780,7 @@ ratings_clean_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As you can see, the suffix &quot;_clean&quot;, has automatically been added to the column
+<p>As you can see, the suffix "_clean", has automatically been added to the column
 headings. Let's add these <em>clean</em> ratings to <code>port_df</code> by simple concatenation.</p>
 
 </div>
@@ -1821,7 +1825,9 @@ port_df.head()</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
@@ -1958,7 +1964,7 @@ There are several solutions to this problem. Oftentimes, you may want to compute
 </ul>
 <p>Let's compute the <strong>worst ratings</strong> and directly concatenate the newly computed
 column to our existing <code>port_df</code> in one batch. <em>pyratings</em> automatically names the
-new column &quot;worst_rtg&quot;.</p>
+new column "worst_rtg".</p>
 
 </div>
 </div>
@@ -2024,7 +2030,9 @@ port_df.head()</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
@@ -2152,232 +2160,231 @@ port_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Computing-the-average-rating-of-a-portfolio">Computing the average rating of a portfolio<a class="anchor-link" href="#Computing-the-average-rating-of-a-portfolio">&#182;</a></h2><p>The column <i>worst_rtg</i> will be used in order to translate the ratings into scores
+<h2 id="computing-the-average-rating-of-a-portfolio">Computing the average rating of a portfolio<a class="anchor-link" href="#computing-the-average-rating-of-a-portfolio">&#182;</a></h2><p>The column <i>worst_rtg</i> will be used in order to translate the ratings into scores
 according to the following table.</p>
 <table>
-<thead>
-<tr>
-  <th style="text-align:center">Moody’s</th>
-  <th style="text-align:center">S&amp;P</th>
-  <th style="text-align:center">Fitch</th>
-  <th style="text-align:center">Bloomberg</th>
-  <th style="text-align:center">DBRS</th>
-  <th style="text-align:center">ICE</th>
-  <th style="text-align:right">Score</th>
+<thead><tr>
+<th style="text-align:center">Moody’s</th>
+<th style="text-align:center">S&amp;P</th>
+<th style="text-align:center">Fitch</th>
+<th style="text-align:center">Bloomberg</th>
+<th style="text-align:center">DBRS</th>
+<th style="text-align:center">ICE</th>
+<th style="text-align:right">Score</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td style="text-align:center">Aaa</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:right">1</td>
+<td style="text-align:center">Aaa</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:right">1</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa1</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AAH</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:right">2</td>
+<td style="text-align:center">Aa1</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AAH</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:right">2</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa2</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:right">3</td>
+<td style="text-align:center">Aa2</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:right">3</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa3</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AAL</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:right">4</td>
+<td style="text-align:center">Aa3</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AAL</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:right">4</td>
 </tr>
 <tr>
-  <td style="text-align:center">A1</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">AH</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:right">5</td>
+<td style="text-align:center">A1</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">AH</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:right">5</td>
 </tr>
 <tr>
-  <td style="text-align:center">A2</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:right">6</td>
+<td style="text-align:center">A2</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:right">6</td>
 </tr>
 <tr>
-  <td style="text-align:center">A3</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">AL</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:right">7</td>
+<td style="text-align:center">A3</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">AL</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:right">7</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa1</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBBH</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:right">8</td>
+<td style="text-align:center">Baa1</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBBH</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:right">8</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa2</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:right">9</td>
+<td style="text-align:center">Baa2</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:right">9</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa3</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBBL</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:right">10</td>
+<td style="text-align:center">Baa3</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBBL</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:right">10</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba1</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BBH</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:right">11</td>
+<td style="text-align:center">Ba1</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BBH</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:right">11</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba2</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:right">12</td>
+<td style="text-align:center">Ba2</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:right">12</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba3</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BBL</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:right">13</td>
+<td style="text-align:center">Ba3</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BBL</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:right">13</td>
 </tr>
 <tr>
-  <td style="text-align:center">B1</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">BH</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:right">14</td>
+<td style="text-align:center">B1</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">BH</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:right">14</td>
 </tr>
 <tr>
-  <td style="text-align:center">B2</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:right">15</td>
+<td style="text-align:center">B2</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:right">15</td>
 </tr>
 <tr>
-  <td style="text-align:center">B3</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">BL</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:right">16</td>
+<td style="text-align:center">B3</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">BL</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:right">16</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa1</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCCH</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:right">17</td>
+<td style="text-align:center">Caa1</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCCH</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:right">17</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa2</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:right">18</td>
+<td style="text-align:center">Caa2</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:right">18</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa3</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCCL</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:right">19</td>
+<td style="text-align:center">Caa3</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCCL</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:right">19</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ca</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:right">20</td>
+<td style="text-align:center">Ca</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:right">20</td>
 </tr>
 <tr>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:right">21</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:right">21</td>
 </tr>
 <tr>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">DDD</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:right">22</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">DDD</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:right">22</td>
 </tr>
 <tr>
-  <td style="text-align:center">SD</td>
-  <td style="text-align:center">SD</td>
-  <td style="text-align:center">SD</td>
-  <td style="text-align:center">---</td>
-  <td style="text-align:center">---</td>
-  <td style="text-align:center">---</td>
-  <td style="text-align:right">22</td>
+<td style="text-align:center">SD</td>
+<td style="text-align:center">SD</td>
+<td style="text-align:center">SD</td>
+<td style="text-align:center">---</td>
+<td style="text-align:center">---</td>
+<td style="text-align:center">---</td>
+<td style="text-align:right">22</td>
 </tr>
 </tbody>
 </table>
 <p>The function <a href="../api_reference/#pyratings.get_scores.get_scores_from_ratings">get_scores_from_ratings</a>
-will solve this issue. The function needs a rating provider (here: &quot;S&amp;P&quot;) in order to
+will solve this issue. The function needs a rating provider (here: "S&amp;P") in order to
  select an appropriate translation dictionary.</p>
 
 </div>
@@ -2440,7 +2447,9 @@ port_scores_df</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
@@ -2720,7 +2729,9 @@ print(f"Average rating score: {avg_rtg_score}")</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -2777,7 +2788,9 @@ print(f"Average portfolio rating: {avg_rtg}")</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -2800,7 +2813,7 @@ print(f"Average portfolio rating: {avg_rtg}")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Computing-portfolio-WARF">Computing portfolio WARF<a class="anchor-link" href="#Computing-portfolio-WARF">&#182;</a></h2><p>To compute the portfolio's WARF, we are again going to use <strong>worst ratings</strong>.</p>
+<h2 id="computing-portfolio-warf">Computing portfolio WARF<a class="anchor-link" href="#computing-portfolio-warf">&#182;</a></h2><p>To compute the portfolio's WARF, we are again going to use <strong>worst ratings</strong>.</p>
 
 </div>
 </div>
@@ -2842,7 +2855,9 @@ print(f"Average portfolio rating: {avg_rtg}")</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
@@ -2973,284 +2988,283 @@ print(f"Average portfolio rating: {avg_rtg}")</div>
 <p>The column <i>worst_rtg</i> will be used in order to translate the ratings into WARF
 according to the following table.</p>
 <table>
-<thead>
-<tr>
-  <th style="text-align:center">Moody’s</th>
-  <th style="text-align:center">S&amp;P</th>
-  <th style="text-align:center">Fitch</th>
-  <th style="text-align:center">ICE</th>
-  <th style="text-align:center">DBRS</th>
-  <th style="text-align:center">Bloomberg</th>
-  <th style="text-align:right">Score</th>
-  <th style="text-align:right">WARF</th>
-  <th style="text-align:right">MinWARF*</th>
-  <th style="text-align:center">MaxWARF*</th>
+<thead><tr>
+<th style="text-align:center">Moody’s</th>
+<th style="text-align:center">S&amp;P</th>
+<th style="text-align:center">Fitch</th>
+<th style="text-align:center">ICE</th>
+<th style="text-align:center">DBRS</th>
+<th style="text-align:center">Bloomberg</th>
+<th style="text-align:right">Score</th>
+<th style="text-align:right">WARF</th>
+<th style="text-align:right">MinWARF*</th>
+<th style="text-align:center">MaxWARF*</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td style="text-align:center">Aaa</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:center">AAA</td>
-  <td style="text-align:right">1</td>
-  <td style="text-align:right">1</td>
-  <td style="text-align:right">1</td>
-  <td style="text-align:center">5</td>
+<td style="text-align:center">Aaa</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:center">AAA</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa1</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:center">AAH</td>
-  <td style="text-align:center">AA+</td>
-  <td style="text-align:right">2</td>
-  <td style="text-align:right">10</td>
-  <td style="text-align:right">5</td>
-  <td style="text-align:center">15</td>
+<td style="text-align:center">Aa1</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:center">AAH</td>
+<td style="text-align:center">AA+</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">5</td>
+<td style="text-align:center">15</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa2</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:center">AA</td>
-  <td style="text-align:right">3</td>
-  <td style="text-align:right">20</td>
-  <td style="text-align:right">15</td>
-  <td style="text-align:center">30</td>
+<td style="text-align:center">Aa2</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:center">AA</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">15</td>
+<td style="text-align:center">30</td>
 </tr>
 <tr>
-  <td style="text-align:center">Aa3</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:center">AAL</td>
-  <td style="text-align:center">AA-</td>
-  <td style="text-align:right">4</td>
-  <td style="text-align:right">40</td>
-  <td style="text-align:right">30</td>
-  <td style="text-align:center">55</td>
+<td style="text-align:center">Aa3</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:center">AAL</td>
+<td style="text-align:center">AA-</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">40</td>
+<td style="text-align:right">30</td>
+<td style="text-align:center">55</td>
 </tr>
 <tr>
-  <td style="text-align:center">A1</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:center">AH</td>
-  <td style="text-align:center">A+</td>
-  <td style="text-align:right">5</td>
-  <td style="text-align:right">70</td>
-  <td style="text-align:right">55</td>
-  <td style="text-align:center">95</td>
+<td style="text-align:center">A1</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:center">AH</td>
+<td style="text-align:center">A+</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">70</td>
+<td style="text-align:right">55</td>
+<td style="text-align:center">95</td>
 </tr>
 <tr>
-  <td style="text-align:center">A2</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:center">A</td>
-  <td style="text-align:right">6</td>
-  <td style="text-align:right">120</td>
-  <td style="text-align:right">95</td>
-  <td style="text-align:center">150</td>
+<td style="text-align:center">A2</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">95</td>
+<td style="text-align:center">150</td>
 </tr>
 <tr>
-  <td style="text-align:center">A3</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:center">AL</td>
-  <td style="text-align:center">A-</td>
-  <td style="text-align:right">7</td>
-  <td style="text-align:right">180</td>
-  <td style="text-align:right">150</td>
-  <td style="text-align:center">220</td>
+<td style="text-align:center">A3</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:center">AL</td>
+<td style="text-align:center">A-</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">180</td>
+<td style="text-align:right">150</td>
+<td style="text-align:center">220</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa1</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:center">BBBH</td>
-  <td style="text-align:center">BBB+</td>
-  <td style="text-align:right">8</td>
-  <td style="text-align:right">260</td>
-  <td style="text-align:right">220</td>
-  <td style="text-align:center">310</td>
+<td style="text-align:center">Baa1</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:center">BBBH</td>
+<td style="text-align:center">BBB+</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">260</td>
+<td style="text-align:right">220</td>
+<td style="text-align:center">310</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa2</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:center">BBB</td>
-  <td style="text-align:right">9</td>
-  <td style="text-align:right">360</td>
-  <td style="text-align:right">310</td>
-  <td style="text-align:center">485</td>
+<td style="text-align:center">Baa2</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:center">BBB</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">360</td>
+<td style="text-align:right">310</td>
+<td style="text-align:center">485</td>
 </tr>
 <tr>
-  <td style="text-align:center">Baa3</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:center">BBBL</td>
-  <td style="text-align:center">BBB-</td>
-  <td style="text-align:right">10</td>
-  <td style="text-align:right">610</td>
-  <td style="text-align:right">485</td>
-  <td style="text-align:center">775</td>
+<td style="text-align:center">Baa3</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:center">BBBL</td>
+<td style="text-align:center">BBB-</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">610</td>
+<td style="text-align:right">485</td>
+<td style="text-align:center">775</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba1</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:center">BBH</td>
-  <td style="text-align:center">BB+</td>
-  <td style="text-align:right">11</td>
-  <td style="text-align:right">940</td>
-  <td style="text-align:right">775</td>
-  <td style="text-align:center">1145</td>
+<td style="text-align:center">Ba1</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:center">BBH</td>
+<td style="text-align:center">BB+</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">940</td>
+<td style="text-align:right">775</td>
+<td style="text-align:center">1145</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba2</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:center">BB</td>
-  <td style="text-align:right">12</td>
-  <td style="text-align:right">1350</td>
-  <td style="text-align:right">1145</td>
-  <td style="text-align:center">1558</td>
+<td style="text-align:center">Ba2</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:center">BB</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">1350</td>
+<td style="text-align:right">1145</td>
+<td style="text-align:center">1558</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ba3</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:center">BBL</td>
-  <td style="text-align:center">BB-</td>
-  <td style="text-align:right">13</td>
-  <td style="text-align:right">1766</td>
-  <td style="text-align:right">1558</td>
-  <td style="text-align:center">1993</td>
+<td style="text-align:center">Ba3</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:center">BBL</td>
+<td style="text-align:center">BB-</td>
+<td style="text-align:right">13</td>
+<td style="text-align:right">1766</td>
+<td style="text-align:right">1558</td>
+<td style="text-align:center">1993</td>
 </tr>
 <tr>
-  <td style="text-align:center">B1</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:center">BH</td>
-  <td style="text-align:center">B+</td>
-  <td style="text-align:right">14</td>
-  <td style="text-align:right">2220</td>
-  <td style="text-align:right">1993</td>
-  <td style="text-align:center">2470</td>
+<td style="text-align:center">B1</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:center">BH</td>
+<td style="text-align:center">B+</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">2220</td>
+<td style="text-align:right">1993</td>
+<td style="text-align:center">2470</td>
 </tr>
 <tr>
-  <td style="text-align:center">B2</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:center">B</td>
-  <td style="text-align:right">15</td>
-  <td style="text-align:right">2720</td>
-  <td style="text-align:right">2470</td>
-  <td style="text-align:center">3105</td>
+<td style="text-align:center">B2</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">2720</td>
+<td style="text-align:right">2470</td>
+<td style="text-align:center">3105</td>
 </tr>
 <tr>
-  <td style="text-align:center">B3</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:center">BL</td>
-  <td style="text-align:center">B-</td>
-  <td style="text-align:right">16</td>
-  <td style="text-align:right">3490</td>
-  <td style="text-align:right">3105</td>
-  <td style="text-align:center">4130</td>
+<td style="text-align:center">B3</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:center">BL</td>
+<td style="text-align:center">B-</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">3490</td>
+<td style="text-align:right">3105</td>
+<td style="text-align:center">4130</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa1</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:center">CCCH</td>
-  <td style="text-align:center">CCC+</td>
-  <td style="text-align:right">17</td>
-  <td style="text-align:right">4770</td>
-  <td style="text-align:right">4130</td>
-  <td style="text-align:center">5635</td>
+<td style="text-align:center">Caa1</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:center">CCCH</td>
+<td style="text-align:center">CCC+</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">4770</td>
+<td style="text-align:right">4130</td>
+<td style="text-align:center">5635</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa2</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:center">CCC</td>
-  <td style="text-align:right">18</td>
-  <td style="text-align:right">6500</td>
-  <td style="text-align:right">5635</td>
-  <td style="text-align:center">7285</td>
+<td style="text-align:center">Caa2</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:center">CCC</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">6500</td>
+<td style="text-align:right">5635</td>
+<td style="text-align:center">7285</td>
 </tr>
 <tr>
-  <td style="text-align:center">Caa3</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:center">CCCL</td>
-  <td style="text-align:center">CCC-</td>
-  <td style="text-align:right">19</td>
-  <td style="text-align:right">8070</td>
-  <td style="text-align:right">7285</td>
-  <td style="text-align:center">9034</td>
+<td style="text-align:center">Caa3</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:center">CCCL</td>
+<td style="text-align:center">CCC-</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">8070</td>
+<td style="text-align:right">7285</td>
+<td style="text-align:center">9034</td>
 </tr>
 <tr>
-  <td style="text-align:center">Ca</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:center">CC</td>
-  <td style="text-align:right">20</td>
-  <td style="text-align:right">9998</td>
-  <td style="text-align:right">9034</td>
-  <td style="text-align:center">9998.5</td>
+<td style="text-align:center">Ca</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:center">CC</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">9998</td>
+<td style="text-align:right">9034</td>
+<td style="text-align:center">9998.5</td>
 </tr>
 <tr>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:center">C</td>
-  <td style="text-align:right">21</td>
-  <td style="text-align:right">9999</td>
-  <td style="text-align:right">9998.5</td>
-  <td style="text-align:center">9999.5</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">9999</td>
+<td style="text-align:right">9998.5</td>
+<td style="text-align:center">9999.5</td>
 </tr>
 <tr>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">D</td>
-  <td style="text-align:center">DDD</td>
-  <td style="text-align:right">22</td>
-  <td style="text-align:right">10000</td>
-  <td style="text-align:right">9999.5</td>
-  <td style="text-align:center">10000</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">DDD</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">10000</td>
+<td style="text-align:right">9999.5</td>
+<td style="text-align:center">10000</td>
 </tr>
 </tbody>
 </table>
@@ -3320,7 +3334,9 @@ port_warf_df</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
@@ -3600,7 +3616,9 @@ print(f"WARF: {avg_warf}")</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -3671,7 +3689,9 @@ print(f"Portfolio equivalent WARF rating: {avg_warf_equivalent_rating}")</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
