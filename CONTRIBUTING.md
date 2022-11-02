@@ -198,6 +198,7 @@ If you do so, reference it here in the description. -->
 ### Your First Code Contribution
 
 GitHub provides a good [introduction](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on how to contribute to an open source project. In a nutshell, the process involves the following steps:
+
 1. Fork (i.e. copy) the repository to your own GitHub account.
 2. Clone the fork to your local machine.
 3. Create a new branch to work on.
@@ -210,26 +211,33 @@ GitHub provides a good [introduction](https://docs.github.com/en/get-started/qui
 - _pyratings_ requires Python 3.9 at a minimum.
 - Clone the fork to your local machine.
 - Create a virtual environment.
-  ```shell
-  python -m venv .venv
-  ```
+
+```shell
+python -m venv .venv
+```
+  
 - Activate your virtual environment.
-  ```shell
-  source ./.venv/Scripts/activate  # bash 
-  ```
-  ```shell
-  ./.venv/Scripts/activate  # Windows 
-  ```
+
+```shell
+source ./.venv/Scripts/activate  # bash 
+```
+
+```shell
+./.venv/Scripts/activate  # Windows 
+```
+  
 - Install _pyratings_ in editable mode (including all development dependencies).  
   _pyratings_ is using ``pyproject.toml`` as configuration file. In order to install 
   the package in editable mode, make sure you have ``pip>=21.3`` installed on your 
   machine.
-  ```shell
-  python -m pip install --upgrade pip  # upgrading pip to latest version
-  ```
-    ```shell
-  pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode
-  ```
+
+```shell
+python -m pip install --upgrade pip  # upgrading pip to latest version
+```
+
+```shell
+pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode
+```
 
 The _pyratings_ package adheres to a bunch of [Style guides](#style-guides), that 
 will be enforced with the help of [Pre-commit](https://pre-commit.com/). 
