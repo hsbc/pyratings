@@ -87,7 +87,7 @@ def test_get_warf_from_rating_scores_series() -> None:
     """It returns a series with WARFs."""
     scores_series = conftest.scores_df_wide.iloc[:, 0]
     warf_series = conftest.warf_df_wide.iloc[:, 0]
-    warf_series.name = "warf"
+    warf_series.name = "warf_Fitch"
 
     act = rtg.get_warf_from_scores(rating_scores=scores_series)
     assert_series_equal(act, warf_series)
@@ -96,7 +96,7 @@ def test_get_warf_from_rating_scores_series() -> None:
 def test_get_warf_from_invalid_rating_scores_series() -> None:
     """It returns a series with NaNs."""
     scores_series = pd.Series(data=[np.nan, "foo", -10], name="rtg_score")
-    warf_series = pd.Series(data=[np.nan, np.nan, np.nan], name="warf")
+    warf_series = pd.Series(data=[np.nan, np.nan, np.nan], name="warf_rtg_score")
 
     act = rtg.get_warf_from_scores(rating_scores=scores_series)
     assert_series_equal(act, warf_series)
@@ -113,6 +113,7 @@ def test_get_warf_from_ratings_series(
     act = rtg.get_warf_from_ratings(
         ratings=ratings_series, rating_provider=rating_provider
     )
+    warf_series.name = "warf_rating"
     assert_series_equal(act, warf_series)
 
 
@@ -129,7 +130,7 @@ def test_get_warf_from_ratings_series_invalid_rating_provider() -> None:
 def test_get_warf_from_invalid_ratings_series() -> None:
     """It returns a series with NaNs."""
     ratings_series = pd.Series(data=[np.nan, "foo", 10], name="Fitch Ratings")
-    warf_series = pd.Series(data=[np.nan, np.nan, np.nan], name="warf")
+    warf_series = pd.Series(data=[np.nan, np.nan, np.nan], name="warf_Fitch Ratings")
 
     act = rtg.get_warf_from_ratings(ratings=ratings_series)
     assert_series_equal(act, warf_series)

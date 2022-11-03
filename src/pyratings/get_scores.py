@@ -103,6 +103,12 @@ def get_scores_from_ratings(
     Union[int, pd.Series, pd.DataFrame]
         Numerical rating score(s)
 
+        If returns a ``pd.Series``, the series name will be `rtg_score`
+        suffixed by `ratings.name`.
+
+        If return a ``pd.DataFrame``, the column names will be `rtg_score` suffixed
+        by the respective `ratings.columns`.
+
     Raises
     ------
     ValueError
@@ -118,7 +124,9 @@ def get_scores_from_ratings(
     Converting a ``pd.Series`` of ratings:
 
     >>> import pandas as pd
-    >>> ratings_series = pd.Series(data=["Baa1", "C", "NR", "WD", "D", "B1", "SD"])
+    >>> ratings_series = pd.Series(
+    ...     data=["Baa1", "C", "NR", "WD", "D", "B1", "SD"], name='Moody'
+    ... )
     >>> get_scores_from_ratings(
     ...     ratings=ratings_series, rating_provider="Moody's", tenor="long-term"
     ... )
@@ -149,7 +157,8 @@ def get_scores_from_ratings(
     Converting a ``pd.DataFrame`` with ratings:
 
     >>> ratings_df = pd.DataFrame(
-    ...     data=[["BB+", "B3", "BBB-"], ["AA-", "Aa1", "AAA"], ["D", "NR", "D"]]
+    ...     data=[["BB+", "B3", "BBB-"], ["AA-", "Aa1", "AAA"], ["D", "NR", "D"]],
+    ...     columns=["SP", "Moody", "DBRS"],
     ... )
     >>> get_scores_from_ratings(
     ...     ratings=ratings_df,
@@ -172,10 +181,10 @@ def get_scores_from_ratings(
     ...     }
     ... )
     >>> get_scores_from_ratings(ratings=ratings_df)
-       rtg_score_Fitch  rtg_score_Bloomberg  rtg_score_DBRS
-    0               11                 16.0             NaN
-    1                4                  2.0             1.0
-    2               22                  NaN            22.0
+       rtg_score_rtg_fitch  rtg_score_rtg_Bloomberg  rtg_score_DBRS Ratings
+    0                   11                     16.0                     NaN
+    1                    4                      2.0                     1.0
+    2                   22                      NaN                    22.0
 
     """
     if isinstance(ratings, str):
@@ -200,9 +209,7 @@ def get_scores_from_ratings(
             )
 
         rtg_dict = _get_translation_dict("rtg_to_scores", rating_provider, tenor=tenor)
-        return pd.Series(
-            data=ratings.map(rtg_dict), name=f"rtg_score_{rating_provider}"
-        )
+        return pd.Series(data=ratings.map(rtg_dict), name=f"rtg_score_{ratings.name}")
 
     elif isinstance(ratings, pd.DataFrame):
         if rating_provider is None:
