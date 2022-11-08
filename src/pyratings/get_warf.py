@@ -68,6 +68,12 @@ def get_warf_from_scores(
     Union[int, pd.Series, pd.DataFrame
         Numerical WARF(s).
 
+        If returns a ``pd.Series``, the series name will be `warf` suffixed by
+        `rating_scores.name`.
+
+        If return a ``pd.DataFrame``, the column names will be `warf` suffixed
+        by the respective `rating_scores.columns`.
+
     Examples
     --------
     Converting a single rating score:
@@ -106,7 +112,12 @@ def get_warf_from_scores(
     if isinstance(rating_scores, (int, float, np.number)):
         return warf_dict.get(rating_scores, np.nan)
     elif isinstance(rating_scores, pd.Series):
-        return pd.Series(data=rating_scores.map(warf_dict), name="warf")
+        warf = pd.Series(data=rating_scores.map(warf_dict))
+        if rating_scores.name is not None:
+            warf.name = "warf_" + str(rating_scores.name)
+        else:
+            warf.name = "warf"
+        return warf
     elif isinstance(rating_scores, pd.DataFrame):
         return rating_scores.apply(lambda x: x.map(warf_dict)).add_prefix("warf_")
 
@@ -132,6 +143,12 @@ def get_warf_from_ratings(
     -------
     Union[int, pd.Series, pd.DataFrame]
         Numerical WARF.
+
+         If returns a ``pd.Series``, the series name will be `warf` suffixed by
+        `ratings.name`.
+
+        If return a ``pd.DataFrame``, the column names will be `warf` suffixed
+        by the respective `ratings.columns`.
 
     Examples
     --------
@@ -169,12 +186,13 @@ def get_warf_from_ratings(
     3        NaN
     4    10000.0
     5        NaN
-    Name: warf, dtype: float64
+    Name: warf_Moody's, dtype: float64
 
     Converting a ``pd.DataFrame`` with ratings:
 
     >>> ratings_df = pd.DataFrame(
-    ...     data=[["BB+", "B-", "foo"], ["AA-", "AA+", "AAA"], ["D", "bar", "C"]]
+    ...     data=[["BB+", "B-", "foo"], ["AA-", "AA+", "AAA"], ["D", "bar", "C"]],
+    ...     columns=["Fitch", "Bloomberg", "DBRS"],
     ... )
     >>> get_warf_from_ratings(
     ...     ratings= ratings_df, rating_provider=["Fitch", "Bloomberg", "DBRS"]
@@ -195,10 +213,11 @@ def get_warf_from_ratings(
     ...     }
     ... )
     >>> get_warf_from_ratings(ratings=ratings_df)
-       warf_Fitch  warf_Bloomberg  warf_DBRS
-    0         940          3490.0        NaN
-    1          40            10.0        1.0
-    2       10000             NaN     9999.0
+       warf_rtg_fitch  warf_rtg_Bloomberg  warf_DBRS Ratings
+    0             940              3490.0                NaN
+    1              40                10.0                1.0
+    2           10000                 NaN             9999.0
+
 
     """
     if rating_provider is not None:
@@ -217,8 +236,8 @@ def get_warf_from_ratings(
         rating_scores = get_scores_from_ratings(
             ratings=ratings, rating_provider=rating_provider, tenor="long-term"
         )
-        try:  # only successful if `rating_scores` is ``pd.DataFrame``
-            rating_scores.columns = rating_scores.columns.str.removeprefix("rtg_score_")
-        except AttributeError:
-            pass
+        if isinstance(ratings, pd.Series):
+            rating_scores.name = ratings.name
+        elif isinstance(ratings, pd.DataFrame):
+            rating_scores.columns = ratings.columns
         return get_warf_from_scores(rating_scores=rating_scores)
