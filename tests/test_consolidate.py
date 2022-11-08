@@ -244,7 +244,7 @@ def test_get_worst_rating_longterm_invalid_provider() -> None:
             tenor="long-term",
         )
 
-    assert str(err.value) == conftest.ERR_MSG
+    assert str(err.value) == conftest.ERR_MSG_LT
 
 
 def test_get_worst_rating_shortterm_invalid_provider() -> None:
@@ -262,5 +262,6 @@ def test_get_worst_rating_shortterm_invalid_provider() -> None:
         )
 
     assert str(err.value) == (
-        "rating_provider must be in ['Moody', 'SP', 'Fitch', 'DBRS']."
+        "'ICE' is not a valid rating provider. 'rating_provider' must be in "
+        "['fitch', 'moody', 'sp', 's&p', 'dbrs']."
     )

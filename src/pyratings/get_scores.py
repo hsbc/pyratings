@@ -75,6 +75,7 @@ from pyratings.utils import (
     VALUE_ERROR_PROVIDER_MANDATORY,
     _extract_rating_provider,
     _get_translation_dict,
+    valid_rtg_agncy,
 )
 
 
@@ -192,7 +193,8 @@ def get_scores_from_ratings(
             raise ValueError(VALUE_ERROR_PROVIDER_MANDATORY)
 
         rating_provider = _extract_rating_provider(
-            rating_provider=rating_provider, tenor=tenor
+            rating_provider=rating_provider,
+            valid_rtg_provider=valid_rtg_agncy[tenor],
         )
 
         rtg_dict = _get_translation_dict("rtg_to_scores", rating_provider, tenor=tenor)
@@ -201,11 +203,13 @@ def get_scores_from_ratings(
     elif isinstance(ratings, pd.Series):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
-                rating_provider=ratings.name, tenor=tenor
+                rating_provider=ratings.name,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
         else:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_provider, tenor=tenor
+                rating_provider=rating_provider,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
 
         rtg_dict = _get_translation_dict("rtg_to_scores", rating_provider, tenor=tenor)
@@ -214,11 +218,13 @@ def get_scores_from_ratings(
     elif isinstance(ratings, pd.DataFrame):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
-                rating_provider=ratings.columns.to_list(), tenor=tenor
+                rating_provider=ratings.columns.to_list(),
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
         else:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_provider, tenor=tenor
+                rating_provider=rating_provider,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
 
         # Recursive call of `get_scores_from_ratings`

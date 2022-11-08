@@ -50,7 +50,11 @@ import numpy as np
 import pandas as pd
 
 from pyratings.get_scores import get_scores_from_ratings
-from pyratings.utils import _extract_rating_provider, _get_translation_dict
+from pyratings.utils import (
+    _extract_rating_provider,
+    _get_translation_dict,
+    valid_rtg_agncy,
+)
 
 
 def get_warf_from_scores(
@@ -222,7 +226,8 @@ def get_warf_from_ratings(
     """
     if rating_provider is not None:
         rating_provider = _extract_rating_provider(
-            rating_provider=rating_provider, tenor="long-term"
+            rating_provider=rating_provider,
+            valid_rtg_provider=valid_rtg_agncy["long-term"],
         )
 
     warf_dict = _get_translation_dict("scores_to_warf")

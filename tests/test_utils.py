@@ -17,38 +17,8 @@
 import pytest
 
 import pyratings as rtg
+from pyratings.utils import valid_rtg_agncy
 from tests import conftest
-
-
-@pytest.mark.parametrize("rating_agency", conftest.rating_provider_lt_list)
-def test_assert_rating_provider_single_rating_provider_longterm(
-    rating_agency: str,
-) -> None:
-    """It returns True/False."""
-    rtg._assert_rating_provider(rating_provider=rating_agency, tenor="long-term")
-
-
-@pytest.mark.parametrize("rating_agency", conftest.rating_provider_st_list)
-def test_assert_rating_provider_single_rating_provider_shortterm(
-    rating_agency: str,
-) -> None:
-    """It returns True/False."""
-    rtg._assert_rating_provider(rating_provider=rating_agency, tenor="short-term")
-
-
-def test_assert_rating_provider_multiple_rating_provider_longterm() -> None:
-    """It returns True/False."""
-    rtg._assert_rating_provider(
-        rating_provider=conftest.rating_provider_lt_list, tenor="long-term"
-    )
-
-
-def test_assert_rating_provider_multiple_rating_provider_shortterm() -> None:
-    """It returns True/False."""
-    rtg._assert_rating_provider(
-        rating_provider=conftest.rating_provider_st_list, tenor="short-term"
-    )
-
 
 ratings = [
     ("Fitch", "Fitch"),
@@ -68,39 +38,61 @@ tenors = ("long-term", "short-term")
 
 
 @pytest.mark.parametrize(
-    ["inputs", "exp", "tenor"],
+    ["inputs", "exp", "valid_rtg_provider"],
     [(entry1 + (entry2,)) for entry1 in ratings for entry2 in tenors],
 )
-def test_extract_single_rating_provider(inputs: str, exp: str, tenor: str) -> None:
+def test_extract_single_rating_provider(
+    inputs: str, exp: str, valid_rtg_provider: str
+) -> None:
     """It returns a valid rating provider."""
-    assert rtg._extract_rating_provider(rating_provider=inputs, tenor=tenor) == exp
+    assert (
+        rtg._extract_rating_provider(
+            rating_provider=inputs,
+            valid_rtg_provider=valid_rtg_agncy[valid_rtg_provider],
+        )
+        == exp
+    )
 
 
 def test_extract_rating_provider_shortterm_invalid_rating_provider() -> None:
     """It raises an error message."""
     with pytest.raises(AssertionError) as err:
-        rtg._extract_rating_provider(rating_provider="Bloomberg", tenor="short-term")
+        rtg._extract_rating_provider(
+            rating_provider="Bloomberg",
+            valid_rtg_provider=valid_rtg_agncy["short-term"],
+        )
 
     assert (
-        str(err.value) == "rating_provider must be in ['Moody', 'SP', 'Fitch', 'DBRS']."
+        str(err.value) == "'Bloomberg' is not a valid rating provider. "
+        f"'rating_provider' must be in {valid_rtg_agncy['short-term']}."
     )
 
 
-@pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_extract_rating_provider_invalid_str(tenor: str) -> None:
-    """It raises an error message."""
-    with pytest.raises(AssertionError) as err:
-        rtg._extract_rating_provider(rating_provider="foo", tenor=tenor)
-
-    assert str(err.value) == conftest.ERR_MSG
-
-
-@pytest.mark.parametrize("tenor", ["long-term", "short-term"])
-def test_extract_rating_provider_invalid_list(tenor: str) -> None:
+@pytest.mark.parametrize("valid_rtg_provider", ["long-term", "short-term"])
+def test_extract_rating_provider_invalid_str(valid_rtg_provider: str) -> None:
     """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg._extract_rating_provider(
-            rating_provider=["Fitch", "foo", "Moody's"], tenor=tenor
+            rating_provider="foo",
+            valid_rtg_provider=valid_rtg_agncy[valid_rtg_provider],
         )
 
-    assert str(err.value) == conftest.ERR_MSG
+    if valid_rtg_provider == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST
+
+
+@pytest.mark.parametrize("valid_rtg_provider", ["long-term", "short-term"])
+def test_extract_rating_provider_invalid_list(valid_rtg_provider: str) -> None:
+    """It raises an error message."""
+    with pytest.raises(AssertionError) as err:
+        rtg._extract_rating_provider(
+            rating_provider=["Fitch", "foo", "Moody's"],
+            valid_rtg_provider=valid_rtg_agncy[valid_rtg_provider],
+        )
+
+    if valid_rtg_provider == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST

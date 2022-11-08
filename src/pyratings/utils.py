@@ -22,32 +22,17 @@ from pyratings import resources
 
 RATINGS_DB = pkg_resources.files(resources).joinpath("Ratings.db")
 VALUE_ERROR_PROVIDER_MANDATORY = "'rating_provider' must not be None."
-
-
-def _assert_rating_provider(rating_provider: Union[str, List[str]], tenor: str) -> None:
-    """Assert that valid rating provider has been submitted."""
-    if isinstance(rating_provider, str):
-        rating_provider = [rating_provider]
-    if tenor == "long-term":
-        rtg_agencies = ("Moody", "SP", "Fitch", "Bloomberg", "DBRS", "ICE")
-        if not set(rating_provider).issubset(rtg_agencies):
-            raise ValueError(
-                "rating_provider must be in "
-                "['Moody', 'SP', 'Fitch', 'Bloomberg', 'DBRS', 'ICE']."
-            )
-    elif tenor == "short-term":
-        rtg_agencies = ("Moody", "SP", "Fitch", "DBRS")
-        if not set(rating_provider).issubset(rtg_agencies):
-            raise AssertionError(
-                "rating_provider must be in ['Moody', 'SP', 'Fitch', 'DBRS']."
-            )
+valid_rtg_agncy = {
+    "long-term": ["fitch", "moody", "sp", "s&p", "dbrs", "bloomberg", "ice"],
+    "short-term": ["fitch", "moody", "sp", "s&p", "dbrs"],
+}
 
 
 def _extract_rating_provider(
     rating_provider: Union[str, List[str], Hashable],
-    tenor: str,
+    valid_rtg_provider: list[str],
 ) -> Union[str, List[str]]:
-    """Extract valid rating providers from a given list.
+    """Extract valid rating providers.
 
     It is meant to extract rating providers from the column headings of a
     ``pd.DataFrame``. For example, let's assume some rating column headers are
@@ -59,6 +44,10 @@ def _extract_rating_provider(
     rating_provider
         Should contain any valid rating provider out of
         {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+    valid_rtg_provider
+        List of strings containing the names of valid rating providers. Supported
+        rating providers are {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        'rating_provider' must be in that list.
 
     Returns
     -------
@@ -68,28 +57,35 @@ def _extract_rating_provider(
     Raises
     ------
     AssertionError
-        If ``rating_provider`` contains an invalid entry.
+        If ``rating_provider`` is not a subset of `valid_rtg_provider`.
 
     Examples
     --------
-    >>> _extract_rating_provider("S&P", tenor="long-term")
+    >>> _extract_rating_provider(
+    ...     rating_provider="S&P",
+    ...     valid_rtg_provider=["fitch", "s&p", "moody"],
+    ... )
     'SP'
 
-    >>> _extract_rating_provider("rtg_DBRS", tenor="short-term")
+    >>> _extract_rating_provider(
+    ...     rating_provider="rtg_DBRS",
+    ...     valid_rtg_provider=["Fitch", "SP", "DBRS"]
+    ... )
     'DBRS'
 
     You can also provide a list of strings.
 
     >>> _extract_rating_provider(
-    ...     ["Fitch ratings", "rating_SP", "ICE"], tenor="long-term"
+    ...     rating_provider=["Fitch ratings", "rating_SP", "ICE"],
+    ...     valid_rtg_provider=["fitch", "moody", "sp", "bloomberg", "dbrs", "ice"]
     ... )
     ['Fitch', 'SP', 'ICE']
 
     """
-    valid_providers = ["fitch", "moody", "sp", "s&p", "bloomberg", "dbrs", "ice"]
     provider_map = {
         "fitch": "Fitch",
         "moody": "Moody",
+        "moody's": "Moody",
         "sp": "SP",
         "s&p": "SP",
         "bloomberg": "Bloomberg",
@@ -99,17 +95,17 @@ def _extract_rating_provider(
     if isinstance(rating_provider, str):
         rating_provider = [rating_provider]
 
+    valid_rtg_provider_lowercase = [x.lower() for x in valid_rtg_provider]
+
     for i, provider in enumerate(rating_provider):
-        if not any(x in provider.lower() for x in valid_providers):
+        if not any(x in provider.lower() for x in valid_rtg_provider_lowercase):
             raise AssertionError(
                 f"'{provider}' is not a valid rating provider. 'rating_provider' must "
-                f"be in ['Moody', 'SP', 'Fitch', 'Bloomberg', 'DBRS', 'ICE']."
+                f"be in {valid_rtg_provider}."
             )
-        for valid_provider in valid_providers:
-            if valid_provider in provider.lower():
-                rating_provider[i] = provider_map[valid_provider]
-
-    _assert_rating_provider(rating_provider, tenor)
+        for valid_provider in valid_rtg_provider:
+            if valid_provider.lower() in provider.lower():
+                rating_provider[i] = provider_map[valid_provider.lower()]
 
     if len(rating_provider) > 1:
         return rating_provider

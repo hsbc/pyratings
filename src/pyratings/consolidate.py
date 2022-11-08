@@ -20,7 +20,7 @@ import pandas as pd
 
 from pyratings.get_ratings import get_ratings_from_scores
 from pyratings.get_scores import get_scores_from_ratings
-from pyratings.utils import _extract_rating_provider
+from pyratings.utils import _extract_rating_provider, valid_rtg_agncy
 
 
 def get_best_ratings(
@@ -75,7 +75,10 @@ def get_best_ratings(
     Name: best_rtg, dtype: object
 
     """
-    rating_provider_output = _extract_rating_provider(rating_provider_output, tenor)
+    rating_provider_output = _extract_rating_provider(
+        rating_provider=rating_provider_output,
+        valid_rtg_provider=valid_rtg_agncy[tenor],
+    )
 
     # translate ratings -> scores
     rating_scores_df = get_scores_from_ratings(
@@ -147,7 +150,10 @@ def get_second_best_ratings(
     Name: second_best_rtg, dtype: object
 
     """
-    rating_provider_output = _extract_rating_provider(rating_provider_output, tenor)
+    rating_provider_output = _extract_rating_provider(
+        rating_provider=rating_provider_output,
+        valid_rtg_provider=valid_rtg_agncy[tenor],
+    )
 
     # translate ratings -> scores
     rating_scores_df = get_scores_from_ratings(
@@ -223,7 +229,10 @@ def get_worst_ratings(
     Name: worst_rtg, dtype: object
 
     """
-    rating_provider_output = _extract_rating_provider(rating_provider_output, tenor)
+    rating_provider_output = _extract_rating_provider(
+        rating_provider=rating_provider_output,
+        valid_rtg_provider=valid_rtg_agncy[tenor],
+    )
 
     # translate ratings -> scores
     rating_scores_df = get_scores_from_ratings(
