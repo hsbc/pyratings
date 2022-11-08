@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- BREAKING CHANGE: Automatic column naming  
+    - ``get_scores_from_ratings()``  
+      When input a ``pd.Series``, the name of the output series will now become
+      ``ratings.name`` prefixed with "rtg_score_".  
+      When input a ``pd.DataFrame``, the column names of the output frame will now 
+      become ``ratings.columns`` prefixed with "rtg_score_". 
+    - ``get_warf_from_ratings()``   
+      When input a pd.Series, the name of the output series will now become
+      ``ratings.name`` prefixed with "warf_".  
+      When input a pd.DataFrame, the column names of the output frame will now become 
+      ``ratings.columns`` prefixed with "warf_".
+ 
 ### Improved
 - Splitting the code base into multiple files in order to increase maintainability.
 - Documentation has been updated and will now be created via

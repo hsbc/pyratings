@@ -132,7 +132,7 @@ def test_get_scores_from_ratings_series_longterm(
     rating_provider: str, ratings_series: pd.Series, scores_series: pd.Series
 ) -> None:
     """It returns a series with rating scores."""
-    scores_series.name = f"rtg_score_{rating_provider}"
+    scores_series.name = f"rtg_score_{ratings_series.name}"
     act = rtg.get_scores_from_ratings(
         ratings=ratings_series, rating_provider=rating_provider
     )
@@ -147,7 +147,7 @@ def test_get_scores_from_ratings_series_shortterm(
     rating_provider: str, ratings_series: pd.Series, scores_series: pd.Series
 ) -> None:
     """It returns a series with rating scores."""
-    scores_series.name = f"rtg_score_{rating_provider}"
+    scores_series.name = f"rtg_score_{ratings_series.name}"
     act = rtg.get_scores_from_ratings(
         ratings=ratings_series, rating_provider=rating_provider, tenor="short-term"
     )
@@ -171,7 +171,7 @@ def test_get_scores_from_ratings_series_invalid_rating_provider(tenor: str) -> N
 def test_get_scores_from_invalid_ratings_series(tenor: str) -> None:
     """It returns a series with NaNs."""
     ratings_series = pd.Series(data=[np.nan, "foo", -10], name="rating")
-    scores_series = pd.Series(data=[np.nan, np.nan, np.nan], name="rtg_score_Fitch")
+    scores_series = pd.Series(data=[np.nan, np.nan, np.nan], name="rtg_score_rating")
 
     act = rtg.get_scores_from_ratings(
         ratings=ratings_series, rating_provider="Fitch", tenor=tenor
