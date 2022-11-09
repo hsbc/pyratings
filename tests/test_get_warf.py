@@ -73,7 +73,7 @@ def test_get_warf_from_single_rating_invalid_rating_provider() -> None:
     with pytest.raises(AssertionError) as err:
         rtg.get_warf_from_ratings(ratings="AA", rating_provider="foo")
 
-    assert str(err.value) == conftest.ERR_MSG
+    assert str(err.value) == conftest.ERR_MSG_LT
 
 
 def test_get_warf_with_invalid_single_rating() -> None:
@@ -124,7 +124,7 @@ def test_get_warf_from_ratings_series_invalid_rating_provider() -> None:
             ratings=pd.Series(data=["AAA", "AA", "D"], name="foo")
         )
 
-    assert str(err.value) == conftest.ERR_MSG
+    assert str(err.value) == conftest.ERR_MSG_LT
 
 
 def test_get_warf_from_invalid_ratings_series() -> None:
@@ -195,7 +195,7 @@ def test_get_warf_from_ratings_dataframe_invalid_rating_provider() -> None:
     with pytest.raises(AssertionError) as err:
         rtg.get_warf_from_ratings(ratings=conftest.rtg_df_wide, rating_provider="foo")
 
-    assert str(err.value) == conftest.ERR_MSG
+    assert str(err.value) == conftest.ERR_MSG_LT
 
 
 def test_get_warf_from_invalid_ratings_dataframe() -> None:

@@ -22,16 +22,11 @@ from pyratings.consolidate import (
 from pyratings.get_ratings import get_ratings_from_scores, get_ratings_from_warf
 from pyratings.get_scores import get_scores_from_ratings, get_scores_from_warf
 from pyratings.get_warf import get_warf_from_ratings, get_warf_from_scores
-from pyratings.utils import (
-    _assert_rating_provider,
-    _extract_rating_provider,
-    _get_translation_dict,
-)
+from pyratings.utils import _extract_rating_provider, _get_translation_dict
 from pyratings.warf import get_warf_buffer
 
 # define public functions
 __all__ = [
-    "_assert_rating_provider",
     "_extract_rating_provider",
     "_get_translation_dict",
     "get_best_ratings",
