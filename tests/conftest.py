@@ -269,11 +269,15 @@ exp_invalid_df = pd.DataFrame(
 )
 
 # --- error message constant with respect to invalid rating provider -------------------
-ERR_MSG = (
+ERR_MSG_LT = (
     "'foo' is not a valid rating provider. 'rating_provider' must "
-    "be in ['Moody', 'SP', 'Fitch', 'Bloomberg', 'DBRS', 'ICE']."
+    "be in ['fitch', 'moody', 'sp', 's&p', 'dbrs', 'bloomberg', 'ice']."
 )
 
+ERR_MSG_ST = (
+    "'foo' is not a valid rating provider. 'rating_provider' must "
+    "be in ['fitch', 'moody', 'sp', 's&p', 'dbrs']."
+)
 # --- params ---------------------------------------------------------------------------
 params_provider_scores_ratings_lt = [
     (

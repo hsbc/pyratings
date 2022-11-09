@@ -72,6 +72,7 @@ from pyratings.utils import (
     VALUE_ERROR_PROVIDER_MANDATORY,
     _extract_rating_provider,
     _get_translation_dict,
+    valid_rtg_agncy,
 )
 
 
@@ -186,7 +187,8 @@ def get_ratings_from_scores(
             raise ValueError(VALUE_ERROR_PROVIDER_MANDATORY)
 
         rating_provider = _extract_rating_provider(
-            rating_provider=rating_provider, tenor=tenor
+            rating_provider=rating_provider,
+            valid_rtg_provider=valid_rtg_agncy[tenor],
         )
 
         rtg_dict = _get_translation_dict(
@@ -200,11 +202,13 @@ def get_ratings_from_scores(
     elif isinstance(rating_scores, pd.Series):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_scores.name, tenor=tenor
+                rating_provider=rating_scores.name,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
         else:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_provider, tenor=tenor
+                rating_provider=rating_provider,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
 
         rtg_dict = _get_translation_dict("scores_to_rtg", rating_provider, tenor=tenor)
@@ -221,11 +225,13 @@ def get_ratings_from_scores(
     elif isinstance(rating_scores, pd.DataFrame):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_scores.columns.to_list(), tenor=tenor
+                rating_provider=rating_scores.columns.to_list(),
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
         else:
             rating_provider = _extract_rating_provider(
-                rating_provider=rating_provider, tenor=tenor
+                rating_provider=rating_provider,
+                valid_rtg_provider=valid_rtg_agncy[tenor],
             )
 
         # Recursive call of 'get_ratings_from_score' for every column in dataframe
@@ -307,7 +313,8 @@ def get_ratings_from_warf(
             raise ValueError(VALUE_ERROR_PROVIDER_MANDATORY)
 
         rating_provider = _extract_rating_provider(
-            rating_provider=rating_provider, tenor="long-term"
+            rating_provider=rating_provider,
+            valid_rtg_provider=valid_rtg_agncy["long-term"],
         )
 
         rating_scores = get_scores_from_warf(warf=warf)

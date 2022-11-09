@@ -111,7 +111,10 @@ def test_get_ratings_from_single_score_invalid_rating_provider(tenor: str) -> No
         rtg.get_ratings_from_scores(
             rating_scores=10, rating_provider="foo", tenor=tenor
         )
-    assert str(err.value) == conftest.ERR_MSG
+    if tenor == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -221,7 +224,10 @@ def test_get_ratings_from_scores_series_invalid_rating_provider(tenor: str) -> N
             tenor=tenor,
         )
 
-    assert str(err.value) == conftest.ERR_MSG
+    if tenor == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -233,7 +239,10 @@ def test_get_ratings_from_scores_series_with_no_rating_provider(tenor: str) -> N
             tenor=tenor,
         )
 
-    assert str(err.value) == conftest.ERR_MSG
+    if tenor == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -392,7 +401,10 @@ def test_get_ratings_from_scores_df_invalid_rating_provider(tenor: str) -> None:
         rtg.get_ratings_from_scores(
             rating_scores=conftest.scores_df_wide, rating_provider="foo", tenor=tenor
         )
-    assert str(err.value) == conftest.ERR_MSG
+    if tenor == "long-term":
+        assert str(err.value) == conftest.ERR_MSG_LT
+    else:
+        assert str(err.value) == conftest.ERR_MSG_ST
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
