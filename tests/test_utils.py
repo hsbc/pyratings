@@ -78,9 +78,9 @@ def test_extract_rating_provider_invalid_str(valid_rtg_provider: str) -> None:
         )
 
     if valid_rtg_provider == "long-term":
-        assert str(err.value) == conftest.ERR_MSG_LT
+        assert str(err.value) == conftest.LT_ERR_MSG
     else:
-        assert str(err.value) == conftest.ERR_MSG_ST
+        assert str(err.value) == conftest.ST_ERR_MSG
 
 
 @pytest.mark.parametrize("valid_rtg_provider", ["long-term", "short-term"])
@@ -93,6 +93,6 @@ def test_extract_rating_provider_invalid_list(valid_rtg_provider: str) -> None:
         )
 
     if valid_rtg_provider == "long-term":
-        assert str(err.value) == conftest.ERR_MSG_LT
+        assert str(err.value) == conftest.LT_ERR_MSG
     else:
-        assert str(err.value) == conftest.ERR_MSG_ST
+        assert str(err.value) == conftest.ST_ERR_MSG

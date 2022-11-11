@@ -43,21 +43,21 @@ def test_get_pure_ratings_single_rating_with_unsolicited_uppercase_u() -> None:
     [
         (
             rating_provider,
-            conftest.rtg_df_long_with_watch_unsolicited.loc[
-                conftest.rtg_df_long_with_watch_unsolicited["rating_provider"]
+            conftest.lt_rtg_df_long_with_watch_unsolicited.loc[
+                conftest.lt_rtg_df_long_with_watch_unsolicited["rating_provider"]
                 == rating_provider,
                 ["rating"],
             ]
             .reset_index(drop=True)
             .squeeze(),
-            conftest.rtg_df_long.loc[
-                conftest.rtg_df_long["rating_provider"] == rating_provider,
+            conftest.lt_rtg_df_long.loc[
+                conftest.lt_rtg_df_long["rating_provider"] == rating_provider,
                 ["rating"],
             ]
             .reset_index(drop=True)
             .squeeze(),
         )
-        for rating_provider in conftest.rating_provider_lt_list
+        for rating_provider in conftest.lt_rtg_prov_list
     ],
 )
 def test_get_pure_ratings_series(
@@ -80,8 +80,8 @@ def test_get_pure_ratings_series_with_nan() -> None:
 
 def test_get_pure_ratings_df() -> None:
     """It returns a dataframe with clean ratigns."""
-    act = rtg.get_pure_ratings(conftest.rtg_df_wide_with_watch_unsolicited)
-    exp = conftest.rtg_df_wide.copy()
+    act = rtg.get_pure_ratings(conftest.lt_rtg_df_wide_with_watch_unsolicited)
+    exp = conftest.lt_rtg_df_wide.copy()
     exp = exp.add_suffix("_clean")
 
     # noinspection PyTypeChecker
