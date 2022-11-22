@@ -52,7 +52,7 @@ def test_get_warf_from_invalid_single_rating_score(score: int) -> None:
     list(
         pd.concat(
             [
-                conftest.rtg_df_long,
+                conftest.lt_rtg_df_long,
                 conftest.warf_df_long["warf"],
             ],
             axis=1,
@@ -73,7 +73,7 @@ def test_get_warf_from_single_rating_invalid_rating_provider() -> None:
     with pytest.raises(AssertionError) as err:
         rtg.get_warf_from_ratings(ratings="AA", rating_provider="foo")
 
-    assert str(err.value) == conftest.ERR_MSG_LT
+    assert str(err.value) == conftest.LT_ERR_MSG
 
 
 def test_get_warf_with_invalid_single_rating() -> None:
@@ -85,7 +85,7 @@ def test_get_warf_with_invalid_single_rating() -> None:
 # --- input: ratings series
 def test_get_warf_from_rating_scores_series() -> None:
     """It returns a series with WARFs."""
-    scores_series = conftest.scores_df_wide.iloc[:, 0]
+    scores_series = conftest.lt_scores_df_wide.iloc[:, 0]
     warf_series = conftest.warf_df_wide.iloc[:, 0]
     warf_series.name = "warf_Fitch"
 
@@ -104,7 +104,24 @@ def test_get_warf_from_invalid_rating_scores_series() -> None:
 
 @pytest.mark.parametrize(
     ["rating_provider", "ratings_series", "warf_series"],
-    conftest.params_provider_ratings_warf,
+    [
+        (
+            rating_provider,
+            conftest.lt_rtg_df_long.loc[
+                conftest.lt_rtg_df_long["rating_provider"] == rating_provider,
+                ["rating"],
+            ]
+            .reset_index(drop=True)
+            .squeeze(),
+            conftest.warf_df_long.loc[
+                conftest.warf_df_long["rating_provider"] == rating_provider,
+                "warf",
+            ]
+            .reset_index(drop=True)
+            .squeeze(),
+        )
+        for rating_provider in conftest.lt_rtg_prov_list
+    ],
 )
 def test_get_warf_from_ratings_series(
     rating_provider: str, ratings_series: pd.Series, warf_series: pd.Series
@@ -124,7 +141,7 @@ def test_get_warf_from_ratings_series_invalid_rating_provider() -> None:
             ratings=pd.Series(data=["AAA", "AA", "D"], name="foo")
         )
 
-    assert str(err.value) == conftest.ERR_MSG_LT
+    assert str(err.value) == conftest.LT_ERR_MSG
 
 
 def test_get_warf_from_invalid_ratings_series() -> None:
@@ -161,7 +178,9 @@ exp.columns = [
 
 def test_get_warf_from_rating_scores_dataframe() -> None:
     """It returns a dataframe with WARFs and NaNs."""
-    act = rtg.get_warf_from_scores(rating_scores=conftest.scores_df_wide_with_err_row)
+    act = rtg.get_warf_from_scores(
+        rating_scores=conftest.lt_scores_df_wide_with_err_row
+    )
     assert_frame_equal(act, exp)
 
 
@@ -176,7 +195,7 @@ def test_get_warf_from_invalid_rating_scores_dataframe() -> None:
 def test_get_warf_from_ratings_dataframe_with_explicit_rating_provider() -> None:
     """It returns a dataframe with WARFs and NaNs."""
     act = rtg.get_warf_from_ratings(
-        ratings=conftest.rtg_df_wide_with_err_row,
+        ratings=conftest.lt_rtg_df_wide_with_err_row,
         rating_provider=["Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"],
     )
     # noinspection PyTypeChecker
@@ -185,7 +204,7 @@ def test_get_warf_from_ratings_dataframe_with_explicit_rating_provider() -> None
 
 def test_get_warf_from_ratings_dataframe_by_inferring_rating_provider() -> None:
     """It returns a dataframe with WARFs and NaNs."""
-    act = rtg.get_warf_from_ratings(ratings=conftest.rtg_df_wide_with_err_row)
+    act = rtg.get_warf_from_ratings(ratings=conftest.lt_rtg_df_wide_with_err_row)
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp)
 
@@ -193,9 +212,11 @@ def test_get_warf_from_ratings_dataframe_by_inferring_rating_provider() -> None:
 def test_get_warf_from_ratings_dataframe_invalid_rating_provider() -> None:
     """It raises an error message."""
     with pytest.raises(AssertionError) as err:
-        rtg.get_warf_from_ratings(ratings=conftest.rtg_df_wide, rating_provider="foo")
+        rtg.get_warf_from_ratings(
+            ratings=conftest.lt_rtg_df_wide, rating_provider="foo"
+        )
 
-    assert str(err.value) == conftest.ERR_MSG_LT
+    assert str(err.value) == conftest.LT_ERR_MSG
 
 
 def test_get_warf_from_invalid_ratings_dataframe() -> None:
