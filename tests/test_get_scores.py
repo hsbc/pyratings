@@ -31,8 +31,8 @@ from tests import conftest
     list(
         pd.concat(
             [
-                conftest.rtg_df_long,
-                conftest.scores_df_long["rtg_score"],
+                conftest.lt_rtg_df_long,
+                conftest.lt_scores_df_long["rtg_score"],
             ],
             axis=1,
         ).to_records(index=False)
@@ -51,15 +51,7 @@ def test_get_scores_from_single_rating_longterm(
 
 @pytest.mark.parametrize(
     ["rating_provider", "rating", "score"],
-    list(
-        pd.concat(
-            [
-                conftest.rtg_df_long_st,
-                conftest.scores_df_long_st["rtg_score"],
-            ],
-            axis=1,
-        ).to_records(index=False)
-    ),
+    conftest.st_prov_rtg_scrs_records,
 )
 def test_get_scores_from_single_rating_shortterm(
     rating_provider: str, rating: str, score: int
@@ -79,9 +71,9 @@ def test_get_scores_from_single_rating_invalid_rating_provider(tenor: str) -> No
         rtg.get_scores_from_ratings(ratings="AA", rating_provider="foo", tenor=tenor)
 
     if tenor == "long-term":
-        assert str(err.value) == conftest.ERR_MSG_LT
+        assert str(err.value) == conftest.LT_ERR_MSG
     else:
-        assert str(err.value) == conftest.ERR_MSG_ST
+        assert str(err.value) == conftest.ST_ERR_MSG
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -129,7 +121,7 @@ def test_get_scores_from_invalid_single_warf(warf: Union[int, float]) -> None:
 # --- input: ratings series
 @pytest.mark.parametrize(
     ["rating_provider", "scores_series", "ratings_series"],
-    conftest.params_provider_scores_ratings_lt,
+    conftest.lt_prov_scrs_rtg,
 )
 def test_get_scores_from_ratings_series_longterm(
     rating_provider: str, ratings_series: pd.Series, scores_series: pd.Series
@@ -144,7 +136,7 @@ def test_get_scores_from_ratings_series_longterm(
 
 @pytest.mark.parametrize(
     ["rating_provider", "scores_series", "ratings_series"],
-    conftest.params_provider_scores_ratings_st,
+    conftest.st_prov_scores_rtg_series,
 )
 def test_get_scores_from_ratings_series_shortterm(
     rating_provider: str, ratings_series: pd.Series, scores_series: pd.Series
@@ -168,9 +160,9 @@ def test_get_scores_from_ratings_series_invalid_rating_provider(tenor: str) -> N
         )
 
     if tenor == "long-term":
-        assert str(err.value) == conftest.ERR_MSG_LT
+        assert str(err.value) == conftest.LT_ERR_MSG
     else:
-        assert str(err.value) == conftest.ERR_MSG_ST
+        assert str(err.value) == conftest.ST_ERR_MSG
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -188,7 +180,7 @@ def test_get_scores_from_invalid_ratings_series(tenor: str) -> None:
 def test_get_scores_from_warf_series() -> None:
     """It returns a series with rating scores."""
     warf_series = conftest.warf_df_wide.iloc[:, 0]
-    scores_series = conftest.scores_df_wide.iloc[:, 0]
+    scores_series = conftest.lt_scores_df_wide.iloc[:, 0]
     scores_series.name = "rtg_score"
 
     act = rtg.get_scores_from_warf(warf=warf_series)
@@ -205,7 +197,7 @@ def test_get_scores_from_invalid_warf_series() -> None:
 
 
 # --- input: ratings dataframe
-exp_lt = conftest.scores_df_wide
+exp_lt = conftest.lt_scores_df_wide
 exp_lt = pd.concat(
     [
         exp_lt,
@@ -226,27 +218,11 @@ exp_lt.columns = [
     "rtg_score_ICE",
 ]
 
-exp_st = conftest.scores_df_wide_st
-exp_st = pd.concat(
-    [
-        exp_st,
-        pd.DataFrame(data=[[np.nan, np.nan, np.nan, np.nan]], columns=exp_st.columns),
-    ],
-    axis=0,
-    ignore_index=True,
-)
-exp_st.columns = [
-    "rtg_score_Fitch",
-    "rtg_score_Moody",
-    "rtg_score_SP",
-    "rtg_score_DBRS",
-]
-
 
 def test_get_scores_from_ratings_df_with_explicit_rating_provider_longterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     act = rtg.get_scores_from_ratings(
-        ratings=conftest.rtg_df_wide_with_err_row,
+        ratings=conftest.lt_rtg_df_wide_with_err_row,
         rating_provider=[
             "rtg_Fitch",
             "Moody's rating",
@@ -264,7 +240,7 @@ def test_get_scores_from_ratings_df_with_explicit_rating_provider_longterm() -> 
 def test_get_scores_from_ratings_df_with_explicit_rating_provider_shortterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     act = rtg.get_scores_from_ratings(
-        ratings=conftest.rtg_df_wide_st_with_err_row,
+        ratings=conftest.st_rtg_df_wide,
         rating_provider=[
             "rtg_Fitch",
             "Moody's rating",
@@ -274,13 +250,13 @@ def test_get_scores_from_ratings_df_with_explicit_rating_provider_shortterm() ->
         tenor="short-term",
     )
     # noinspection PyTypeChecker
-    assert_frame_equal(act, exp_st)
+    assert_frame_equal(act, conftest.st_scores_df_wide)
 
 
 def test_get_scores_from_ratings_df_by_inferring_rating_provider_longterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     act = rtg.get_scores_from_ratings(
-        ratings=conftest.rtg_df_wide_with_err_row, tenor="long-term"
+        ratings=conftest.lt_rtg_df_wide_with_err_row, tenor="long-term"
     )
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp_lt)
@@ -289,10 +265,10 @@ def test_get_scores_from_ratings_df_by_inferring_rating_provider_longterm() -> N
 def test_get_scores_from_ratings_df_by_inferring_rating_provider_shortterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     act = rtg.get_scores_from_ratings(
-        ratings=conftest.rtg_df_wide_st_with_err_row, tenor="short-term"
+        ratings=conftest.st_rtg_df_wide, tenor="short-term"
     )
     # noinspection PyTypeChecker
-    assert_frame_equal(act, exp_st)
+    assert_frame_equal(act, conftest.st_scores_df_wide)
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
@@ -300,13 +276,13 @@ def test_get_scores_from_ratings_df_invalid_rating_provider(tenor: str) -> None:
     """It raises an error message."""
     with pytest.raises(AssertionError) as err:
         rtg.get_scores_from_ratings(
-            ratings=conftest.rtg_df_wide, rating_provider="foo", tenor=tenor
+            ratings=conftest.lt_rtg_df_wide, rating_provider="foo", tenor=tenor
         )
 
     if tenor == "long-term":
-        assert str(err.value) == conftest.ERR_MSG_LT
+        assert str(err.value) == conftest.LT_ERR_MSG
     else:
-        assert str(err.value) == conftest.ERR_MSG_ST
+        assert str(err.value) == conftest.ST_ERR_MSG
 
 
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])

@@ -16,7 +16,9 @@
 
 import importlib.resources as pkg_resources
 import sqlite3
-from typing import Dict, Hashable, List, Union
+from typing import Hashable, List, Union
+
+import pandas as pd
 
 from pyratings import resources
 
@@ -114,44 +116,69 @@ def _extract_rating_provider(
 
 
 def _get_translation_dict(
-    translation_table: str, rating_provider: str = None, tenor: str = "long-term"
-) -> Dict:
+    translation_table: str,
+    rating_provider: str = None,
+    tenor: str = "long-term",
+    st_rtg_strategy: str = "base",
+) -> Union[dict, pd.DataFrame]:
     """Load translation dictionaries from SQLite database."""
-    if rating_provider == "SP":
-        rating_provider = "S&P"
-    if rating_provider == "Moody":
-        rating_provider = "Moody's"
+
+    def _rtg_to_scores(tenor: str) -> dict[str, int]:
+        """Create translation dictionary to translate from ratings to scores."""
+        if tenor == "long-term":
+            sql_query = """
+                SELECT Rating, RatingScore FROM v_ltRatings
+                WHERE RatingProvider=?
+            """
+            cursor.execute(sql_query, (rating_provider,))
+        else:
+            sql_query = """
+                SELECT Rating, AvgEquivLTScore FROM v_stRatings
+                WHERE RatingProvider=? and Strategy=?
+            """
+            cursor.execute(sql_query, (rating_provider, st_rtg_strategy))
+
+        return dict(cursor.fetchall())
+
+    def _scores_to_rtg(tenor: str, strat: str) -> Union[dict[int, str], pd.DataFrame]:
+        """Create translation dictionary to translate from scores to ratings."""
+        if tenor == "long-term":
+            sql_query = """
+                SELECT RatingScore, Rating FROM v_ltRatings
+                WHERE Rating != "SD" and RatingProvider=?
+            """
+            cursor.execute(sql_query, (rating_provider,))
+            translation_dict = dict(cursor.fetchall())
+        else:
+            sql_query = """
+                SELECT MinEquivLTScore, MaxEquivLTScore, Rating FROM v_stRatings
+                WHERE RatingProvider=? and Strategy=?
+                ORDER BY MaxEquivLTScore
+            """
+            cursor.execute(sql_query, (rating_provider, strat))
+            translation_dict = pd.DataFrame.from_records(
+                cursor.fetchall(), columns=["MinScore", "MaxScore", "Rating"]
+            )
+
+        return translation_dict
+
+    def _scores_to_warf() -> dict[int, int]:
+        """Create translation dictionary to translate from scores to WARFs."""
+        sql_query = "SELECT RatingScore, WARF FROM WARFs"
+        cursor.execute(sql_query)
+
+        return dict(cursor.fetchall())
 
     # connect to database
-    connection = sqlite3.connect(RATINGS_DB)
+    connection = sqlite3.connect(str(RATINGS_DB))
     cursor = connection.cursor()
 
-    # create SQL query
-    sql_query = None
-    if translation_table in ["rtg_to_scores", "ratings_to_scores"]:
-        sql_query = (
-            "SELECT Rating, RatingScore FROM v_RatingsToScores "
-            "WHERE RatingProvider=? and Tenor=?"
-        )
-    elif translation_table in ["scores_to_rtg", "scores_to_ratings"]:
-        sql_query = (
-            "SELECT RatingScore, Rating FROM v_ScoresToRatings "
-            "WHERE RatingProvider=? and Tenor=?"
-        )
-    elif translation_table in ["scores_to_warf"]:
-        sql_query = "SELECT RatingScore, WARF FROM WARFs"
-
-    # execute SQL query
-    if translation_table in [
-        "rtg_to_scores",
-        "ratings_to_scores",
-        "scores_to_rtg",
-        "scores_to_ratings",
-    ]:
-        cursor.execute(sql_query, (rating_provider, tenor))
+    if translation_table == "rtg_to_scores":
+        translation_dict = _rtg_to_scores(tenor=tenor)
+    elif translation_table == "scores_to_rtg":
+        translation_dict = _scores_to_rtg(tenor=tenor, strat=st_rtg_strategy)
     else:
-        cursor.execute(sql_query)
-    translation_dict = dict(cursor.fetchall())
+        translation_dict = _scores_to_warf()
 
     # close database connection
     connection.close()

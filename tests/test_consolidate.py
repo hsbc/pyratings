@@ -244,7 +244,7 @@ def test_get_worst_rating_longterm_invalid_provider() -> None:
             tenor="long-term",
         )
 
-    assert str(err.value) == conftest.ERR_MSG_LT
+    assert str(err.value) == conftest.LT_ERR_MSG
 
 
 def test_get_worst_rating_shortterm_invalid_provider() -> None:

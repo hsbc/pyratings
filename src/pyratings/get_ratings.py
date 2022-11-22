@@ -62,6 +62,7 @@ For short-term ratings, the following translation table will be used:
 
 """  # noqa: B950
 
+from decimal import ROUND_HALF_UP, Decimal
 from typing import List, Optional, Union
 
 import numpy as np
@@ -196,8 +197,21 @@ def get_ratings_from_scores(
         )
 
         if not np.isnan(rating_scores):
-            rating_scores = round(rating_scores)
-            return rtg_dict.get(rating_scores, pd.NA)
+            rating_scores = int(Decimal(f"{rating_scores}").quantize(0, ROUND_HALF_UP))
+            # find key (MinScore) in rtg_dict that is nearest to rating_scores
+            # https://bit.ly/3gdRuhX
+            if tenor == "long-term":
+                return rtg_dict.get(rating_scores, pd.NA)
+            else:
+                try:
+                    return rtg_dict.loc[
+                        (rating_scores >= rtg_dict["MinScore"])
+                        & (rating_scores <= rtg_dict["MaxScore"]),
+                        "Rating",
+                    ].iloc[0]
+
+                except IndexError:
+                    return np.nan
 
     elif isinstance(rating_scores, pd.Series):
         if rating_provider is None:
@@ -218,9 +232,24 @@ def get_ratings_from_scores(
             lambda x: np.round(x, 0) if isinstance(x, (int, float, np.number)) else x
         )
 
-        return pd.Series(
-            data=rating_scores.map(rtg_dict), name=f"rtg_{rating_provider}"
-        )
+        if tenor == "long-term":
+            return pd.Series(
+                data=rating_scores.map(rtg_dict), name=f"rtg_{rating_provider}"
+            )
+        else:
+            out = []
+            for score in rating_scores:
+                try:
+                    out.append(
+                        rtg_dict.loc[
+                            (score >= rtg_dict["MinScore"])
+                            & (score <= rtg_dict["MaxScore"]),
+                            "Rating",
+                        ].iloc[0]
+                    )
+                except (IndexError, TypeError):
+                    out.append(pd.NA)
+            return pd.Series(data=out, name=f"rtg_{rating_provider}")
 
     elif isinstance(rating_scores, pd.DataFrame):
         if rating_provider is None:
