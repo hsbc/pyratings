@@ -163,86 +163,169 @@ lt_prov_scrs_rtg = [
 # --- short term
 st_rtg_prov_list = ["Fitch", "Moody", "SP", "DBRS"]
 
-st_rtg_dict = {
+st_strategies = ["best", "base", "worst"]
+st_rtgs = {
     "Fitch": ["F1+", "F1", "F2", "F3", "B", "C", "D"],
     "Moody": ["P-1", "P-2", "P-3", "NP"],
     "SP": ["A-1+", "A-1", "A-2", "A-3", "B", "C", "D"],
-    "DBRS": [
-        "R-1 H",
-        "R-1 M",
-        "R-1 L",
-        "R-2 H",
-        "R-2 M",
-        "R-2 L / R-3",
-        "R-4",
-        "R-5",
-        "D",
-    ],
+}
+st_rtg_dict = {
+    "best": {
+        "Fitch": st_rtgs["Fitch"],
+        "Moody": st_rtgs["Moody"],
+        "SP": st_rtgs["SP"],
+        "DBRS": [
+            "R-1 H",
+            "R-1 M",
+            "R-1 L",
+            "R-2 H",
+            "R-2 M",
+            "R-3",
+            "R-4",
+            "R-5",
+            "D",
+        ],
+    },
+    "base": {
+        "Fitch": st_rtgs["Fitch"],
+        "Moody": st_rtgs["Moody"],
+        "SP": st_rtgs["SP"],
+        "DBRS": [
+            "R-1 H",
+            "R-1 M",
+            "R-1 L",
+            "R-2 H",
+            "R-2 M",
+            "R-2 L / R-3",
+            "R-4",
+            "R-5",
+            "D",
+        ],
+    },
+    "worst": {
+        "Fitch": st_rtgs["Fitch"],
+        "Moody": st_rtgs["Moody"],
+        "SP": st_rtgs["SP"],
+        "DBRS": [
+            "R-1 H",
+            "R-1 M",
+            "R-1 L",
+            "R-2 H",
+            "R-2 M",
+            "R-3",
+            "R-4",
+            "R-5",
+            "D",
+        ],
+    },
 }
 
 st_scrs_dict = {
-    "Fitch": [3.0, 6.5, 8.0, 9.5, 13.5, 18.5, 21.5],
-    "Moody": [3.5, 7.5, 9.5, 16.5],
-    "SP": [2.5, 5.5, 8.0, 10.0, 13.5, 19.0, 22.0],
-    "DBRS": [1.5, 3.5, 6.0, 8.0, 9.0, 10.0, 12.5, 18.0, 22.0],
+    "best": {
+        "Fitch": [3.5, 7.5, 9.0, 10.0, 13.5, 18.5, 21.5],
+        "Moody": [4.0, 8.5, 10.0, 16.5],
+        "SP": [3.0, 6.5, 8.5, 10.5, 14.0, 19.0, 22.0],
+        "DBRS": [2.0, 4.5, 7.0, 9.0, 10.0, 11.0, 13.5, 18.5, 22.0],
+    },
+    "base": {
+        "Fitch": [3.0, 6.5, 8.0, 9.5, 13.5, 18.5, 21.5],
+        "Moody": [3.5, 7.5, 9.5, 16.5],
+        "SP": [2.5, 5.5, 8.0, 10.0, 13.5, 19.0, 22.0],
+        "DBRS": [1.5, 3.5, 6.0, 8.0, 9.0, 10.0, 12.5, 18.0, 22.0],
+    },
+    "worst": {
+        "Fitch": [2.5, 5.5, 7.5, 9.5, 13.5, 18.5, 21.5],
+        "Moody": [3.0, 7.0, 9.5, 16.5],
+        "SP": [2.5, 5.5, 8.0, 10.0, 13.5, 19.0, 22.0],
+        "DBRS": [1.0, 2.5, 5.0, 7.5, 9.0, 10.0, 12.5, 18.0, 22.0],
+    },
 }
 
-# create tuples for parameterization: (RatingProvider, Rating, RatingScore)
-st_prov_rtg_scrs_records = []
-for (k, v_rtg, v_scores) in zip(
-    st_rtg_prov_list, st_rtg_dict.values(), st_scrs_dict.values()
-):
-    for (x, y) in zip(v_rtg, v_scores):
-        st_prov_rtg_scrs_records.append((k, x, y))
+# create list of tuples for parameterization: [(Strategy, RatingProvider, Rating,
+# RatingScore), ]
+st_strat_prov_rtg_scrs_records = []
+for strat in st_strategies:
+    for (k, v_rtg, v_scores) in zip(
+        st_rtg_prov_list, st_rtg_dict[strat].values(), st_scrs_dict[strat].values()
+    ):
+        for (x, y) in zip(v_rtg, v_scores):
+            st_strat_prov_rtg_scrs_records.append((strat, k, x, y))
 
 # create long/tidy dataframe
 st_rtg_df_long = pd.DataFrame.from_records(
-    st_prov_rtg_scrs_records,
-    columns=["RatingProvider", "Rating", "RatingScore"],
+    st_strat_prov_rtg_scrs_records,
+    columns=["Strategy", "RatingProvider", "Rating", "RatingScore"],
 )
 
-# create wide dataframe with rating provider as columns
+
+def _convert_rtg_long_to_rtg_wide(strat: str) -> pd.DataFrame:
+    out = pd.concat(
+        [
+            st_rtg_df_long.loc[
+                (st_rtg_df_long["RatingProvider"] == rating_provider)
+                & (st_rtg_df_long["Strategy"] == strat),
+                "Rating",
+            ]
+            .reset_index(drop=True)
+            .rename(rating_provider)
+            for rating_provider in st_rtg_prov_list
+        ],
+        axis=1,
+    )
+    out.insert(0, "Strategy", strat)
+    return out
+
+
+# create wide dataframe with ratings in columns and strategies vertically stacked
 st_rtg_df_wide = pd.concat(
-    [
-        st_rtg_df_long.loc[
-            st_rtg_df_long["RatingProvider"] == rating_provider, "Rating"
-        ]
-        .reset_index(drop=True)
-        .rename(rating_provider)
-        for rating_provider in st_rtg_prov_list
-    ],
-    axis=1,
-)
+    [_convert_rtg_long_to_rtg_wide(strat) for strat in st_strategies], axis=0
+).reset_index(drop=True)
 
+
+def _convert_scrs_long_to_rtg_wide(strat: str) -> pd.DataFrame:
+    out = pd.concat(
+        [
+            st_rtg_df_long.loc[
+                (st_rtg_df_long["RatingProvider"] == rating_provider)
+                & (st_rtg_df_long["Strategy"] == strat),
+                "RatingScore",
+            ]
+            .reset_index(drop=True)
+            .rename(f"rtg_score_{rating_provider}")
+            for rating_provider in st_rtg_prov_list
+        ],
+        axis=1,
+    )
+    out.insert(0, "Strategy", strat)
+    return out
+
+
+# create wide dataframe with scores in columns and strategies vertically stacked.
 st_scores_df_wide = pd.concat(
-    [
-        st_rtg_df_long.loc[
-            st_rtg_df_long["RatingProvider"] == rating_provider, "RatingScore"
-        ]
-        .reset_index(drop=True)
-        .rename(f"rtg_score_{rating_provider}")
-        for rating_provider in st_rtg_prov_list
-    ],
-    axis=1,
-)
+    [_convert_scrs_long_to_rtg_wide(strat) for strat in st_strategies], axis=0
+).reset_index(drop=True)
 
-st_prov_scores_rtg_series = [
+st_strat_prov_scores_rtg_series = [
     (
+        strat,
         rating_provider,
         st_rtg_df_long.loc[
-            st_rtg_df_long["RatingProvider"] == rating_provider,
+            (st_rtg_df_long["RatingProvider"] == rating_provider)
+            & (st_rtg_df_long["Strategy"] == strat),
             "RatingScore",
         ]
         .reset_index(drop=True)
         .squeeze(),
         st_rtg_df_long.loc[
-            st_rtg_df_long["RatingProvider"] == rating_provider,
-            ["Rating"],
+            (st_rtg_df_long["RatingProvider"] == rating_provider)
+            & (st_rtg_df_long["Strategy"] == strat),
+            "Rating",
         ]
         .reset_index(drop=True)
         .squeeze(),
     )
     for rating_provider in st_rtg_prov_list
+    for strat in st_strategies
 ]
 
 # --- invalid dataframe ----------------------------------------------------------------

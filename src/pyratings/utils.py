@@ -145,7 +145,7 @@ def _get_translation_dict(
         if tenor == "long-term":
             sql_query = """
                 SELECT RatingScore, Rating FROM v_ltRatings
-                WHERE Rating != "SD" and RatingProvider=?
+                WHERE Rating != 'SD' and RatingProvider=?
             """
             cursor.execute(sql_query, (rating_provider,))
             translation_dict = dict(cursor.fetchall())

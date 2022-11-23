@@ -66,15 +66,18 @@ def test_get_rating_from_single_score_float_longterm() -> None:
 
 
 @pytest.mark.parametrize(
-    ["rating_provider", "rating", "score"],
-    conftest.st_prov_rtg_scrs_records,
+    ["strategy", "rating_provider", "rating", "score"],
+    conftest.st_strat_prov_rtg_scrs_records,
 )
 def test_get_rating_from_single_score_shortterm(
-    rating_provider: str, score: int, rating: str
+    strategy: str, rating_provider: str, score: int, rating: str
 ) -> None:
     """It returns a human-readable short-term rating."""
     act = rtg.get_ratings_from_scores(
-        rating_scores=score, rating_provider=rating_provider, tenor="short-term"
+        rating_scores=score,
+        rating_provider=rating_provider,
+        tenor="short-term",
+        short_term_strategy=strategy,
     )
 
     assert act == rating
@@ -192,15 +195,21 @@ def test_get_ratings_from_scores_series_longterm_float(
 
 
 @pytest.mark.parametrize(
-    ["rating_provider", "scores_series", "ratings_series"],
-    conftest.st_prov_scores_rtg_series,
+    ["strategy", "rating_provider", "scores_series", "ratings_series"],
+    conftest.st_strat_prov_scores_rtg_series,
 )
 def test_get_ratings_from_scores_series_shortterm(
-    rating_provider: str, scores_series: pd.Series, ratings_series: pd.Series
+    strategy: str,
+    rating_provider: str,
+    scores_series: pd.Series,
+    ratings_series: pd.Series,
 ) -> None:
     """It returns a series with human-readable short-term ratings."""
     act = rtg.get_ratings_from_scores(
-        rating_scores=scores_series, rating_provider=rating_provider, tenor="short-term"
+        rating_scores=scores_series,
+        rating_provider=rating_provider,
+        tenor="short-term",
+        short_term_strategy=strategy,
     )
     ratings_series.name = f"rtg_{rating_provider}"
     assert_series_equal(act, ratings_series)
@@ -331,10 +340,20 @@ def test_get_ratings_from_scores_df_with_explicit_rating_provider_longterm() -> 
     assert_frame_equal(act, exp_lt)
 
 
-def test_get_ratings_from_scores_df_with_explicit_rating_provider_shortterm() -> None:
+@pytest.mark.parametrize("strategy", conftest.st_strategies)
+def test_get_ratings_from_scores_df_with_explicit_rating_provider_shortterm(
+    strategy: str,
+) -> None:
     """It returns a dataframe with human-readable short-term ratings and NaNs."""
+    input_df = (
+        conftest.st_scores_df_wide.loc[
+            conftest.st_scores_df_wide["Strategy"] == strategy
+        ]
+        .iloc[:, 1:]
+        .reset_index(drop=True)
+    )
     act = rtg.get_ratings_from_scores(
-        rating_scores=conftest.st_scores_df_wide,
+        rating_scores=input_df,
         rating_provider=[
             "rtg_Fitch",
             "Moody's rating",
@@ -342,8 +361,13 @@ def test_get_ratings_from_scores_df_with_explicit_rating_provider_shortterm() ->
             "DBRS",
         ],
         tenor="short-term",
+        short_term_strategy=strategy,
     )
-    exp = conftest.st_rtg_df_wide
+    exp = (
+        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == strategy]
+        .iloc[:, 1:]
+        .reset_index(drop=True)
+    )
     exp = exp.set_axis(["rtg_Fitch", "rtg_Moody", "rtg_SP", "rtg_DBRS"], axis=1)
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp)
@@ -358,12 +382,28 @@ def test_get_ratings_from_scores_df_by_inferring_rating_provider_longterm() -> N
     assert_frame_equal(act, exp_lt)
 
 
-def test_get_ratings_from_scores_df_by_inferring_rating_provider_shortterm() -> None:
+@pytest.mark.parametrize("strategy", conftest.st_strategies)
+def test_get_ratings_from_scores_df_by_inferring_rating_provider_shortterm(
+    strategy: str,
+) -> None:
     """It returns a dataframe with human-readable short-term ratings and NaNs."""
-    act = rtg.get_ratings_from_scores(
-        rating_scores=conftest.st_scores_df_wide, tenor="short-term"
+    input_df = (
+        conftest.st_scores_df_wide.loc[
+            conftest.st_scores_df_wide["Strategy"] == strategy
+        ]
+        .iloc[:, 1:]
+        .reset_index(drop=True)
     )
-    exp = conftest.st_rtg_df_wide
+    act = rtg.get_ratings_from_scores(
+        rating_scores=input_df,
+        tenor="short-term",
+        short_term_strategy=strategy,
+    )
+    exp = (
+        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == strategy]
+        .iloc[:, 1:]
+        .reset_index(drop=True)
+    )
     exp = exp.set_axis(["rtg_Fitch", "rtg_Moody", "rtg_SP", "rtg_DBRS"], axis=1)
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp)

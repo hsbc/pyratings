@@ -81,6 +81,7 @@ def get_ratings_from_scores(
     rating_scores: Union[int, float, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
     tenor: str = "long-term",
+    short_term_strategy: str = "base",
 ) -> Union[str, pd.Series, pd.DataFrame]:
     """Convert numerical rating scores into regular ratings.
 
@@ -96,6 +97,24 @@ def get_ratings_from_scores(
         column names.
     tenor
         Should contain any valid tenor out of {"long-term", "short-term"}.
+    short_term_strategy
+        Will only be used, if `tenor` is "short-term". Choose between three distinct
+        strategies in order to translate a long-term rating score into a short-term
+        rating. Must be in {"best", "base", "worst"}.
+
+        Compare
+        https://hsbc.github.io/pyratings/short-term-rating/#there's-one-more-catch...
+
+        - Strategy 1 (best):
+          Always choose the best possible short-term rating. That's the optimistic
+          approach.
+        - Strategy 2 (base-case):
+          Always choose the short-term rating that a rating agency would usually assign
+          if there aren't any special liquidity issues (positive or negative). That's
+          the base-case approach.
+        - Strategy 3 (worst):
+          Always choose the worst possible short-term rating. That's the conservative
+          approach.
 
     Returns
     -------
@@ -109,15 +128,37 @@ def get_ratings_from_scores(
 
     Examples
     --------
-    Converting a single rating score:
+    Converting a single long-term rating score:
 
     >>> get_ratings_from_scores(rating_scores=9, rating_provider="Fitch")
     'BBB'
 
+    Converting a single short-term rating score with different `short_term_stragey`
+    arguments:
+
     >>> get_ratings_from_scores(
-    ...     rating_scores=5, rating_provider="S&P", tenor="short-term"
+    ...     rating_scores=10,
+    ...     rating_provider="DBRS",
+    ...     tenor="short-term",
+    ...     short_term_strategy="best",
     ... )
-    'A-1'
+    'R-2 M'
+
+    >>> get_ratings_from_scores(
+    ...     rating_scores=10,
+    ...     rating_provider="DBRS",
+    ...     tenor="short-term",
+    ...     short_term_strategy="base",
+    ... )
+    'R-2 L / R-3'
+
+    >>> get_ratings_from_scores(
+    ...     rating_scores=10,
+    ...     rating_provider="DBRS",
+    ...     tenor="short-term",
+    ...     short_term_strategy="worst",
+    ... )
+    'R-3'
 
     Converting a ``pd.Series`` with scores:
 
@@ -193,13 +234,14 @@ def get_ratings_from_scores(
         )
 
         rtg_dict = _get_translation_dict(
-            "scores_to_rtg", rating_provider=rating_provider, tenor=tenor
+            "scores_to_rtg",
+            rating_provider=rating_provider,
+            tenor=tenor,
+            st_rtg_strategy=short_term_strategy,
         )
 
         if not np.isnan(rating_scores):
             rating_scores = int(Decimal(f"{rating_scores}").quantize(0, ROUND_HALF_UP))
-            # find key (MinScore) in rtg_dict that is nearest to rating_scores
-            # https://bit.ly/3gdRuhX
             if tenor == "long-term":
                 return rtg_dict.get(rating_scores, pd.NA)
             else:
@@ -225,7 +267,12 @@ def get_ratings_from_scores(
                 valid_rtg_provider=valid_rtg_agncy[tenor],
             )
 
-        rtg_dict = _get_translation_dict("scores_to_rtg", rating_provider, tenor=tenor)
+        rtg_dict = _get_translation_dict(
+            "scores_to_rtg",
+            rating_provider,
+            tenor=tenor,
+            st_rtg_strategy=short_term_strategy,
+        )
 
         # round element to full integer, if element is number
         rating_scores = rating_scores.apply(
@@ -270,6 +317,7 @@ def get_ratings_from_scores(
                     rating_scores=rating_scores[col],
                     rating_provider=provider,
                     tenor=tenor,
+                    short_term_strategy=short_term_strategy,
                 )
                 for col, provider in zip(rating_scores.columns, rating_provider)
             ],
