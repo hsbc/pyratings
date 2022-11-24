@@ -4,8 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Option to choose between three different strategies to translate short-term
+  ratings into scores and vice versa ([#24](https://github.com/hsbc/pyratings/pull/24)).
+
 ### Changed
-- BREAKING CHANGE: Automatic column naming  
+- BREAKING CHANGE: Automatic column naming
+  ([#9](https://github.com/hsbc/pyratings/issues/9)). 
     - ``get_scores_from_ratings()``  
       When input a ``pd.Series``, the name of the output series will now become
       ``ratings.name`` prefixed with "rtg_score_".  
@@ -16,9 +21,14 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
       ``ratings.name`` prefixed with "warf_".  
       When input a pd.DataFrame, the column names of the output frame will now become 
       ``ratings.columns`` prefixed with "warf_".
- 
+- BREAKING CHANGE: Translations of short-term ratings are now different
+  ([#16](https://github.com/hsbc/pyratings/issues/16)).
+
 ### Improved
-- Splitting the code base into multiple files in order to increase maintainability.
+- Splitting the code base into multiple files in order to increase maintainability
+  ([#8](https://github.com/hsbc/pyratings/issues/8)).
+- Internal checks have been improved 
+  ([#20](https://github.com/hsbc/pyratings/issues/20)).
 - Documentation has been updated and will now be created via
   [mkdocs](https://www.mkdocs.org/) and 
   [mkdocstrings](https://mkdocstrings.github.io/python/).
