@@ -83,6 +83,17 @@ def test_get_rating_from_single_score_shortterm(
     assert act == rating
 
 
+def test_get_rating_from_single_score_shortterm_without_specifying_strategy() -> None:
+    """It returns a human-readable short-term rating."""
+    act = rtg.get_ratings_from_scores(
+        rating_scores=5,
+        rating_provider="Moody",
+        tenor="short-term",
+    )
+
+    assert act == "P-1"
+
+
 def test_get_rating_from_single_score_float_shortterm() -> None:
     """It returns a human-readable short-term rating."""
     assert (
@@ -467,3 +478,18 @@ def test_get_ratings_from_invalid_warf_df() -> None:
     expectations.columns = ["rtg_Fitch", "rtg_DBRS"]
     # noinspection PyTypeChecker
     assert_frame_equal(act, expectations, check_dtype=False)
+
+
+def test_invalid_short_term_strategy() -> None:
+    """It raises an error message."""
+    with pytest.raises(ValueError) as err:
+        rtg.get_ratings_from_scores(
+            rating_scores=5,
+            rating_provider="Moody",
+            tenor="short-term",
+            short_term_strategy="foo",
+        )
+
+    assert str(err.value) == (
+        "Invalid short_term_strategy. Must be in ['best', 'base', 'worst']."
+    )

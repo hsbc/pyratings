@@ -67,6 +67,17 @@ def test_get_scores_from_single_rating_shortterm(
     assert act == score
 
 
+def test_get_scores_from_single_rating_shortterm_without_specifying_strategy() -> None:
+    """It returns a human-readable short-term rating."""
+    act = rtg.get_scores_from_ratings(
+        ratings="P-1",
+        rating_provider="Moody",
+        tenor="short-term",
+    )
+
+    assert act == 3.5
+
+
 @pytest.mark.parametrize("tenor", ["long-term", "short-term"])
 def test_get_scores_from_single_rating_invalid_rating_provider(tenor: str) -> None:
     """It raises an error message."""
@@ -349,3 +360,18 @@ def test_get_scores_from_invalid_warf_df() -> None:
     expectations.columns = ["rtg_score_Fitch", "rtg_score_DBRS"]
     # noinspection PyTypeChecker
     assert_frame_equal(act, expectations)
+
+
+def test_invalid_short_term_strategy() -> None:
+    """It raises an error message."""
+    with pytest.raises(ValueError) as err:
+        rtg.get_scores_from_ratings(
+            ratings="P-2",
+            rating_provider="Moody",
+            tenor="short-term",
+            short_term_strategy="foo",
+        )
+
+    assert str(err.value) == (
+        "Invalid short_term_strategy. Must be in ['best', 'base', 'worst']."
+    )

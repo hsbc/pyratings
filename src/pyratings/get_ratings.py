@@ -81,7 +81,7 @@ def get_ratings_from_scores(
     rating_scores: Union[int, float, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
     tenor: str = "long-term",
-    short_term_strategy: str = "base",
+    short_term_strategy: Optional[str] = None,
 ) -> Union[str, pd.Series, pd.DataFrame]:
     """Convert numerical rating scores into regular ratings.
 
@@ -224,6 +224,13 @@ def get_ratings_from_scores(
     2         D           NaN        D
 
     """
+    if tenor == "short-term" and short_term_strategy is None:
+        short_term_strategy = "base"
+    if tenor == "short-term" and short_term_strategy not in ["best", "base", "worst"]:
+        raise ValueError(
+            "Invalid short_term_strategy. Must be in ['best', 'base', 'worst']."
+        )
+
     if isinstance(rating_scores, (int, float, np.number)):
         if rating_provider is None:
             raise ValueError(VALUE_ERROR_PROVIDER_MANDATORY)
