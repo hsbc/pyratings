@@ -17,52 +17,122 @@
 All functions use the following table in order to translate between long-term
 ratings/WARF and numerical rating scores.
 
-| Moody’s |  S&P | Fitch |  ICE | DBRS | Bloomberg | Score |  WARF | MinWARF* | MaxWARF* |
-|:-------:|:----:|:-----:|:----:|:----:|:---------:|------:|------:|---------:|---------:|
-|   Aaa   |  AAA |  AAA  |  AAA |  AAA |    AAA    |     1 |     1 |        1 |        5 |
-|   Aa1   |  AA+ |  AA+  |  AA+ |  AAH |    AA+    |     2 |    10 |        5 |       15 |
-|   Aa2   |  AA  |   AA  |  AA  |  AA  |     AA    |     3 |    20 |       15 |       30 |
-|   Aa3   |  AA- |  AA-  |  AA- |  AAL |    AA-    |     4 |    40 |       30 |       55 |
-|    A1   |  A+  |   A+  |  A+  |  AH  |     A+    |     5 |    70 |       55 |       95 |
-|    A2   |   A  |   A   |   A  |   A  |     A     |     6 |   120 |       95 |      150 |
-|    A3   |  A-  |   A-  |  A-  |  AL  |     A-    |     7 |   180 |      150 |      220 |
-|   Baa1  | BBB+ |  BBB+ | BBB+ | BBBH |    BBB+   |     8 |   260 |      220 |      310 |
-|   Baa2  |  BBB |  BBB  |  BBB |  BBB |    BBB    |     9 |   360 |      310 |      485 |
-|   Baa3  | BBB- |  BBB- | BBB- | BBBL |    BBB-   |    10 |   610 |      485 |      775 |
-|   Ba1   |  BB+ |  BB+  |  BB+ |  BBH |    BB+    |    11 |   940 |      775 |     1145 |
-|   Ba2   |  BB  |   BB  |  BB  |  BB  |     BB    |    12 |  1350 |     1145 |     1558 |
-|   Ba3   |  BB- |  BB-  |  BB- |  BBL |    BB-    |    13 |  1766 |     1558 |     1993 |
-|    B1   |  B+  |   B+  |  B+  |  BH  |     B+    |    14 |  2220 |     1993 |     2470 |
-|    B2   |   B  |   B   |   B  |   B  |     B     |    15 |  2720 |     2470 |     3105 |
-|    B3   |  B-  |   B-  |  B-  |  BL  |     B-    |    16 |  3490 |     3105 |     4130 |
-|   Caa1  | CCC+ |  CCC+ | CCC+ | CCCH |    CCC+   |    17 |  4770 |     4130 |     5635 |
-|   Caa2  |  CCC |  CCC  |  CCC |  CCC |    CCC    |    18 |  6500 |     5635 |     7285 |
-|   Caa3  | CCC- |  CCC- | CCC- | CCCL |    CCC-   |    19 |  8070 |     7285 |     9034 |
-|    Ca   |  CC  |   CC  |  CC  |  CC  |     CC    |    20 |  9998 |     9034 |   9998.5 |
-|    C    |   C  |   C   |   C  |   C  |     C     |    21 |  9999 |   9998.5 |   9999.5 |
-|    D    |   D  |   D   |   D  |   D  |    DDD    |    22 | 10000 |   9999.5 |    10000 |
+| Moody |  S&P | Fitch |  ICE | DBRS | Bloomberg | Score |  WARF | MinWARF* | MaxWARF* |
+|:-----:|:----:|:-----:|:----:|:----:|:---------:|------:|------:|---------:|---------:|
+|  Aaa  |  AAA |  AAA  |  AAA |  AAA |    AAA    |     1 |     1 |        1 |        5 |
+|  Aa1  |  AA+ |  AA+  |  AA+ |  AAH |    AA+    |     2 |    10 |        5 |       15 |
+|  Aa2  |  AA  |   AA  |  AA  |  AA  |     AA    |     3 |    20 |       15 |       30 |
+|  Aa3  |  AA- |  AA-  |  AA- |  AAL |    AA-    |     4 |    40 |       30 |       55 |
+|   A1  |  A+  |   A+  |  A+  |  AH  |     A+    |     5 |    70 |       55 |       95 |
+|   A2  |   A  |   A   |   A  |   A  |     A     |     6 |   120 |       95 |      150 |
+|   A3  |  A-  |   A-  |  A-  |  AL  |     A-    |     7 |   180 |      150 |      220 |
+|  Baa1 | BBB+ |  BBB+ | BBB+ | BBBH |    BBB+   |     8 |   260 |      220 |      310 |
+|  Baa2 |  BBB |  BBB  |  BBB |  BBB |    BBB    |     9 |   360 |      310 |      485 |
+|  Baa3 | BBB- |  BBB- | BBB- | BBBL |    BBB-   |    10 |   610 |      485 |      775 |
+|  Ba1  |  BB+ |  BB+  |  BB+ |  BBH |    BB+    |    11 |   940 |      775 |     1145 |
+|  Ba2  |  BB  |   BB  |  BB  |  BB  |     BB    |    12 |  1350 |     1145 |     1558 |
+|  Ba3  |  BB- |  BB-  |  BB- |  BBL |    BB-    |    13 |  1766 |     1558 |     1993 |
+|   B1  |  B+  |   B+  |  B+  |  BH  |     B+    |    14 |  2220 |     1993 |     2470 |
+|   B2  |   B  |   B   |   B  |   B  |     B     |    15 |  2720 |     2470 |     3105 |
+|   B3  |  B-  |   B-  |  B-  |  BL  |     B-    |    16 |  3490 |     3105 |     4130 |
+|  Caa1 | CCC+ |  CCC+ | CCC+ | CCCH |    CCC+   |    17 |  4770 |     4130 |     5635 |
+|  Caa2 |  CCC |  CCC  |  CCC |  CCC |    CCC    |    18 |  6500 |     5635 |     7285 |
+|  Caa3 | CCC- |  CCC- | CCC- | CCCL |    CCC-   |    19 |  8070 |     7285 |     9034 |
+|   Ca  |  CC  |   CC  |  CC  |  CC  |     CC    |    20 |  9998 |     9034 |   9998.5 |
+|   C   |   C  |   C   |   C  |   C  |     C     |    21 |  9999 |   9998.5 |   9999.5 |
+|   D   |   D  |   D   |   D  |   D  |    DDD    |    22 | 10000 |   9999.5 |    10000 |
 
 `MinWARF` is inclusive, while `MaxWARF` is exclusive.
 
-For short-term ratings, the following translation table will be used:
+For short-term ratings, the rating will be translated into an equivalent long-term
+rating score. The translation will depend on the a "translation strategy". The following
+translation table will be used:
 
-| Moody’s | S&P  | Fitch |    DBRS    | Score |
-|:-------:|:----:|:-----:|:----------:| -----:|
-|   P-1   | A-1+ |  F1+  | R-1 (high) |     1 |
-|         |      |       | R-1 (mid)  |     2 |
-|         |      |       | R-1 (low)  |     3 |
-|         | A-1  |  F1   | R-2 (high) |     5 |
-|         |      |       | R-2 (mid)  |     6 |
-|   P-2   | A-2  |  F2   | R-2 (low)  |     7 |
-|         |      |       | R-3 (high) |     8 |
-|   P-3   | A-3  |  F3   | R-3 (mid)  |     9 |
-|         |      |       | R-3 (low)  |    10 |
-|   NP    |  B   |       |    R-4     |    12 |
-|         |      |       |    R-5     |    15 |
-|         |  C   |       |            |    18 |
-|         |  D   |       |     D      |    22 |
+|  Agency | Strategy |    Rating   | MinLTScore | MaxLTScore | AvgLTScore |
+|:-------:|:--------:|:-----------:|:----------:|:----------:|:----------:|
+| Moody's |   best   |     P-1     |      1     |      7     |    4.00    |
+| Moody's |   best   |     P-2     |      8     |      9     |    8.50    |
+| Moody's |   best   |     P-3     |     10     |     10     |   10.00    |
+| Moody's |   best   |      NP     |     11     |     22     |   16.50    |
+| Moody's |   base   |     P-1     |      1     |      6     |    3.50    |
+| Moody's |   base   |     P-2     |      7     |      8     |    7.50    |
+| Moody's |   base   |     P-3     |      9     |     10     |    9.50    |
+| Moody's |   base   |      NP     |     11     |     22     |   16.50    |
+| Moody's |   worst  |     P-1     |      1     |      5     |    3.00    |
+| Moody's |   worst  |     P-2     |      6     |      8     |    7.00    |
+| Moody's |   worst  |     P-3     |      9     |     10     |    9.50    |
+| Moody's |   worst  |      NP     |     11     |     22     |   16.50    |
+| S&P     |   best   |     A-1+    |      1     |      5     |    3.00    |
+| S&P     |   best   |     A-1     |      6     |      7     |    6.50    |
+| S&P     |   best   |     A-2     |      8     |      9     |    8.50    |
+| S&P     |   best   |     A-3     |     10     |     11     |   10.50    |
+| S&P     |   best   |      B      |     12     |     16     |   14.00    |
+| S&P     |   best   |      C      |     17     |     21     |   19.00    |
+| S&P     |   best   |      D      |     22     |     22     |   22.00    |
+| S&P     |   base   |     A-1+    |      1     |      4     |    2.50    |
+| S&P     |   base   |     A-1     |      5     |      6     |    5.50    |
+| S&P     |   base   |     A-2     |      7     |      9     |    8.00    |
+| S&P     |   base   |     A-3     |     10     |     10     |   10.00    |
+| S&P     |   base   |      B      |     11     |     16     |   13.50    |
+| S&P     |   base   |      C      |     17     |     21     |   19.00    |
+| S&P     |   base   |      D      |     22     |     22     |   22.00    |
+| S&P     |   worst  |     A-1+    |      1     |      4     |    2.50    |
+| S&P     |   worst  |     A-1     |      5     |      6     |    5.50    |
+| S&P     |   worst  |     A-2     |      7     |      9     |    8.00    |
+| S&P     |   worst  |     A-3     |     10     |     10     |   10.00    |
+| S&P     |   worst  |      B      |     11     |     16     |   13.50    |
+| S&P     |   worst  |      C      |     17     |     21     |   19.00    |
+| S&P     |   worst  |      D      |     22     |     22     |   22.00    |
+| Fitch   |   best   |     F1+     |      1     |      6     |    3.50    |
+| Fitch   |   best   |      F1     |      7     |      8     |    7.50    |
+| Fitch   |   best   |      F2     |      9     |      9     |    9.00    |
+| Fitch   |   best   |      F3     |     10     |     10     |   10.00    |
+| Fitch   |   best   |      B      |     11     |     16     |   13.50    |
+| Fitch   |   best   |      C      |     17     |     20     |   18.50    |
+| Fitch   |   best   |      D      |     21     |     22     |   21.50    |
+| Fitch   |   base   |     F1+     |      1     |      5     |    3.00    |
+| Fitch   |   base   |      F1     |      6     |      7     |    6.50    |
+| Fitch   |   base   |      F2     |      8     |      8     |    8.00    |
+| Fitch   |   base   |      F3     |      9     |     10     |    9.50    |
+| Fitch   |   base   |      B      |     11     |     16     |   13.50    |
+| Fitch   |   base   |      C      |     17     |     20     |   18.50    |
+| Fitch   |   base   |      D      |     21     |     22     |   21.50    |
+| Fitch   |   worst  |     F1+     |      1     |      4     |    2.50    |
+| Fitch   |   worst  |      F1     |      5     |      6     |    5.50    |
+| Fitch   |   worst  |      F2     |      7     |      8     |    7.50    |
+| Fitch   |   worst  |      F3     |      9     |     10     |    9.50    |
+| Fitch   |   worst  |      B      |     11     |     16     |   13.50    |
+| Fitch   |   worst  |      C      |     17     |     20     |   18.50    |
+| Fitch   |   worst  |      D      |     21     |     22     |   21.50    |
+| DBRS    |   best   |    R-1 H    |      1     |      3     |    2.00    |
+| DBRS    |   best   |    R-1 M    |      4     |      5     |    4.50    |
+| DBRS    |   best   |    R-1 L    |      6     |      8     |    7.00    |
+| DBRS    |   best   |    R-2 H    |      9     |      9     |    9.00    |
+| DBRS    |   best   |    R-2 M    |     10     |     10     |   10.00    |
+| DBRS    |   best   |     R-3     |     11     |     11     |   11.00    |
+| DBRS    |   best   |     R-4     |     12     |     15     |   13.50    |
+| DBRS    |   best   |     R-5     |     16     |     21     |   18.50    |
+| DBRS    |   best   |      D      |     22     |     22     |   22.00    |
+| DBRS    |   base   |    R-1 H    |      1     |      2     |    1.50    |
+| DBRS    |   base   |    R-1 M    |      3     |      4     |    3.50    |
+| DBRS    |   base   |    R-1 L    |      5     |      7     |    6.00    |
+| DBRS    |   base   |    R-2 H    |      8     |      8     |    8.00    |
+| DBRS    |   base   |    R-2 M    |      9     |      9     |    9.00    |
+| DBRS    |   base   | R-2 L / R-3 |     10     |     10     |   10.00    |
+| DBRS    |   base   |     R-4     |     11     |     14     |   12.50    |
+| DBRS    |   base   |     R-5     |     15     |     21     |   18.00    |
+| DBRS    |   base   |      D      |     22     |     22     |   22.00    |
+| DBRS    |   worst  |    R-1 H    |      1     |      1     |    1.00    |
+| DBRS    |   worst  |    R-1 M    |      2     |      3     |    2.50    |
+| DBRS    |   worst  |    R-1 L    |      4     |      6     |    5.00    |
+| DBRS    |   worst  |    R-2 H    |      7     |      8     |    7.50    |
+| DBRS    |   worst  |    R-2 M    |      9     |      9     |    9.00    |
+| DBRS    |   worst  |     R-3     |     10     |     10     |   10.00    |
+| DBRS    |   worst  |     R-4     |     11     |     14     |   12.50    |
+| DBRS    |   worst  |     R-5     |     15     |     21     |   18.00    |
+| DBRS    |   worst  |      D      |     22     |     22     |   22.00    |
 
-"""  # noqa: B950
+"""
 
 import sqlite3
 from typing import List, Optional, Union
@@ -141,7 +211,7 @@ def get_scores_from_ratings(
     >>> get_scores_from_ratings("BBB-", "S&P", tenor="long-term")
     10
 
-    Converting a single short-term rating score with different `short_term_stragey`
+    Converting a single short-term rating score with different `short_term_strategy`
     arguments:
 
     >>> get_scores_from_ratings(
