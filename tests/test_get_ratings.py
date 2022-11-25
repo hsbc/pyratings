@@ -98,13 +98,13 @@ def test_get_rating_from_single_score_float_shortterm() -> None:
     """It returns a human-readable short-term rating."""
     assert (
         rtg.get_ratings_from_scores(
-            rating_scores=5.499, rating_provider="DBRS", tenor="short-term"
+            rating_scores=4.499, rating_provider="DBRS", tenor="short-term"
         )
-        == "R-1 L"
+        == "R-1 M"
     )
     assert (
         rtg.get_ratings_from_scores(
-            rating_scores=5.501, rating_provider="DBRS", tenor="short-term"
+            rating_scores=4.501, rating_provider="DBRS", tenor="short-term"
         )
         == "R-1 L"
     )
