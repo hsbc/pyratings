@@ -42,23 +42,93 @@ numerical scores/WARF and long-term ratings.
 |    C    |   C  |   C   |   C  |   C  |     C     |    21 |  9999 |   9998.5 |   9999.5 |
 |    D    |   D  |   D   |   D  |   D  |    DDD    |    22 | 10000 |   9999.5 |    10000 |
 
-For short-term ratings, the following translation table will be used:
+For short-term ratings, the rating will be translated into an equivalent long-term
+rating score. The translation will depend on the a "translation strategy". The following
+translation table will be used:
 
-| Moody’s | S&P  | Fitch |    DBRS    | Score |
-|:-------:|:----:|:-----:|:----------:| -----:|
-|   P-1   | A-1+ |  F1+  | R-1 (high) |     1 |
-|         |      |       | R-1 (mid)  |     2 |
-|         |      |       | R-1 (low)  |     3 |
-|         | A-1  |  F1   | R-2 (high) |     5 |
-|         |      |       | R-2 (mid)  |     6 |
-|   P-2   | A-2  |  F2   | R-2 (low)  |     7 |
-|         |      |       | R-3 (high) |     8 |
-|   P-3   | A-3  |  F3   | R-3 (mid)  |     9 |
-|         |      |       | R-3 (low)  |    10 |
-|   NP    |  B   |       |    R-4     |    12 |
-|         |      |       |    R-5     |    15 |
-|         |  C   |       |            |    18 |
-|         |  D   |       |     D      |    22 |
+|  Agency | Strategy |    Rating   | MinLTScore | MaxLTScore | AvgLTScore |
+|:-------:|:--------:|:-----------:|:----------:|:----------:|:----------:|
+| Moody's |   best   |     P-1     |      1     |      7     |    4.00    |
+| Moody's |   best   |     P-2     |      8     |      9     |    8.50    |
+| Moody's |   best   |     P-3     |     10     |     10     |   10.00    |
+| Moody's |   best   |      NP     |     11     |     22     |   16.50    |
+| Moody's |   base   |     P-1     |      1     |      6     |    3.50    |
+| Moody's |   base   |     P-2     |      7     |      8     |    7.50    |
+| Moody's |   base   |     P-3     |      9     |     10     |    9.50    |
+| Moody's |   base   |      NP     |     11     |     22     |   16.50    |
+| Moody's |   worst  |     P-1     |      1     |      5     |    3.00    |
+| Moody's |   worst  |     P-2     |      6     |      8     |    7.00    |
+| Moody's |   worst  |     P-3     |      9     |     10     |    9.50    |
+| Moody's |   worst  |      NP     |     11     |     22     |   16.50    |
+| S&P     |   best   |     A-1+    |      1     |      5     |    3.00    |
+| S&P     |   best   |     A-1     |      6     |      7     |    6.50    |
+| S&P     |   best   |     A-2     |      8     |      9     |    8.50    |
+| S&P     |   best   |     A-3     |     10     |     11     |   10.50    |
+| S&P     |   best   |      B      |     12     |     16     |   14.00    |
+| S&P     |   best   |      C      |     17     |     21     |   19.00    |
+| S&P     |   best   |      D      |     22     |     22     |   22.00    |
+| S&P     |   base   |     A-1+    |      1     |      4     |    2.50    |
+| S&P     |   base   |     A-1     |      5     |      6     |    5.50    |
+| S&P     |   base   |     A-2     |      7     |      9     |    8.00    |
+| S&P     |   base   |     A-3     |     10     |     10     |   10.00    |
+| S&P     |   base   |      B      |     11     |     16     |   13.50    |
+| S&P     |   base   |      C      |     17     |     21     |   19.00    |
+| S&P     |   base   |      D      |     22     |     22     |   22.00    |
+| S&P     |   worst  |     A-1+    |      1     |      4     |    2.50    |
+| S&P     |   worst  |     A-1     |      5     |      6     |    5.50    |
+| S&P     |   worst  |     A-2     |      7     |      9     |    8.00    |
+| S&P     |   worst  |     A-3     |     10     |     10     |   10.00    |
+| S&P     |   worst  |      B      |     11     |     16     |   13.50    |
+| S&P     |   worst  |      C      |     17     |     21     |   19.00    |
+| S&P     |   worst  |      D      |     22     |     22     |   22.00    |
+| Fitch   |   best   |     F1+     |      1     |      6     |    3.50    |
+| Fitch   |   best   |      F1     |      7     |      8     |    7.50    |
+| Fitch   |   best   |      F2     |      9     |      9     |    9.00    |
+| Fitch   |   best   |      F3     |     10     |     10     |   10.00    |
+| Fitch   |   best   |      B      |     11     |     16     |   13.50    |
+| Fitch   |   best   |      C      |     17     |     20     |   18.50    |
+| Fitch   |   best   |      D      |     21     |     22     |   21.50    |
+| Fitch   |   base   |     F1+     |      1     |      5     |    3.00    |
+| Fitch   |   base   |      F1     |      6     |      7     |    6.50    |
+| Fitch   |   base   |      F2     |      8     |      8     |    8.00    |
+| Fitch   |   base   |      F3     |      9     |     10     |    9.50    |
+| Fitch   |   base   |      B      |     11     |     16     |   13.50    |
+| Fitch   |   base   |      C      |     17     |     20     |   18.50    |
+| Fitch   |   base   |      D      |     21     |     22     |   21.50    |
+| Fitch   |   worst  |     F1+     |      1     |      4     |    2.50    |
+| Fitch   |   worst  |      F1     |      5     |      6     |    5.50    |
+| Fitch   |   worst  |      F2     |      7     |      8     |    7.50    |
+| Fitch   |   worst  |      F3     |      9     |     10     |    9.50    |
+| Fitch   |   worst  |      B      |     11     |     16     |   13.50    |
+| Fitch   |   worst  |      C      |     17     |     20     |   18.50    |
+| Fitch   |   worst  |      D      |     21     |     22     |   21.50    |
+| DBRS    |   best   |    R-1 H    |      1     |      3     |    2.00    |
+| DBRS    |   best   |    R-1 M    |      4     |      5     |    4.50    |
+| DBRS    |   best   |    R-1 L    |      6     |      8     |    7.00    |
+| DBRS    |   best   |    R-2 H    |      9     |      9     |    9.00    |
+| DBRS    |   best   |    R-2 M    |     10     |     10     |   10.00    |
+| DBRS    |   best   |     R-3     |     11     |     11     |   11.00    |
+| DBRS    |   best   |     R-4     |     12     |     15     |   13.50    |
+| DBRS    |   best   |     R-5     |     16     |     21     |   18.50    |
+| DBRS    |   best   |      D      |     22     |     22     |   22.00    |
+| DBRS    |   base   |    R-1 H    |      1     |      2     |    1.50    |
+| DBRS    |   base   |    R-1 M    |      3     |      4     |    3.50    |
+| DBRS    |   base   |    R-1 L    |      5     |      7     |    6.00    |
+| DBRS    |   base   |    R-2 H    |      8     |      8     |    8.00    |
+| DBRS    |   base   |    R-2 M    |      9     |      9     |    9.00    |
+| DBRS    |   base   | R-2 L / R-3 |     10     |     10     |   10.00    |
+| DBRS    |   base   |     R-4     |     11     |     14     |   12.50    |
+| DBRS    |   base   |     R-5     |     15     |     21     |   18.00    |
+| DBRS    |   base   |      D      |     22     |     22     |   22.00    |
+| DBRS    |   worst  |    R-1 H    |      1     |      1     |    1.00    |
+| DBRS    |   worst  |    R-1 M    |      2     |      3     |    2.50    |
+| DBRS    |   worst  |    R-1 L    |      4     |      6     |    5.00    |
+| DBRS    |   worst  |    R-2 H    |      7     |      8     |    7.50    |
+| DBRS    |   worst  |    R-2 M    |      9     |      9     |    9.00    |
+| DBRS    |   worst  |     R-3     |     10     |     10     |   10.00    |
+| DBRS    |   worst  |     R-4     |     11     |     14     |   12.50    |
+| DBRS    |   worst  |     R-5     |     15     |     21     |   18.00    |
+| DBRS    |   worst  |      D      |     22     |     22     |   22.00    |
 
 """  # noqa: B950
 
