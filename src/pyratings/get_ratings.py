@@ -203,7 +203,7 @@ def get_ratings_from_scores(
     >>> get_ratings_from_scores(rating_scores=9, rating_provider="Fitch")
     'BBB'
 
-    Converting a single short-term rating score with different `short_term_stragey`
+    Converting a single short-term rating score with different `short_term_strategy`
     arguments:
 
     >>> get_ratings_from_scores(
