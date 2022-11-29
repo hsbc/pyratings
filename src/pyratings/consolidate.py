@@ -37,14 +37,14 @@ def get_best_ratings(
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
         Indicates rating providers within `ratings`. Should contain any valid rating
-        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
 
         If None, `rating_provider_input` will be inferred from the dataframe column
         names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
-        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
     tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
 
@@ -110,14 +110,14 @@ def get_second_best_ratings(
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
         Indicates rating providers within `ratings`. Should contain any valid rating
-        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
 
         If None, `rating_provider_input` will be inferred from the dataframe column
         names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
-        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
     tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
 
@@ -191,14 +191,14 @@ def get_worst_ratings(
         Dataframe consisting of clean ratings (i.e. stripped off of watches/outlooks)
     rating_provider_input
         Indicates rating providers within `ratings`. Should contain any valid rating
-        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        provider out of {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
 
         If None, `rating_provider_innput` will be inferred from the dataframe column
         names.
     rating_provider_output
         Indicates which rating scale will be used for output results.
         Should contain any valid rating provider out of
-        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
     tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
 
