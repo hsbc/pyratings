@@ -7,6 +7,8 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Added
 - Option to choose between three different strategies to translate short-term
   ratings into scores and vice versa ([#24](https://github.com/hsbc/pyratings/pull/24)).
+- Functionality to remove prefix '(P)' when cleaning ratings
+  ([#27](https://github.com/hsbc/pyratings/issues/27))
 
 ### Changed
 - BREAKING CHANGE: Automatic column naming

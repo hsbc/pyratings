@@ -37,6 +37,26 @@ def test_get_pure_ratings_single_rating_with_unsolicited_uppercase_u() -> None:
     assert rtg.get_pure_ratings("AA+U") == "AA+"
 
 
+def test_get_pure_ratings_single_rating_with_unsolicited_lowercase_u_watch() -> None:
+    """It returns a single clean rating."""
+    assert rtg.get_pure_ratings("AA+u (CWNegative)") == "AA+"
+
+
+def test_get_pure_ratings_single_rating_with_unsolicited_uppercase_u_watch() -> None:
+    """It returns a single clean rating."""
+    assert rtg.get_pure_ratings("AA+U *-") == "AA+"
+
+
+def test_get_pure_ratings_single_rating_with_public_information_lowercase_p() -> None:
+    """It returns a single clean rating."""
+    assert rtg.get_pure_ratings("(p)P-2") == "P-2"
+
+
+def test_get_pure_ratings_single_rating_with_public_information_uppercase_p() -> None:
+    """It returns a single clean rating."""
+    assert rtg.get_pure_ratings("(P)P-2") == "P-2"
+
+
 # --- input: ratings series
 @pytest.mark.parametrize(
     ["rating_provider", "rating_series", "rating_series_clean"],

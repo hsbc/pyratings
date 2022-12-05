@@ -22,13 +22,18 @@ import pandas as pd
 def get_pure_ratings(
     ratings: Union[str, pd.Series, pd.DataFrame]
 ) -> Union[str, pd.Series, pd.DataFrame]:
-    """Remove rating watches/outlooks.
+    """Remove rating watches/outlooks and other non-actual-rating related information.
+
+    Ratings may contain watch, such as 'AA- *+', 'BBB+ (CwNegative)'.
+    Outlook/watch should be seperated by a blank from the actual rating.
+    Also, ratings may also contain the letter 'u' (unsolicited) or be prefixed by
+    '(P)' (public information only).
+    This kind of information will be removed to retrieve the actual rating(s).
 
     Parameters
     ----------
     ratings
-        Rating may contain watch, such as `AA- *+`, `BBB+ (CwNegative)`.
-        Outlook/watch should be seperated by a blank from the actual rating.
+        Uncleaned rating(s).
 
     Returns
     -------
@@ -46,6 +51,9 @@ def get_pure_ratings(
     >>> get_pure_ratings("Au")
     'A'
 
+    >>> get_pure_ratings("(P)P-2")
+    'P-2'
+
     Cleaning a `pd.Series`:
 
     >>> import numpy as np
@@ -54,7 +62,7 @@ def get_pure_ratings(
     >>> rating_series=pd.Series(
     ...    data=[
     ...        "BB+ *-",
-    ...        "BBB *+",
+    ...        "(P)BBB *+",
     ...        np.nan,
     ...        "AA- (Developing)",
     ...        np.nan,
@@ -109,8 +117,9 @@ def get_pure_ratings(
 
     """
     if isinstance(ratings, str):
-        ratings = ratings.split()[0]
-        ratings = ratings.rstrip("uU")
+        ratings = (
+            ratings.split()[0].rstrip("uU").removeprefix("(p)").removeprefix("(P)")
+        )
         return ratings
 
     elif isinstance(ratings, pd.Series):
@@ -118,9 +127,12 @@ def get_pure_ratings(
         isstring = ratings.apply(type).eq(str)
 
         # strip string after occurrence of very first blank and strip character 'u',
-        # which has usually been added without a blank
+        # which has usually been added without a blank;
+        # also remove suffix '(p)' and '(P)'
         ratings[isstring] = ratings[isstring].str.split().str[0]
         ratings[isstring] = ratings[isstring].str.rstrip("uU")
+        ratings[isstring] = ratings[isstring].str.removeprefix("(p)")
+        ratings[isstring] = ratings[isstring].str.removeprefix("(P)")
         ratings.name = f"{ratings.name}_clean"
         return ratings
 
