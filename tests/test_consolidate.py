@@ -253,15 +253,15 @@ def test_get_worst_rating_shortterm_invalid_provider() -> None:
         rtg.get_worst_ratings(
             pd.DataFrame(
                 data={
-                    "ICE": ["AAA", "BBB"],
+                    "foo": ["AAA", "BBB"],
                     "DBRS": ["B+", "CCC"],
                 }
             ),
-            rating_provider_input=["ICE", "DBRS"],
+            rating_provider_input=["foo", "DBRS"],
             tenor="short-term",
         )
 
     assert str(err.value) == (
-        "'ICE' is not a valid rating provider. 'rating_provider' must be in "
+        "'foo' is not a valid rating provider. 'rating_provider' must be in "
         "['fitch', 'moody', 'sp', 's&p', 'dbrs']."
     )
