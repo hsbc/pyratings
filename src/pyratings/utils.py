@@ -45,10 +45,10 @@ def _extract_rating_provider(
     ----------
     rating_provider
         Should contain any valid rating provider out of
-        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
     valid_rtg_provider
         List of strings containing the names of valid rating providers. Supported
-        rating providers are {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"}.
+        rating providers are {"Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"}.
         'rating_provider' must be in that list.
 
     Returns
@@ -78,10 +78,10 @@ def _extract_rating_provider(
     You can also provide a list of strings.
 
     >>> _extract_rating_provider(
-    ...     rating_provider=["Fitch ratings", "rating_SP", "ICE"],
-    ...     valid_rtg_provider=["fitch", "moody", "sp", "bloomberg", "dbrs", "ice"]
+    ...     rating_provider=["Fitch ratings", "rating_SP", "DBRS"],
+    ...     valid_rtg_provider=["fitch", "moody", "sp", "bloomberg", "dbrs"]
     ... )
-    ['Fitch', 'SP', 'ICE']
+    ['Fitch', 'SP', 'DBRS']
 
     """
     provider_map = {
@@ -92,7 +92,6 @@ def _extract_rating_provider(
         "s&p": "SP",
         "bloomberg": "Bloomberg",
         "dbrs": "DBRS",
-        "ice": "ICE",
     }
     if isinstance(rating_provider, str):
         rating_provider = [rating_provider]

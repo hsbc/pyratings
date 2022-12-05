@@ -316,7 +316,7 @@ exp_lt = pd.concat(
     [
         exp_lt,
         pd.DataFrame(
-            data=[[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]],
+            data=[[np.nan, np.nan, np.nan, np.nan, np.nan]],
             columns=exp_lt.columns,
         ),
     ],
@@ -329,7 +329,6 @@ exp_lt.columns = [
     "rtg_SP",
     "rtg_Bloomberg",
     "rtg_DBRS",
-    "rtg_ICE",
 ]
 
 
@@ -343,7 +342,6 @@ def test_get_ratings_from_scores_df_with_explicit_rating_provider_longterm() -> 
             "Rating S&P",
             "Bloomberg Bloomberg RATING",
             "DBRS",
-            "ICE",
         ],
         tenor="long-term",
     )
@@ -427,7 +425,7 @@ def test_get_ratings_from_scores_df_by_inferring_rating_provider_lt_float() -> N
         [
             scores_df_wide_float,
             pd.DataFrame(
-                data=[["foo", "foo", "foo", "foo", "foo", "foo"]],
+                data=[["foo", "foo", "foo", "foo", "foo"]],
                 columns=scores_df_wide_float.columns,
             ),
         ],
