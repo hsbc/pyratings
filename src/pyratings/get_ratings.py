@@ -212,7 +212,7 @@ def get_ratings_from_scores(
     ...     tenor="short-term",
     ...     short_term_strategy="best",
     ... )
-    'R-2 M'
+    'R-2M'
 
     >>> get_ratings_from_scores(
     ...     rating_scores=10,
@@ -220,7 +220,7 @@ def get_ratings_from_scores(
     ...     tenor="short-term",
     ...     short_term_strategy="base",
     ... )
-    'R-2 L / R-3'
+    'R-2L / R-3'
 
     >>> get_ratings_from_scores(
     ...     rating_scores=10,

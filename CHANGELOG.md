@@ -24,6 +24,10 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - BREAKING CHANGE: Translations of short-term ratings are now different
   ([#16](https://github.com/hsbc/pyratings/issues/16)).
 
+### Fixed
+- Short-term DBRS rating entries in Ratings.db
+  ([#29](https://github.com/hsbc/pyratings/issues/29)).
+
 ### Improved
 - Splitting the code base into multiple files in order to increase maintainability
   ([#8](https://github.com/hsbc/pyratings/issues/8)).
