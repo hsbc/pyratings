@@ -159,7 +159,7 @@ exp = pd.concat(
     [
         exp,
         pd.DataFrame(
-            data=[[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]],
+            data=[[np.nan, np.nan, np.nan, np.nan, np.nan]],
             columns=exp.columns,
         ),
     ],
@@ -172,7 +172,6 @@ exp.columns = [
     "warf_SP",
     "warf_Bloomberg",
     "warf_DBRS",
-    "warf_ICE",
 ]
 
 
@@ -196,7 +195,7 @@ def test_get_warf_from_ratings_dataframe_with_explicit_rating_provider() -> None
     """It returns a dataframe with WARFs and NaNs."""
     act = rtg.get_warf_from_ratings(
         ratings=conftest.lt_rtg_df_wide_with_err_row,
-        rating_provider=["Fitch", "Moody's", "S&P", "Bloomberg", "DBRS", "ICE"],
+        rating_provider=["Fitch", "Moody's", "S&P", "Bloomberg", "DBRS"],
     )
     # noinspection PyTypeChecker
     assert_frame_equal(act, exp)
