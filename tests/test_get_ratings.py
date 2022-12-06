@@ -100,13 +100,13 @@ def test_get_rating_from_single_score_float_shortterm() -> None:
         rtg.get_ratings_from_scores(
             rating_scores=4.499, rating_provider="DBRS", tenor="short-term"
         )
-        == "R-1 M"
+        == "R-1M"
     )
     assert (
         rtg.get_ratings_from_scores(
             rating_scores=4.501, rating_provider="DBRS", tenor="short-term"
         )
-        == "R-1 L"
+        == "R-1L"
     )
 
 
