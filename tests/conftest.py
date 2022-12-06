@@ -64,8 +64,8 @@ lt_rtg_df_wide_with_err_row = pd.concat(
 lt_rtg_df_wide_with_watch_unsolicited = pd.DataFrame(
     data=[
         ["AAA (Developing)", "Aaa", "AAA", "AAA", "AAA"],
-        ["AA+", "Aa1", "AA+", "AA+", "AAH"],
-        ["AA", "Aa2", "AA", "AA", "AA *-"],
+        ["AA+", "(P)Aa1", "AA+", "AA+", "AAH"],
+        ["AA", "(p)Aa2", "AA", "AA", "AA *-"],
         ["AA-", "Aa3", "AA-", "AA-", "AAL"],
         ["A+", "A1", "A+", "A+", "AH"],
         ["A", "A2", "A", "A", "A"],
