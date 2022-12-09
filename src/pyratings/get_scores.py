@@ -45,7 +45,7 @@ ratings/WARF and numerical rating scores.
 `MinWARF` is inclusive, while `MaxWARF` is exclusive.
 
 For short-term ratings, the rating will be translated into an equivalent long-term
-rating score. The translation will depend on the a "translation strategy". The following
+rating score. The translation will depend on a "translation strategy". The following
 translation table will be used:
 
 |  Agency | Strategy |    Rating   | MinLTScore | MaxLTScore | AvgLTScore |
@@ -153,7 +153,6 @@ def get_scores_from_ratings(
     ratings: Union[str, pd.Series, pd.DataFrame],
     rating_provider: Optional[Union[str, List[str]]] = None,
     tenor: str = "long-term",
-    short_term_strategy: Optional[str] = None,
 ) -> Union[int, pd.Series, pd.DataFrame]:
     """Convert regular ratings into numerical rating scores.
 
@@ -169,24 +168,6 @@ def get_scores_from_ratings(
         column names.
     tenor
         Should contain any valid tenor out of {"long-term", "short-term"}
-    short_term_strategy
-        Will only be used, if `tenor` is "short-term". Choose between three distinct
-        strategies in order to translate a long-term rating score into a short-term
-        rating. Must be in {"best", "base", "worst"}.
-
-        Compare
-        https://hsbc.github.io/pyratings/short-term-rating/#there's-one-more-catch...
-
-        - Strategy 1 (best):
-          Always choose the best possible short-term rating. That's the optimistic
-          approach.
-        - Strategy 2 (base-case):
-          Always choose the short-term rating that a rating agency would usually assign
-          if there aren't any special liquidity issues (positive or negative). That's
-          the base-case approach.
-        - Strategy 3 (worst):
-          Always choose the worst possible short-term rating. That's the conservative
-          approach.
 
     Returns
     -------
@@ -218,26 +199,8 @@ def get_scores_from_ratings(
     ...     ratings="P-1",
     ...     rating_provider="Moody",
     ...     tenor="short-term",
-    ...     short_term_strategy="best"
-    ... )
-    4.0
-
-
-    >>> get_scores_from_ratings(
-    ...     ratings="P-1",
-    ...     rating_provider="Moody",
-    ...     tenor="short-term",
-    ...     short_term_strategy="base"
     ... )
     3.5
-
-    >>> get_scores_from_ratings(
-    ...     ratings="P-1",
-    ...     rating_provider="Moody",
-    ...     tenor="short-term",
-    ...     short_term_strategy="worst"
-    ... )
-    3.0
 
     Converting a ``pd.Series`` of ratings:
 
@@ -305,13 +268,6 @@ def get_scores_from_ratings(
     2                   22                      NaN                    22.0
 
     """
-    if tenor == "short-term" and short_term_strategy is None:
-        short_term_strategy = "base"
-    if tenor == "short-term" and short_term_strategy not in ["best", "base", "worst"]:
-        raise ValueError(
-            "Invalid short_term_strategy. Must be in ['best', 'base', 'worst']."
-        )
-
     if isinstance(ratings, str):
         if rating_provider is None:
             raise ValueError(VALUE_ERROR_PROVIDER_MANDATORY)
@@ -325,7 +281,7 @@ def get_scores_from_ratings(
             "rtg_to_scores",
             rating_provider,
             tenor=tenor,
-            st_rtg_strategy=short_term_strategy,
+            st_rtg_strategy="base",
         )
         return rtg_dict.get(ratings, pd.NA)
 
@@ -345,7 +301,7 @@ def get_scores_from_ratings(
             "rtg_to_scores",
             rating_provider,
             tenor=tenor,
-            st_rtg_strategy=short_term_strategy,
+            st_rtg_strategy="base",
         )
         return pd.Series(data=ratings.map(rtg_dict), name=f"rtg_score_{ratings.name}")
 
@@ -368,7 +324,6 @@ def get_scores_from_ratings(
                     ratings=ratings[col],
                     rating_provider=provider,
                     tenor=tenor,
-                    short_term_strategy=short_term_strategy,
                 )
                 for col, provider in zip(ratings.columns, rating_provider)
             ],
