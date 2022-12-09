@@ -67,8 +67,8 @@ We will then take care of the issue as soon as possible.
 You might want to create a separate issue tag for questions and include it in this
 description. People should then tag their issues accordingly.
 
-Depending on how large the project is, you may want to outsource the questioning,
-e.g. to Stack Overflow or Gitter. You may add additional contact and information
+Depending on how large the project is, you may want to outsource the questioning, e.
+g. to Stack Overflow or Gitter. You may add additional contact and information
 possibilities:
 - IRC
 - Slack
@@ -99,7 +99,7 @@ issue in detail in your report. Please complete the following steps in advance t
 help us fix any potential bug as fast as possible.
 
 - Make sure that you are using the latest version.
-- Determine if your bug is really a bug and not an error on your side e.g. using 
+- Determine if your bug is really a bug and not an error on your side, e.g. using 
   incompatible environment components/versions (Make sure that you have read the 
   [documentation](https://hsbc.github.io/pyratings/). If you are looking for support,
   you might want to check [this section](#i-have-a-question)).
@@ -132,7 +132,7 @@ We use GitHub issues to track bugs and errors. If you run into an issue with the
 - Explain the behavior you would expect and the actual behavior.
 - Please provide as much context as possible and describe the *reproduction steps* 
   that someone else can follow to recreate the issue on their own. This usually 
-  includes your code. For good bug reports you should isolate the problem and create 
+  includes your code. For good bug reports, you should isolate the problem and create 
   a reduced test case.
 - Provide the information you collected in the previous section.
 
@@ -183,7 +183,7 @@ Enhancement suggestions are tracked as
 - Provide a **step-by-step description of the suggested enhancement** in as many 
   details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see 
-  instead** and why. At this point you can also tell which alternatives do not work 
+  instead** and why. At this point, you can also tell which alternatives do not work 
   for you.
 - You may want to **include screenshots and animated GIFs** which help you 
   demonstrate the steps or point out the part which the suggestion is related to. 
@@ -226,7 +226,7 @@ source ./.venv/Scripts/activate  # bash
 ./.venv/Scripts/activate  # Windows 
 ```
   
-- Install _pyratings_ in editable mode (including all development dependencies).  
+- Install _pyratings_ in editable mode (including all development dependencies).<br>
   _pyratings_ is using ``pyproject.toml`` as configuration file. In order to install 
   the package in editable mode, make sure you have ``pip>=21.3`` installed on your 
   machine.
@@ -272,10 +272,10 @@ implemented (in alphabetical order):
 * [flake8-builtins](https://pypi.org/project/flake8-builtins/): Check for python
   builtins being used as variables or parameters.
 * [flake8-comprehensions](https://pypi.org/search/?q=flake8-comprehensions):
-  Helps you write better list/set/dict comprehensions.
+  Helps you write a better list/set/dict comprehensions.
 * [flake8-docstrings](https://pypi.org/project/flake8-docstrings/): Check docstrings.
 * [flake8-eradicate](https://pypi.org/project/flake8-eradicate/): Find commented
-  out (or so called "dead") code.
+  out (or so-called "dead") code.
 * [isort](https://pypi.org/project/isort/): Sort imports alphabetically, and
   automatically separated into sections and by type.
 * [pep8-naming](https://pypi.org/project/pep8-naming/): Check your code against
@@ -310,7 +310,7 @@ pytest
 
 In addition, you can perform more rigorous linting and tests against multiple Python
 versions. In this case, the test result depends on the Python versions available on 
-your machine. Make sure, you've got at least Python 3.9 installed on your machine. 
+your machine. Make sure you've got at least Python 3.9 installed on your machine. 
 Then simply run:
 ```shell
 nox
