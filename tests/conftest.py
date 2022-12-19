@@ -251,6 +251,15 @@ for strat in st_strategies:
         for (x, y) in zip(v_rtg, v_scores):
             st_strat_prov_rtg_scrs_records.append((strat, k, x, y))
 
+# create list of tuples for parameterization: [(RatingProvider, Rating, RatingScore), ]
+# RatingScore is for "base" strategy
+st_basestrat_prov_rtg_scrs_records = []
+for (k, v_rtg, v_scores) in zip(
+    st_rtg_prov_list, st_rtg_dict["base"].values(), st_scrs_dict["base"].values()
+):
+    for (x, y) in zip(v_rtg, v_scores):
+        st_basestrat_prov_rtg_scrs_records.append((k, x, y))
+
 # create long/tidy dataframe
 st_rtg_df_long = pd.DataFrame.from_records(
     st_strat_prov_rtg_scrs_records,
@@ -305,6 +314,7 @@ st_scores_df_wide = pd.concat(
     [_convert_scrs_long_to_rtg_wide(strat) for strat in st_strategies], axis=0
 ).reset_index(drop=True)
 
+# create tuple of series [(Strategy, RatingProvider, RatingScore), ]
 st_strat_prov_scores_rtg_series = [
     (
         strat,
@@ -326,6 +336,28 @@ st_strat_prov_scores_rtg_series = [
     )
     for rating_provider in st_rtg_prov_list
     for strat in st_strategies
+]
+
+# create tuple of series [(RatingProvider, RatingScore), ]
+st_basestrat_prov_scores_rtg_series = [
+    (
+        rating_provider,
+        st_rtg_df_long.loc[
+            (st_rtg_df_long["RatingProvider"] == rating_provider)
+            & (st_rtg_df_long["Strategy"] == "base"),
+            "RatingScore",
+        ]
+        .reset_index(drop=True)
+        .squeeze(),
+        st_rtg_df_long.loc[
+            (st_rtg_df_long["RatingProvider"] == rating_provider)
+            & (st_rtg_df_long["Strategy"] == "base"),
+            "Rating",
+        ]
+        .reset_index(drop=True)
+        .squeeze(),
+    )
+    for rating_provider in st_rtg_prov_list
 ]
 
 # --- invalid dataframe ----------------------------------------------------------------

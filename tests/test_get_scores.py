@@ -50,18 +50,17 @@ def test_get_scores_from_single_rating_longterm(
 
 
 @pytest.mark.parametrize(
-    ["strategy", "rating_provider", "rating", "score"],
-    conftest.st_strat_prov_rtg_scrs_records,
+    ["rating_provider", "rating", "score"],
+    conftest.st_basestrat_prov_rtg_scrs_records,
 )
 def test_get_scores_from_single_rating_shortterm(
-    strategy: str, rating_provider: str, rating: str, score: int
+    rating_provider: str, rating: str, score: int
 ) -> None:
     """It returns a rating score."""
     act = rtg.get_scores_from_ratings(
         ratings=rating,
         rating_provider=rating_provider,
         tenor="short-term",
-        short_term_strategy=strategy,
     )
 
     assert act == score
@@ -149,11 +148,10 @@ def test_get_scores_from_ratings_series_longterm(
 
 
 @pytest.mark.parametrize(
-    ["strategy", "rating_provider", "scores_series", "ratings_series"],
-    conftest.st_strat_prov_scores_rtg_series,
+    ["rating_provider", "scores_series", "ratings_series"],
+    conftest.st_basestrat_prov_scores_rtg_series,
 )
 def test_get_scores_from_ratings_series_shortterm(
-    strategy: str,
     rating_provider: str,
     ratings_series: pd.Series,
     scores_series: pd.Series,
@@ -164,7 +162,6 @@ def test_get_scores_from_ratings_series_shortterm(
         ratings=ratings_series,
         rating_provider=rating_provider,
         tenor="short-term",
-        short_term_strategy=strategy,
     )
     assert_series_equal(act, scores_series)
 
@@ -255,13 +252,10 @@ def test_get_scores_from_ratings_df_with_explicit_rating_provider_longterm() -> 
     assert_frame_equal(act, exp_lt)
 
 
-@pytest.mark.parametrize("strategy", conftest.st_strategies)
-def test_get_scores_from_ratings_df_with_explicit_rating_provider_shortterm(
-    strategy: str,
-) -> None:
+def test_get_scores_from_ratings_df_with_explicit_rating_provider_shortterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     input_df = (
-        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == strategy]
+        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == "base"]
         .iloc[:, 1:]
         .reset_index(drop=True)
     )
@@ -274,12 +268,9 @@ def test_get_scores_from_ratings_df_with_explicit_rating_provider_shortterm(
             "DBRS",
         ],
         tenor="short-term",
-        short_term_strategy=strategy,
     )
     exp = (
-        conftest.st_scores_df_wide.loc[
-            conftest.st_scores_df_wide["Strategy"] == strategy
-        ]
+        conftest.st_scores_df_wide.loc[conftest.st_scores_df_wide["Strategy"] == "base"]
         .iloc[:, 1:]
         .reset_index(drop=True)
     )
@@ -296,23 +287,16 @@ def test_get_scores_from_ratings_df_by_inferring_rating_provider_longterm() -> N
     assert_frame_equal(act, exp_lt)
 
 
-@pytest.mark.parametrize("strategy", conftest.st_strategies)
-def test_get_scores_from_ratings_df_by_inferring_rating_provider_shortterm(
-    strategy: str,
-) -> None:
+def test_get_scores_from_ratings_df_by_inferring_rating_provider_shortterm() -> None:
     """It returns a dataframe with rating scores and NaNs."""
     input_df = (
-        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == strategy]
+        conftest.st_rtg_df_wide.loc[conftest.st_rtg_df_wide["Strategy"] == "base"]
         .iloc[:, 1:]
         .reset_index(drop=True)
     )
-    act = rtg.get_scores_from_ratings(
-        ratings=input_df, tenor="short-term", short_term_strategy=strategy
-    )
+    act = rtg.get_scores_from_ratings(ratings=input_df, tenor="short-term")
     exp = (
-        conftest.st_scores_df_wide.loc[
-            conftest.st_scores_df_wide["Strategy"] == strategy
-        ]
+        conftest.st_scores_df_wide.loc[conftest.st_scores_df_wide["Strategy"] == "base"]
         .iloc[:, 1:]
         .reset_index(drop=True)
     )
@@ -358,18 +342,3 @@ def test_get_scores_from_invalid_warf_df() -> None:
     expectations.columns = ["rtg_score_Fitch", "rtg_score_DBRS"]
     # noinspection PyTypeChecker
     assert_frame_equal(act, expectations)
-
-
-def test_invalid_short_term_strategy() -> None:
-    """It raises an error message."""
-    with pytest.raises(ValueError) as err:
-        rtg.get_scores_from_ratings(
-            ratings="P-2",
-            rating_provider="Moody",
-            tenor="short-term",
-            short_term_strategy="foo",
-        )
-
-    assert str(err.value) == (
-        "Invalid short_term_strategy. Must be in ['best', 'base', 'worst']."
-    )
