@@ -13,6 +13,7 @@
 #    limitations under the License.
 
 """Module contains unit tests for consolidation of ratings."""
+from __future__ import annotations
 
 import numpy as np
 import pandas as pd
@@ -44,6 +45,117 @@ def rtg_inputs_shortterm() -> pd.DataFrame:
             "rtg_fitch": ["F1", np.nan, "F1", "F3", "F3", np.nan, np.nan, "F3"],
         }
     )
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_best_rating_scores_long_term(
+    rtg_inputs_longterm: pd.DataFrame, rating_provider_input: list[str] | None
+) -> None:
+    """It returns the best long-term scores on a security (line-by-line) basis."""
+    actual = rtg.get_best_scores(
+        ratings=rtg_inputs_longterm,
+        rating_provider_input=rating_provider_input,
+        tenor="long-term",
+    )
+
+    expectations = pd.Series(
+        data=[1.0, 4.0, 2.0, 13.0, 20, np.nan, 8, 3], name="best_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_best_rating_scores_shortterm(
+    rtg_inputs_shortterm: pd.DataFrame,
+    rating_provider_input: list[str] | None,
+) -> None:
+    """It returns the best short-term scores on a security (line-by-line) basis."""
+    actual = rtg.get_best_scores(
+        rtg_inputs_shortterm,
+        rating_provider_input=rating_provider_input,
+        tenor="short-term",
+    )
+
+    expectations = pd.Series(
+        data=[5.5, 10.0, 2.5, 9.5, 9.5, np.nan, 8.0, 9.5], name="best_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_second_best_rating_scores_long_term(
+    rtg_inputs_longterm: pd.DataFrame, rating_provider_input: list[str] | None
+) -> None:
+    """It returns the second-best lt scores on a security (line-by-line) basis."""
+    actual = rtg.get_second_best_scores(
+        ratings=rtg_inputs_longterm,
+        rating_provider_input=rating_provider_input,
+        tenor="long-term",
+    )
+
+    expectations = pd.Series(
+        data=[2.0, 4.0, 3.0, 13.0, 21, np.nan, 8, 3], name="second_best_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_second_best_rating_scores_shortterm(
+    rtg_inputs_shortterm: pd.DataFrame,
+    rating_provider_input: list[str] | None,
+) -> None:
+    """It returns the best short-term scores on a security (line-by-line) basis."""
+    actual = rtg.get_second_best_scores(
+        rtg_inputs_shortterm,
+        rating_provider_input=rating_provider_input,
+        tenor="short-term",
+    )
+
+    expectations = pd.Series(
+        data=[6.5, 16.5, 3.5, 16.5, 9.5, np.nan, 8.0, 9.5], name="second_best_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_worst_rating_scores_long_term(
+    rtg_inputs_longterm: pd.DataFrame, rating_provider_input: list[str] | None
+) -> None:
+    """It returns the worst long-term scores on a security (line-by-line) basis."""
+    actual = rtg.get_worst_scores(
+        ratings=rtg_inputs_longterm,
+        rating_provider_input=rating_provider_input,
+        tenor="long-term",
+    )
+
+    expectations = pd.Series(
+        data=[4.0, 4.0, 4.0, 14.0, 21, np.nan, 8, 3], name="worst_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
+
+
+@pytest.mark.parametrize("rating_provider_input", (["SP", "Moody", "Fitch"], None))
+def test_get_worst_rating_scores_shortterm(
+    rtg_inputs_shortterm: pd.DataFrame,
+    rating_provider_input: list[str] | None,
+) -> None:
+    """It returns the worst short-term scores on a security (line-by-line) basis."""
+    actual = rtg.get_worst_scores(
+        rtg_inputs_shortterm,
+        rating_provider_input=rating_provider_input,
+        tenor="short-term",
+    )
+
+    expectations = pd.Series(
+        data=[7.5, 16.5, 6.5, 22.0, 13.5, np.nan, 8.0, 10.0], name="worst_scores"
+    )
+
+    pd.testing.assert_series_equal(actual, expectations)
 
 
 def test_get_best_rating_longterm_with_explicit_rating_provider(
