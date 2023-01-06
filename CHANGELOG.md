@@ -8,7 +8,12 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Option to choose between three different strategies to translate scores into 
   short-term ratings ([#24](https://github.com/hsbc/pyratings/pull/24)).
 - Functionality to remove prefix '(P)' when cleaning ratings
-  ([#27](https://github.com/hsbc/pyratings/issues/27))
+  ([#27](https://github.com/hsbc/pyratings/issues/27)).
+- Functions to directly compute the "best", "second-best", and "worst" rating score 
+  for individual securities ([#37](https://github.com/hsbc/pyratings/issues/37)).
+- Function ``consolidate_ratings``: Wrapper function for ``get_best_ratings``, 
+  ``get_second_best_ratings``, and ``get_worst_ratings``
+  ([#37](https://github.com/hsbc/pyratings/issues/37)).
 
 ### Changed
 - BREAKING CHANGE: Automatic column naming

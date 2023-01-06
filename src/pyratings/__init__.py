@@ -15,9 +15,13 @@
 from pyratings.aggregate import get_weighted_average
 from pyratings.clean import get_pure_ratings
 from pyratings.consolidate import (
+    consolidate_ratings,
     get_best_ratings,
+    get_best_scores,
     get_second_best_ratings,
+    get_second_best_scores,
     get_worst_ratings,
+    get_worst_scores,
 )
 from pyratings.get_ratings import get_ratings_from_scores, get_ratings_from_warf
 from pyratings.get_scores import get_scores_from_ratings, get_scores_from_warf
@@ -29,6 +33,10 @@ from pyratings.warf import get_warf_buffer
 __all__ = [
     "_extract_rating_provider",
     "_get_translation_dict",
+    "consolidate_ratings",
+    "get_best_scores",
+    "get_second_best_scores",
+    "get_worst_scores",
     "get_best_ratings",
     "get_pure_ratings",
     "get_ratings_from_scores",
