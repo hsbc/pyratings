@@ -189,16 +189,15 @@ def get_scores_from_ratings(
     --------
     Converting a single long-term rating:
 
-    >>> get_scores_from_ratings("BBB-", "S&P", tenor="long-term")
+    >>> get_scores_from_ratings(
+    ...     ratings="BBB-", rating_provider="S&P", tenor="long-term"
+    ... )
     10
 
-    Converting a single short-term rating score with different `short_term_strategy`
-    arguments:
+    Converting a single short-term rating score:
 
     >>> get_scores_from_ratings(
-    ...     ratings="P-1",
-    ...     rating_provider="Moody",
-    ...     tenor="short-term",
+    ...     ratings="P-1", rating_provider="Moody", tenor="short-term"
     ... )
     3.5
 
