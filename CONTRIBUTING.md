@@ -37,7 +37,7 @@ would also be very happy about:
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[pyratings Code of Conduct](./code_of_conduct.md).
+[pyratings Code of Conduct](https://hsbc.github.io/pyratings/code_of_conduct/).
 By participating, you are expected to uphold this code. Please report unacceptable
 behavior to <opensource@hsbc.com>.
 
@@ -358,7 +358,7 @@ guide enforcement. That means, contributers should adhere to the following point
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/)
 specification. This will help us to automatically generate the
-[CHANGELOG](../CHANGELOG).
+[CHANGELOG](https://hsbc.github.io/pyratings/changelog/).
 
 ## Attribution
 This guide is based on the **contributing-gen**.
