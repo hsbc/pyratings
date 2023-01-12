@@ -50,8 +50,9 @@ ratings space.
 - Compute Weighted Average Rating Factor (WARF) on a portfolio level.
 - Compute WARF buffer, i.e. distance from current WARF to the next maxWARF.
 
-**pyratings** supports [long-term ratings](/long_term_ratings) as well as 
-[short-term ratings](/short_term_ratings).
+**pyratings** supports 
+[long-term ratings](https://hsbc.github.io/pyratings/long_term_ratings) as well as 
+[short-term ratings](https://hsbc.github.io/pyratings/short_term_ratings).
 Currently, the following rating agencies will be supported:
 
 - Moody's (long-term / short-term)
@@ -192,8 +193,9 @@ To work with ratings, it's sometimes necessary to translate human-readable ratin
 into numerical rating scores and vice versa.
 **pyratings** offers a number of functions on that front.
 
-The [documentation](/user_guide/translation) shows in detail how 
-**pyratings** translates human-readable ratings into numerical rating scores.<br>
+The [documentation](https://hsbc.github.io/pyratings/user_guide/translation) shows 
+in detail how **pyratings** translates human-readable ratings into numerical rating 
+scores.<br>
 Here's an example how to translate a pandas series from ratings to scores and vice 
 versa. 
 
@@ -271,4 +273,4 @@ Thanks to
 
 ## License
 This project is licensed under the Apache 2.0 License – please see the
-[LICENSE](/license) file.
+[LICENSE](https://hsbc.github.io/pyratings/license) file.
