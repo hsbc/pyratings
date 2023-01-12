@@ -33,6 +33,7 @@ nav:
   - Contributing: contributing.md
   - Code of conduct: code_of_conduct.md
   - Changelog: changelog.md
+  - License: license.md
 
 watch:
   - src/pyratings
@@ -40,6 +41,7 @@ watch:
   - CHANGELOG.md
   - CONTRIBUTING.md
   - CODE_OF_CONDUCT.md
+  - LICENSE
 
 markdown_extensions:
   - footnotes
