@@ -2,26 +2,38 @@ site_name: pyratings
 repo_url: https://github.com/hsbc/pyratings
 site_description: pyratings - Working with credit ratings, professionally and efficiently
 site_author: HSBC
+# use_directory_urls: false
 
 theme:
   name: material
   palette:
-      - scheme: default
-        toggle:
-          icon: material/toggle-switch-off-outline
-          name: Switch to dark mode
-      - scheme: slate
-        toggle:
-          icon: material/toggle-switch
-          name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
 nav:
   - Overview: index.md
-  - Getting started: getting_started.ipynb
+  - Long-term ratings: long_term_ratings.md
+  - Short-term ratings: short_term_ratings.md
+  - User guide:
+      - Data cleansing: ./user_guide/cleansing.ipynb
+      - Consolidate ratings: ./user_guide/consolidate.ipynb
+      - Translate ratings: ./user_guide/translation.ipynb
+  - Use cases:
+      - Prepare your ratings: ./case_studies/prepare_rtg.ipynb
+      - Compute portfolio average long-term rating: ./case_studies/avg_port_lt_rtg.ipynb
+      - Compute portfolio average short-term rating: ./case_studies/avg_port_st_rtg.ipynb
+      - Compute portfolio WARF: ./case_studies/port_warf.ipynb
   - API Reference: api_reference.md
   - Contributing: contributing.md
   - Code of conduct: code_of_conduct.md
   - Changelog: changelog.md
+  - License: license.md
 
 watch:
   - src/pyratings
@@ -29,8 +41,10 @@ watch:
   - CHANGELOG.md
   - CONTRIBUTING.md
   - CODE_OF_CONDUCT.md
+  - LICENSE
 
 markdown_extensions:
+  - footnotes
   - pymdownx.snippets:
       check_paths: true
 
@@ -47,7 +61,7 @@ plugins:
             show_root_toc_entry: false
             show_source: false
             docstring_style: numpy
-            docstring_section_style: table  # {table, list, spacy}
+            docstring_section_style: table # {table, list, spacy}
             separate_signature: true
   - mkdocs-jupyter:
       execute: true

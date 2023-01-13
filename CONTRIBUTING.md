@@ -12,6 +12,7 @@ out the experience for all involved. The community looks forward to your contrib
 > And if you like the project, but just don't have time to contribute, that's fine.
 There are other easy ways to support the project and show your appreciation, which we
 would also be very happy about:
+>
 > - Star the project
 > - Tweet about it
 > - Refer this project in your project's README
@@ -37,7 +38,7 @@ would also be very happy about:
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[pyratings Code of Conduct](./code_of_conduct.md).
+[pyratings Code of Conduct](https://hsbc.github.io/pyratings/code_of_conduct/).
 By participating, you are expected to uphold this code. Please report unacceptable
 behavior to <opensource@hsbc.com>.
 
@@ -358,7 +359,7 @@ guide enforcement. That means, contributers should adhere to the following point
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/)
 specification. This will help us to automatically generate the
-[CHANGELOG](../CHANGELOG).
+[CHANGELOG](https://hsbc.github.io/pyratings/changelog/).
 
 ## Attribution
 This guide is based on the **contributing-gen**.
