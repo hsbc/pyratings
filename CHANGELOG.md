@@ -9,8 +9,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   short-term ratings ([#24](https://github.com/hsbc/pyratings/pull/24)).
 - Functionality to remove prefix '(P)' when cleaning ratings
   ([#27](https://github.com/hsbc/pyratings/issues/27)).
-- Functions to directly compute the "best", "second-best", and "worst" rating score 
-  for individual securities ([#37](https://github.com/hsbc/pyratings/issues/37)).
+- Functions to consolidate ratings and return numerical rating scores
+  ([#37](https://github.com/hsbc/pyratings/issues/37)):
+    - ``get_best_scores``
+    - ``get_second_best_scores``
+    - ``get_worst_scores``
 - Function ``consolidate_ratings``: Wrapper function for ``get_best_ratings``, 
   ``get_second_best_ratings``, and ``get_worst_ratings``
   ([#37](https://github.com/hsbc/pyratings/issues/37)).
