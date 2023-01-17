@@ -262,17 +262,17 @@ implemented (in alphabetical order):
   wraps ``PyFlakes``, ``pycodestyle`` and Ned Batchelder's McCabe script. It is a
   great toolkit for checking your code base against coding style (PEP8), programming
   errors and to check cyclomatic complexity.
-* [flake8-annotations](https://pypi.org/project/flke8ake8-annotations/): Detects the
+* [flake8-annotations](https://pypi.org/project/flake8-annotations/): Detects the
   absence of PEP 3107-style function annotations and PEP 484-style type comments.
 * [flake8-bandit](https://pypi.org/project/flake8-bandit/): Automated security
   testing.
 * [flake8-black](https://pypi.org/project/flake8-black/): Validating Python code
   style with the command line code formatting tool black.
-* [flake8-bugbear](https://pypi.org/search/?q=flake8-bugbear): Finding likely
+* [flake8-bugbear](https://pypi.org/project/flake8-bugbear/): Finding likely
   bugs and design problems in your program.
 * [flake8-builtins](https://pypi.org/project/flake8-builtins/): Check for python
   builtins being used as variables or parameters.
-* [flake8-comprehensions](https://pypi.org/search/?q=flake8-comprehensions):
+* [flake8-comprehensions](https://pypi.org/project/flake8-comprehensions/):
   Helps you write a better list/set/dict comprehensions.
 * [flake8-docstrings](https://pypi.org/project/flake8-docstrings/): Check docstrings.
 * [flake8-eradicate](https://pypi.org/project/flake8-eradicate/): Find commented
