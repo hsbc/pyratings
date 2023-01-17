@@ -12,19 +12,19 @@
         <meta name="author" content="HSBC">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Getting started - pyratings</title>
+        <title>Compute portfolio average short-term rating - pyratings</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -41,9 +41,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started" class="md-skip">
+        <a href="#compute-portfolio-average-short-term-rating" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="pyratings" class="md-header__button md-logo" aria-label="pyratings" data-md-component="logo">
+    <a href="../.." title="pyratings" class="md-header__button md-logo" aria-label="pyratings" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting started
+              Compute portfolio average short-term rating
             
           </span>
         </div>
@@ -116,6 +116,7 @@
         
           
           
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -123,6 +124,7 @@
             </label>
           
         
+          
           
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
@@ -174,7 +176,7 @@
         <a href="https://github.com/hsbc/pyratings" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -206,7 +208,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="pyratings" class="md-nav__button md-logo" aria-label="pyratings" data-md-component="logo">
+    <a href="../.." title="pyratings" class="md-nav__button md-logo" aria-label="pyratings" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +221,7 @@
       <a href="https://github.com/hsbc/pyratings" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -237,7 +239,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Overview
       </a>
     </li>
@@ -248,6 +250,168 @@
       
       
 
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../long_term_ratings/" class="md-nav__link">
+        Long-term ratings
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../short_term_ratings/" class="md-nav__link">
+        Short-term ratings
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/cleansing/" class="md-nav__link">
+        Data cleansing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/consolidate/" class="md-nav__link">
+        Consolidate ratings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/translation/" class="md-nav__link">
+        Translating ratings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Use cases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Use cases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Use cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare_rtg/" class="md-nav__link">
+        Prepare your ratings data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avg_port_lt_rtg/" class="md-nav__link">
+        Compute portfolio average long-term rating
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
     
@@ -262,12 +426,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Getting started
+          Compute portfolio average short-term rating
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Getting started
+        Compute portfolio average short-term rating
       </a>
       
         
@@ -293,15 +457,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-the-average-rating-of-a-portfolio" class="md-nav__link">
-    Computing the average rating of a portfolio
+  <a href="#clean-ratings" class="md-nav__link">
+    Clean ratings
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-portfolio-warf" class="md-nav__link">
-    Computing portfolio WARF
+  <a href="#consolidate-ratings-step-1-and-2" class="md-nav__link">
+    Consolidate ratings (step 1 and 2)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-the-weighted-aev-step-3" class="md-nav__link">
+    Compute the weighted AEV (step 3)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#going-back-to-human-readable-ratings-step-4" class="md-nav__link">
+    Going back to human-readable ratings (step 4)
   </a>
   
 </li>
@@ -310,6 +488,27 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_warf/" class="md-nav__link">
+        Compute portfolio WARF
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -322,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api_reference/" class="md-nav__link">
+      <a href="../../api_reference/" class="md-nav__link">
         API Reference
       </a>
     </li>
@@ -337,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
+      <a href="../../contributing/" class="md-nav__link">
         Contributing
       </a>
     </li>
@@ -352,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_of_conduct/" class="md-nav__link">
+      <a href="../../code_of_conduct/" class="md-nav__link">
         Code of conduct
       </a>
     </li>
@@ -367,8 +566,23 @@
   
   
     <li class="md-nav__item">
-      <a href="../changelog/" class="md-nav__link">
+      <a href="../../changelog/" class="md-nav__link">
         Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        License
       </a>
     </li>
   
@@ -408,15 +622,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-the-average-rating-of-a-portfolio" class="md-nav__link">
-    Computing the average rating of a portfolio
+  <a href="#clean-ratings" class="md-nav__link">
+    Clean ratings
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-portfolio-warf" class="md-nav__link">
-    Computing portfolio WARF
+  <a href="#consolidate-ratings-step-1-and-2" class="md-nav__link">
+    Consolidate ratings (step 1 and 2)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-the-weighted-aev-step-3" class="md-nav__link">
+    Compute the weighted AEV (step 3)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#going-back-to-human-readable-ratings-step-4" class="md-nav__link">
+    Going back to human-readable ratings (step 4)
   </a>
   
 </li>
@@ -435,7 +663,7 @@
                 
                   
 
-  <a href="https://github.com/hsbc/pyratings/edit/master/docs/getting_started.ipynb" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/hsbc/pyratings/edit/master/docs/case_studies/avg_port_st_rtg.ipynb" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
@@ -1478,13 +1706,41 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="getting-started">Getting started<a class="anchor-link" href="#getting-started">&#182;</a></h1><p><em>pyratings</em> is made for working with credit ratings in a professionally and
-efficiently manner.</p>
-<p>The following code demonstrates how to compute an average rating on a portfolio basis
-as well as the weighted average rating factor (WARF). This should give you a thorough
-introduction into the usage of <em>pyratings</em>.</p>
-<h2 id="preliminary-tasks">Preliminary tasks<a class="anchor-link" href="#preliminary-tasks">&#182;</a></h2><p>As a first step and as a basis for both tasks, we are going to import a portfolio
-into a <code>pd.DataFrame</code>. We'll call it <code>port_df</code>.</p>
+<h1 id="compute-portfolio-average-short-term-rating">Compute portfolio average short-term rating<a class="anchor-link" href="#compute-portfolio-average-short-term-rating">&#182;</a></h1><p>The following case-study demonstrates how to compute the average short-term rating of
+your portfolio.
+Before we start looking at a concrete example, let's recap the steps that are
+necessary to compute the average short-term portfolio rating.</p>
+<p>Translating short-term ratings into numerical rating scores and vice versa isn't as
+straightforward as with long-term ratings (see
+<a href="/../short_term_ratings/">Short-term ratings</a>).</p>
+<p>The below chart shows the steps to compute the average portfolio rating for a
+two-security portfolio.</p>
+<p><img src="/../media/flow_chart_example_AEV.png" alt="&quot;Two-security example using average equivalent value (AEV)&quot;" title="Two-security example using average equivalent value (AEV)"></p>
+<ul>
+<li>Step 1:<br>
+Translate all short-term ratings from available rating agencies into an average
+equivalent long-term rating score or into a so-called <strong>average equivalent value
+(AEV)</strong>.</li>
+<li>Step 2:<br>
+Consolidate all ratings on a security basis into one equivalent long-term rating
+score.<br>
+For example, you could decide to choose the worst rating (read: highest
+numerical score) among all rating agencies.<br>
+As a result, you'll end up with the worst (i.e. highest) AEV per security.</li>
+<li>Step 3:<br>
+Compute the weighted AEV for the portfolio. That is, multiply an individual
+security's weight with its worst AEV. You'll end up with this security's
+contribution to the portfolio AEV.<br>
+Finally, sum up the individual securities' contributions.<br>
+Essentially, this is simply computing the sum-product of the weights and the worst
+AEVs.</li>
+<li>Step 4:<br>
+Translate the portfolio AEV back into a human-readable short-term rating, while
+using the agency's rating scale of your choice.</li>
+</ul>
+<h2 id="preliminary-tasks">Preliminary tasks<a class="anchor-link" href="#preliminary-tasks">&#182;</a></h2><p>As a first step, we are going to import a portfolio into a <code>pd.DataFrame</code>. We'll call
+it <code>port_df</code>. This dataframe comprises a number of securities with respective weights
+ and short-term ratings.</p>
 
 </div>
 </div>
@@ -1514,15 +1770,23 @@ into a <code>pd.DataFrame</code>. We'll call it <code>port_df</code>.</p>
 
 <span class="kn">import</span> <span class="nn">pyratings</span> <span class="k">as</span> <span class="nn">rtg</span>
 
-<span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;portfolio.xlsx&quot;</span><span class="p">)</span>
-<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">&quot;portfolio.xlsx&quot;</span><span class="p">,</span>
+    <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;short_term_ratings&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">port_df</span>
 </pre></div>
 <div id="cell-1" class="clipboard-copy-txt">import pandas as pd
 
 import pyratings as rtg
 
-port_df = pd.read_excel("portfolio.xlsx")
-port_df.head()</div>
+port_df = pd.read_excel(
+    "portfolio.xlsx",
+    sheet_name="short_term_ratings",
+)
+
+port_df</div>
     
         </div>
     </div>
@@ -1565,57 +1829,156 @@ port_df.head()</div>
       <th></th>
       <th>ISIN</th>
       <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
       <th>Moody</th>
+      <th>SP</th>
       <th>Fitch</th>
+      <th>DBRS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
+      <td>5.0</td>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1+</td>
+      <td>R-1M</td>
     </tr>
     <tr>
       <th>1</th>
       <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
+      <td>8.5</td>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
       <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
+      <td>2.0</td>
+      <td>P-1</td>
       <td>NaN</td>
+      <td>F2</td>
+      <td>R-1L</td>
     </tr>
     <tr>
       <th>3</th>
       <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
+      <td>3.5</td>
+      <td>P-1</td>
       <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
+      <td>F1+</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
       <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
+      <td>12.0</td>
+      <td>P-1</td>
       <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
+      <td>NaN</td>
+      <td>R-2M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ISIN00000006</td>
+      <td>3.0</td>
+      <td>(P)P-1</td>
+      <td>A-1+</td>
+      <td>NaN</td>
+      <td>R-2H</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ISIN00000007</td>
+      <td>5.4</td>
+      <td>P-2</td>
+      <td>A-1</td>
+      <td>F3</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ISIN00000008</td>
+      <td>7.6</td>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1</td>
+      <td>R-1H</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ISIN00000009</td>
+      <td>2.0</td>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>F1+</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ISIN00000010</td>
+      <td>4.0</td>
+      <td>P-3</td>
+      <td>A-1+</td>
+      <td>F1+</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ISIN00000011</td>
+      <td>12.0</td>
+      <td>P-1</td>
+      <td>A-2</td>
+      <td>F-1</td>
+      <td>R-3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ISIN00000012</td>
+      <td>3.0</td>
+      <td>P-2</td>
+      <td>A-3</td>
+      <td>F1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ISIN00000013</td>
+      <td>7.0</td>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>F2</td>
+      <td>R-2L</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ISIN00000014</td>
+      <td>8.0</td>
+      <td>(P)P-1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ISIN00000015</td>
+      <td>4.0</td>
+      <td>P-2</td>
+      <td>A-1</td>
+      <td>F1+</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ISIN00000016</td>
+      <td>13.0</td>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1</td>
+      <td>R-1H</td>
     </tr>
   </tbody>
 </table>
@@ -1636,15 +1999,10 @@ port_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>By looking at the very first rows of <code>port_df</code>, we can see that some
-ratings do have a <em>watch</em> attached. This is marked by the <code>*-</code> suffix, which
-follows the actual rating after a blank.
-Other ratings are unsolicited. In this case, the rating is followed by the letter
-<code>u</code>.
-In order to translate ratings into scores, we first need to clean up the ratings,
-that is, we need to strip off <em>watches</em> etc. We are going to use the
-<a href="../api_reference/#pyratings.clean.get_pure_ratings">get_pure_ratings</a> function.
-This function works on strings, so we need to make sure to pass the relevant columns.</p>
+<h2 id="clean-ratings">Clean ratings<a class="anchor-link" href="#clean-ratings">&#182;</a></h2><p>If you take a closer look at row 5 and 13, you see that there are two ratings from
+Moody's which are based on public information (indicated by "(P)").
+We need to get rid of this prefix, otherwise the rating can't be correctly identified
+ by <strong>pyratings</strong>.</p>
 
 </div>
 </div>
@@ -1670,15 +2028,15 @@ This function works on strings, so we need to make sure to pass the relevant col
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">ratings_clean_df</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_pure_ratings</span><span class="p">(</span>
-    <span class="n">port_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;BB Comp&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">]]</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_df_clean</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_pure_ratings</span><span class="p">(</span>
+    <span class="n">ratings</span><span class="o">=</span><span class="n">port_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">]]</span>
 <span class="p">)</span>
-<span class="n">ratings_clean_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">port_df_clean</span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt">ratings_clean_df = rtg.get_pure_ratings(
-    port_df.loc[:, ["BB Comp", "SP", "Moody", "Fitch"]]
+<div id="cell-2" class="clipboard-copy-txt">port_df_clean = rtg.get_pure_ratings(
+    ratings=port_df.loc[:, ["Moody", "SP", "Fitch", "DBRS"]]
 )
-ratings_clean_df.head()</div>
+port_df_clean</div>
     
         </div>
     </div>
@@ -1719,47 +2077,124 @@ ratings_clean_df.head()</div>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
       <th>Moody_clean</th>
+      <th>SP_clean</th>
       <th>Fitch_clean</th>
+      <th>DBRS_clean</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1+</td>
+      <td>R-1M</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
+      <td>P-1</td>
       <td>NaN</td>
+      <td>F2</td>
+      <td>R-1L</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>NR</td>
+      <td>P-1</td>
       <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
+      <td>F1+</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>NR</td>
+      <td>P-1</td>
       <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
+      <td>NaN</td>
+      <td>R-2M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>NaN</td>
+      <td>R-2H</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>P-2</td>
+      <td>A-1</td>
+      <td>F3</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1</td>
+      <td>R-1H</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>F1+</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>P-3</td>
+      <td>A-1+</td>
+      <td>F1+</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>P-1</td>
+      <td>A-2</td>
+      <td>F-1</td>
+      <td>R-3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>P-2</td>
+      <td>A-3</td>
+      <td>F1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>P-1</td>
+      <td>A-1</td>
+      <td>F2</td>
+      <td>R-2L</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>P-1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>P-2</td>
+      <td>A-1</td>
+      <td>F1+</td>
+      <td>R-1M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>P-1</td>
+      <td>A-1+</td>
+      <td>F1</td>
+      <td>R-1H</td>
     </tr>
   </tbody>
 </table>
@@ -1780,8 +2215,12 @@ ratings_clean_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As you can see, the suffix "_clean", has automatically been added to the column
-headings. Let's add these <em>clean</em> ratings to <code>port_df</code> by simple concatenation.</p>
+<h2 id="consolidate-ratings-step-1-and-2">Consolidate ratings (step 1 and 2)<a class="anchor-link" href="#consolidate-ratings-step-1-and-2">&#182;</a></h2><p>Next, we are consolidating the clean ratings. We take the conservative approach and
+identify the worst numerical rating score assigned to every individual security.</p>
+<p>We can use the
+<a href="../../api_reference/#pyratings.consolidate.get_worst_scores"><code>get_worst_scores</code></a>
+function. <strong>pyratings</strong> will automatically convert the short-term ratings into AEVs
+(step 1) and identify the hightest number (read: worst rating score) (step 2).</p>
 
 </div>
 </div>
@@ -1807,11 +2246,37 @@ headings. Let's add these <em>clean</em> ratings to <code>port_df</code> by simp
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">port_df</span><span class="p">,</span> <span class="n">ratings_clean_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_worst_scores_df</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_worst_scores</span><span class="p">(</span>
+    <span class="n">ratings</span><span class="o">=</span><span class="n">port_df_clean</span><span class="p">,</span>
+    <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Moody&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">,</span> <span class="s2">&quot;DBRS&quot;</span><span class="p">],</span>
+    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;short-term&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">port_worst_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">port_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ISIN&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]],</span>
+        <span class="n">port_worst_scores_df</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">port_worst_scores_df</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">port_df = pd.concat([port_df, ratings_clean_df], axis=1)
-port_df.head()</div>
+<div id="cell-3" class="clipboard-copy-txt">port_worst_scores_df = rtg.get_worst_scores(
+    ratings=port_df_clean,
+    rating_provider_input=["Moody", "SP", "Fitch", "DBRS"],
+    tenor="short-term",
+)
+
+port_worst_scores_df = pd.concat(
+    [
+        port_df.loc[:, ["ISIN", "weight"]],
+        port_worst_scores_df,
+    ],
+    axis=1
+)
+
+port_worst_scores_df</div>
     
         </div>
     </div>
@@ -1854,81 +2319,105 @@ port_df.head()</div>
       <th></th>
       <th>ISIN</th>
       <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
-      <th>Moody</th>
-      <th>Fitch</th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
-      <th>Moody_clean</th>
-      <th>Fitch_clean</th>
+      <th>worst_scores</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
+      <td>5.0</td>
+      <td>3.5</td>
     </tr>
     <tr>
       <th>1</th>
       <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
+      <td>8.5</td>
+      <td>5.5</td>
     </tr>
     <tr>
       <th>2</th>
       <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
+      <td>2.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
+      <td>3.5</td>
+      <td>3.5</td>
     </tr>
     <tr>
       <th>4</th>
       <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
+      <td>12.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ISIN00000006</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ISIN00000007</td>
+      <td>5.4</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ISIN00000008</td>
+      <td>7.6</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ISIN00000009</td>
+      <td>2.0</td>
+      <td>5.5</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ISIN00000010</td>
+      <td>4.0</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ISIN00000011</td>
+      <td>12.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ISIN00000012</td>
+      <td>3.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ISIN00000013</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ISIN00000014</td>
+      <td>8.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ISIN00000015</td>
+      <td>4.0</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ISIN00000016</td>
+      <td>13.0</td>
+      <td>6.5</td>
     </tr>
   </tbody>
 </table>
@@ -1949,22 +2438,9 @@ port_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Now, in order to compute an average rating or WARF, respectively, we need to
-consolidate the ratings on a
-row basis, i.e. we need to assign one and only one concrete rating to an individual
-security.<br>
-There are several solutions to this problem. Oftentimes, you may want to compute the
-<strong>worst</strong> rating among all rating agencies. It is also fairly common to calculate the
-<strong>second best</strong> rating.<br>
-<em>pyratings</em> offers a number of functions in order to accomplish this task, such as</p>
-<ul>
-<li><a href="../api_reference/#pyratings.consolidate.get_best_ratings">get_best_ratings</a></li>
-<li><a href="../api_reference/#pyratings.consolidate.get_second_best_ratings">get_second_best_ratings</a></li>
-<li><a href="../api_reference/#pyratings.consolidate.get_worst_ratings">get_worst_ratings</a></li>
-</ul>
-<p>Let's compute the <strong>worst ratings</strong> and directly concatenate the newly computed
-column to our existing <code>port_df</code> in one batch. <em>pyratings</em> automatically names the
-new column "worst_rtg".</p>
+<h2 id="compute-the-weighted-aev-step-3">Compute the weighted AEV (step 3)<a class="anchor-link" href="#compute-the-weighted-aev-step-3">&#182;</a></h2><p>Now, we need to compute a weighted average rating score. We use the
+<a href="../../api_reference/#pyratings.aggregate.get_weighted_average"><code>get_weighted_average</code></a>
+function.</p>
 
 </div>
 </div>
@@ -1990,33 +2466,21 @@ new column "worst_rtg".</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="n">port_df</span><span class="p">,</span>
-        <span class="n">rtg</span><span class="o">.</span><span class="n">get_worst_ratings</span><span class="p">(</span>
-            <span class="n">port_df</span><span class="p">[[</span><span class="s2">&quot;BB Comp_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;SP_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody_clean&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch_clean&quot;</span><span class="p">]],</span>
-            <span class="n">rating_provider_input</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bloomberg&quot;</span><span class="p">,</span> <span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Moody&#39;s&quot;</span><span class="p">,</span> <span class="s2">&quot;Fitch&quot;</span><span class="p">],</span>
-            <span class="n">rating_provider_output</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span>
-        <span class="p">)</span>
-    <span class="p">],</span>
-    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_rtg_score</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_weighted_average</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">port_worst_scores_df</span><span class="p">[</span><span class="s2">&quot;worst_scores&quot;</span><span class="p">],</span>
+    <span class="n">weights</span><span class="o">=</span><span class="n">port_worst_scores_df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average rating score: </span><span class="si">{</span><span class="n">avg_rtg_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average rating score (rounded): </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_rtg_score</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
-<div id="cell-4" class="clipboard-copy-txt">port_df = pd.concat(
-    [
-        port_df,
-        rtg.get_worst_ratings(
-            port_df[["BB Comp_clean", "SP_clean", "Moody_clean", "Fitch_clean"]],
-            rating_provider_input=["Bloomberg", "S&P", "Moody's", "Fitch"],
-            rating_provider_output="S&P"
-        )
-    ],
-    axis=1,
+<div id="cell-4" class="clipboard-copy-txt">avg_rtg_score = rtg.get_weighted_average(
+    data=port_worst_scores_df["worst_scores"],
+    weights=port_worst_scores_df["weight"] / 100,
 )
 
-port_df.head()</div>
+print(f"Average rating score: {avg_rtg_score:.2f}")
+print(f"Average rating score (rounded): {round(avg_rtg_score):.2f}")</div>
     
         </div>
     </div>
@@ -2034,118 +2498,14 @@ port_df.head()</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ISIN</th>
-      <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
-      <th>Moody</th>
-      <th>Fitch</th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
-      <th>Moody_clean</th>
-      <th>Fitch_clean</th>
-      <th>worst_rtg</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AA+</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-    </tr>
-  </tbody>
-</table>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Average rating score: 7.23
+Average rating score (rounded): 7.00
+</pre>
 </div>
-</div>
-
 </div>
 
 </div>
@@ -2160,232 +2520,20 @@ port_df.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="computing-the-average-rating-of-a-portfolio">Computing the average rating of a portfolio<a class="anchor-link" href="#computing-the-average-rating-of-a-portfolio">&#182;</a></h2><p>The column <i>worst_rtg</i> will be used in order to translate the ratings into scores
-according to the following table.</p>
-<table>
-<thead><tr>
-<th style="text-align:center">Moody’s</th>
-<th style="text-align:center">S&amp;P</th>
-<th style="text-align:center">Fitch</th>
-<th style="text-align:center">Bloomberg</th>
-<th style="text-align:center">DBRS</th>
-<th style="text-align:center">ICE</th>
-<th style="text-align:right">Score</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Aaa</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa1</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AAH</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:right">2</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa2</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:right">3</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa3</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AAL</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:right">4</td>
-</tr>
-<tr>
-<td style="text-align:center">A1</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">AH</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:right">5</td>
-</tr>
-<tr>
-<td style="text-align:center">A2</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:right">6</td>
-</tr>
-<tr>
-<td style="text-align:center">A3</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">AL</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:right">7</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa1</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBBH</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:right">8</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa2</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:right">9</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa3</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBBL</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:right">10</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba1</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BBH</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:right">11</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba2</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:right">12</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba3</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BBL</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:right">13</td>
-</tr>
-<tr>
-<td style="text-align:center">B1</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">BH</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:right">14</td>
-</tr>
-<tr>
-<td style="text-align:center">B2</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:right">15</td>
-</tr>
-<tr>
-<td style="text-align:center">B3</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">BL</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:right">16</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa1</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCCH</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:right">17</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa2</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:right">18</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa3</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCCL</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:right">19</td>
-</tr>
-<tr>
-<td style="text-align:center">Ca</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:right">20</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:right">21</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">DDD</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:right">22</td>
-</tr>
-<tr>
-<td style="text-align:center">SD</td>
-<td style="text-align:center">SD</td>
-<td style="text-align:center">SD</td>
-<td style="text-align:center">---</td>
-<td style="text-align:center">---</td>
-<td style="text-align:center">---</td>
-<td style="text-align:right">22</td>
-</tr>
-</tbody>
-</table>
-<p>The function <a href="../api_reference/#pyratings.get_scores.get_scores_from_ratings">get_scores_from_ratings</a>
-will solve this issue. The function needs a rating provider (here: "S&amp;P") in order to
- select an appropriate translation dictionary.</p>
+<h2 id="going-back-to-human-readable-ratings-step-4">Going back to human-readable ratings (step 4)<a class="anchor-link" href="#going-back-to-human-readable-ratings-step-4">&#182;</a></h2><p>Translating rating scores into short-term ratings is somewhat different compared to
+long-term ratings
+(see <a href="../../short_term_ratings/#theres-one-more-catch">Short-term ratings</a>).
+We need to decide which strategy we will use: <code>best</code>, <code>base</code>, or <code>worst</code>.
+Choosing the strategy influences the outcome. The rounded rating score is 7.</p>
+<p>We are going to use the
+<a href="../../api_reference/#pyratings.get_ratings.get_ratings_from_scores"><code>get_ratings_from_scores</code></a>
+function.
+The input parameter <code>short_term_strategy</code> defines the strategy, which will be used
+to translate AEVs back into short-term ratings.</p>
+<p>The following table describes how this rating score will be translated into a
+short-term rating depending on the strategy.</p>
+<p><img src="/.
+./media/translation_st_ratings_lt_rating_scores_all_strats.png" alt="Translation short-term ratings into long-term rating scores with all strategies"></p>
 
 </div>
 </div>
@@ -2411,311 +2559,55 @@ will solve this issue. The function needs a rating provider (here: "S&amp;P") in
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="n">port_df</span><span class="p">,</span>
-        <span class="n">rtg</span><span class="o">.</span><span class="n">get_scores_from_ratings</span><span class="p">(</span>
-            <span class="n">ratings</span><span class="o">=</span><span class="n">port_df</span><span class="p">[</span><span class="s2">&quot;worst_rtg&quot;</span><span class="p">],</span>
-            <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">)</span>
-    <span class="p">],</span>
-    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_rtg_best</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+    <span class="n">rating_scores</span><span class="o">=</span><span class="n">avg_rtg_score</span><span class="p">,</span>
+    <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span>
+    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;short-term&quot;</span><span class="p">,</span>
+    <span class="n">short_term_strategy</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">port_scores_df</span>
-</pre></div>
-<div id="cell-5" class="clipboard-copy-txt">port_scores_df = pd.concat(
-    [
-        port_df,
-        rtg.get_scores_from_ratings(
-            ratings=port_df["worst_rtg"],
-            rating_provider="S&P")
-    ],
-    axis=1
-)
-
-port_scores_df</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ISIN</th>
-      <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
-      <th>Moody</th>
-      <th>Fitch</th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
-      <th>Moody_clean</th>
-      <th>Fitch_clean</th>
-      <th>worst_rtg</th>
-      <th>rtg_score_SP</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>ISIN00000083</td>
-      <td>2.321185</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>BBB+</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>ISIN00000084</td>
-      <td>1.389043</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>BBB+</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>84</th>
-      <td>ISIN00000085</td>
-      <td>2.296711</td>
-      <td>BBB+</td>
-      <td>NR</td>
-      <td>Baa1</td>
-      <td>A-</td>
-      <td>BBB+</td>
-      <td>NR</td>
-      <td>Baa1</td>
-      <td>A-</td>
-      <td>BBB+</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>85</th>
-      <td>ISIN00000086</td>
-      <td>1.015105</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>Aaa</td>
-      <td>NaN</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>Aaa</td>
-      <td>NaN</td>
-      <td>AAA</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>ISIN00000087</td>
-      <td>0.964399</td>
-      <td>AA</td>
-      <td>NaN</td>
-      <td>Aa2</td>
-      <td>AA</td>
-      <td>AA</td>
-      <td>NaN</td>
-      <td>Aa2</td>
-      <td>AA</td>
-      <td>AA</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>87 rows × 12 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Finally, we need to compute a weighted average rating score, which we subsequently
-convert back into a human-readable rating. For the former, we use the
-<a href="../api_reference/#pyratings.aggregate.get_weighted_average">get_weighted_average</a>
-function and for the latter the
-<a href="../api_reference/#pyratings.get_ratings.get_ratings_from_scores">get_ratings_from_scores</a>
-function.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-6">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_rtg_score</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_weighted_average</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">port_scores_df</span><span class="p">[</span><span class="s2">&quot;rtg_score_SP&quot;</span><span class="p">],</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">port_scores_df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+<span class="n">avg_rtg_base</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+    <span class="n">rating_scores</span><span class="o">=</span><span class="n">avg_rtg_score</span><span class="p">,</span>
+    <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span>
+    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;short-term&quot;</span><span class="p">,</span>
+    <span class="n">short_term_strategy</span><span class="o">=</span><span class="s2">&quot;base&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average rating score: </span><span class="si">{</span><span class="n">avg_rtg_score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">avg_rtg_worst</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
+    <span class="n">rating_scores</span><span class="o">=</span><span class="n">avg_rtg_score</span><span class="p">,</span>
+    <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span>
+    <span class="n">tenor</span><span class="o">=</span><span class="s2">&quot;short-term&quot;</span><span class="p">,</span>
+    <span class="n">short_term_strategy</span><span class="o">=</span><span class="s2">&quot;worst&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average portfolio rating (strategy: &#39;best&#39;): </span><span class="si">{</span><span class="n">avg_rtg_best</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average portfolio rating (strategy: &#39;base&#39;): </span><span class="si">{</span><span class="n">avg_rtg_base</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average portfolio rating (strategy: &#39;worst&#39;): </span><span class="si">{</span><span class="n">avg_rtg_worst</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
-<div id="cell-6" class="clipboard-copy-txt">avg_rtg_score = rtg.get_weighted_average(
-    data=port_scores_df["rtg_score_SP"],
-    weights=port_scores_df["weight"] / 100,
+<div id="cell-5" class="clipboard-copy-txt">avg_rtg_best = rtg.get_ratings_from_scores(
+    rating_scores=avg_rtg_score,
+    rating_provider="S&P",
+    tenor="short-term",
+    short_term_strategy="best",
 )
-print(f"Average rating score: {avg_rtg_score}")</div>
+
+avg_rtg_base = rtg.get_ratings_from_scores(
+    rating_scores=avg_rtg_score,
+    rating_provider="S&P",
+    tenor="short-term",
+    short_term_strategy="base",
+)
+
+avg_rtg_worst = rtg.get_ratings_from_scores(
+    rating_scores=avg_rtg_score,
+    rating_provider="S&P",
+    tenor="short-term",
+    short_term_strategy="worst",
+)
+
+print(f"Average portfolio rating (strategy: 'best'): {avg_rtg_best}")
+print(f"Average portfolio rating (strategy: 'base'): {avg_rtg_base}")
+print(f"Average portfolio rating (strategy: 'worst'): {avg_rtg_worst}")</div>
     
         </div>
     </div>
@@ -2737,66 +2629,9 @@ print(f"Average rating score: {avg_rtg_score}")</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Average rating score: 4.387791453932187
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-7">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_rtg</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_scores</span><span class="p">(</span>
-    <span class="n">rating_scores</span><span class="o">=</span><span class="n">avg_rtg_score</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average portfolio rating: </span><span class="si">{</span><span class="n">avg_rtg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-<div id="cell-7" class="clipboard-copy-txt">avg_rtg = rtg.get_ratings_from_scores(
-    rating_scores=avg_rtg_score, rating_provider="S&P")
-print(f"Average portfolio rating: {avg_rtg}")</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Average portfolio rating: AA-
+<pre>Average portfolio rating (strategy: &#39;best&#39;): A-1
+Average portfolio rating (strategy: &#39;base&#39;): A-2
+Average portfolio rating (strategy: &#39;worst&#39;): A-2
 </pre>
 </div>
 </div>
@@ -2813,899 +2648,11 @@ print(f"Average portfolio rating: {avg_rtg}")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="computing-portfolio-warf">Computing portfolio WARF<a class="anchor-link" href="#computing-portfolio-warf">&#182;</a></h2><p>To compute the portfolio's WARF, we are again going to use <strong>worst ratings</strong>.</p>
+<p>There you go. The average rating of the portfolio is either A-1 (<code>best</code>) or A-2
+(<code>base</code> and <code>worst</code>).</p>
 
 </div>
 </div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-8">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div id="cell-8" class="clipboard-copy-txt">port_df.head()</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ISIN</th>
-      <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
-      <th>Moody</th>
-      <th>Fitch</th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
-      <th>Moody_clean</th>
-      <th>Fitch_clean</th>
-      <th>worst_rtg</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AA+</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The column <i>worst_rtg</i> will be used in order to translate the ratings into WARF
-according to the following table.</p>
-<table>
-<thead><tr>
-<th style="text-align:center">Moody’s</th>
-<th style="text-align:center">S&amp;P</th>
-<th style="text-align:center">Fitch</th>
-<th style="text-align:center">ICE</th>
-<th style="text-align:center">DBRS</th>
-<th style="text-align:center">Bloomberg</th>
-<th style="text-align:right">Score</th>
-<th style="text-align:right">WARF</th>
-<th style="text-align:right">MinWARF*</th>
-<th style="text-align:center">MaxWARF*</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Aaa</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:center">AAA</td>
-<td style="text-align:right">1</td>
-<td style="text-align:right">1</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa1</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:center">AAH</td>
-<td style="text-align:center">AA+</td>
-<td style="text-align:right">2</td>
-<td style="text-align:right">10</td>
-<td style="text-align:right">5</td>
-<td style="text-align:center">15</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa2</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:center">AA</td>
-<td style="text-align:right">3</td>
-<td style="text-align:right">20</td>
-<td style="text-align:right">15</td>
-<td style="text-align:center">30</td>
-</tr>
-<tr>
-<td style="text-align:center">Aa3</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:center">AAL</td>
-<td style="text-align:center">AA-</td>
-<td style="text-align:right">4</td>
-<td style="text-align:right">40</td>
-<td style="text-align:right">30</td>
-<td style="text-align:center">55</td>
-</tr>
-<tr>
-<td style="text-align:center">A1</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:center">AH</td>
-<td style="text-align:center">A+</td>
-<td style="text-align:right">5</td>
-<td style="text-align:right">70</td>
-<td style="text-align:right">55</td>
-<td style="text-align:center">95</td>
-</tr>
-<tr>
-<td style="text-align:center">A2</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">120</td>
-<td style="text-align:right">95</td>
-<td style="text-align:center">150</td>
-</tr>
-<tr>
-<td style="text-align:center">A3</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:center">AL</td>
-<td style="text-align:center">A-</td>
-<td style="text-align:right">7</td>
-<td style="text-align:right">180</td>
-<td style="text-align:right">150</td>
-<td style="text-align:center">220</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa1</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:center">BBBH</td>
-<td style="text-align:center">BBB+</td>
-<td style="text-align:right">8</td>
-<td style="text-align:right">260</td>
-<td style="text-align:right">220</td>
-<td style="text-align:center">310</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa2</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:center">BBB</td>
-<td style="text-align:right">9</td>
-<td style="text-align:right">360</td>
-<td style="text-align:right">310</td>
-<td style="text-align:center">485</td>
-</tr>
-<tr>
-<td style="text-align:center">Baa3</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:center">BBBL</td>
-<td style="text-align:center">BBB-</td>
-<td style="text-align:right">10</td>
-<td style="text-align:right">610</td>
-<td style="text-align:right">485</td>
-<td style="text-align:center">775</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba1</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:center">BBH</td>
-<td style="text-align:center">BB+</td>
-<td style="text-align:right">11</td>
-<td style="text-align:right">940</td>
-<td style="text-align:right">775</td>
-<td style="text-align:center">1145</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba2</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:center">BB</td>
-<td style="text-align:right">12</td>
-<td style="text-align:right">1350</td>
-<td style="text-align:right">1145</td>
-<td style="text-align:center">1558</td>
-</tr>
-<tr>
-<td style="text-align:center">Ba3</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:center">BBL</td>
-<td style="text-align:center">BB-</td>
-<td style="text-align:right">13</td>
-<td style="text-align:right">1766</td>
-<td style="text-align:right">1558</td>
-<td style="text-align:center">1993</td>
-</tr>
-<tr>
-<td style="text-align:center">B1</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:center">BH</td>
-<td style="text-align:center">B+</td>
-<td style="text-align:right">14</td>
-<td style="text-align:right">2220</td>
-<td style="text-align:right">1993</td>
-<td style="text-align:center">2470</td>
-</tr>
-<tr>
-<td style="text-align:center">B2</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:right">15</td>
-<td style="text-align:right">2720</td>
-<td style="text-align:right">2470</td>
-<td style="text-align:center">3105</td>
-</tr>
-<tr>
-<td style="text-align:center">B3</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:center">BL</td>
-<td style="text-align:center">B-</td>
-<td style="text-align:right">16</td>
-<td style="text-align:right">3490</td>
-<td style="text-align:right">3105</td>
-<td style="text-align:center">4130</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa1</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:center">CCCH</td>
-<td style="text-align:center">CCC+</td>
-<td style="text-align:right">17</td>
-<td style="text-align:right">4770</td>
-<td style="text-align:right">4130</td>
-<td style="text-align:center">5635</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa2</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:center">CCC</td>
-<td style="text-align:right">18</td>
-<td style="text-align:right">6500</td>
-<td style="text-align:right">5635</td>
-<td style="text-align:center">7285</td>
-</tr>
-<tr>
-<td style="text-align:center">Caa3</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:center">CCCL</td>
-<td style="text-align:center">CCC-</td>
-<td style="text-align:right">19</td>
-<td style="text-align:right">8070</td>
-<td style="text-align:right">7285</td>
-<td style="text-align:center">9034</td>
-</tr>
-<tr>
-<td style="text-align:center">Ca</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:center">CC</td>
-<td style="text-align:right">20</td>
-<td style="text-align:right">9998</td>
-<td style="text-align:right">9034</td>
-<td style="text-align:center">9998.5</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C</td>
-<td style="text-align:right">21</td>
-<td style="text-align:right">9999</td>
-<td style="text-align:right">9998.5</td>
-<td style="text-align:center">9999.5</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">DDD</td>
-<td style="text-align:right">22</td>
-<td style="text-align:right">10000</td>
-<td style="text-align:right">9999.5</td>
-<td style="text-align:center">10000</td>
-</tr>
-</tbody>
-</table>
-<p><code>MinWARF</code> is inclusive, while <code>MaxWARF</code> is exclusive.</p>
-<p>The function <a href="../api_reference/#pyratings.get_warf.get_warf_from_ratings">get_warf_from_ratings</a>
-will solve this issue.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-9">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">port_warf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="n">port_df</span><span class="p">,</span>
-        <span class="n">rtg</span><span class="o">.</span><span class="n">get_warf_from_ratings</span><span class="p">(</span>
-            <span class="n">ratings</span><span class="o">=</span><span class="n">port_df</span><span class="p">[</span><span class="s2">&quot;worst_rtg&quot;</span><span class="p">],</span>
-            <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;S&amp;P&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-    <span class="p">],</span>
-    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span>
-
-<span class="n">port_warf_df</span>
-</pre></div>
-<div id="cell-9" class="clipboard-copy-txt">port_warf_df = pd.concat(
-    [
-        port_df,
-        rtg.get_warf_from_ratings(
-            ratings=port_df["worst_rtg"],
-            rating_provider="S&P",
-        )
-    ],
-    axis=1
-)
-
-port_warf_df</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ISIN</th>
-      <th>weight</th>
-      <th>BB Comp</th>
-      <th>SP</th>
-      <th>Moody</th>
-      <th>Fitch</th>
-      <th>BB Comp_clean</th>
-      <th>SP_clean</th>
-      <th>Moody_clean</th>
-      <th>Fitch_clean</th>
-      <th>worst_rtg</th>
-      <th>warf</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ISIN00000001</td>
-      <td>0.518515</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa *-</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>NR</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ISIN00000002</td>
-      <td>0.950810</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>Aaa</td>
-      <td>AAA</td>
-      <td>AA+</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ISIN00000003</td>
-      <td>0.497176</td>
-      <td>AA+ *-</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA+</td>
-      <td>AA+</td>
-      <td>Aa2</td>
-      <td>NaN</td>
-      <td>AA</td>
-      <td>20.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ISIN00000004</td>
-      <td>0.648453</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ISIN00000005</td>
-      <td>0.674328</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-u</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>AA-</td>
-      <td>AA-</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>ISIN00000083</td>
-      <td>2.321185</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>BBB+</td>
-      <td>260.0</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>ISIN00000084</td>
-      <td>1.389043</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>NR</td>
-      <td>NaN</td>
-      <td>Baa1</td>
-      <td>NaN</td>
-      <td>BBB+</td>
-      <td>260.0</td>
-    </tr>
-    <tr>
-      <th>84</th>
-      <td>ISIN00000085</td>
-      <td>2.296711</td>
-      <td>BBB+</td>
-      <td>NR</td>
-      <td>Baa1</td>
-      <td>A-</td>
-      <td>BBB+</td>
-      <td>NR</td>
-      <td>Baa1</td>
-      <td>A-</td>
-      <td>BBB+</td>
-      <td>260.0</td>
-    </tr>
-    <tr>
-      <th>85</th>
-      <td>ISIN00000086</td>
-      <td>1.015105</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>Aaa</td>
-      <td>NaN</td>
-      <td>AAA</td>
-      <td>AAA</td>
-      <td>Aaa</td>
-      <td>NaN</td>
-      <td>AAA</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>ISIN00000087</td>
-      <td>0.964399</td>
-      <td>AA</td>
-      <td>NaN</td>
-      <td>Aa2</td>
-      <td>AA</td>
-      <td>AA</td>
-      <td>NaN</td>
-      <td>Aa2</td>
-      <td>AA</td>
-      <td>AA</td>
-      <td>20.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>87 rows × 12 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Finally, we need to compute the WARF on a portfolio basis, which we subsequently
-convert back into a human-readable rating. For the former, we use the
-<a href="../api_reference/#pyratings.aggregate.get_weighted_average">get_weighted_average</a>
-function and the
-<a href="../api_reference/#pyratings.get_ratings.get_ratings_from_warf">get_ratings_from_warf</a>
-function for the latter.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-10">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_warf</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_weighted_average</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">port_warf_df</span><span class="p">[</span><span class="s2">&quot;warf&quot;</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">port_warf_df</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARF: </span><span class="si">{</span><span class="n">avg_warf</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-<div id="cell-10" class="clipboard-copy-txt">avg_warf = rtg.get_weighted_average(
-    data=port_warf_df["warf"], weights=port_warf_df["weight"] / 100
-)
-
-print(f"WARF: {avg_warf}")</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>WARF: 165.57723587360007
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Let us translate <code>avg_warf</code> into a Moody's rating.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-11">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">avg_warf_equivalent_rating</span> <span class="o">=</span> <span class="n">rtg</span><span class="o">.</span><span class="n">get_ratings_from_warf</span><span class="p">(</span>
-    <span class="n">warf</span><span class="o">=</span><span class="n">avg_warf</span><span class="p">,</span> <span class="n">rating_provider</span><span class="o">=</span><span class="s2">&quot;Moody&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Portfolio equivalent WARF rating: </span><span class="si">{</span><span class="n">avg_warf_equivalent_rating</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-<div id="cell-11" class="clipboard-copy-txt">avg_warf_equivalent_rating = rtg.get_ratings_from_warf(
-    warf=avg_warf, rating_provider="Moody")
-
-print(f"Portfolio equivalent WARF rating: {avg_warf_equivalent_rating}")</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Portfolio equivalent WARF rating: A3
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 </div>
 </div>
@@ -3731,7 +2678,7 @@ print(f"Portfolio equivalent WARF rating: {avg_warf_equivalent_rating}")</div>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../avg_port_lt_rtg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compute portfolio average long-term rating" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -3740,20 +2687,20 @@ print(f"Portfolio equivalent WARF rating: {avg_warf_equivalent_rating}")</div>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Compute portfolio average long-term rating
             </div>
           </div>
         </a>
       
       
         
-        <a href="../api_reference/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference" rel="next">
+        <a href="../port_warf/" class="md-footer__link md-footer__link--next" aria-label="Next: Compute portfolio WARF" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              API Reference
+              Compute portfolio WARF
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -3784,11 +2731,12 @@ print(f"Portfolio equivalent WARF rating: {avg_warf_equivalent_rating}")</div>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>
