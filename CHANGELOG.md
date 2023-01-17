@@ -198,6 +198,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Function to translate S&P/Fitch/Moody's credit ratings into rating scores.
 - Function to translate rating scores into S&P/Fitch/Moody's credit ratings.
 
-[Unreleased]: https://github.com/hsbc/pyratings/tree/v0.5.4...HEAD
+[Unreleased]: https://github.com/hsbc/pyratings/compare/v0.5.4...HEAD
 [0.5.4]: https://github.com/hsbc/pyratings/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/hsbc/pyratings/compare/v0.5.2..v0.5.3
