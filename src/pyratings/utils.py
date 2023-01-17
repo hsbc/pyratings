@@ -101,7 +101,7 @@ def _extract_rating_provider(
     for i, provider in enumerate(rating_provider):
         if not any(x in provider.lower() for x in valid_rtg_provider_lowercase):
             raise AssertionError(
-                f"'{provider}' is not a valid rating provider. 'rating_provider' must "
+                f"{provider!r} is not a valid rating provider. 'rating_provider' must "
                 f"be in {valid_rtg_provider}."
             )
         for valid_provider in valid_rtg_provider:
