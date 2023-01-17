@@ -36,6 +36,12 @@ ignore =
     ANN101, ANN102
     # Dynamically typed expressions (typing.Any) are disallowed (ANN401)
     ANN401,
+    # B905**: ``zip()`` without explicit `strict=` parameter set. ``strict=True``
+    # causes the resulting iterator to raise a ``ValueError`` if the arguments are
+    # exhausted at differing lengths. The ``strict=`` argument was added in Python 3.10,
+    # so don't enable this flag for code that should work on <3.10. For more
+    # information: https://peps.python.org/pep-0618/
+    B905,
     # Whitespace before ':' (E203)
     E203,
     # flake8-bandit
