@@ -2,6 +2,7 @@ site_name: pyratings
 repo_url: https://github.com/hsbc/pyratings
 site_description: pyratings - Working with credit ratings, professionally and efficiently
 site_author: HSBC
+edit_uri: edit/main/docs
 # use_directory_urls: false
 
 theme:
