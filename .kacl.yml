@@ -12,3 +12,15 @@ kacl:
   default_content:
     - All notable changes to this project will be documented in this file.
     - The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+  git:
+    commit: True
+    commit_message: "Releasing version {new_version}"
+    tag: True
+    tag_name: "v{new_version}"
+    tag_description: "Version v{new_version} released"
+  links:
+    host_url: https://github.com/hsbc/pyratings
+    compare_versions_template: "{host}/compare/v{previous_version}...v{version}"
+    unreleased_changes_template: "{host}/compare/v{latest_version}...HEAD"
+    initial_version_template: "{host}/tree/{version}"
+    auto_generate: True
