@@ -211,39 +211,47 @@ GitHub provides a good [introduction](https://docs.github.com/en/get-started/qui
 
 - _pyratings_ requires Python 3.9 at a minimum.
 - Clone the fork to your local machine.
-- Create a virtual environment.
+- Create a virtual environment and install the _pyratings_ library including all of 
+  its dependencies.
+  There are some possible ways to do this:
 
-```shell
-python -m venv .venv
-```
+  _pyratings_ is using the Python dependency manager [pdm](https://pdm.fming.dev/).  
+  It creates a file called ``pdm.lock``, which comprises pinned versions of all 
+  dependencies (including development dependencies) that are needed to run _pyratings_. 
+
+  - Using ``pdm``:
+    ```shell
+    pdm sync
+    ```
+    This will install _pyratings_ including all its development dependencies.
+
+  - Using ``pip``:
+    
+    Create a dedicated virtual environment
+    ```shell
+    python -m venv .venv
+    ```
   
-- Activate your virtual environment.
+    Activate your virtual environment.
 
-```shell
-source ./.venv/Scripts/activate  # bash 
-```
+    ```shell
+    source ./.venv/Scripts/activate  # bash 
+    ```
 
-```shell
-./.venv/Scripts/activate  # Windows 
-```
-  
-- Install _pyratings_ in editable mode (including all development dependencies).<br>
-  _pyratings_ is using ``pyproject.toml`` as configuration file. In order to install 
-  the package in editable mode, make sure you have ``pip>=21.3`` installed on your 
-  machine.
+    ```shell
+    .venv\Scripts\activate  # Windows 
+    ```
+      
+    Install _pyratings_ in editable mode (including all development dependencies).<br>
 
-```shell
-python -m pip install --upgrade pip  # upgrading pip to latest version
-```
-
-```shell
-pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode
-```
+    ```shell
+    pip install -r requirements.txt -e .
+    ```
+    
+#### Further dev setup and what I need to now about "pre-commit"
 
 The _pyratings_ package adheres to a bunch of [Style guides](#style-guides), that 
 will be enforced with the help of [Pre-commit](https://pre-commit.com/). 
-
-#### Further dev setup and what I need to now about "pre-commit"
 
 Before you commit your code changes, you should make sure, that you only commit code 
 that is of good quality and adheres to the projects [Style guides](#style-guides).  
@@ -312,6 +320,11 @@ pytest
 In addition, you can perform more rigorous linting and tests against multiple Python
 versions. In this case, the test result depends on the Python versions available on 
 your machine. Make sure you've got at least Python 3.9 installed on your machine. 
+
+These tests will be performed using [nox](https://nox.thea.codes/).
+The corresponding ``./noxfile.py`` is configured in a way that it installs the 
+required dependencies with the help of [pdm](https://pdm.fming.dev/).
+That means, you need to have [pdm](https://pdm.fming.dev/) installed on your machine.
 Then simply run:
 ```shell
 nox
