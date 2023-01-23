@@ -213,40 +213,43 @@ GitHub provides a good [introduction](https://docs.github.com/en/get-started/qui
 - Clone the fork to your local machine.
 - Create a virtual environment and install the _pyratings_ library including all of 
   its dependencies.
-  There are some possible ways to do this:
+  There are some possible ways to do this.
 
-  _pyratings_ is using the Python dependency manager [pdm](https://pdm.fming.dev/).  
-  It creates a file called ``pdm.lock``, which comprises pinned versions of all 
-  dependencies (including development dependencies) that are needed to run _pyratings_. 
+_pyratings_ is using the Python dependency manager [pdm](https://pdm.fming.dev/).  
+It creates a file called ``pdm.lock``, which comprises pinned versions of all 
+dependencies (including development dependencies) that are needed to run _pyratings_. 
 
-  - Using ``pdm``:
-    ```shell
-    pdm sync
-    ```
-    This will install _pyratings_ including all its development dependencies.
+##### Using ``pdm``:
 
-  - Using ``pip``:
+```shell
+pdm sync
+```
+
+This will install _pyratings_ including all its development dependencies.
+
+##### Using ``pip``:
     
-    Create a dedicated virtual environment
-    ```shell
-    python -m venv .venv
-    ```
+Create a dedicated virtual environment
+
+```shell
+python -m venv .venv
+```
   
-    Activate your virtual environment.
+Activate your virtual environment.
 
-    ```shell
-    source ./.venv/Scripts/activate  # bash 
-    ```
+```shell
+source .venv/Scripts/activate  # bash 
+```
 
-    ```shell
-    .venv\Scripts\activate  # Windows 
-    ```
+```shell
+.venv\Scripts\activate  # Windows 
+```
       
-    Install _pyratings_ in editable mode (including all development dependencies).<br>
+Install _pyratings_ in editable mode (including all development dependencies).<br>
 
-    ```shell
-    pip install -r requirements.txt -e .
-    ```
+```
+pip install -r requirements.txt -e .
+```
     
 #### Further dev setup and what I need to now about "pre-commit"
 
