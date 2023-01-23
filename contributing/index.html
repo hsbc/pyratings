@@ -601,6 +601,26 @@
     How do I set up my dev environment?
   </a>
   
+    <nav class="md-nav" aria-label="How do I set up my dev environment?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pdm" class="md-nav__link">
+    Using pdm:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    Using pip:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -856,6 +876,26 @@
   <a href="#how-do-i-set-up-my-dev-environment" class="md-nav__link">
     How do I set up my dev environment?
   </a>
+  
+    <nav class="md-nav" aria-label="How do I set up my dev environment?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pdm" class="md-nav__link">
+    Using pdm:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    Using pip:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1155,30 +1195,32 @@ If you do so, reference it here in the description. -->
 <ul>
 <li><em>pyratings</em> requires Python 3.9 at a minimum.</li>
 <li>Clone the fork to your local machine.</li>
-<li>Create a virtual environment.</li>
+<li>Create a virtual environment and install the <em>pyratings</em> library including all of 
+  its dependencies.
+  There are some possible ways to do this.</li>
 </ul>
+<p><em>pyratings</em> is using the Python dependency manager <a href="https://pdm.fming.dev/">pdm</a>.<br />
+It creates a file called <code>pdm.lock</code>, which comprises pinned versions of all 
+dependencies (including development dependencies) that are needed to run <em>pyratings</em>. </p>
+<h5 id="using-pdm">Using <code>pdm</code>:</h5>
+<pre><code class="language-shell">pdm sync
+</code></pre>
+<p>This will install <em>pyratings</em> including all its development dependencies.</p>
+<h5 id="using-pip">Using <code>pip</code>:</h5>
+<p>Create a dedicated virtual environment</p>
 <pre><code class="language-shell">python -m venv .venv
 </code></pre>
-<ul>
-<li>Activate your virtual environment.</li>
-</ul>
-<pre><code class="language-shell">source ./.venv/Scripts/activate  # bash 
+<p>Activate your virtual environment.</p>
+<pre><code class="language-shell">source .venv/Scripts/activate  # bash 
 </code></pre>
-<pre><code class="language-shell">./.venv/Scripts/activate  # Windows 
+<pre><code class="language-shell">.venv\Scripts\activate  # Windows 
 </code></pre>
-<ul>
-<li>Install <em>pyratings</em> in editable mode (including all development dependencies).<br>
-  <em>pyratings</em> is using <code>pyproject.toml</code> as configuration file. In order to install 
-  the package in editable mode, make sure you have <code>pip&gt;=21.3</code> installed on your 
-  machine.</li>
-</ul>
-<pre><code class="language-shell">python -m pip install --upgrade pip  # upgrading pip to latest version
+<p>Install <em>pyratings</em> in editable mode (including all development dependencies).<br></p>
+<pre><code>pip install -r requirements.txt -e .
 </code></pre>
-<pre><code class="language-shell">pip install --upgrade -e .[dev,docs,tests]  # install pyratings in editable mode
-</code></pre>
+<h4 id="further-dev-setup-and-what-i-need-to-now-about-pre-commit">Further dev setup and what I need to now about "pre-commit"</h4>
 <p>The <em>pyratings</em> package adheres to a bunch of <a href="#style-guides">Style guides</a>, that 
 will be enforced with the help of <a href="https://pre-commit.com/">Pre-commit</a>. </p>
-<h4 id="further-dev-setup-and-what-i-need-to-now-about-pre-commit">Further dev setup and what I need to now about "pre-commit"</h4>
 <p>Before you commit your code changes, you should make sure, that you only commit code 
 that is of good quality and adheres to the projects <a href="#style-guides">Style guides</a>.<br />
 <code>pre-commit</code> hooks run all the auto-formatters, linters, and other quality checks to
@@ -1231,7 +1273,11 @@ implemented (in alphabetical order):</p>
 </code></pre>
 <p>In addition, you can perform more rigorous linting and tests against multiple Python
 versions. In this case, the test result depends on the Python versions available on 
-your machine. Make sure you've got at least Python 3.9 installed on your machine. 
+your machine. Make sure you've got at least Python 3.9 installed on your machine. </p>
+<p>These tests will be performed using <a href="https://nox.thea.codes/">nox</a>.
+The corresponding <code>./noxfile.py</code> is configured in a way that it installs the 
+required dependencies with the help of <a href="https://pdm.fming.dev/">pdm</a>.
+That means, you need to have <a href="https://pdm.fming.dev/">pdm</a> installed on your machine.
 Then simply run:</p>
 <pre><code class="language-shell">nox
 </code></pre>
