@@ -67,7 +67,7 @@ jupyterlab-widgets==3.0.5
 jupytext==1.14.4
 lxml==4.9.2
 markdown==3.3.7
-markdown-it-py==2.1.0
+markdown-it-py==2.2.0
 MarkupSafe==2.1.2
 matplotlib-inline==0.1.6
 mccabe==0.7.0
