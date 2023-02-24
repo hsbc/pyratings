@@ -1088,7 +1088,7 @@ This kind of information will be removed to retrieve the actual rating(s).</p>
         <tr>
           <td><code>ratings</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>str | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Uncleaned rating(s).</p></td>
           <td>
@@ -1109,7 +1109,7 @@ This kind of information will be removed to retrieve the actual rating(s).</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Regular ratings stripped off of watches. The name of the resulting Series or
 the columns of the returning DataFrame will be suffixed with <code>_clean</code>.</p></td>
@@ -3079,7 +3079,7 @@ translation table will be used:</p>
         <tr>
           <td><code>ratings</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>str | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Rating(s) to be translated into rating score(s).</p></td>
           <td>
@@ -3089,7 +3089,7 @@ translation table will be used:</p>
         <tr>
           <td><code>rating_provider</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]]</code>
+                <code>str | list[str] | None</code>
           </td>
           <td><p>Should contain any valid rating provider out of
 {"Fitch", "Moody's", "S&amp;P", "Bloomberg", "DBRS"}.</p>
@@ -3123,7 +3123,7 @@ column names.</p></td>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[int, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[int, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Numerical rating score(s)</p>
 <p>If returns a <code>pd.Series</code>, the series name will be <code>rtg_score</code>
@@ -3261,7 +3261,7 @@ by the respective <code>ratings.columns</code>.</p></td>
         <tr>
           <td><code>warf</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>int | float | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Weighted average rating factor (WARF).</p></td>
           <td>
@@ -3282,7 +3282,7 @@ by the respective <code>ratings.columns</code>.</p></td>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Numerical rating score(s).</p></td>
         </tr>
@@ -3603,7 +3603,7 @@ ratings/numerical scores and WARF.</p>
         <tr>
           <td><code>ratings</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>str | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Regular rating(s) to be translated into WARF(s).</p></td>
           <td>
@@ -3613,7 +3613,7 @@ ratings/numerical scores and WARF.</p>
         <tr>
           <td><code>rating_provider</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]]</code>
+                <code>str | list[str] | None</code>
           </td>
           <td><p>Should contain any valid rating provider out of {"Fitch", "Moody's", "S&amp;P",
 "Bloomberg", "DBRS"}.</p>
@@ -3637,7 +3637,7 @@ column names.</p></td>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[int, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[int, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Numerical WARF.</p>
 <p>If returns a <code>pd.Series</code>, the series name will be <code>warf</code> suffixed by
@@ -3745,7 +3745,7 @@ by the respective <code>ratings.columns</code>.</p></td>
         <tr>
           <td><code>rating_scores</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>int | float | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Numerical rating score(s).</p></td>
           <td>
@@ -4800,7 +4800,7 @@ translation table will be used:</p>
         <tr>
           <td><code>rating_scores</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>int | float | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Numerical rating score(s).</p></td>
           <td>
@@ -4810,7 +4810,7 @@ translation table will be used:</p>
         <tr>
           <td><code>rating_provider</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]]</code>
+                <code>str | list[str] | None</code>
           </td>
           <td><p>Should contain any valid rating provider out of {"Fitch", "Moody's", "S&amp;P",
 "Bloomberg", "DBRS"}.</p>
@@ -4833,7 +4833,7 @@ column names.</p></td>
         <tr>
           <td><code>short_term_strategy</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[str]</code>
+                <code>str | None</code>
           </td>
           <td><p>Will only be used, if <code>tenor</code> is "short-term". Choose between three distinct
 strategies in order to translate a long-term rating score into a short-term
@@ -4870,7 +4870,7 @@ approach.</li>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Regular ratings according to <code>rating_provider</code>'s rating scale.</p></td>
         </tr>
@@ -5020,7 +5020,7 @@ arguments:</p>
         <tr>
           <td><code>warf</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[int, float, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>int | float | <span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Numerical WARF(s).</p></td>
           <td>
@@ -5030,7 +5030,7 @@ arguments:</p>
         <tr>
           <td><code>rating_provider</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]]</code>
+                <code>str | list[str] | None</code>
           </td>
           <td><p>Should contain any valid rating provider out of {"Fitch", "Moody's", "S&amp;P",
 "Bloomberg", "DBRS"}.</p></td>
@@ -5052,7 +5052,7 @@ arguments:</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code>Union[str, <span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
           </td>
           <td><p>Regular rating(s) according to <code>rating_provider</code>'s rating scale.</p></td>
         </tr>
@@ -5544,7 +5544,7 @@ determines the room until a further rating downgrade.</p>
         <tr>
           <td><code>warf</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[float, int]</code>
+                <code>float | int</code>
           </td>
           <td><p>Numerical WARF.</p></td>
           <td>
@@ -5565,7 +5565,7 @@ determines the room until a further rating downgrade.</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="typing.Union">Union</span>[float, int]</code>
+                <code>Union[float, int]</code>
           </td>
           <td><p>WARF buffer.</p></td>
         </tr>
