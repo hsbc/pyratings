@@ -601,26 +601,6 @@
     How do I set up my dev environment?
   </a>
   
-    <nav class="md-nav" aria-label="How do I set up my dev environment?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-pdm" class="md-nav__link">
-    Using pdm:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-pip" class="md-nav__link">
-    Using pip:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -876,26 +856,6 @@
   <a href="#how-do-i-set-up-my-dev-environment" class="md-nav__link">
     How do I set up my dev environment?
   </a>
-  
-    <nav class="md-nav" aria-label="How do I set up my dev environment?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-pdm" class="md-nav__link">
-    Using pdm:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-pip" class="md-nav__link">
-    Using pip:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1202,22 +1162,9 @@ If you do so, reference it here in the description. -->
 <p><em>pyratings</em> is using the Python dependency manager <a href="https://pdm.fming.dev/">pdm</a>.<br />
 It creates a file called <code>pdm.lock</code>, which comprises pinned versions of all 
 dependencies (including development dependencies) that are needed to run <em>pyratings</em>. </p>
-<h5 id="using-pdm">Using <code>pdm</code>:</h5>
-<pre><code class="language-shell">pdm sync
+<pre><code class="language-shell">pdm sync -d
 </code></pre>
 <p>This will install <em>pyratings</em> including all its development dependencies.</p>
-<h5 id="using-pip">Using <code>pip</code>:</h5>
-<p>Create a dedicated virtual environment</p>
-<pre><code class="language-shell">python -m venv .venv
-</code></pre>
-<p>Activate your virtual environment.</p>
-<pre><code class="language-shell">source .venv/Scripts/activate  # bash 
-</code></pre>
-<pre><code class="language-shell">.venv\Scripts\activate  # Windows 
-</code></pre>
-<p>Install <em>pyratings</em> in editable mode (including all development dependencies).<br></p>
-<pre><code>pip install -r requirements.txt -e .
-</code></pre>
 <h4 id="further-dev-setup-and-what-i-need-to-now-about-pre-commit">Further dev setup and what I need to now about "pre-commit"</h4>
 <p>The <em>pyratings</em> package adheres to a bunch of <a href="#style-guides">Style guides</a>, that 
 will be enforced with the help of <a href="https://pre-commit.com/">Pre-commit</a>. </p>
@@ -1230,32 +1177,9 @@ have the chance to fix all issues and re-commit your code changes. </p>
 <p>In concrete, besides <code>pre-commit</code>'s native checks, the following hooks have been 
 implemented (in alphabetical order):</p>
 <ul>
-<li><a href="https://pypi.org/project/autoflake/">autoflake</a>: Removes unused imports and
-  unused variables from Python code.</li>
 <li><a href="https://pypi.org/project/black/">black</a>: The Uncompromising Code Formatter</li>
-<li><a href="https://pypi.org/project/flake8/">flake8</a>: Flake8 is a Python library that
-  wraps <code>PyFlakes</code>, <code>pycodestyle</code> and Ned Batchelder's McCabe script. It is a
-  great toolkit for checking your code base against coding style (PEP8), programming
-  errors and to check cyclomatic complexity.</li>
-<li><a href="https://pypi.org/project/flake8-annotations/">flake8-annotations</a>: Detects the
-  absence of PEP 3107-style function annotations and PEP 484-style type comments.</li>
-<li><a href="https://pypi.org/project/flake8-bandit/">flake8-bandit</a>: Automated security
-  testing.</li>
-<li><a href="https://pypi.org/project/flake8-black/">flake8-black</a>: Validating Python code
-  style with the command line code formatting tool black.</li>
-<li><a href="https://pypi.org/project/flake8-bugbear/">flake8-bugbear</a>: Finding likely
-  bugs and design problems in your program.</li>
-<li><a href="https://pypi.org/project/flake8-builtins/">flake8-builtins</a>: Check for python
-  builtins being used as variables or parameters.</li>
-<li><a href="https://pypi.org/project/flake8-comprehensions/">flake8-comprehensions</a>:
-  Helps you write a better list/set/dict comprehensions.</li>
-<li><a href="https://pypi.org/project/flake8-docstrings/">flake8-docstrings</a>: Check docstrings.</li>
-<li><a href="https://pypi.org/project/flake8-eradicate/">flake8-eradicate</a>: Find commented
-  out (or so-called "dead") code.</li>
-<li><a href="https://pypi.org/project/isort/">isort</a>: Sort imports alphabetically, and
-  automatically separated into sections and by type.</li>
-<li><a href="https://pypi.org/project/pep8-naming/">pep8-naming</a>: Check your code against
-  PEP 8 naming conventions.</li>
+<li><a href="https://pypi.org/project/ruff/">ruff</a>: An extremely fast Python linter, written 
+  in Rust.</li>
 </ul>
 <p>You can install the hooks with (runs for each commit):</p>
 <pre><code class="language-shell">pre-commit install
@@ -1283,7 +1207,9 @@ Then simply run:</p>
 </code></pre>
 <p>If all tests pass, you should get a result comparable to this:</p>
 <pre><code class="language-shell">nox &gt; Ran multiple sessions:
-nox &gt; pre-commit: success
+nox &gt; pre-commit-3.9: success
+nox &gt; pre-commit-3.10: success
+nox &gt; pre-commit-3.11: success
 nox &gt; * tests-3.9: success
 nox &gt; * tests-3.10: success
 nox &gt; * tests-3.11: success
@@ -1302,7 +1228,7 @@ described as it should be, please don't hesitate to open an
 <p>This project uses the <a href="https://black.readthedocs.io/">black</a> formatter to 
 automatically format the code basis. The line length has been set to 88 characters.</p>
 <h3 id="linting">Linting</h3>
-<p>We use <a href="https://pypi.org/project/flake8/">flake8</a> as our tool of choice for style 
+<p>We use <a href="https://pypi.org/project/ruff/">ruff</a> as our tool of choice for style 
 guide enforcement. That means, contributers should adhere to the following points 
 (not exhaustive):</p>
 <ul>
