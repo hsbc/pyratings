@@ -13,13 +13,13 @@
 #    limitations under the License.
 
 """Module contains unit tests for consolidation of ratings."""
-from __future__ import annotations
+from __future__ import annotations  # required for Python < 3.10
 
 import numpy as np
 import pandas as pd
+import pyratings as rtg
 import pytest
 
-import pyratings as rtg
 from tests import conftest
 
 

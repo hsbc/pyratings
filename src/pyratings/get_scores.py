@@ -134,8 +134,9 @@ translation table will be used:
 
 """
 
+from __future__ import annotations  # required for Python < 3.10
+
 import sqlite3
-from typing import List, Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -150,10 +151,10 @@ from pyratings.utils import (
 
 
 def get_scores_from_ratings(
-    ratings: Union[str, pd.Series, pd.DataFrame],
-    rating_provider: Optional[Union[str, List[str]]] = None,
+    ratings: str | pd.Series | pd.DataFrame,
+    rating_provider: str | list[str] | None = None,
     tenor: str = "long-term",
-) -> Union[int, pd.Series, pd.DataFrame]:
+) -> int | pd.Series | pd.DataFrame:
     """Convert regular ratings into numerical rating scores.
 
     Parameters
@@ -324,15 +325,15 @@ def get_scores_from_ratings(
                     rating_provider=provider,
                     tenor=tenor,
                 )
-                for col, provider in zip(ratings.columns, rating_provider)
+                for col, provider in zip(ratings.columns, rating_provider)  # noqa: B905
             ],
             axis=1,
         )
 
 
 def get_scores_from_warf(
-    warf: Union[int, float, pd.Series, pd.DataFrame]
-) -> Union[int, float, pd.Series, pd.DataFrame]:
+    warf: int | float | pd.Series | pd.DataFrame,
+) -> int | float | pd.Series | pd.DataFrame:
     """Convert weighted average rating factors (WARFs) into numerical rating scores.
 
     Parameters
@@ -387,8 +388,8 @@ def get_scores_from_warf(
     """
 
     def _get_scores_from_warf_db(
-        wrf: Union[int, float, pd.Series, pd.DataFrame]
-    ) -> Union[int, float]:
+        wrf: int | float | pd.Series | pd.DataFrame,
+    ) -> int | float:
         if not isinstance(wrf, (int, float, np.number) or np.isnan(wrf)) or not (
             1 <= wrf <= 10_000
         ):

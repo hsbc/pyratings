@@ -14,14 +14,14 @@
 
 """Module contains functions to clean ratings."""
 
-from typing import Union
+from __future__ import annotations  # required for Python < 3.10
 
 import pandas as pd
 
 
 def get_pure_ratings(
-    ratings: Union[str, pd.Series, pd.DataFrame]
-) -> Union[str, pd.Series, pd.DataFrame]:
+    ratings: str | pd.Series | pd.DataFrame,
+) -> str | pd.Series | pd.DataFrame:
     """Remove rating watches/outlooks and other non-actual-rating related information.
 
     Ratings may contain watch, such as 'AA- *+', 'BBB+ (CwNegative)'.
