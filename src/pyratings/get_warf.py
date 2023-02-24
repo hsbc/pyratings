@@ -44,7 +44,8 @@ ratings/numerical scores and WARF.
 
 """
 
-from typing import List, Optional, Union
+
+from __future__ import annotations  # required for Python < 3.10
 
 import numpy as np
 import pandas as pd
@@ -58,8 +59,8 @@ from pyratings.utils import (
 
 
 def get_warf_from_scores(
-    rating_scores: Union[int, float, pd.Series, pd.DataFrame],
-) -> Union[int, pd.Series, pd.DataFrame]:
+    rating_scores: int | float | pd.Series | pd.DataFrame,
+) -> int | pd.Series | pd.DataFrame:
     """Convert numerical rating score(s) to numerical WARF(s).
 
     Parameters
@@ -127,9 +128,9 @@ def get_warf_from_scores(
 
 
 def get_warf_from_ratings(
-    ratings: Union[str, pd.Series, pd.DataFrame],
-    rating_provider: Optional[Union[str, List[str]]] = None,
-) -> Union[int, pd.Series, pd.DataFrame]:
+    ratings: str | pd.Series | pd.DataFrame,
+    rating_provider: str | list[str] | None = None,
+) -> int | pd.Series | pd.DataFrame:
     """Convert regular rating(s) to numerical WARF(s).
 
     Parameters

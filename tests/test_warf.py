@@ -13,12 +13,12 @@
 #    limitations under the License.
 
 """Module contains various unit tests."""
-from typing import Union
+
+from __future__ import annotations  # required for Python < 3.10
 
 import numpy as np
-import pytest
-
 import pyratings as rtg
+import pytest
 
 
 @pytest.mark.parametrize(
@@ -33,9 +33,7 @@ import pyratings as rtg
         (9999, 0.5),
     ],
 )
-def test_get_warf_buffer(
-    warf: Union[int, float], expectations: Union[int, float]
-) -> None:
+def test_get_warf_buffer(warf: int | float, expectations: int | float) -> None:
     """It returns a WARF buffer."""
     actual = rtg.get_warf_buffer(warf=warf)
 

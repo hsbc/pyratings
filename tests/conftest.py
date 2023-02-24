@@ -245,19 +245,19 @@ st_scrs_dict = {
 # RatingScore), ]
 st_strat_prov_rtg_scrs_records = []
 for strat in st_strategies:
-    for (k, v_rtg, v_scores) in zip(
+    for k, v_rtg, v_scores in zip(  # noqa: B905
         st_rtg_prov_list, st_rtg_dict[strat].values(), st_scrs_dict[strat].values()
     ):
-        for (x, y) in zip(v_rtg, v_scores):
+        for x, y in zip(v_rtg, v_scores):  # noqa: B905
             st_strat_prov_rtg_scrs_records.append((strat, k, x, y))
 
 # create list of tuples for parameterization: [(RatingProvider, Rating, RatingScore), ]
 # RatingScore is for "base" strategy
 st_basestrat_prov_rtg_scrs_records = []
-for (k, v_rtg, v_scores) in zip(
+for k, v_rtg, v_scores in zip(  # noqa: B905
     st_rtg_prov_list, st_rtg_dict["base"].values(), st_scrs_dict["base"].values()
 ):
-    for (x, y) in zip(v_rtg, v_scores):
+    for x, y in zip(v_rtg, v_scores):  # noqa: B905
         st_basestrat_prov_rtg_scrs_records.append((k, x, y))
 
 # create long/tidy dataframe

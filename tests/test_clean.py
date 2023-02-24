@@ -15,10 +15,10 @@
 """Module contains unit tests for functions to clean ratings."""
 
 import pandas as pd
+import pyratings as rtg
 import pytest
 from pandas.testing import assert_frame_equal, assert_series_equal
 
-import pyratings as rtg
 from tests import conftest
 
 
@@ -59,10 +59,9 @@ def test_get_pure_ratings_single_rating_with_public_information_uppercase_p() ->
 
 # --- input: ratings series
 @pytest.mark.parametrize(
-    ["rating_provider", "rating_series", "rating_series_clean"],
+    ["rating_series", "rating_series_clean"],
     [
         (
-            rating_provider,
             conftest.lt_rtg_df_long_with_watch_unsolicited.loc[
                 conftest.lt_rtg_df_long_with_watch_unsolicited["rating_provider"]
                 == rating_provider,
@@ -81,7 +80,7 @@ def test_get_pure_ratings_single_rating_with_public_information_uppercase_p() ->
     ],
 )
 def test_get_pure_ratings_series(
-    rating_provider: str, rating_series: pd.Series, rating_series_clean: pd.Series
+    rating_series: pd.Series, rating_series_clean: pd.Series
 ) -> None:
     """It returns a series with clean ratings."""
     rating_series_clean.name = "rating_clean"
