@@ -14,9 +14,11 @@
 
 """Module contains some utility functions."""
 
+from __future__ import annotations  # required for Python < 3.10
+
 import importlib.resources as pkg_resources
 import sqlite3
-from typing import Hashable, List, Union
+from collections.abc import Hashable
 
 import pandas as pd
 
@@ -31,9 +33,9 @@ valid_rtg_agncy = {
 
 
 def _extract_rating_provider(
-    rating_provider: Union[str, List[str], Hashable],
+    rating_provider: str | list[str] | Hashable,
     valid_rtg_provider: list[str],
-) -> Union[str, List[str]]:
+) -> str | list[str]:
     """Extract valid rating providers.
 
     It is meant to extract rating providers from the column headings of a
@@ -119,7 +121,7 @@ def _get_translation_dict(
     rating_provider: str = None,
     tenor: str = "long-term",
     st_rtg_strategy: str = "base",
-) -> Union[dict, pd.DataFrame]:
+) -> dict | pd.DataFrame:
     """Load translation dictionaries from SQLite database."""
 
     def _rtg_to_scores(tenor: str) -> dict[str, int]:
@@ -139,7 +141,7 @@ def _get_translation_dict(
 
         return dict(cursor.fetchall())
 
-    def _scores_to_rtg(tenor: str, strat: str) -> Union[dict[int, str], pd.DataFrame]:
+    def _scores_to_rtg(tenor: str, strat: str) -> dict[int, str] | pd.DataFrame:
         """Create translation dictionary to translate from scores to ratings."""
         if tenor == "long-term":
             sql_query = """

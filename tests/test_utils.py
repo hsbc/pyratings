@@ -14,10 +14,10 @@
 
 """Module contains unit tests for utils._extract_rating_provider function."""
 
-import pytest
-
 import pyratings as rtg
+import pytest
 from pyratings.utils import valid_rtg_agncy
+
 from tests import conftest
 
 ratings = [

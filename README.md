@@ -66,13 +66,19 @@ Currently, the following rating agencies will be supported:
 **pyratings** is listed on [pypi](https://pypi.org/project/pyratings/).
 Make sure to have Python 3.9+ installed on your machine.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install **pyratings**.
+Using [pip](https://pip.pypa.io/en/stable/):
 
 ```bash
 pip install pyratings
 ```
 
-You can also use [poetry](https://python-poetry.org/).
+Using [pdm](https://pdm.fming.dev/):
+
+```bash
+pdm add pyratings
+```
+
+Using [poetry](https://python-poetry.org/):
 
 ```bash
 poetry add pyratings

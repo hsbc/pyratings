@@ -132,8 +132,9 @@ translation table will be used:
 
 """  # noqa: B950
 
+from __future__ import annotations  # required for Python < 3.10
+
 from decimal import ROUND_HALF_UP, Decimal
-from typing import List, Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -148,11 +149,11 @@ from pyratings.utils import (
 
 
 def get_ratings_from_scores(
-    rating_scores: Union[int, float, pd.Series, pd.DataFrame],
-    rating_provider: Optional[Union[str, List[str]]] = None,
+    rating_scores: int | float | pd.Series | pd.DataFrame,
+    rating_provider: str | list[str] | None = None,
     tenor: str = "long-term",
-    short_term_strategy: Optional[str] = None,
-) -> Union[str, pd.Series, pd.DataFrame]:
+    short_term_strategy: str | None = None,
+) -> str | pd.Series | pd.DataFrame:
     """Convert numerical rating scores into regular ratings.
 
     Parameters
@@ -396,16 +397,18 @@ def get_ratings_from_scores(
                     tenor=tenor,
                     short_term_strategy=short_term_strategy,
                 )
-                for col, provider in zip(rating_scores.columns, rating_provider)
+                for col, provider in zip(  # noqa: B905
+                    rating_scores.columns, rating_provider
+                )
             ],
             axis=1,
         )
 
 
 def get_ratings_from_warf(
-    warf: Union[int, float, pd.Series, pd.DataFrame],
-    rating_provider: Optional[Union[str, List[str]]] = None,
-) -> Union[str, pd.Series, pd.DataFrame]:
+    warf: int | float | pd.Series | pd.DataFrame,
+    rating_provider: str | list[str] | None = None,
+) -> str | pd.Series | pd.DataFrame:
     """Convert WARFs into regular ratings.
 
     Parameters

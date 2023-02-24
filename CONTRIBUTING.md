@@ -219,38 +219,12 @@ _pyratings_ is using the Python dependency manager [pdm](https://pdm.fming.dev/)
 It creates a file called ``pdm.lock``, which comprises pinned versions of all 
 dependencies (including development dependencies) that are needed to run _pyratings_. 
 
-##### Using ``pdm``:
-
 ```shell
-pdm sync
+pdm sync -d
 ```
 
 This will install _pyratings_ including all its development dependencies.
 
-##### Using ``pip``:
-    
-Create a dedicated virtual environment
-
-```shell
-python -m venv .venv
-```
-  
-Activate your virtual environment.
-
-```shell
-source .venv/Scripts/activate  # bash 
-```
-
-```shell
-.venv\Scripts\activate  # Windows 
-```
-      
-Install _pyratings_ in editable mode (including all development dependencies).<br>
-
-```
-pip install -r requirements.txt -e .
-```
-    
 #### Further dev setup and what I need to now about "pre-commit"
 
 The _pyratings_ package adheres to a bunch of [Style guides](#style-guides), that 
@@ -266,32 +240,9 @@ have the chance to fix all issues and re-commit your code changes.
 In concrete, besides ``pre-commit``'s native checks, the following hooks have been 
 implemented (in alphabetical order):
 
-* [autoflake](https://pypi.org/project/autoflake/): Removes unused imports and
-  unused variables from Python code.
 * [black](https://pypi.org/project/black/): The Uncompromising Code Formatter
-* [flake8](https://pypi.org/project/flake8/): Flake8 is a Python library that
-  wraps ``PyFlakes``, ``pycodestyle`` and Ned Batchelder's McCabe script. It is a
-  great toolkit for checking your code base against coding style (PEP8), programming
-  errors and to check cyclomatic complexity.
-* [flake8-annotations](https://pypi.org/project/flake8-annotations/): Detects the
-  absence of PEP 3107-style function annotations and PEP 484-style type comments.
-* [flake8-bandit](https://pypi.org/project/flake8-bandit/): Automated security
-  testing.
-* [flake8-black](https://pypi.org/project/flake8-black/): Validating Python code
-  style with the command line code formatting tool black.
-* [flake8-bugbear](https://pypi.org/project/flake8-bugbear/): Finding likely
-  bugs and design problems in your program.
-* [flake8-builtins](https://pypi.org/project/flake8-builtins/): Check for python
-  builtins being used as variables or parameters.
-* [flake8-comprehensions](https://pypi.org/project/flake8-comprehensions/):
-  Helps you write a better list/set/dict comprehensions.
-* [flake8-docstrings](https://pypi.org/project/flake8-docstrings/): Check docstrings.
-* [flake8-eradicate](https://pypi.org/project/flake8-eradicate/): Find commented
-  out (or so-called "dead") code.
-* [isort](https://pypi.org/project/isort/): Sort imports alphabetically, and
-  automatically separated into sections and by type.
-* [pep8-naming](https://pypi.org/project/pep8-naming/): Check your code against
-  PEP 8 naming conventions.
+* [ruff](https://pypi.org/project/ruff/): An extremely fast Python linter, written 
+  in Rust.
 
 You can install the hooks with (runs for each commit):
 
@@ -335,7 +286,9 @@ nox
 If all tests pass, you should get a result comparable to this:
 ```shell
 nox > Ran multiple sessions:
-nox > pre-commit: success
+nox > pre-commit-3.9: success
+nox > pre-commit-3.10: success
+nox > pre-commit-3.11: success
 nox > * tests-3.9: success
 nox > * tests-3.10: success
 nox > * tests-3.11: success
@@ -362,7 +315,7 @@ automatically format the code basis. The line length has been set to 88 characte
 
 ### Linting
 
-We use [flake8](https://pypi.org/project/flake8/) as our tool of choice for style 
+We use [ruff](https://pypi.org/project/ruff/) as our tool of choice for style 
 guide enforcement. That means, contributers should adhere to the following points 
 (not exhaustive):
 

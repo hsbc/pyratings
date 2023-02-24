@@ -14,14 +14,14 @@
 
 """Module contains unit tests for functions to get ratings from scores/warf."""
 
-from typing import Union
+from __future__ import annotations  # required for Python < 3.10
 
 import numpy as np
 import pandas as pd
+import pyratings as rtg
 import pytest
 from pandas.testing import assert_frame_equal, assert_series_equal
 
-import pyratings as rtg
 from tests import conftest
 
 
@@ -153,7 +153,7 @@ def test_get_ratings_with_single_score_and_no_rating_provider(tenor: str) -> Non
     ],
 )
 def test_get_ratings_from_single_warf(
-    warf: Union[int, float], rating_provider: str, rating: str
+    warf: int | float, rating_provider: str, rating: str
 ) -> None:
     """It returns a human-readable rating."""
     act = rtg.get_ratings_from_warf(warf=warf, rating_provider=rating_provider)
@@ -169,7 +169,7 @@ def test_get_ratings_from_single_warf_with_no_rating_provider() -> None:
 
 
 @pytest.mark.parametrize("warf", [np.nan, -5, 20000])
-def test_get_ratings_from_invalid_single_warf(warf: Union[int, float]) -> None:
+def test_get_ratings_from_invalid_single_warf(warf: int | float) -> None:
     """It returns NaN."""
     assert pd.isna(rtg.get_ratings_from_warf(warf=warf, rating_provider="DBRS"))
 
