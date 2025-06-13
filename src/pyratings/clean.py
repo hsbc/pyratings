@@ -59,17 +59,17 @@ def get_pure_ratings(
     >>> import numpy as np
     >>> import pandas as pd
 
-    >>> rating_series=pd.Series(
-    ...    data=[
-    ...        "BB+ *-",
-    ...        "(P)BBB *+",
-    ...        np.nan,
-    ...        "AA- (Developing)",
-    ...        np.nan,
-    ...        "CCC+ (CwPositive)",
-    ...        "BB+u",
-    ...    ],
-    ...    name="rtg_SP",
+    >>> rating_series = pd.Series(
+    ...     data=[
+    ...         "BB+ *-",
+    ...         "(P)BBB *+",
+    ...         np.nan,
+    ...         "AA- (Developing)",
+    ...         np.nan,
+    ...         "CCC+ (CwPositive)",
+    ...         "BB+u",
+    ...     ],
+    ...     name="rtg_SP",
     ... )
     >>> get_pure_ratings(rating_series)
     0     BB+
@@ -84,26 +84,26 @@ def get_pure_ratings(
     Cleaning a `pd.DataFrame`:
 
     >>> rtg_df = pd.DataFrame(
-    ...    data={
-    ...        "rtg_SP": [
-    ...            "BB+ *-",
-    ...            "BBB *+",
-    ...            np.nan,
-    ...            "AA- (Developing)",
-    ...            np.nan,
-    ...            "CCC+ (CwPositive)",
-    ...            "BB+u",
-    ...        ],
-    ...        "rtg_Fitch": [
-    ...            "BB+ *-",
-    ...            "BBB *+",
-    ...            pd.NA,
-    ...            "AA- (Developing)",
-    ...            np.nan,
-    ...            "CCC+ (CwPositive)",
-    ...            "BB+u",
-    ...        ],
-    ...    },
+    ...     data={
+    ...         "rtg_SP": [
+    ...             "BB+ *-",
+    ...             "BBB *+",
+    ...             np.nan,
+    ...             "AA- (Developing)",
+    ...             np.nan,
+    ...             "CCC+ (CwPositive)",
+    ...             "BB+u",
+    ...         ],
+    ...         "rtg_Fitch": [
+    ...             "BB+ *-",
+    ...             "BBB *+",
+    ...             pd.NA,
+    ...             "AA- (Developing)",
+    ...             np.nan,
+    ...             "CCC+ (CwPositive)",
+    ...             "BB+u",
+    ...         ],
+    ...     },
     ... )
     >>> get_pure_ratings(rtg_df)
       rtg_SP_clean rtg_Fitch_clean
@@ -122,7 +122,7 @@ def get_pure_ratings(
         )
         return ratings
 
-    elif isinstance(ratings, pd.Series):
+    if isinstance(ratings, pd.Series):
         # identify string occurrences
         isstring = ratings.apply(type).eq(str)
 
@@ -136,7 +136,7 @@ def get_pure_ratings(
         ratings.name = f"{ratings.name}_clean"
         return ratings
 
-    elif isinstance(ratings, pd.DataFrame):
+    if isinstance(ratings, pd.DataFrame):
         # Recursive call of `get_pure_ratings`
         return pd.concat(
             [get_pure_ratings(ratings=ratings[col]) for col in ratings.columns], axis=1

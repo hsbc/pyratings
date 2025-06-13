@@ -130,7 +130,7 @@ translation table will be used:
 | DBRS    |   worst  |     R-5     |     15     |     21     |   18.00    |
 | DBRS    |   worst  |      D      |     22     |     22     |   22.00    |
 
-"""  # noqa: B950
+"""
 
 from __future__ import annotations  # required for Python < 3.10
 
@@ -149,7 +149,7 @@ from pyratings.utils import (
 
 
 def get_ratings_from_scores(
-    rating_scores: int | float | pd.Series | pd.DataFrame,
+    rating_scores: float | pd.Series | pd.DataFrame,
     rating_provider: str | list[str] | None = None,
     tenor: str = "long-term",
     short_term_strategy: str | None = None,
@@ -322,18 +322,18 @@ def get_ratings_from_scores(
             rating_scores = int(Decimal(f"{rating_scores}").quantize(0, ROUND_HALF_UP))
             if tenor == "long-term":
                 return rtg_dict.get(rating_scores, pd.NA)
-            else:
-                try:
-                    return rtg_dict.loc[
-                        (rating_scores >= rtg_dict["MinScore"])
-                        & (rating_scores <= rtg_dict["MaxScore"]),
-                        "Rating",
-                    ].iloc[0]
+            try:
+                return rtg_dict.loc[
+                    (rating_scores >= rtg_dict["MinScore"])
+                    & (rating_scores <= rtg_dict["MaxScore"]),
+                    "Rating",
+                ].iloc[0]
 
-                except IndexError:
-                    return np.nan
+            except IndexError:
+                return np.nan
+        return None
 
-    elif isinstance(rating_scores, pd.Series):
+    if isinstance(rating_scores, pd.Series):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
                 rating_provider=rating_scores.name,
@@ -361,22 +361,21 @@ def get_ratings_from_scores(
             return pd.Series(
                 data=rating_scores.map(rtg_dict), name=f"rtg_{rating_provider}"
             )
-        else:
-            out = []
-            for score in rating_scores:
-                try:
-                    out.append(
-                        rtg_dict.loc[
-                            (score >= rtg_dict["MinScore"])
-                            & (score <= rtg_dict["MaxScore"]),
-                            "Rating",
-                        ].iloc[0]
-                    )
-                except (IndexError, TypeError):
-                    out.append(pd.NA)
-            return pd.Series(data=out, name=f"rtg_{rating_provider}")
+        out = []
+        for score in rating_scores:
+            try:
+                out.append(
+                    rtg_dict.loc[
+                        (score >= rtg_dict["MinScore"])
+                        & (score <= rtg_dict["MaxScore"]),
+                        "Rating",
+                    ].iloc[0]
+                )
+            except (IndexError, TypeError):
+                out.append(pd.NA)
+        return pd.Series(data=out, name=f"rtg_{rating_provider}")
 
-    elif isinstance(rating_scores, pd.DataFrame):
+    if isinstance(rating_scores, pd.DataFrame):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
                 rating_provider=rating_scores.columns.to_list(),
@@ -406,7 +405,7 @@ def get_ratings_from_scores(
 
 
 def get_ratings_from_warf(
-    warf: int | float | pd.Series | pd.DataFrame,
+    warf: float | pd.Series | pd.DataFrame,
     rating_provider: str | list[str] | None = None,
 ) -> str | pd.Series | pd.DataFrame:
     """Convert WARFs into regular ratings.
@@ -481,7 +480,7 @@ def get_ratings_from_warf(
             tenor="long-term",
         )
 
-    elif isinstance(warf, (pd.Series, pd.DataFrame)):
+    if isinstance(warf, (pd.Series, pd.DataFrame)):
         rating_scores = get_scores_from_warf(warf=warf)
         return get_ratings_from_scores(
             rating_scores=rating_scores,

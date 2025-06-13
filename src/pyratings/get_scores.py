@@ -206,7 +206,7 @@ def get_scores_from_ratings(
 
     >>> import pandas as pd
     >>> ratings_series = pd.Series(
-    ...     data=["Baa1", "C", "NR", "WD", "D", "B1", "SD"], name='Moody'
+    ...     data=["Baa1", "C", "NR", "WD", "D", "B1", "SD"], name="Moody"
     ... )
     >>> get_scores_from_ratings(
     ...     ratings=ratings_series, rating_provider="Moody's", tenor="long-term"
@@ -285,7 +285,7 @@ def get_scores_from_ratings(
         )
         return rtg_dict.get(ratings, pd.NA)
 
-    elif isinstance(ratings, pd.Series):
+    if isinstance(ratings, pd.Series):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
                 rating_provider=ratings.name,
@@ -305,7 +305,7 @@ def get_scores_from_ratings(
         )
         return pd.Series(data=ratings.map(rtg_dict), name=f"rtg_score_{ratings.name}")
 
-    elif isinstance(ratings, pd.DataFrame):
+    if isinstance(ratings, pd.DataFrame):
         if rating_provider is None:
             rating_provider = _extract_rating_provider(
                 rating_provider=ratings.columns.to_list(),
@@ -332,7 +332,7 @@ def get_scores_from_ratings(
 
 
 def get_scores_from_warf(
-    warf: int | float | pd.Series | pd.DataFrame,
+    warf: float | pd.Series | pd.DataFrame,
 ) -> int | float | pd.Series | pd.DataFrame:
     """Convert weighted average rating factors (WARFs) into numerical rating scores.
 
@@ -388,42 +388,38 @@ def get_scores_from_warf(
     """
 
     def _get_scores_from_warf_db(
-        wrf: int | float | pd.Series | pd.DataFrame,
+        wrf: float | pd.Series | pd.DataFrame,
     ) -> int | float:
         if not isinstance(wrf, (int, float, np.number) or np.isnan(wrf)) or not (
             1 <= wrf <= 10_000
         ):
             return np.nan
-        else:
-            if wrf == 10_000:
-                return 22
+        if wrf == 10_000:
+            return 22
 
-            else:
-                # connect to database
-                connection = sqlite3.connect(RATINGS_DB)
-                cursor = connection.cursor()
+        # connect to database
+        connection = sqlite3.connect(RATINGS_DB)
+        cursor = connection.cursor()
 
-                # create SQL query
-                sql_query = (
-                    "SELECT RatingScore FROM WARFs WHERE ? >= MinWARF and ? < MaxWARF"
-                )
+        # create SQL query
+        sql_query = "SELECT RatingScore FROM WARFs WHERE ? >= MinWARF and ? < MaxWARF"
 
-                # execute SQL query
-                cursor.execute(sql_query, (wrf, wrf))
-                rtg_score = cursor.fetchall()
+        # execute SQL query
+        cursor.execute(sql_query, (wrf, wrf))
+        rtg_score = cursor.fetchall()
 
-                # close database connection
-                connection.close()
+        # close database connection
+        connection.close()
 
-                return rtg_score[0][0]
+        return rtg_score[0][0]
 
     if isinstance(warf, (int, float, np.number)):
         return _get_scores_from_warf_db(warf)
 
-    elif isinstance(warf, pd.Series):
+    if isinstance(warf, pd.Series):
         rating_scores = warf.apply(_get_scores_from_warf_db)
         rating_scores.name = "rtg_score"
         return rating_scores
 
-    elif isinstance(warf, pd.DataFrame):
-        return warf.applymap(_get_scores_from_warf_db).add_prefix("rtg_score_")
+    if isinstance(warf, pd.DataFrame):
+        return warf.map(_get_scores_from_warf_db).add_prefix("rtg_score_")

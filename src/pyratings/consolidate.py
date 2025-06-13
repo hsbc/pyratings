@@ -54,15 +54,14 @@ def get_best_scores(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
     >>> get_best_scores(
-    ...     ratings=ratings_df,
-    ...     rating_provider_input=["S&P", "Moody", "Fitch"]
+    ...     ratings=ratings_df, rating_provider_input=["S&P", "Moody", "Fitch"]
     ... )
     0     1
     1     4
@@ -113,9 +112,9 @@ def get_second_best_scores(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
@@ -177,9 +176,9 @@ def get_worst_scores(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
@@ -245,9 +244,9 @@ def consolidate_ratings(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
@@ -287,7 +286,7 @@ def consolidate_ratings(
     >>> consolidate_ratings(
     ...     ratings=ratings_df,
     ...     method="worst",
-    ...     rating_provider_input=["S&P", "Moody", "Fitch"]
+    ...     rating_provider_input=["S&P", "Moody", "Fitch"],
     ... )
     0    AA-
     1    AA-
@@ -356,9 +355,9 @@ def get_best_ratings(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
@@ -421,9 +420,9 @@ def get_second_best_ratings(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )
@@ -488,9 +487,9 @@ def get_worst_ratings(
     >>> ratings_df = pd.DataFrame(
     ...     data=(
     ...         {
-    ...             "rating_S&P": ['AAA', 'AA-', 'AA+', 'BB-', 'C'],
-    ...             "rating_Moody's": ['Aa1', 'Aa3', 'Aa2', 'Ba3', 'Ca'],
-    ...             "rating_Fitch": ['AA-', 'AA-', 'AA-', 'B+', 'C'],
+    ...             "rating_S&P": ["AAA", "AA-", "AA+", "BB-", "C"],
+    ...             "rating_Moody's": ["Aa1", "Aa3", "Aa2", "Ba3", "Ca"],
+    ...             "rating_Fitch": ["AA-", "AA-", "AA-", "B+", "C"],
     ...         }
     ...     )
     ... )

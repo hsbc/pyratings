@@ -73,7 +73,7 @@ def _extract_rating_provider(
 
     >>> _extract_rating_provider(
     ...     rating_provider="rtg_DBRS",
-    ...     valid_rtg_provider=["Fitch", "SP", "DBRS"]
+    ...     valid_rtg_provider=["Fitch", "SP", "DBRS"],
     ... )
     'DBRS'
 
@@ -81,7 +81,7 @@ def _extract_rating_provider(
 
     >>> _extract_rating_provider(
     ...     rating_provider=["Fitch ratings", "rating_SP", "DBRS"],
-    ...     valid_rtg_provider=["fitch", "moody", "sp", "bloomberg", "dbrs"]
+    ...     valid_rtg_provider=["fitch", "moody", "sp", "bloomberg", "dbrs"],
     ... )
     ['Fitch', 'SP', 'DBRS']
 
@@ -112,8 +112,7 @@ def _extract_rating_provider(
 
     if len(rating_provider) > 1:
         return rating_provider
-    else:
-        return rating_provider[0]
+    return rating_provider[0]
 
 
 def _get_translation_dict(

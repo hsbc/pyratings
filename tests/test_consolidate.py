@@ -13,13 +13,14 @@
 #    limitations under the License.
 
 """Module contains unit tests for consolidation of ratings."""
+
 from __future__ import annotations  # required for Python < 3.10
 
 import numpy as np
 import pandas as pd
-import pyratings as rtg
 import pytest
 
+import pyratings as rtg
 from tests import conftest
 
 
@@ -199,7 +200,7 @@ def test_get_best_rating_shortterm_with_explicit_rating_provider(
     )
 
     expectations = pd.Series(
-        data=["A-1", "A-3", "A-1+", "A-3", "A-3", np.nan, "A-2", "A-3"], name="best_rtg"
+        data=["A-1", "A-3", "A-1+", "A-3", "A-3", pd.NA, "A-2", "A-3"], name="best_rtg"
     )
 
     pd.testing.assert_series_equal(actual, expectations)
@@ -212,7 +213,7 @@ def test_get_best_rating_shortterm_with_inferring_rating_provider(
     actual = rtg.get_best_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
-        data=["A-1", "A-3", "A-1+", "A-3", "A-3", np.nan, "A-2", "A-3"], name="best_rtg"
+        data=["A-1", "A-3", "A-1+", "A-3", "A-3", pd.NA, "A-2", "A-3"], name="best_rtg"
     )
 
     pd.testing.assert_series_equal(actual, expectations)
@@ -261,7 +262,7 @@ def test_get_second_best_rating_shortterm_with_explicit_rating_provider(
     )
 
     expectations = pd.Series(
-        data=["A-1", "B", "A-1+", "B", "A-3", np.nan, "A-2", "A-3"],
+        data=["A-1", "B", "A-1+", "B", "A-3", pd.NA, "A-2", "A-3"],
         name="second_best_rtg",
     )
 
@@ -275,7 +276,7 @@ def test_get_second_best_rating_shortterm_with_inferring_rating_provider(
     actual = rtg.get_second_best_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
-        data=["A-1", "B", "A-1+", "B", "A-3", np.nan, "A-2", "A-3"],
+        data=["A-1", "B", "A-1+", "B", "A-3", pd.NA, "A-2", "A-3"],
         name="second_best_rtg",
     )
 
@@ -323,7 +324,7 @@ def test_get_worst_rating_shortterm_with_explicit_rating_provider(
     )
 
     expectations = pd.Series(
-        data=["A-2", "B", "A-1", "D", "B", np.nan, "A-2", "A-3"], name="worst_rtg"
+        data=["A-2", "B", "A-1", "D", "B", pd.NA, "A-2", "A-3"], name="worst_rtg"
     )
 
     pd.testing.assert_series_equal(actual, expectations)
@@ -336,7 +337,7 @@ def test_get_worst_rating_shortterm_with_inferring_rating_provider(
     actual = rtg.get_worst_ratings(rtg_inputs_shortterm, tenor="short-term")
 
     expectations = pd.Series(
-        data=["A-2", "B", "A-1", "D", "B", np.nan, "A-2", "A-3"], name="worst_rtg"
+        data=["A-2", "B", "A-1", "D", "B", pd.NA, "A-2", "A-3"], name="worst_rtg"
     )
 
     pd.testing.assert_series_equal(actual, expectations)

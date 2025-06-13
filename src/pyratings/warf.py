@@ -43,7 +43,7 @@ All functions use the following translation table.
 
 `MinWARF` is inclusive, while `MaxWARF` is exclusive.
 
-"""  # noqa: B950
+"""
 
 from __future__ import annotations  # required for Python < 3.10
 
@@ -52,7 +52,7 @@ import sqlite3
 from pyratings.utils import RATINGS_DB
 
 
-def get_warf_buffer(warf: float | int) -> float | int:
+def get_warf_buffer(warf: float) -> float | int:
     """Compute WARF buffer.
 
     The WARF buffer is the distance from current WARF to the next maxWARF level. It
