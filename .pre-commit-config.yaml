@@ -1,48 +1,45 @@
 exclude: ^(docs\/|docsrc\/)
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-  hooks:
-    # Identify invalid files
-    - id: check-ast
-    - id: check-yaml
-    - id: check-json
-    - id: check-toml
-    # git checks
-    - id: check-merge-conflict
-    - id: detect-private-key
-    - id: check-case-conflict
-    # Python checks
-    - id: check-docstring-first
-    - id: debug-statements
-    - id: requirements-txt-fixer
-    - id: fix-byte-order-marker
-    # General quality checks
-    - id: mixed-line-ending
-    - id: trailing-whitespace
-      exclude: \.md$  # exclude markdown files
-    - id: check-executables-have-shebangs
-    - id: end-of-file-fixer
-- repo: https://github.com/pdm-project/pdm
-  rev: 2.4.0
-  hooks:
-    - id: pdm-lock-check
-- repo: local
-  hooks:
-    - id: kacl-verify
-      name: verify CHANGELOG.md
-      entry: kacl-cli verify
-      language: system
-      files: 'CHANGELOG.md'
-      pass_filenames: false
-      types: [python]
-    - id: black
-      name: black
-      entry: black .
-      language: system
-      types: [python]
-    - id: ruff
-      name: ruff
-      entry: ruff .
-      language: system
-      types: [python]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Identify invalid files
+      - id: check-ast
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      # git checks
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-case-conflict
+      # Python checks
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: requirements-txt-fixer
+      - id: fix-byte-order-marker
+      # General quality checks
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+        exclude: \.md$  # exclude markdown files
+      - id: check-executables-have-shebangs
+      - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: kacl-verify
+        name: verify CHANGELOG.md
+        entry: kacl-cli verify
+        language: system
+        files: 'CHANGELOG.md'
+        pass_filenames: false
+        types: [python]
+      - id: ruff
+        name: ruff-lint
+        entry: ruff check .
+        language: system
+        types_or: [python, pyi, jupyter]
+        args: [--fix]
+      - id: ruff-format
+        name: ruff-format
+        entry: ruff format .
+        language: system
+        types_or: [python, pyi, jupyter]
