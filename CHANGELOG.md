@@ -1,21 +1,37 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.6.1] - 2023-02-24
+## [0.6.2] - 2025-06-16
+
+### Improved
+
+- Migrated from [pdm](https://pdm-project.org/en/latest/) to [uv](https://docs.astral.sh/uv/).
+
 ### Security
+
+- Updated third-party dependencies.
+
+## [0.6.1] - 2023-02-24
+
+### Security
+
 - Updated third-party dependencies ([#54](https://github.com/hsbc/pyratings/pull/54), 
   [#55](https://github.com/hsbc/pyratings/pull/55)).
 
 ### Improved
+
 - Migrated from [flake8](https://pypi.org/project/flake8/) / 
   [isort](https://pypi.org/project/isort/) to [ruff](https://pypi.org/project/ruff/).
 
 ## [0.6.0] - 2023-01-18
+
 ### Added
+
 - Option to choose between three different strategies to translate scores into 
   short-term ratings ([#24](https://github.com/hsbc/pyratings/pull/24)).
 - Functionality to remove prefix '(P)' when cleaning ratings
@@ -30,6 +46,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   ([#37](https://github.com/hsbc/pyratings/issues/37)).
 
 ### Changed
+
 - BREAKING CHANGE: Automatic column naming
   ([#9](https://github.com/hsbc/pyratings/issues/9)). 
     - ``get_scores_from_ratings()``  
@@ -46,10 +63,12 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   ([#16](https://github.com/hsbc/pyratings/issues/16)).
 
 ### Fixed
+
 - Short-term DBRS rating entries in Ratings.db
   ([#29](https://github.com/hsbc/pyratings/issues/29)).
 
 ### Improved
+
 - Splitting the code base into multiple files in order to increase maintainability
   ([#8](https://github.com/hsbc/pyratings/issues/8)).
 - Internal checks have been improved 
@@ -65,27 +84,37 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Use [python-kacl](https://pypi.org/project/python-kacl/) in order to maintain CHAGELOG.
 
 ## [0.5.4] - 2022-07-07
+
 ### Refactored
+
 - Moved from ``setup.py`` to ``pyproject.toml`` configuration file.
 
 ## [0.5.3] - 2022-04-05
+
 ### Added
+
 - Complete documentation now available on public GitHub Pages at 
   https://hsbc.github.io/pyratings/.
 
 ## 0.5.2 - 2022-01-24
+
 ### Refactored
+
 - Moved sphinx configuration to ``docsrc`` folder.
 - Documentation data for GitHub pages can be found under ``docs``.
 
 ## 0.5.1 - 2022-01-06
+
 ### Security
+
 - Removed links to internal network drives in ``tox.ini``.
 - Removed links to GitHub issues in this ``CHANGELOG.md`` as they link to internal 
   GitHub repo.
 
 ## 0.5.0 - 2022-01-03
+
 ### Added
+
 - ``pyratings.get_scores_from_ratings``
 - ``pyratings.get_scores_from_warf``
 - ``pyratings.get_ratings_from_scores``
@@ -94,6 +123,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - ``pyratings.get_warf_from_ratings``
 
 ### Changed
+
 - BREAKING CHANGE: Internal resource handling now utilizes ``importlib.resources``, 
   which makes Python >=3.9 **mandatory**.
 - BREAKING CHANGE: Some function signatures have been changed:
@@ -111,6 +141,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
       --New--: ``get_worst_ratings(ratings: pd.DataFrame, rating_provider_input: List[str] = None, rating_provider_output: str = "S&P", tenor: str = "long-term") -> pd.Series``
 
 ### Removed
+
 - ``get_rating()`` -> Use ``pyratings.get_ratings_from_scores`` or 
   ``pyratings.get_ratings_from_warf`` instead.
 - ``to_ratings_from_scores()`` -> Use ``pyratings.get_ratings_from_scores`` instead.
@@ -119,15 +150,21 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - ``to_warf_from_ratings()`` -> Use ``pyratings.get_warf_from_ratings`` instead.
 
 ## 0.4.2 - 2021-11-19
+
 ### Refactored
+
 - Added unit tests in order to arrive at 100% code coverage
 
 ## 0.4.1 - 2021-11-16
+
 ### Changed
+
 - Function signature of ``pyratings.get_pure_ratings``.
 
 ## 0.4.0 - 2021-03-26
+
 ### Added
+
 - Computation of `best`, `worst`, and `second_best` ratings on a security basis. 
     - ``pyratings.get_best_ratings``
     - ``pyratings.get_second_best_ratings``
@@ -140,10 +177,12 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
     - API Reference
 
 ### Improved
+
 - Updated docstrings.
 - ``doctest`` integration into ``pytest``.
 
 ### Changed
+
 - Some functions such as ``to_scores_from_ratings`` and ``get_pure_ratings`` got 
   their signatures changed.<br>
   They now accept a ``Dict[str, pd.Series]``, where the dictionary keys represent 
@@ -161,6 +200,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Internal code optimizations.
 
 ### Removed
+
 - ``get_avg_rating``
 - ``get_avg_rating_score``
 - ``get_avg_warf``
@@ -168,6 +208,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - ``to_ratings_from_warf``
 
 ### Fixed
+
 - ``get_weighted_average`` (previously ``get_avg_rating_score`` and ``get_avg_warf``)
   now handle missing rating scores/WARF differently. Previously, they have been 
   ignored. However, this led to a too positive average rating/WARF.
@@ -176,12 +217,15 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   on rated securities.
 
 ## 0.3.0 - 2021-02-22
+
 ### Added
+
 - Computation of average rating.
 - Computation of average WARF.
 - Translation from traditional ratings to WARF and vice versa.
 
 ### Changed
+
 - Adjusted WARF and MaxWARF values for ratings Ca and C to allow for differentiation 
   of translated values between ratings Ca/C/D.
 - Folder layout now adheres to ``src`` layout.
@@ -189,27 +233,35 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
   library.
 
 ### Improved
+
 - Use ``tox`` for unit tests.
 
 ## 0.2.0 - 2020-12-18
+
 ### Added
+
 - More rating agencies: DBRS, Bloomberg composite, ICE.
 - Short-term ratings.
 
 ### Improved
+
 - Rating scales are now maintained within an SQLite database. Previously, rating 
   scales had been hard coded in a traditional Python ``dict``.
 
 ### Fixed
+
 - Cleansing of unsolicited ratings.
 
 ## 0.1.0 - 2020-12-09
+
 ### Added
+
 - Function to clean ratings (delete watches).
 - Function to translate S&P/Fitch/Moody's credit ratings into rating scores.
 - Function to translate rating scores into S&P/Fitch/Moody's credit ratings.
 
-[Unreleased]: https://github.com/hsbc/pyratings/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/hsbc/pyratings/compare/v0.6.2...HEAD
+[0.6.2]: https://github.com/hsbc/pyratings/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/hsbc/pyratings/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/hsbc/pyratings/compare/v0.5.4...v0.6.0
 [0.5.4]: https://github.com/hsbc/pyratings/compare/v0.5.3...v0.5.4
