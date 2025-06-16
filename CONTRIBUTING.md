@@ -209,18 +209,17 @@ GitHub provides a good [introduction](https://docs.github.com/en/get-started/qui
 <!-- omit in toc -->
 #### How do I set up my dev environment?
 
-- _pyratings_ requires Python 3.9 at a minimum.
+- _pyratings_ requires Python 3.10 at a minimum.
 - Clone the fork to your local machine.
 - Create a virtual environment and install the _pyratings_ library including all of 
   its dependencies.
   There are some possible ways to do this.
 
-_pyratings_ is using the Python dependency manager [pdm](https://pdm.fming.dev/).  
-It creates a file called ``pdm.lock``, which comprises pinned versions of all 
-dependencies (including development dependencies) that are needed to run _pyratings_. 
+_pyratings_ is using the Python dependency manager [uv](https://docs.astral.sh/uv/).  
+All required and development dependencies are defined in ``pyproject.toml``.
 
 ```shell
-pdm sync -d
+uv sync --dev
 ```
 
 This will install _pyratings_ including all its development dependencies.
@@ -237,29 +236,22 @@ make sure the changeset is in good shape before a commit/push happens. If it fin
 any issues with your code, ``pre-commit`` will prevent the actual commit. You then 
 have the chance to fix all issues and re-commit your code changes. 
 
-In concrete, besides ``pre-commit``'s native checks, the following hooks have been 
-implemented (in alphabetical order):
-
-* [black](https://pypi.org/project/black/): The Uncompromising Code Formatter
-* [ruff](https://pypi.org/project/ruff/): An extremely fast Python linter, written 
-  in Rust.
-
 You can install the hooks with (runs for each commit):
 
 ```shell
-pre-commit install
+uv run pre-commit install
 ```
 
 Or if you want them to run only for each push:
 
 ```shell
-pre-commit install -t pre-push
+uv run pre-commit install -t pre-push
 ```
 
 Or if you want to run all checks manually for all files:
 
 ```shell
-pre-commit run --all-files
+uv run pre-commit run --all-files
 ```
 
 
@@ -268,12 +260,12 @@ pre-commit run --all-files
 
 Running simple unit tests using ``pytest`` is as easy as
 ```shell
-pytest
+uv run pytest
 ```
 
 In addition, you can perform more rigorous linting and tests against multiple Python
 versions. In this case, the test result depends on the Python versions available on 
-your machine. Make sure you've got at least Python 3.9 installed on your machine. 
+your machine. Make sure you've got at least Python 3.10 installed on your machine. 
 
 These tests will be performed using [nox](https://nox.thea.codes/).
 The corresponding ``./noxfile.py`` is configured in a way that it installs the 
@@ -281,17 +273,19 @@ required dependencies with the help of [pdm](https://pdm.fming.dev/).
 That means, you need to have [pdm](https://pdm.fming.dev/) installed on your machine.
 Then simply run:
 ```shell
-nox
+uv run nox
 ```
 If all tests pass, you should get a result comparable to this:
 ```shell
 nox > Ran multiple sessions:
-nox > pre-commit-3.9: success
-nox > pre-commit-3.10: success
-nox > pre-commit-3.11: success
-nox > * tests-3.9: success
+nox > * pre-commit-3.10: success
+nox > * pre-commit-3.11: success
+nox > * pre-commit-3.12: success
+nox > * pre-commit-3.13: success
 nox > * tests-3.10: success
 nox > * tests-3.11: success
+nox > * tests-3.12: success
+nox > * tests-3.13: success
 ```
 
 ### Improving The Documentation
@@ -310,13 +304,13 @@ described as it should be, please don't hesitate to open an
 
 ### Code formatting
 
-This project uses the [black](https://black.readthedocs.io/) formatter to 
+This project uses the [ruff](https://pypi.org/project/ruff/) formatter to 
 automatically format the code basis. The line length has been set to 88 characters.
 
 ### Linting
 
 We use [ruff](https://pypi.org/project/ruff/) as our tool of choice for style 
-guide enforcement. That means, contributers should adhere to the following points 
+guide enforcement. That means, contributors should adhere to the following points 
 (not exhaustive):
 
 - Every module must have a docstring to describe what the module is all about.

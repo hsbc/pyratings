@@ -48,12 +48,12 @@ def get_weighted_average(data: pd.Series, weights: pd.Series) -> float:
     >>> rtg_scores = pd.Series(data=[5, 7, 9])
     >>> wgt = pd.Series(data=[0.5, 0.3, 0.2])
     >>> get_weighted_average(data=rtg_scores, weights=wgt)
-    6.4
+    np.float64(6.4)
 
     >>> warf = pd.Series(data=[500, 735, np.nan, 93, np.nan])
     >>> wgt = pd.Series(data=[0.4, 0.1, 0.1, 0.2, 0.2])
-    >>> get_weighted_average(data=warf, weights=wgt)
-    417.29
+    >>> get_weighted_average(data=warf, weights=wgt).round(2)
+    np.float64(417.29)
     """
     # find indices in warf that correspond to np.nan
     idx_nan = data[pd.isna(data)].index

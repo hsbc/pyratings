@@ -64,7 +64,7 @@ Currently, the following rating agencies will be supported:
 
 ## How to install _pyratings_?
 **pyratings** is listed on [pypi](https://pypi.org/project/pyratings/).
-Make sure to have Python 3.9+ installed on your machine.
+Make sure to have Python 3.10+ installed on your machine.
 
 Using [pip](https://pip.pypa.io/en/stable/):
 
