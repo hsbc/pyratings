@@ -25,7 +25,7 @@ def get_pure_ratings(
     """Remove rating watches/outlooks and other non-actual-rating related information.
 
     Ratings may contain watch, such as 'AA- *+', 'BBB+ (CwNegative)'.
-    Outlook/watch should be seperated by a blank from the actual rating.
+    Outlook/watch should be separated by a blank from the actual rating.
     Also, ratings may also contain the letter 'u' (unsolicited) or be prefixed by
     '(P)' (public information only).
     This kind of information will be removed to retrieve the actual rating(s).
